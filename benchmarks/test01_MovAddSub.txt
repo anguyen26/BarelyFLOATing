@@ -1,0 +1,8 @@
+    MOVS R4, #129    
+    MOV R2, R4      
+    ADDS R5, R4, R4  
+    ADDS R7, R2, #5 
+    ADD SP, SP, #92  
+    SUBS R0, R5, R6  
+    SUBS R5, R3, #5  
+    SUB SP, SP, #68 

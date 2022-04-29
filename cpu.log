@@ -1,0 +1,46 @@
+
+Warning-[DEBUG_DEP] Option will be deprecated
+  The option '-debug_pp' will be deprecated in a future release.  Please use 
+  '-debug_acc+pp+dmptf -debug_region+cell+encrypt' instead.
+
+Command: vcs -f Core/cpu.include +v2k -R +lint=all -sverilog -full64 -debug_pp -timescale=1ns/10ps \
+-l cpu.log
+                         Chronologic VCS (TM)
+       Version S-2021.09-SP1_Full64 -- Fri Apr 29 09:42:25 2022
+
+                    Copyright (c) 1991 - 2021 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+
+
+Warning-[PMFO] Potential misusage of '-f/-F' option
+  Potential misusage of '-f/-F' option, which can only be used in non-UUM 
+  flow.
+  The option '-f/-F' cannot be used in UUM flow.It could cause an error saying
+  that the top unit is treated as source file in the UUM flow.If VCS is 
+  intended to be run in non-UUM flow, please check if source files are 
+  specified correctly.Otherwise please use '-file' option for UUM flow.
+
+
+Error-[SFCOR] Source file cannot be opened
+  Source file "mux3x4_4.sv" cannot be opened for reading due to 'No such file 
+  or directory'.
+  Please fix above issue and compile again.
+  
+  
+
+1 warning
+1 error
+CPU time: .166 seconds to compile

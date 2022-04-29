@@ -1,0 +1,15 @@
+Metadata-Version: 2.0
+Name: iarm
+Version: 0.1.0
+Summary: An interpreter for the ARM instruction set and an accompanying Jupyter kernel
+Home-page: https://github.com/DeepHorizons/iarm
+Author: Joshua Milas
+Author-email: josh.milas@gmail.com
+License: MIT
+Requires-Dist: ipykernel
+Requires-Dist: ipython
+Requires-Dist: jupyter-client
+
+IArm
+
+

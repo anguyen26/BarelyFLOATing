@@ -1,0 +1,74 @@
+{
+    "std": [
+        "std",
+        "reYIK",
+        "module",
+        1
+    ],
+    "mux4x16_16": [
+        "mux4x16_16",
+        "Uyq9i",
+        "module",
+        2
+    ],
+    "full_adder": [
+        "full_adder",
+        "BEdzp",
+        "module",
+        3
+    ],
+    "fullAdder": [
+        "fullAdder",
+        "qG7YU",
+        "module",
+        5
+    ],
+    "cpuControl_testbench": [
+        "cpuControl_testbench",
+        "ZMktr",
+        "module",
+        7
+    ],
+    "D_FF": [
+        "D_FF",
+        "YyC6k",
+        "module",
+        8
+    ],
+    "register_0000": [
+        "register_0000",
+        "N3bug",
+        "module",
+        10
+    ],
+    "register_2_0000": [
+        "register_2_0000",
+        "hGQdI",
+        "module",
+        12
+    ],
+    "register_4_0000": [
+        "register_4_0000",
+        "AT3AB",
+        "module",
+        16
+    ],
+    "register_5": [
+        "register_5",
+        "gEHU2",
+        "module",
+        23
+    ],
+    "cpuStim": [
+        "cpuStim",
+        "xpdGa",
+        "module",
+        21
+    ],
+    "...MASTER...": [
+        "SIM",
+        "amcQw",
+        "module",
+        22
+    ]
+}

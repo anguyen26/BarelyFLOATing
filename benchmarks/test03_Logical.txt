@@ -1,0 +1,4 @@
+    ANDS R2, R5      
+    EORS R1, R5      
+    ORRS R7, R0      
+    MVNS R4, R2      
