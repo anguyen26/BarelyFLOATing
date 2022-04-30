@@ -9,7 +9,7 @@ UUM=FALSE
 KDB=FALSE
 USE_NOVAS_HOME=FALSE
 COSIM=FALSE
-TOP=cpuControl_testbench register_5 cpuStim 
+TOP=mux3x16_16 cpuControl_testbench register_2 register_3 register_4 register_5 forwarding cpuStim 
 
 [Value]
 WREALX=ffff534e50535f58

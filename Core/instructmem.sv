@@ -14,7 +14,7 @@
 //`define BENCHMARK "../benchmarks/test10_forwarding.arm"
 //`define BENCHMARK "../benchmarks/test11_Sort.arm"
 //`define BENCHMARK "../benchmarks/test12_Division.arm"
-`define BENCHMARK "../benchmarks/test02_AddsSubs.arm"
+`define BENCHMARK "../benchmarks/test06_Branch.arm"
 `timescale 1ns/10ps
 
 // How many bytes are in our memory?  Must be a power of two.

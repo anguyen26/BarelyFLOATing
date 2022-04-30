@@ -13,6 +13,7 @@
 /home/nguyea9/ee478/Core/mux3x4_4.sv
 /home/nguyea9/ee478/Core/mux4x16_16.sv
 /home/nguyea9/ee478/Core/mux4x4_4.sv
+/home/nguyea9/ee478/Core/mux5x16_16.sv
 /home/nguyea9/ee478/Core/regfile.sv
 /home/nguyea9/ee478/Core/register.sv
 /home/nguyea9/ee478/Core/register_2.sv

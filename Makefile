@@ -26,4 +26,4 @@ dve:
 
 compare: 
 	@ echo "Comparing expected results to actual results..."
-	diff -c iarm_output.txt Core/sv_output.txt
+	@ diff -cs iarm_output.txt Core/sv_output.txt

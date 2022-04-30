@@ -7,27 +7,47 @@
 // rd_data_0, rd_data_1	- data for specified address (async)
 // clk - system clock 
 module regfile (
-	input logic clk, wr_en,
-	input logic [15:0] wr_data,
+	input logic clk, reset, wr_en,
+	input logic [15:0] wr_data, PC, 
 	input logic [3:0] wr_addr,
 	input logic [3:0] rd_addr_0, rd_addr_1,
 	output logic [15:0] rd_data_0, rd_data_1
 );
 
 	//main memory within the regfile
-	logic [15:0][15:0] MEM;
+	logic [14:0][15:0] MEM;
+    logic [15:0] r15;
+    assign r15 = PC[15:2];
 
 	//write data on positive edge of clock when wr_en is high
-	always_ff @(posedge clk) begin
-		if(wr_en) begin
+    integer i;
+    always_ff @(posedge clk) begin
+        if (reset) begin
+            for (int i=0; i<15; i++) begin
+                MEM[i] <= 16'd0;
+            end
+        end
+		else if(wr_en) begin
 			MEM[wr_addr] <= wr_data;
 		end
 	end
 
 	//async reads
-	assign rd_data_0 = MEM[rd_addr_0];	
-	assign rd_data_1 = MEM[rd_addr_1];
+//	assign rd_data_0 = MEM[rd_addr_0];	
+//	assign rd_data_1 = MEM[rd_addr_1];
 
+    always_comb begin
+        if (rd_addr_0 == 16'd15) begin
+            rd_data_0 = r15;
+        end else begin
+            rd_data_0 = MEM[rd_addr_0];
+        end
+        if (rd_addr_1 == 16'd15) begin
+            rd_data_1 = r15;
+        end else begin
+            rd_data_1 = MEM[rd_addr_1];
+        end
+    end
 endmodule
 /*
 module regfile_testbench();

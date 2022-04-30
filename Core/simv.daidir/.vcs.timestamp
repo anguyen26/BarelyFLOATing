@@ -96,7 +96,7 @@ MGC_HOME=/home/lab.apps/vlsiapps_new/calibre/current
 MFLAGS=-w
 MAKEOVERRIDES=${-*-command-variables-*-}
 MAKELEVEL=2
-MAKEFLAGS=w -- TEST=test02_AddsSubs
+MAKEFLAGS=w -- TEST=test06_Branch
 LESSOPEN=||/usr/bin/lesspipe.sh %s
 LC_ALL=C
 KRB5CCNAME=KEYRING:persistent:798455
@@ -132,36 +132,37 @@ CALIBRE_HOME=/home/lab.apps/vlsiapps_new/calibre/current
 ARCH=/home/lab.apps/vlsiapps_new/hspice/current/hspice/suse64
 0
 0
-25
-1651245239 cpuStim.sv
-1651105620 cpu.sv
+26
+1651309197 cpuStim.sv
+1651309798 cpu.sv
 1651212836 forwarding.sv
 1651212815 rippleCarryAdder.sv
-1651254547 instructmem.sv
-1651211952 datamem.sv
-1651212356 regfile.sv
+1651314385 instructmem.sv
+1651306630 datamem.sv
+1651309107 regfile.sv
 1651212791 register_5.sv
 1651212676 register_4.sv
 1651212690 register_3.sv
 1651212763 register_2.sv
 1651212615 register.sv
 1651212880 D_FF.sv
-1651106110 cpuControl.sv
-1651212313 alu.sv
+1651309398 cpuControl.sv
+1651294961 alu.sv
 1651212738 fullAdder.sv
 1651212235 adder.sv
 1651212076 shifter.sv
 1651212706 full_adder.sv
+1651302670 mux5x16_16.sv
 1651105394 mux4x4_4.sv
 1650919912 mux4x16_16.sv
 1651075836 mux3x16_16.sv
 1651105404 mux3x4_4.sv
-1651211856 cpu.include
+1651302638 cpu.include
 1638245157 /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcsdp.tab
 4
 1638257447 /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/libvirsim.so
 1638246089 /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/liberrorinf.so
 1638245983 /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/libsnpsmalloc.so
 1638246086 /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/libvfs.so
-1651254552 simv.daidir
+1651314388 simv.daidir
 -1 partitionlib

@@ -1,3 +1,5 @@
+    MOVS R4, #129
+    MOVS R7, #134
     CMP R4, R7       
     BNE 3
     MOVS R1, #1

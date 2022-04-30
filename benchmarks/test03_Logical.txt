@@ -1,3 +1,9 @@
+    MOVS R0, #254
+    MOVS R1, #129
+    MOVS R4, #129
+    MOVS R5, #221
+    MOVS R6, #134
+    ADD SP, SP, #24
     ANDS R2, R5      
     EORS R1, R5      
     ORRS R7, R0      

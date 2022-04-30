@@ -1,7 +1,10 @@
+import sys
+test = sys.argv[1]
 instrs = {
         "MOVS":     "00100",
         "MOV":      "010001100", 
         "ADDS":     "0001100", 
+        "ADDSI":    "0001110",
         "ADD":      "101100000", 
         "SUBS":     "0001101",
         "SUBSI":    "0001111", 
@@ -25,10 +28,14 @@ instrs = {
         
 conds = ["EQ", "NE", "CS", "CC", "MI", "PL", "VS", "VC", "HI", "LS", "GE", "LT", "GT", "LE", "AL"]
 
-fAssem = open("assembly_instr.txt", 'r');
-fBin = open("binary_instr.txt", 'w');
+# fAssem = open("assembly_instr.txt", 'r');
+# fBin = open("binary_instr.txt", 'w');
 # fAssem = open("each_assembly_instr.txt", 'r');
 # fBin = open("each_binary_instr.txt", 'w');
+assem_file = "benchmarks/" + test + ".txt"
+bin_file = "benchmarks/" + test + ".arm"
+fAssem = open(assem_file, 'r');
+fBin = open(bin_file, 'w');
 
 for line in fAssem:
     words = []
@@ -40,12 +47,6 @@ for line in fAssem:
     if (line[0] != ' '):
         words = words[1:]
     instr = words[0]
-    # Handle Bcond case
-    if (instr[0] == 'B') & (len(instr)==3):
-        instr_bin= str(instrs.get(instr[0]))
-    else:    
-        instr_bin= str(instrs.get(instr))
-    print(instr)
     for token in words:
         if token != words[0]:
             if token[0] == 'R':
@@ -60,10 +61,19 @@ for line in fAssem:
                 else:
                     imm = int(token)
     print(regs)
+    # Handle immediates
+    if (len(regs)==2) & ((instr == "ADDS") | (instr == "SUBS")):
+        instr = instr + "I"
+    # Handle Bcond case
+    if (instr[0] == 'B') & (len(instr)==3):
+        instr_bin= str(instrs.get(instr[0]))
+    else:    
+        instr_bin= str(instrs.get(instr))
+    print(instr)
     # write instruction code
     fBin.write(instr_bin)
     # write immediate
-    if (len(regs)==2) & ((instr == "ADDS") | (instr == "SUBS")):
+    if (instr == "ADDSI") | (instr == "SUBSI"):
         print(1)
         fBin.write('_' + format(imm, '03b'))
     if (instr == "ADD") | (instr == "SUB"):
@@ -97,7 +107,9 @@ for line in fAssem:
         if instr == "MOVS":
             print(7)
             fBin.write('_' + format(imm, '08b'))
-    fBin.write('\n')
+    fBin.write('  //' + line)
+    #ifBin.write('\n')
+
 fAssem.close()
 fBin.close()
 

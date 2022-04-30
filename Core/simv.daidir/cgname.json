@@ -5,11 +5,17 @@
         "module",
         1
     ],
-    "mux4x16_16": [
-        "mux4x16_16",
-        "Uyq9i",
+    "mux3x16_16": [
+        "mux3x16_16",
+        "uuVMN",
         "module",
-        2
+        20
+    ],
+    "mux5x16_16": [
+        "mux5x16_16",
+        "gi3ST",
+        "module",
+        19
     ],
     "full_adder": [
         "full_adder",
@@ -17,11 +23,29 @@
         "module",
         3
     ],
+    "shifter": [
+        "shifter",
+        "CFT7G",
+        "module",
+        18
+    ],
+    "adder_0000": [
+        "adder_0000",
+        "wtLLx",
+        "module",
+        17
+    ],
     "fullAdder": [
         "fullAdder",
         "qG7YU",
         "module",
         5
+    ],
+    "ALU": [
+        "ALU",
+        "trjvP",
+        "module",
+        15
     ],
     "cpuControl_testbench": [
         "cpuControl_testbench",
@@ -35,29 +59,41 @@
         "module",
         8
     ],
-    "register_0000": [
-        "register_0000",
-        "N3bug",
+    "register_2": [
+        "register_2",
+        "DeKif",
         "module",
-        10
+        14
     ],
-    "register_2_0000": [
-        "register_2_0000",
-        "hGQdI",
+    "register_3": [
+        "register_3",
+        "LgJbM",
         "module",
-        12
+        13
     ],
-    "register_4_0000": [
-        "register_4_0000",
-        "AT3AB",
+    "register_4": [
+        "register_4",
+        "CI8fx",
         "module",
-        16
+        11
     ],
     "register_5": [
         "register_5",
         "gEHU2",
         "module",
         23
+    ],
+    "datamem": [
+        "datamem",
+        "KmSWA",
+        "module",
+        9
+    ],
+    "forwarding": [
+        "forwarding",
+        "HsiJQ",
+        "module",
+        6
     ],
     "cpuStim": [
         "cpuStim",

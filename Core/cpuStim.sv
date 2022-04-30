@@ -26,15 +26,18 @@ module cpuStim();
 		while(testCpu.instr != 16'b11100_00000000000) begin
 			@(posedge clk);
 		end
+        /*
 		for (i = 0; i < 10; i++) begin
 			@(posedge clk); // Clear Pipeline
 		end
+        */
 		$display("%t Test Done", $time);
         f = $fopen("sv_output.txt", "w");
         $fwrite(f, "Register content:\n");
-        for (int i=0; i<16; i++) begin
+        for (int i=0; i<15; i++) begin
             $fwrite(f, "%d = %d\n", i, testCpu.registers.MEM[i]);
         end
+        $fwrite(f, "15 = %d\n", testCpu.registers.r15);
         $fclose(f);
 //		$stop;
         $finish;

@@ -57,6 +57,9 @@ module ALU #(parameter SIZE = 16) (
 			3'b101:begin
 				Result = ~a;
 			end
+            3'b110: begin
+                Result = b;
+            end
 		endcase
 	end
 

@@ -1,15 +1,16 @@
 # Begin_DVE_Session_Save_Info
 # DVE full session
-# Saved on Fri Apr 29 00:06:08 2022
+# Saved on Sat Apr 30 00:33:00 2022
 # Designs open: 1
 #   V1: /home/nguyea9/ee478/Core/vcdplus.vpd
 # Toplevel windows open: 1
 # 	TopLevel.2
-#   Wave.1: 13 signals
-#   Group count = 3
+#   Wave.1: 42 signals
+#   Group count = 5
 #   Group cpuControl_testbench signal count = 20
-#   Group cpuStim_1 signal count = 5
-#   Group registers signal count = 8
+#   Group cpuStim_1 signal count = 6
+#   Group registers signal count = 10
+#   Group controlUnit signal count = 21
 # End_DVE_Session_Save_Info
 
 # DVE version: S-2021.09-SP1_Full64
@@ -68,7 +69,7 @@ if {![gui_exist_window -window TopLevel.2]} {
 } else { 
     set TopLevel.2 TopLevel.2
 }
-gui_show_window -window ${TopLevel.2} -show_state maximized -rect {{1307 147} {2066 943}}
+gui_show_window -window ${TopLevel.2} -show_state normal -rect {{763 68} {1519 861}}
 
 # ToolBar settings
 gui_set_toolbar_attributes -toolbar {TimeOperations} -dock_state top
@@ -116,7 +117,7 @@ gui_sync_global -id ${TopLevel.2} -option true
 # MDI window settings
 set Wave.1 [gui_create_window -type {Wave}  -parent ${TopLevel.2}]
 gui_show_window -window ${Wave.1} -show_state maximized
-gui_update_layout -id ${Wave.1} {{show_state maximized} {dock_state undocked} {dock_on_new_line false} {child_wave_left 425} {child_wave_right 329} {child_wave_colname 184} {child_wave_colvalue 237} {child_wave_col1 0} {child_wave_col2 1}}
+gui_update_layout -id ${Wave.1} {{show_state maximized} {dock_state undocked} {dock_on_new_line false} {child_wave_left 370} {child_wave_right 381} {child_wave_colname 209} {child_wave_colvalue 154} {child_wave_col1 0} {child_wave_col2 1}}
 
 # End MDI window settings
 
@@ -142,11 +143,87 @@ gui_set_precision 1ps
 gui_set_time_units 1ps
 #</Database>
 
+# DVE Global setting session: 
+
+
+# Global: Bus
+
+# Global: Expressions
+
+# Global: Signal Time Shift
+
+# Global: Signal Compare
+
+# Global: Signal Groups
+gui_load_child_values {cpuStim}
+gui_load_child_values {cpuStim.testCpu.regWrMux}
+gui_load_child_values {cpuStim.testCpu.controlUnit}
+gui_load_child_values {cpuControl_testbench}
+gui_load_child_values {cpuStim.testCpu.registers}
+
+
+set _session_group_6 cpuControl_testbench
+gui_sg_create "$_session_group_6"
+set cpuControl_testbench "$_session_group_6"
+
+gui_sg_addsignal -group "$_session_group_6" { cpuControl_testbench.instr cpuControl_testbench.negative cpuControl_testbench.zero cpuControl_testbench.overflow cpuControl_testbench.alu_zero cpuControl_testbench.clk cpuControl_testbench.reset cpuControl_testbench.Reg2Loc cpuControl_testbench.RegWrite cpuControl_testbench.MemWrite cpuControl_testbench.MemRead cpuControl_testbench.MemToReg cpuControl_testbench.BrTaken cpuControl_testbench.UncondBr cpuControl_testbench.ALUSrc cpuControl_testbench.ShiftDir cpuControl_testbench.nineOrTwelve cpuControl_testbench.keepFlags cpuControl_testbench.ALUOp cpuControl_testbench.calcSrc }
+
+set _session_group_7 cpuStim_1
+gui_sg_create "$_session_group_7"
+set cpuStim_1 "$_session_group_7"
+
+gui_sg_addsignal -group "$_session_group_7" { cpuStim.ClockDelay cpuStim.clk cpuStim.reset cpuStim.testCpu.PC cpuStim.testCpu.PCNext cpuStim.testCpu.instr }
+gui_set_radix -radix {decimal} -signals {V1:cpuStim.ClockDelay}
+gui_set_radix -radix {twosComplement} -signals {V1:cpuStim.ClockDelay}
+gui_set_radix -radix {binary} -signals {V1:cpuStim.testCpu.PC}
+gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.PC}
+gui_set_radix -radix {binary} -signals {V1:cpuStim.testCpu.PCNext}
+gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.PCNext}
+gui_set_radix -radix {binary} -signals {V1:cpuStim.testCpu.instr}
+gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.instr}
+
+set _session_group_8 registers
+gui_sg_create "$_session_group_8"
+set registers "$_session_group_8"
+
+gui_sg_addsignal -group "$_session_group_8" { cpuStim.testCpu.registers.wr_data cpuStim.testCpu.registers.rd_addr_0 cpuStim.testCpu.registers.rd_addr_1 cpuStim.testCpu.registers.wr_addr cpuStim.testCpu.registers.wr_en cpuStim.testCpu.registers.rd_data_0 cpuStim.testCpu.registers.rd_data_1 cpuStim.testCpu.registers.MEM cpuStim.testCpu.registers.clk }
+gui_set_radix -radix {binary} -signals {V1:cpuStim.testCpu.registers.wr_data}
+gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.registers.wr_data}
+gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.registers.rd_addr_0}
+gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.registers.rd_addr_0}
+gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.registers.rd_addr_1}
+gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.registers.rd_addr_1}
+gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.registers.wr_addr}
+gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.registers.wr_addr}
+gui_set_radix -radix {binary} -signals {V1:cpuStim.testCpu.registers.rd_data_0}
+gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.registers.rd_data_0}
+gui_set_radix -radix {binary} -signals {V1:cpuStim.testCpu.registers.rd_data_1}
+gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.registers.rd_data_1}
+gui_set_radix -radix {binary} -signals {V1:cpuStim.testCpu.registers.MEM}
+gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.registers.MEM}
+
+set _session_group_9 $_session_group_8|
+append _session_group_9 regWrMux
+gui_sg_create "$_session_group_9"
+set registers|regWrMux "$_session_group_9"
+
+gui_sg_addsignal -group "$_session_group_9" { cpuStim.testCpu.regWrMux.i0 cpuStim.testCpu.regWrMux.i1 cpuStim.testCpu.regWrMux.i2 cpuStim.testCpu.regWrMux.i3 cpuStim.testCpu.regWrMux.sel cpuStim.testCpu.regWrMux.out }
+
+set _session_group_10 controlUnit
+gui_sg_create "$_session_group_10"
+set controlUnit "$_session_group_10"
+
+gui_sg_addsignal -group "$_session_group_10" { cpuStim.testCpu.controlUnit.PC cpuStim.testCpu.controlUnit.instr cpuStim.testCpu.controlUnit.FlagsReg cpuStim.testCpu.controlUnit.clk cpuStim.testCpu.controlUnit.reset cpuStim.testCpu.controlUnit.RegWrite cpuStim.testCpu.controlUnit.MemWrite cpuStim.testCpu.controlUnit.MemRead cpuStim.testCpu.controlUnit.ShiftDir cpuStim.testCpu.controlUnit.noop cpuStim.testCpu.controlUnit.keepFlags cpuStim.testCpu.controlUnit.Reg1Loc cpuStim.testCpu.controlUnit.Reg2Loc cpuStim.testCpu.controlUnit.Reg3Loc cpuStim.testCpu.controlUnit.selOpB cpuStim.testCpu.controlUnit.selOpA cpuStim.testCpu.controlUnit.ALUOp cpuStim.testCpu.controlUnit.brSel cpuStim.testCpu.controlUnit.brEx cpuStim.testCpu.controlUnit.selWrData cpuStim.testCpu.controlUnit.opcode }
+
+# Global: Highlighting
+
+# Global: Stack
+gui_change_stack_mode -mode list
 
 # Post database loading setting...
 
 # Restore C1 time
-gui_set_time -C1_only 105921
+gui_set_time -C1_only 9165
 
 
 
@@ -174,10 +251,12 @@ gui_list_set_height -id Wave -height 25
 set origGroupCreationState [gui_list_create_group_when_add -wave]
 gui_list_create_group_when_add -wave -disable
 gui_marker_set_ref -id ${Wave.1}  C1
-gui_wv_zoom_timerange -id ${Wave.1} 0 60275
+gui_wv_zoom_timerange -id ${Wave.1} 0 42533
 gui_list_add_group -id ${Wave.1} -after {New Group} {cpuStim_1}
 gui_list_add_group -id ${Wave.1} -after {New Group} {registers}
-gui_list_select -id ${Wave.1} {cpuStim.testCpu.registers.wr_addr }
+gui_list_add_group -id ${Wave.1}  -after registers {registers|regWrMux}
+gui_list_add_group -id ${Wave.1} -after {New Group} {controlUnit}
+gui_list_select -id ${Wave.1} {cpuStim.testCpu.registers.clk }
 gui_seek_criteria -id ${Wave.1} {Any Edge}
 
 
@@ -193,10 +272,10 @@ if { $groupExD } {
 }
 gui_list_set_filter -id ${Wave.1} -list { {Buffer 1} {Input 1} {Others 1} {Linkage 1} {Output 1} {Parameter 1} {All 1} {Aggregate 1} {LibBaseMember 1} {Event 1} {Assertion 1} {Constant 1} {Interface 1} {BaseMembers 1} {Signal 1} {$unit 1} {Inout 1} {Variable 1} }
 gui_list_set_filter -id ${Wave.1} -text {*}
-gui_list_set_insertion_bar  -id ${Wave.1} -group cpuStim_1  -item {cpuStim.ClockDelay[31:0]} -position below
+gui_list_set_insertion_bar  -id ${Wave.1} -group registers  -position below
 
-gui_marker_move -id ${Wave.1} {C1} 105921
-gui_view_scroll -id ${Wave.1} -vertical -set 0
+gui_marker_move -id ${Wave.1} {C1} 9165
+gui_view_scroll -id ${Wave.1} -vertical -set 150
 gui_show_grid -id ${Wave.1} -enable false
 # Restore toplevel window zorder
 # The toplevel window could be closed if it has no view/pane

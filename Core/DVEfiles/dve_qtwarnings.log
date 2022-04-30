@@ -2,3 +2,11 @@ QWarning: QLayout "unnamed" added to ag::dlgSessionDbMapping "dlgCloseDatabase",
 QWarning: QLayout "unnamed" added to ag::dlgSessionDbMapping "dlgCloseDatabase", which already has a layout
 QWarning: QLayout "unnamed" added to ag::dlgSessionDbMapping "dlgCloseDatabase", which already has a layout
 QWarning: QLayout "unnamed" added to QGroupBox "unnamed", which already has a layout
+QWarning: QLayout "unnamed" added to ag::dlgSessionDbMapping "dlgCloseDatabase", which already has a layout
+QWarning: QLayout "unnamed" added to ag::dlgSessionDbMapping "dlgCloseDatabase", which already has a layout
+QWarning: QLayout "unnamed" added to ag::dlgSessionDbMapping "dlgCloseDatabase", which already has a layout
+QWarning: QLayout "unnamed" added to QGroupBox "unnamed", which already has a layout
+QWarning: QLayout "unnamed" added to ag::dlgSessionDbMapping "dlgCloseDatabase", which already has a layout
+QWarning: QLayout "unnamed" added to ag::dlgSessionDbMapping "dlgCloseDatabase", which already has a layout
+QWarning: QLayout "unnamed" added to ag::dlgSessionDbMapping "dlgCloseDatabase", which already has a layout
+QWarning: QLayout "unnamed" added to QGroupBox "unnamed", which already has a layout
