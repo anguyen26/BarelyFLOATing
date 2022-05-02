@@ -1,6 +1,6 @@
 psSimBaseName                      	simv
 psLogFileName                      	cpu.log
-pDaiDir                            	/home/nguyea9/ee478/Core/simv.daidir
+pDaiDir                            	/home/projects/ee478.2022spr/hoppii/BarelyFLOATing/Core/simv.daidir
 destPath                           	csrc/
 fSharedMaster                      	0
 fHsimPCSharedLibSpecified          	0

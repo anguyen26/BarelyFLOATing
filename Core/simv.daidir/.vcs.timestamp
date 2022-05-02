@@ -1,7 +1,7 @@
 0 
 37
 +cli+1
-+itf+/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcsdp.tab
++itf+/home/lab.apps/vlsiapps_new//vcs/current/linux64/lib/vcsdp.tab
 +lint=all
 +memcbk
 +v2k
@@ -10,19 +10,19 @@
 -Mamsrun=
 -Masflags=
 -Mcc=gcc
--Mcfl= -pipe -fPIC -O -I/home/lab.apps/vlsiapps_new/vcs/current/include
+-Mcfl= -pipe -fPIC -O -I/home/lab.apps/vlsiapps_new//vcs/current/include
 -Mcplusplus=g++
 -Mcrt0=
 -Mcrtn=
 -Mcsrc=
 -Mexternalobj=
 -Mldflags= -rdynamic
--Mobjects= /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/libvirsim.so /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/liberrorinf.so /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/libsnpsmalloc.so /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/libvfs.so
+-Mobjects= /home/lab.apps/vlsiapps_new//vcs/current/linux64/lib/libvirsim.so /home/lab.apps/vlsiapps_new//vcs/current/linux64/lib/liberrorinf.so /home/lab.apps/vlsiapps_new//vcs/current/linux64/lib/libsnpsmalloc.so /home/lab.apps/vlsiapps_new//vcs/current/linux64/lib/libvfs.so
 -Mout=simv
--Msaverestoreobj=/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_save_restore_new.o
+-Msaverestoreobj=/home/lab.apps/vlsiapps_new//vcs/current/linux64/lib/vcs_save_restore_new.o
 -Msyslibs=-ldl
 -Mvcsaceobjs=
--Mxcflags= -pipe -fPIC -I/home/lab.apps/vlsiapps_new/vcs/current/include
+-Mxcflags= -pipe -fPIC -I/home/lab.apps/vlsiapps_new//vcs/current/include
 -Mxllcflags=
 -Xcbug=0x1
 -Xvcs_run_simv=1
@@ -34,86 +34,70 @@
 -picarchive
 -sverilog
 -timescale=1ns/10ps
-/home/lab.apps/vlsiapps_new/vcs/current/linux64/bin/vcs1
+/home/lab.apps/vlsiapps_new//vcs/current/linux64/bin/vcs1
 cpu.log
 cpu.include
-92
-XSESSION_EXEC=xfce4-session
-XMODIFIERS=@im=ibus
-XDG_SESSION_ID=5882
-XDG_RUNTIME_DIR=/run/user/798455
-XDG_MENU_PREFIX=gnome-
-XDG_DATA_DIRS=/homes/nguyea9/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
-XDG_CURRENT_DESKTOP=GNOME
-XAUTHORITY=/homes/nguyea9/.Xauthority
-X2GO_SESSION=nguyea9-50-1650996723_stDXFCE_dp32
-X2GO_AGENT_PID=15050
+76
+XDG_SESSION_ID=6796
+XDG_RUNTIME_DIR=/run/user/908180
+XDG_DATA_DIRS=/homes/hoppii/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
 VTE_VERSION=5204
-VRST_HOME=/home/lab.apps/vlsiapps_new/incisive/current
-VNCDESKTOP=linux-lab-060.ece.uw.edu:2 (nguyea9)
+VRST_HOME=/home/lab.apps/vlsiapps_new//incisive/current
+VNCDESKTOP=linux-lab-058.ece.uw.edu:1 (hoppii)
 VMR_MODE_FLAG=64
-VG_GNU_PACKAGE=/home/lab.apps/vlsiapps_new/vcs/current/gnu/linux
+VG_GNU_PACKAGE=/home/lab.apps/vlsiapps_new//vcs/current/gnu/linux
 VENDOR=unknown
-VC_STATIC_HOME=/home/lab.apps/vlsiapps_new/vc_static/current
+VC_STATIC_HOME=/home/lab.apps/vlsiapps_new//vc_static/current
 VCS_PATHMAP_PRELOAD_DONE=1
 VCS_MX_HOME_INTERNAL=1
 VCS_MODE_FLAG=64
 VCS_LOG_FILE=cpu.log
-VCS_HOME=/home/lab.apps/vlsiapps_new/vcs/current
+VCS_HOME=/home/lab.apps/vlsiapps_new//vcs/current
 VCS_EXEC_DONE=1
 VCS_DEPTH=0
 VCS_ARG_ADDED_FOR_TMP=1
 VCS_ARCH=linux64
 USE_CALIBRE_VCO=aoj
 UNAME=/bin/uname
-TOOL_HOME=/home/lab.apps/vlsiapps_new/vcs/current/linux64
+TOOL_HOME=/home/lab.apps/vlsiapps_new//vcs/current/linux64
 TEST=/bin/test
-SYNOPSYS_LC_ROOT=/home/lab.apps/vlsiapps_new/lc/current
-STARTUP=/usr/bin/env LD_LIBRARY_PATH= xfce4-session
-SSH_CONNECTION=10.102.64.5 63928 128.95.215.170 22
-SSH_CLIENT=10.102.64.5 63928 22
-SSH_AUTH_SOCK=/run/user/798455/keyring/ssh
+SYNOPSYS_LC_ROOT=/home/lab.apps/vlsiapps_new//lc/current
+SSH_TTY=/dev/pts/0
+SSH_CONNECTION=10.102.183.139 62625 128.95.215.168 22
+SSH_CLIENT=10.102.183.139 62625 22
+SSH_AUTH_SOCK=/tmp/ssh-mtD94Cq198YD/agent.28343
 SSH_ASKPASS=/usr/libexec/openssh/gnome-ssh-askpass
-SSH_AGENT_PID=16012
-SNPS_VCS_CLANG_PATH=/home/lab.apps/vlsiapps_new/vcs/current/linux64/clang
+SSH_AGENT_PID=28344
+SNPS_VCS_CLANG_PATH=/home/lab.apps/vlsiapps_new//vcs/current/linux64/clang
 SNPS_INTERNAL_VCS_LINUX_OS=linux
 SKIP_OS_CHECKS=1
-SESSION_MANAGER=local/unix:@/tmp/.ICE-unix/28872,unix/unix:/tmp/.ICE-unix/28872
+SESSION_MANAGER=local/unix:@/tmp/.ICE-unix/28333,unix/unix:/tmp/.ICE-unix/28333
 SCRNAME=vcs
 SCRIPT_NAME=vcs
-QT_IM_MODULE=ibus
 QT_GRAPHICSSYSTEM_CHECKED=1
-QT_GRAPHICSSYSTEM=native
 QTLIB=/usr/lib64/qt-3.3/lib
 QTINC=/usr/lib64/qt-3.3/include
 QTDIR=/usr/lib64/qt-3.3
-PULSE_CLIENTCONFIG=/homes/nguyea9/.x2go/C-nguyea9-50-1650996723_stDXFCE_dp32/.pulse-client.conf
+PYTHONPATH=home/projects/ee478.2022spr/hoppii/BarelyFLOATing/bin/
 OVA_UUM=0
 OSTYPE=linux
-MODELSIM_TOOLS=/home/lab.apps/vlsiapps_new/modelsim/current/
+MODELSIM_TOOLS=/home/lab.apps/vlsiapps_new//modelsim/current/
 MGLS_LICENSE_FILE=27007@mentorls.s.uw.edu
-MGC_HOME=/home/lab.apps/vlsiapps_new/calibre/current
+MGC_HOME=/home/lab.apps/vlsiapps_new//calibre/current
 MFLAGS=-w
 MAKEOVERRIDES=${-*-command-variables-*-}
 MAKELEVEL=2
 MAKEFLAGS=w -- TEST=test06_Branch
 LESSOPEN=||/usr/bin/lesspipe.sh %s
 LC_ALL=C
-KRB5CCNAME=KEYRING:persistent:798455
-IMSETTINGS_MODULE=none
-IMSETTINGS_INTEGRATE_DESKTOP=yes
-HSPICE=/home/lab.apps/vlsiapps_new/hspice/current/hspice
+KRB5CCNAME=KEYRING:persistent:908180
+HSPICE=/home/lab.apps/vlsiapps_new//hspice/current/hspice
 HOSTTYPE=x86_64-linux
 HISTCONTROL=ignoredups
-GROUP=nguyea9
-GPG_AGENT_INFO=/homes/nguyea9/.gnupg/S.gpg-agent:16032:1
-GNOME_TERMINAL_SERVICE=:1.101
-GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/49d9b0de_4138_4d68_987f_9e6ffdc622ce
-GNOME_SHELL_SESSION_MODE=classic
-GNOME_DESKTOP_SESSION_ID=this-is-deprecated
-EDA_TOOLS_PATH=/home/lab.apps/vlsiapps_new
-EDA_CSHRC_PATH=/home/lab.apps/vlsiapps_new/cshrc
-DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-ZKr2pscUuE,guid=3160d97ca43f689a7a32588e626b6e0e
+GROUP=hoppii
+EDA_TOOLS_PATH=/home/lab.apps/vlsiapps_new/
+EDA_CSHRC_PATH=/home/lab.apps/vlsiapps_new//cshrc
+DBUS_SESSION_BUS_ADDRESS=unix:abstract=/tmp/dbus-jfFznGF0zC,guid=b5495bf04227e5c0c4eac3f2626f4e50
 CVS_RSH=ssh
 COLORTERM=truecolor
 CLS_CDSD_COMPATIBILITY_LOCKING=NO
@@ -121,48 +105,48 @@ CDS_Netlisting_Mode=Analog
 CDS_LOG_PATH=.
 CDS_LOAD_ENV=CWDElseHome
 CDS_LIC_FILE=27006@cadencels.s.uw.edu
-CDS_INST_DIR=/home/lab.apps/vlsiapps_new/virtuoso/current
+CDS_INST_DIR=/home/lab.apps/vlsiapps_new//virtuoso/current
 CDS_DEFAULT_BROWSER=firefox
 CDS_AUTO_64BIT=ALL
-CDSHOME=/home/lab.apps/vlsiapps_new/virtuoso/current
-CDSDIR=/home/lab.apps/vlsiapps_new/virtuoso/current/tools/dfII
-CDS=/home/lab.apps/vlsiapps_new/virtuoso/current
-CDN_SYNTH_ROOT=/home/lab.apps/vlsiapps_new/genus/current/tools
-CALIBRE_HOME=/home/lab.apps/vlsiapps_new/calibre/current
-ARCH=/home/lab.apps/vlsiapps_new/hspice/current/hspice/suse64
+CDSHOME=/home/lab.apps/vlsiapps_new//virtuoso/current
+CDSDIR=/home/lab.apps/vlsiapps_new//virtuoso/current/tools/dfII
+CDS=/home/lab.apps/vlsiapps_new//virtuoso/current
+CDN_SYNTH_ROOT=/home/lab.apps/vlsiapps_new//genus/current/tools
+CALIBRE_HOME=/home/lab.apps/vlsiapps_new//calibre/current
+ARCH=/home/lab.apps/vlsiapps_new//hspice/current/hspice/suse64
 0
 0
 26
-1651309197 cpuStim.sv
-1651309798 cpu.sv
-1651212836 forwarding.sv
-1651212815 rippleCarryAdder.sv
-1651314385 instructmem.sv
-1651306630 datamem.sv
-1651309107 regfile.sv
-1651212791 register_5.sv
-1651212676 register_4.sv
-1651212690 register_3.sv
-1651212763 register_2.sv
-1651212615 register.sv
-1651212880 D_FF.sv
-1651309398 cpuControl.sv
-1651294961 alu.sv
-1651212738 fullAdder.sv
-1651212235 adder.sv
-1651212076 shifter.sv
-1651212706 full_adder.sv
-1651302670 mux5x16_16.sv
-1651105394 mux4x4_4.sv
-1650919912 mux4x16_16.sv
-1651075836 mux3x16_16.sv
-1651105404 mux3x4_4.sv
-1651302638 cpu.include
-1638245157 /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcsdp.tab
+1651462070 cpuStim.sv
+1651480337 cpu.sv
+1651462071 forwarding.sv
+1651462071 rippleCarryAdder.sv
+1651480347 instructmem.sv
+1651462071 datamem.sv
+1651462071 regfile.sv
+1651462071 register_5.sv
+1651462071 register_4.sv
+1651462071 register_3.sv
+1651462071 register_2.sv
+1651462071 register.sv
+1651462070 D_FF.sv
+1651471946 cpuControl.sv
+1651462070 alu.sv
+1651462071 fullAdder.sv
+1651462070 adder.sv
+1651462071 shifter.sv
+1651462071 full_adder.sv
+1651462071 mux5x16_16.sv
+1651462071 mux4x4_4.sv
+1651462071 mux4x16_16.sv
+1651462071 mux3x16_16.sv
+1651462071 mux3x4_4.sv
+1651462070 cpu.include
+1638245157 /home/lab.apps/vlsiapps_new//vcs/current/linux64/lib/vcsdp.tab
 4
-1638257447 /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/libvirsim.so
-1638246089 /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/liberrorinf.so
-1638245983 /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/libsnpsmalloc.so
-1638246086 /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/libvfs.so
-1651314388 simv.daidir
+1638257447 /home/lab.apps/vlsiapps_new//vcs/current/linux64/lib/libvirsim.so
+1638246089 /home/lab.apps/vlsiapps_new//vcs/current/linux64/lib/liberrorinf.so
+1638245983 /home/lab.apps/vlsiapps_new//vcs/current/linux64/lib/libsnpsmalloc.so
+1638246086 /home/lab.apps/vlsiapps_new//vcs/current/linux64/lib/libvfs.so
+1651480350 simv.daidir
 -1 partitionlib
