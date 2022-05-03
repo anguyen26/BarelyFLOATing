@@ -17,7 +17,7 @@ module cpu(clk, reset);
 	logic [15:0] ReadData1, ReadData2, selectedData2, imm3, imm5, imm7, imm8,
 					 selectedExtended, aluOutput, shiftOutput,
 					 computationResult, dataOut, opA, opB, whichMOV, 
-                     regWrData;
+                     			 regWrData, MOVorLR;
 	
 	// Used to determine what data register should come out of ReadData2
 	logic [3:0] reg1Addr, reg2Addr,  regWriteAddr, sp, lp;
@@ -76,7 +76,7 @@ module cpu(clk, reset);
     // 01: SP for ADD/SUB
     // 10: Rd for MOVS
     // 11: LR for BL
-	mux4x4_4 regWriteMux(.i0({1'b0, instr[2:0]}), .i1(sp), .i2({1'b0, instr[10:8]}), .i3(lr), .sel(Reg3Loc), .out(regWriteAddr));
+	mux4x4_4 regWriteMux(.i0({1'b0, instr[2:0]}), .i1(4'b1101), .i2({1'b0, instr[10:8]}), .i3(4'b1110), .sel(Reg3Loc), .out(regWriteAddr));
 
 
 
@@ -110,7 +110,7 @@ module cpu(clk, reset);
 	adder brancherAdder(.in1(PC), .in2(shiftedBranchAddr), .out(pcOffset), .cout());
 
 	// Chooses between either the normal PC offset from standard branch or branch exchange
-	assign PCNext = brEx ? brExcAddr : pcOffset;
+	assign PCNext = brEx ? (brExcAddr << 2) : pcOffset;
 
 	
 	//********************************************************************************************\\
@@ -137,7 +137,8 @@ module cpu(clk, reset);
 	ALU aluBlock(.a(opA), .b(opB), .ALUControl(ALUOp), .Result(aluOutput), .ALUFlags);
 	
 	// Determines whether to set the system flags to the new values from ALU based on the instruction
-	assign FlagsReg = keepFlags ? FlagsReg : ALUFlags;
+	register_4 FlagsRegister(.dataIn(ALUFlags), .dataOut(FlagsReg), .writeEnable(keepFlags), .reset(reset), .clk(clk));
+	//assign FlagsReg = keepFlags ? FlagsReg : ALUFlags;
 
 	// Shifts ReadData1 left or right based on a given distance from the instruction. ShiftDirection is determined by control unit
 	shifter shiftBlock(.value(ReadData2), .direction(EX_SD), .distance(ReadData1), .result(shiftOutput));
@@ -160,10 +161,13 @@ module cpu(clk, reset);
 	
 	assign imm8 = {{8{1'b0}}, {instr[7:0]}};
 	// Select type of MOV
-    // 1: MOVS, 0: MOV 
+    // 1: MOVS, 0: MOV/LR
 	assign whichMOV = instr[13] ? imm8 : ReadData2;
+	logic [15:0] PCPlus1;
+	adder LRAdder(.in1(PC), .in2(16'd4), .out(PCPlus1), .cout());
+	assign MOVorLR = brSel[0] ? whichMOV : (PCPlus1 >> 2);
 
     // Based on the instruction choose between the ALU ouput/shifter output/MOV output
-	mux4x16_16 regWrMux(.i0(shiftOutput), .i1(aluOutput), .i2(whichMOV), .i3(dataOut), .sel(selWrData), .out(regWrData));
+	mux4x16_16 regWrMux(.i0(shiftOutput), .i1(aluOutput), .i2(MOVorLR), .i3(dataOut), .sel(selWrData), .out(regWrData));
 
 endmodule

@@ -90,7 +90,7 @@ noop = ;
 				MemWrite = 0; 
 				MemRead = 0;
 				keepFlags = 4'b0000;
-				Reg2Loc = 2'b01;
+				Reg2Loc = 2'b11;
 				Reg3Loc = 2'b00;
                 selOpB = 3'd0;
                 ALUOp = 3'd6;
@@ -508,17 +508,20 @@ noop = ;
 			end
 			// BL
 			10'b0100010100: begin
-				RegWrite = 0;
+				RegWrite = 1;
 				MemWrite = 0;
 				keepFlags = 4'b0000;
+				Reg3Loc = 2'b11;
 				noop = 0;
 				brSel = 2'b00;
 				brEx = 0;
+				selWrData = 2'b10;
 			end
 			// BX
 			10'b010001110_?: begin
 				RegWrite = 0;
 				MemWrite = 0;
+				Reg2Loc = 2'b11;
 				keepFlags = 4'b0000;
 				noop = 0;
 				brEx = 1;

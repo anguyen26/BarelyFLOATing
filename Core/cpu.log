@@ -6,7 +6,7 @@ Warning-[DEBUG_DEP] Option will be deprecated
 Command: vcs -f cpu.include +v2k -R +lint=all -sverilog -full64 -debug_pp -timescale=1ns/10ps \
 -l cpu.log
                          Chronologic VCS (TM)
-       Version S-2021.09-SP1_Full64 -- Sat Apr 30 03:26:25 2022
+       Version S-2021.09-SP1_Full64 -- Mon May  2 01:32:28 2022
 
                     Copyright (c) 1991 - 2021 Synopsys, Inc.
    This software and the associated documentation are proprietary to Synopsys,
@@ -37,49 +37,49 @@ Parsing design file 'alu.sv'
 Parsing design file 'cpuControl.sv'
 
 Lint-[NS] Null statement
-cpuControl.sv, 557
+cpuControl.sv, 560
   Null statement is used in following verilog source.
   Source info: 		negative = 0; zero = 0; overflow = 0; alu_zero 
   = 0; #10;
 
 
 Lint-[NS] Null statement
-cpuControl.sv, 558
+cpuControl.sv, 561
   Null statement is used in following verilog source.
   Source info: 		instr = 32'b10010001000000000000001111100000; 
   #500; // ADDI
 
 
 Lint-[NS] Null statement
-cpuControl.sv, 559
+cpuControl.sv, 562
   Null statement is used in following verilog source.
   Source info: 		instr = 32'b00010100000000000000000000000000; 
   #500; // B
 
 
 Lint-[NS] Null statement
-cpuControl.sv, 560
+cpuControl.sv, 563
   Null statement is used in following verilog source.
   Source info: 		instr = 32'b11101011000111110000000000101000; 
   #500; // SUBS
 
 
 Lint-[NS] Null statement
-cpuControl.sv, 561
+cpuControl.sv, 564
   Null statement is used in following verilog source.
   Source info: 		instr = 32'b11111000000000000001000010000011; 
   #500; // STUR
 
 
 Lint-[NS] Null statement
-cpuControl.sv, 562
+cpuControl.sv, 565
   Null statement is used in following verilog source.
   Source info: 		instr = 32'b11111000010000000000001111101111; 
   #500; // LDUR
 
 
 Lint-[NS] Null statement
-cpuControl.sv, 563
+cpuControl.sv, 566
   Null statement is used in following verilog source.
   Source info: 		instr = 32'b01010100000000000000000010001011; 
   #500; // B.LT
@@ -154,21 +154,21 @@ cpu.sv, 60
 
 
 Lint-[IWU] Implicit wire is used
-cpu.sv, 143
+cpu.sv, 144
   No type is specified for wire 'EX_SD'. Default wire type is being applied 
   according to the IEEE spec.
   See the Verilog LRM(1364-2005), section 4.5.
 
 
 Lint-[IWU] Implicit wire is used
-cpu.sv, 151
+cpu.sv, 152
   No type is specified for wire 'memWrite'. Default wire type is being applied
   according to the IEEE spec.
   See the Verilog LRM(1364-2005), section 4.5.
 
 
 Lint-[IWU] Implicit wire is used
-cpu.sv, 151
+cpu.sv, 152
   No type is specified for wire 'memRead'. Default wire type is being applied 
   according to the IEEE spec.
   See the Verilog LRM(1364-2005), section 4.5.
@@ -197,7 +197,6 @@ Top Level Modules:
        cpuControl_testbench
        register_2
        register_3
-       register_4
        register_5
        forwarding
        cpuStim
@@ -1577,7 +1576,7 @@ Lint-[WMIA-L] Width mismatch in assignment
 cpuControl.sv, 511
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: RegWrite = 0;
+  Source info: RegWrite = 1;
   Expression: RegWrite
 
 
@@ -1590,7 +1589,7 @@ cpuControl.sv, 512
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 514
+cpuControl.sv, 515
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: noop = 0;
@@ -1598,7 +1597,7 @@ cpuControl.sv, 514
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 516
+cpuControl.sv, 517
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: brEx = 0;
@@ -1606,7 +1605,7 @@ cpuControl.sv, 516
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 520
+cpuControl.sv, 522
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: RegWrite = 0;
@@ -1614,7 +1613,7 @@ cpuControl.sv, 520
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 521
+cpuControl.sv, 523
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemWrite = 0;
@@ -1622,7 +1621,7 @@ cpuControl.sv, 521
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 523
+cpuControl.sv, 526
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: noop = 0;
@@ -1630,7 +1629,7 @@ cpuControl.sv, 523
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 524
+cpuControl.sv, 527
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: brEx = 1;
@@ -1638,7 +1637,7 @@ cpuControl.sv, 524
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 529
+cpuControl.sv, 532
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: RegWrite = 0;
@@ -1646,7 +1645,7 @@ cpuControl.sv, 529
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 530
+cpuControl.sv, 533
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemWrite = 0;
@@ -1654,7 +1653,7 @@ cpuControl.sv, 530
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 532
+cpuControl.sv, 535
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: noop = 1;
@@ -1662,7 +1661,7 @@ cpuControl.sv, 532
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 557
+cpuControl.sv, 560
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: negative = 0;
@@ -1670,7 +1669,7 @@ cpuControl.sv, 557
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 557
+cpuControl.sv, 560
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: zero = 0;
@@ -1678,7 +1677,7 @@ cpuControl.sv, 557
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 557
+cpuControl.sv, 560
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: overflow = 0;
@@ -1686,7 +1685,7 @@ cpuControl.sv, 557
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 557
+cpuControl.sv, 560
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: alu_zero = 0;
@@ -1750,37 +1749,37 @@ datamem.sv, 66
 
 
 Warning-[IWNF] Implicit wire has no fanin
-cpu.sv, 143
+cpu.sv, 144
   Implicit wire 'EX_SD' does not have any driver, please make sure this is 
   intended.
 
 
 Lint-[VNGS] Variable never gets set
-cpu.sv, 143
+cpu.sv, 144
   Following variable has never been set any value.
   Source info: EX_SD
 
 
 Warning-[IWNF] Implicit wire has no fanin
-cpu.sv, 151
+cpu.sv, 152
   Implicit wire 'memWrite' does not have any driver, please make sure this is 
   intended.
 
 
 Lint-[VNGS] Variable never gets set
-cpu.sv, 151
+cpu.sv, 152
   Following variable has never been set any value.
   Source info: memWrite
 
 
 Warning-[IWNF] Implicit wire has no fanin
-cpu.sv, 151
+cpu.sv, 152
   Implicit wire 'memRead' does not have any driver, please make sure this is 
   intended.
 
 
 Lint-[VNGS] Variable never gets set
-cpu.sv, 151
+cpu.sv, 152
   Following variable has never been set any value.
   Source info: memRead
 
@@ -1793,15 +1792,6 @@ cpu.sv, 60
 
 
 Lint-[PCWM-L] Port connection width mismatch
-cpu.sv, 79
-"mux4x4_4 regWriteMux( .i0 ({1'b0, instr[2:0]}),  .i1 (sp),  .i2 ({1'b0, instr[10:8]}),  .i3 (lr),  .sel (Reg3Loc),  .out (regWriteAddr));"
-  The following 1-bit expression is connected to 4-bit port "i3" of module 
-  "mux4x4_4", instance "regWriteMux".
-  Expression: lr
-  The expression is from module cpu, instance testCpu 
-
-
-Lint-[PCWM-L] Port connection width mismatch
 cpu.sv, 134
 "mux5x16_16 opBMux( .i0 (ReadData2),  .i1 (imm3),  .i2 (imm7),  .i3 (imm5),  .i4 (16'b1),  .sel (selOpB),  .out (opB));"
   The following 4-bit expression is connected to 3-bit port "sel" of module 
@@ -1811,7 +1801,16 @@ cpu.sv, 134
 
 
 Lint-[PCWM-L] Port connection width mismatch
-cpu.sv, 143
+cpu.sv, 140
+"register_4 FlagsRegister( .dataIn (ALUFlags),  .dataOut (FlagsReg),  .writeEnable (keepFlags),  .reset (reset),  .clk (clk));"
+  The following 4-bit expression is connected to 1-bit port "writeEnable" of 
+  module "register_4", instance "FlagsRegister".
+  Expression: keepFlags
+  The expression is from module cpu, instance testCpu 
+
+
+Lint-[PCWM-L] Port connection width mismatch
+cpu.sv, 144
 "shifter shiftBlock( .value (ReadData2),  .direction (EX_SD),  .distance (ReadData1),  .result (shiftOutput));"
   The following 16-bit expression is connected to 3-bit port "distance" of 
   module "shifter", instance "shiftBlock".
@@ -1896,40 +1895,35 @@ Starting vcs inline pass...
 16 modules and 0 UDP read.
 recompiling module cpuStim
 	However, due to incremental compilation, only 1 module needs to be compiled. 
-make[2]: Entering directory `/home/nguyea9/ee478/Core/csrc'
+make[2]: Entering directory `/home/projects/ee478.2022spr/hoppii/BarelyFLOATing/Core/csrc' \
+
 rm -f _cuarc*.so _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
 ld -shared  -Bsymbolic --no-relax  -o .//../simv.daidir//_cuarc0.so objs/amcQw_d.o \
 
 rm -f _cuarc0.so
 if [ -x ../simv ]; then chmod a-x ../simv; fi
 g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir \
--Wl,-rpath=/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib -L/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib \
--Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _10733_archive_1.so _prev_archive_1.so \
+-Wl,-rpath=/home/lab.apps/vlsiapps_new//vcs/current/linux64/lib -L/home/lab.apps/vlsiapps_new//vcs/current/linux64/lib \
+-Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _17908_archive_1.so _prev_archive_1.so \
 _cuarc0.so  SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o \
 rmar_llvm_0_0.o           -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile \
--luclinative /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_tls.o   -Wl,-whole-archive \
--lvcsucli    -Wl,-no-whole-archive          /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_save_restore_new.o \
+-luclinative /home/lab.apps/vlsiapps_new//vcs/current/linux64/lib/vcs_tls.o   -Wl,-whole-archive \
+-lvcsucli    -Wl,-no-whole-archive          /home/lab.apps/vlsiapps_new//vcs/current/linux64/lib/vcs_save_restore_new.o \
 -ldl  -lc -lm -lpthread -ldl 
 ../simv up to date
-make[2]: Leaving directory `/home/nguyea9/ee478/Core/csrc'
-Command: /home/nguyea9/ee478/Core/./simv +v2k +lint=all -a cpu.log
+make[2]: Leaving directory `/home/projects/ee478.2022spr/hoppii/BarelyFLOATing/Core/csrc' \
+
+Command: /home/projects/ee478.2022spr/hoppii/BarelyFLOATing/Core/./simv +v2k +lint=all -a cpu.log
 Chronologic VCS simulator copyright 1991-2021
 Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  Apr 30 03:26 2022
+Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May  2 01:32 2022
 VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
-
-Warning-[STASKW_RMIEAFL] Illegal entry
-instructmem.sv, 48
-  Illegal entry found at file ../benchmarks/test06_Branch.arm line 4 while 
-  executing $readmem.
-  Please ensure that the file has proper entries.
-
 Running benchmark: ../benchmarks/test06_Branch.arm
- 105.00 ns Test Done
+ 155.00 ns Test Done
 $finish called from file "cpuStim.sv", line 43.
-$finish at simulation time  105.00 ns
+$finish at simulation time  155.00 ns
            V C S   S i m u l a t i o n   R e p o r t 
-Time: 105000 ps
-CPU Time:      0.250 seconds;       Data structure size:   0.3Mb
-Sat Apr 30 03:26:28 2022
-CPU time: .449 seconds to compile + .316 seconds to elab + .366 seconds to link + .284 seconds in simulation
+Time: 155000 ps
+CPU Time:      0.210 seconds;       Data structure size:   0.3Mb
+Mon May  2 01:32:30 2022
+CPU time: .421 seconds to compile + .369 seconds to elab + .274 seconds to link + .251 seconds in simulation

@@ -31,13 +31,13 @@ TMPSPECENV=$(VCSTMPSPECENV)
 CC=$(TMPSPECENV) $(VCS_CC) $(TMPSPECARG)
 
 # C flags for compilation
-CFLAGS=$(STDLIB)-w  -pipe -fPIC -O -I/home/lab.apps/vlsiapps_new/vcs/current/include    
+CFLAGS=$(STDLIB)-w  -pipe -fPIC -O -I/home/lab.apps/vlsiapps_new//vcs/current/include    
 
-CFLAGS_CG=-w  -pipe -fPIC -I/home/lab.apps/vlsiapps_new/vcs/current/include -O  -fno-strict-aliasing -fno-optimize-sibling-calls   
+CFLAGS_CG=-w  -pipe -fPIC -I/home/lab.apps/vlsiapps_new//vcs/current/include -O  -fno-strict-aliasing -fno-optimize-sibling-calls   
 
-CFLAGS_CG_CLIB=-w  -pipe -fPIC -I/home/lab.apps/vlsiapps_new/vcs/current/include -O  -fno-strict-aliasing -fno-optimize-sibling-calls   
+CFLAGS_CG_CLIB=-w  -pipe -fPIC -I/home/lab.apps/vlsiapps_new//vcs/current/include -O  -fno-strict-aliasing -fno-optimize-sibling-calls   
 
-CFLAGS_RMAR=-w  -pipe -fPIC -I/home/lab.apps/vlsiapps_new/vcs/current/include -O  -fno-strict-aliasing -fno-optimize-sibling-calls   
+CFLAGS_RMAR=-w  -pipe -fPIC -I/home/lab.apps/vlsiapps_new//vcs/current/include -O  -fno-strict-aliasing -fno-optimize-sibling-calls   
 
 ASFLAGS=(null)
 LIBS=

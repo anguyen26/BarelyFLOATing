@@ -1,1 +1,2 @@
-setenv PYTHONPATH "/home/nguyea9/ee478/bin"
+setenv PYTHONPATH "home/projects/ee478.2022spr/hoppii/BarelyFLOATing/bin/"
+
