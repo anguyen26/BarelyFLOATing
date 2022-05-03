@@ -1,0 +1,6 @@
+.cshrc
+Core/.n*
+Core/DVEfiles/
+Core/csrc/
+Core/work/
+Core/simv.daidir/
