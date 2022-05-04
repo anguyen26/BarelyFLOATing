@@ -12,7 +12,8 @@ module cpuControl(
 	
 	// Control signals for datapath
 	output logic 	RegWrite, MemWrite, MemRead,
-					ShiftDir, noop,
+					noop,
+    output logic [1:0] ShiftDir,
 	output logic [3:0] keepFlags,
     output logic [1:0] Reg1Loc, Reg2Loc, Reg3Loc,
     output logic [3:0] selOpB,
@@ -294,10 +295,10 @@ noop = ;
 				Reg1Loc = 2'b01;
 				Reg2Loc = 2'b10;
 				Reg3Loc = 2'b00;
-                ShiftDir = 1'b0;
+                ShiftDir = 2'd0;
 				brSel = 2'b11;
 				brEx = 0;
-                selWrData = 2'b01;
+                selWrData = 2'b00;
 				noop = 0;
 			end
 			// LSRS
@@ -309,19 +310,43 @@ noop = ;
 				Reg1Loc = 2'b01;
 				Reg2Loc = 2'b10;
 				Reg3Loc = 2'b00;
-                ShiftDir = 1'b1;
+                ShiftDir = 2'd1;
 				brSel = 2'b11;
 				brEx = 0;
-                selWrData = 2'b01;
+                selWrData = 2'b00;
 				noop = 0;
 
 			end
 			// ASRS
 			10'b0100000100: begin
+				RegWrite = 1;
+				MemWrite = 0;
+				MemRead = 0;
+				keepFlags = 4'b1100;
+				Reg1Loc = 2'b01;
+				Reg2Loc = 2'b10;
+				Reg3Loc = 2'b00;
+                ShiftDir = 2'd2;
+				brSel = 2'b11;
+				brEx = 0;
+                selWrData = 2'b00;
+				noop = 0;
 
 			end
 			// RORS
 			10'b0100000111: begin
+				RegWrite = 1;
+				MemWrite = 0;
+				MemRead = 0;
+				keepFlags = 4'b1100;
+				Reg1Loc = 2'b01;
+				Reg2Loc = 2'b10;
+				Reg3Loc = 2'b00;
+                ShiftDir = 2'd3;
+				brSel = 2'b11;
+				brEx = 0;
+                selWrData = 2'b00;
+				noop = 0;
 
 			end
 		// STORE =========================================
@@ -332,6 +357,7 @@ noop = ;
 				MemRead = 0;
 				keepFlags = 4'b1100;
 				Reg1Loc = 2'b01;
+                Reg2Loc = 2'd10;
 				Reg3Loc = 2'b00;
                 selOpA = 1'b0;
                 selOpB = 3'd3;

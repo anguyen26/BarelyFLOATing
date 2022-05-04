@@ -38,6 +38,12 @@ module cpuStim();
             $fwrite(f, "%d = %d\n", i, testCpu.registers.MEM[i]);
         end
         $fwrite(f, "15 = %d\n", testCpu.registers.r15);
+        $fwrite(f, "Memory content:\n");
+        for (int i=0; i<65536; i++) begin
+            if (testCpu.dataMemory.mem[i] != 16'd0) begin;
+                $fwrite(f, "mem[%d] = %d\n", i, testCpu.dataMemory.mem[i]);
+            end
+        end
         $fclose(f);
 //		$stop;
         $finish;

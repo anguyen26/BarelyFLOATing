@@ -1,47 +1,32 @@
-# This generates NUM_INSTR random instructions in assembly.
+# This is a copy of instr_gen.py that's hard-coded to test branch
+# instruction generation. 
 # Some simplifications have been made to make it easier to write this module:
-# - Branches can only branch forward to prevent infinite loops
+# - Branches can only branch forward
 # - Every BL instruction is coupled with a BX instruction
-# - BX is only used if BL is used first
 # - If one branch instruction is written, another branch instruction
-# can't be written until the label that the branch jumps to has been 
+# can't be written until the label to that the branch jumps to has been 
 # written. If the branch is a BL instruction, a new branch instruction
 # isn't written until after BX.
-# - Rn for LDR and STR will always be 0. 
 
 import random
 
-NUM_INSTR = 64
-instrs = [
-        "MOVS",
-        "MOV",      
-        "ADDS",     
-        "ADDSI",    
-        "ADD",      
-        "SUBS",     
-        "SUBSI",    
-        "SUB",      
-        "CMP",      
-        "ANDS",     
-        "EORS",     
-        "ORRS",     
-        "MVNS",     
-        "LSLS",     
-        "LSRS",     
-        "ASRS",     
-        "STR",     
-        "LDR",      
-        "RORS",     
-        "B"        
-        ]
-
 conds = ["EQ", "NE", "CS", "CC", "MI", "PL", "VS", "VC", "HI", "LS", "GE", "LT", "GT", "LE", "AL"]
 
-print(instrs[:len(instrs)-1])
+instrList = ["MOV", 
+            "B", 
+            "MOV", 
+            "MOV", 
+            "MOV", 
+            "MOV", 
+            "MOV", 
+            "MOV", 
+            "MOV", 
+            "MOV", 
+            ]
 
-f = open("assembly_instr.txt", 'w');
+f = open("b_assembly_instr.txt", 'w');
 
-instrLeft = NUM_INSTR
+instrLeft = len(instrList)
 count = False
 count4BL = False
 sinceBranch = 0
@@ -51,12 +36,9 @@ writeBDone = True
 randNum = 0
 randNumBL = 0
 
-for i in range(NUM_INSTR):
+for i in range(len(instrList)):
     instrLeft-=1
-    if (writeBDone):
-        instr = random.choice(instrs)
-    else:
-        instr = random.choice(instrs[:len(instrs)-1])
+    instr = instrList[i]
     toPrint = ' '
     
     if count4BL:
@@ -70,12 +52,14 @@ for i in range(NUM_INSTR):
         sinceBranch+=1
         if (sinceBranch == randNum):
             toPrint=str(randNum) + toPrint
-            if (instrWasBL):
-                instrWasBL = False 
-                sinceLabel = 0
-                countForBL = True
-            else:
-                writeBDone = True
+# TODO: finish implementing BX (prevent infinite loops)
+#             if (instrWasBL):
+#                 instrWasBL = False 
+#                 sinceLabel = 0
+#                 countForBL = True
+#             else:
+#                 writeBDone = True
+            writeBDone
             count = False
 
     if instr == "B":
@@ -125,10 +109,10 @@ for i in range(NUM_INSTR):
         toPrint += instr + ' SP, SP, '
         toPrint += '#' + im7 + '\n'
     elif instr == "STR" or  instr == "LDR":
-        toPrint += 'MOVS R0, #0\n' # helps constrain memaddr to be aligned
+        toPrint += 'MOVS R0 #0\n' # helps constrain memaddr to be aligned
         rd = 'R'+str(random.randint(0,7))
         im5 = str(random.randint(0,7)*4)
-        toPrint += ' ' + instr + ' ' + rd + ', ' + '[R0, #' + im5 + ']' + '\n'
+        toPrint += instr + ' ' + rd + ', ' + '[R0, #' + im5 + ']' + '\n'
     elif instr == "B":
         instr = random.choice(["B", "BL", "BCOND"])
         print(instr)

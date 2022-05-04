@@ -35,7 +35,8 @@ module cpu(clk, reset);
 	
 	// Control Logic
 	logic RegWrite, MemWrite, MemRead,
-		  ALUSrc, ShiftDir, brEx, noop;
+		  ALUSrc, brEx, noop;
+    logic [1:0] ShiftDir;
 	logic [3:0] keepFlags;
 	logic [1:0] brSel, Reg1Loc, Reg2Loc, Reg3Loc, selWrData;		
     logic selOpA;
@@ -141,7 +142,7 @@ module cpu(clk, reset);
 	//assign FlagsReg = keepFlags ? FlagsReg : ALUFlags;
 
 	// Shifts ReadData1 left or right based on a given distance from the instruction. ShiftDirection is determined by control unit
-	shifter shiftBlock(.value(ReadData2), .direction(EX_SD), .distance(ReadData1), .result(shiftOutput));
+	shifter shiftBlock(.value(ReadData2), .mode(ShiftDir), .distance(ReadData1), .result(shiftOutput));
 	
 	//********************************************************************************************\\
 	//*************************************** Data Memory ****************************************\\
@@ -149,8 +150,7 @@ module cpu(clk, reset);
 	
 
 	// Instantiates the Data Memory with 8 byte transfer size since we want to write 8 bytes at a time
-	datamem dataMemory(.address(aluOutput), .write_enable(memWrite), .read_enable(memRead), .write_data(ReadData2), .clk, 
-							.xfer_size(4'd4), .read_data(dataOut));
+	datamem dataMemory(.address(aluOutput), .write_enable(MemWrite), .read_enable(MemRead), .write_data(ReadData2), .clk, .reset, .read_data(dataOut));
 	
 	// Chooses whether the output of the data memory or alu will go to the write of the reg file
 	// assign MEM_WriteData = MEM_MemToReg ? dataOut : MEM_compData;
