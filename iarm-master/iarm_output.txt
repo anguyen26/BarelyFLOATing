@@ -16,4 +16,3 @@ Register content:
 14 = 0
 15 = 65
 Memory content:
-mem[4] = 0

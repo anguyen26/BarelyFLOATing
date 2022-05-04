@@ -51,7 +51,8 @@ if (len(words) > 1):
     
     for i in range(65536):
         if i in memDict:
-            f.write('mem['+str(i)+']' + " = " + str(memDict.get(i)) + "\n")
+            if (memDict.get(i) != 0):
+                f.write('mem['+str(i)+']' + " = " + str(memDict.get(i)) + "\n")
 f.close()
 
 

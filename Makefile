@@ -4,6 +4,7 @@ TEST=random
 all: instr_gen edit_tb iarm vcs compare
 
 # user sets $TEST and runs test
+# run 'make custom' to rerun the last random test that was generated
 custom: edit_tb iarm vcs compare
 
 edit_tb:

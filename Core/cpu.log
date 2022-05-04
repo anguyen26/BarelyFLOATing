@@ -6,7 +6,7 @@ Warning-[DEBUG_DEP] Option will be deprecated
 Command: vcs -f cpu.include +v2k -R +lint=all -sverilog -full64 -debug_pp -timescale=1ns/10ps \
 -l cpu.log
                          Chronologic VCS (TM)
-       Version S-2021.09-SP1_Full64 -- Tue May  3 20:43:38 2022
+       Version S-2021.09-SP1_Full64 -- Tue May  3 22:19:43 2022
 
                     Copyright (c) 1991 - 2021 Synopsys, Inc.
    This software and the associated documentation are proprietary to Synopsys,
@@ -152,13 +152,19 @@ cpuStim.sv, 24
 
 
 Lint-[NS] Null statement
-cpuStim.sv, 27
+cpuStim.sv, 34
+  Null statement is used in following verilog source.
+  Source info:                 if (testCpu.dataMemory.mem[i] != 16'd0) begin;
+
+
+Lint-[NS] Null statement
+cpuStim.sv, 38
   Null statement is used in following verilog source.
   Source info: 			@(posedge clk);
 
 
 Lint-[NS] Null statement
-cpuStim.sv, 43
+cpuStim.sv, 54
   Null statement is used in following verilog source.
   Source info:             if (testCpu.dataMemory.mem[i] != 16'd0) begin;
 
@@ -171,14 +177,6 @@ Top Level Modules:
        forwarding
        cpuStim
 TimeScale is 1 ps / 1 ps
-
-Warning-[SIOB] Select index out of bounds
-alu.sv, 26
-"Result[31]"
-  The select index is out of declared bounds : [15:0].
-  In module instance : aluBlock 
-  In module : ALU.
-
 
 Lint-[ULCO] Unequal length in comparison operator
 alu.sv, 27
@@ -1845,7 +1843,10 @@ instructmem
 Starting vcs inline pass...
 
 16 modules and 0 UDP read.
-	However, due to incremental compilation, no re-compilation is necessary.
+recompiling module ALU
+recompiling module cpuStim
+Both modules done.
+	However, due to incremental compilation, only 2 modules need to be compiled. 
 make[2]: Entering directory `/home/nguyea9/ee478/Core/csrc'
 rm -f _cuarc*.so _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
 ld -shared  -Bsymbolic --no-relax  -o .//../simv.daidir//_cuarc0.so objs/amcQw_d.o \
@@ -1854,7 +1855,7 @@ rm -f _cuarc0.so
 if [ -x ../simv ]; then chmod a-x ../simv; fi
 g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir \
 -Wl,-rpath=/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib -L/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib \
--Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _29964_archive_1.so _prev_archive_1.so \
+-Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _8414_archive_1.so _prev_archive_1.so \
 _cuarc0.so  SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o \
 rmar_llvm_0_0.o           -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile \
 -luclinative /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_tls.o   -Wl,-whole-archive \
@@ -1865,14 +1866,14 @@ make[2]: Leaving directory `/home/nguyea9/ee478/Core/csrc'
 Command: /home/nguyea9/ee478/Core/./simv +v2k +lint=all -a cpu.log
 Chronologic VCS simulator copyright 1991-2021
 Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May  3 20:43 2022
+Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May  3 22:19 2022
 VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
 Running benchmark: ../tests/random.arm
- 665.00 ns Test Done
-$finish called from file "cpuStim.sv", line 49.
-$finish at simulation time  665.00 ns
+ 365.00 ns Test Done
+$finish called from file "cpuStim.sv", line 60.
+$finish at simulation time  365.00 ns
            V C S   S i m u l a t i o n   R e p o r t 
-Time: 665000 ps
-CPU Time:      0.340 seconds;       Data structure size:   1.0Mb
-Tue May  3 20:43:41 2022
-CPU time: .471 seconds to compile + .548 seconds to elab + .387 seconds to link + .359 seconds in simulation
+Time: 365000 ps
+CPU Time:      0.270 seconds;       Data structure size:   1.3Mb
+Tue May  3 22:19:46 2022
+CPU time: .387 seconds to compile + .425 seconds to elab + .373 seconds to link + .308 seconds in simulation
