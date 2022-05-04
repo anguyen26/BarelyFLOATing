@@ -40,7 +40,7 @@ module cpu(clk, reset);
 	logic [3:0] keepFlags;
 	logic [1:0] brSel, Reg1Loc, Reg2Loc, Reg3Loc, selWrData;		
     logic selOpA;
-    logic [3:0] selOpB;
+    logic [2:0] selOpB;
 				
 	//********************************************************************************************\\
 	//************************************* Instruction Fetch ************************************\\
@@ -138,7 +138,10 @@ module cpu(clk, reset);
 	ALU aluBlock(.a(opA), .b(opB), .ALUControl(ALUOp), .Result(aluOutput), .ALUFlags);
 	
 	// Determines whether to set the system flags to the new values from ALU based on the instruction
-	register_4 FlagsRegister(.dataIn(ALUFlags), .dataOut(FlagsReg), .writeEnable(keepFlags), .reset(reset), .clk(clk));
+	register #(.WIDTH(1)) FlagsRegister0(.dataIn(ALUFlags[0]), .dataOut(FlagsReg[0]), .writeEnable(keepFlags[0]), .reset(reset), .clk(clk));
+	register #(.WIDTH(1)) FlagsRegister1(.dataIn(ALUFlags[1]), .dataOut(FlagsReg[1]), .writeEnable(keepFlags[1]), .reset(reset), .clk(clk));
+	register #(.WIDTH(1)) FlagsRegister2(.dataIn(ALUFlags[2]), .dataOut(FlagsReg[2]), .writeEnable(keepFlags[2]), .reset(reset), .clk(clk));
+	register #(.WIDTH(1)) FlagsRegister3(.dataIn(ALUFlags[3]), .dataOut(FlagsReg[3]), .writeEnable(keepFlags[3]), .reset(reset), .clk(clk));
 	//assign FlagsReg = keepFlags ? FlagsReg : ALUFlags;
 
 	// Shifts ReadData1 left or right based on a given distance from the instruction. ShiftDirection is determined by control unit

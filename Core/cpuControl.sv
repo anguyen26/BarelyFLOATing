@@ -16,7 +16,7 @@ module cpuControl(
     output logic [1:0] ShiftDir,
 	output logic [3:0] keepFlags,
     output logic [1:0] Reg1Loc, Reg2Loc, Reg3Loc,
-    output logic [3:0] selOpB,
+    output logic [2:0] selOpB,
     output logic selOpA,
 
 	// Controls the operation the ALU will perform

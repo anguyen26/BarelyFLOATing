@@ -83,9 +83,10 @@ while (instrLeft > 0):
             writeBDone = True 
             count = False
 
+    # Cant branch to any pc left in the instr, the branc distance has a max size based off
+    # of the imm for each type (these are sign extended so we need to not branch backwards here)
     if instr == "B":
         writeBDone = False
-        randNum = random.randint(2,instrLeft)
         sinceBranch = 1
         count = True
 
@@ -138,12 +139,17 @@ while (instrLeft > 0):
         instr = random.choice(["B", "BL", "BCOND"])
         print(instr)
         if instr == "BCOND":
+            randNum = random.randint(2,min(instrLeft, 255))
             rn = 'R'+str(random.randint(0,7))
             rm = 'R'+str(random.randint(0,7))
             toPrint += 'CMP ' + rn + ', ' + rm + '\n'
             cond = random.choice(conds)
             toPrint += ' B' + cond + ' '
+        elif instr == "B":
+            randNum = random.randint(2,min(instrLeft, 2047))
+            toPrint += instr + ' '
         else:
+            randNum = random.randint(2,min(instrLeft, 31))
             toPrint += instr + ' '
         if instr == "BL":
             # randNumBL = random.randint(2,instrLeft-randNum)
