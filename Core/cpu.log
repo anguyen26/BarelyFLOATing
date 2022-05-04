@@ -6,7 +6,7 @@ Warning-[DEBUG_DEP] Option will be deprecated
 Command: vcs -f cpu.include +v2k -R +lint=all -sverilog -full64 -debug_pp -timescale=1ns/10ps \
 -l cpu.log
                          Chronologic VCS (TM)
-       Version S-2021.09-SP1_Full64 -- Tue May  3 20:29:40 2022
+       Version S-2021.09-SP1_Full64 -- Tue May  3 20:39:13 2022
 
                     Copyright (c) 1991 - 2021 Synopsys, Inc.
    This software and the associated documentation are proprietary to Synopsys,
@@ -1854,7 +1854,7 @@ rm -f _cuarc0.so
 if [ -x ../simv ]; then chmod a-x ../simv; fi
 g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir \
 -Wl,-rpath=/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib -L/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib \
--Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _19658_archive_1.so _prev_archive_1.so \
+-Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _26199_archive_1.so _prev_archive_1.so \
 _cuarc0.so  SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o \
 rmar_llvm_0_0.o           -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile \
 -luclinative /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_tls.o   -Wl,-whole-archive \
@@ -1865,7 +1865,7 @@ make[2]: Leaving directory `/home/nguyea9/ee478/Core/csrc'
 Command: /home/nguyea9/ee478/Core/./simv +v2k +lint=all -a cpu.log
 Chronologic VCS simulator copyright 1991-2021
 Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May  3 20:29 2022
+Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May  3 20:39 2022
 VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
 Running benchmark: ../tests/random.arm
  665.00 ns Test Done
@@ -1873,6 +1873,6 @@ $finish called from file "cpuStim.sv", line 49.
 $finish at simulation time  665.00 ns
            V C S   S i m u l a t i o n   R e p o r t 
 Time: 665000 ps
-CPU Time:      0.360 seconds;       Data structure size:   1.0Mb
-Tue May  3 20:29:43 2022
-CPU time: .463 seconds to compile + .371 seconds to elab + .298 seconds to link + .384 seconds in simulation
+CPU Time:      0.330 seconds;       Data structure size:   1.0Mb
+Tue May  3 20:39:16 2022
+CPU time: .364 seconds to compile + .400 seconds to elab + .356 seconds to link + .359 seconds in simulation

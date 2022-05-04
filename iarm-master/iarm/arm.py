@@ -80,6 +80,8 @@ class Arm(instructions.DataMovement, instructions.Arithmetic,
                         raise
                     else:
                         program.append(instruction)  # It validated, add it to the temp instruction list
+            else:
+                program.append('NOOP')
 
         # Code block was successfully validated, update the main program
         self.program += program
@@ -100,6 +102,7 @@ class Arm(instructions.DataMovement, instructions.Arithmetic,
             steps -= 1
             if steps < 0:
                 break
+            # print(str(self.program[self.register['PC']-1]))
             if (self.program[self.register['PC']-1] != 'NOOP'):
                 self.program[self.register['PC'] - 1]()
             self.register['PC'] += 1

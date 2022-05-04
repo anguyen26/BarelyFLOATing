@@ -16,11 +16,12 @@ instr_gen:
 	@ echo "Generating random instructions..."
 	python3 tests/instr_gen.py
 	@ echo "Converting assembly instructions to binary..."
-	python3 tests/assem_to_bin.py random > notes_assem_to_bin.txt
+	python3 tests/assem_to_bin.py random > tests/notes_assem_to_bin.txt
 
 iarm:
 	@ echo "Running instructions on iarm..."
 	@ python3 iarm-master/run_iarm.py | python3 iarm-master/format_iarm.py
+	mv debug_iarm.txt iarm-master/.
 
 vcs:
 	@ echo "Running instructions on BarelyFLOATing CPU..."

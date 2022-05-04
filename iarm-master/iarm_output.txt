@@ -14,7 +14,7 @@ Register content:
 12 = 0
 13 = 65208
 14 = 0
-15 = 64
+15 = 65
 Memory content:
 mem[16] = 65535
 mem[24] = 6
