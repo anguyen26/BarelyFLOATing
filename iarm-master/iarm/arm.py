@@ -101,7 +101,6 @@ class Arm(instructions.DataMovement, instructions.Arithmetic,
             if steps < 0:
                 break
             if (self.program[self.register['PC']-1] != 'NOOP'):
-                print(str(self.program[self.register['PC']-1])) 
                 self.program[self.register['PC'] - 1]()
             self.register['PC'] += 1
 
