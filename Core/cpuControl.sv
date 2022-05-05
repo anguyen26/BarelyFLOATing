@@ -2,88 +2,47 @@
 
 `timescale 1ps/1ps
 module cpuControl(
-	input logic 	[15:0] PC,
+	input logic [15:0] 	PC,
 	// Current Instruction being ran by CPU
-	input logic 	[15:0] instr,
+	input logic [15:0] 	instr,
 
 	// Flags and clk/reset
-	input logic [3:0] FlagsReg,
-	input logic clk, reset,
+	input logic [3:0] 	FlagsReg,
+	input logic 		clk, reset,
 	
 	// Control signals for datapath
-	output logic 	RegWrite, MemWrite, MemRead,
-					noop,
-    output logic [1:0] ShiftDir,
-	output logic [3:0] keepFlags,
-    output logic [1:0] Reg1Loc, Reg2Loc, Reg3Loc,
-    output logic [3:0] selOpB,
-    output logic selOpA,
+	output logic 		RegWrite, MemWrite, MemRead,
+						noop,
+    output logic [1:0] 	ShiftDir,
+	output logic [3:0] 	keepFlags,
+    output logic [1:0] 	Reg1Loc, Reg2Loc, Reg3Loc,
+    output logic [3:0] 	selOpB,
+    output logic 		selOpA,
 
 	// Controls the operation the ALU will perform
-	output logic [2:0] ALUOp,
+	output logic [2:0] 	ALUOp,
 	// Controls manipulation of PC
-    output logic [1:0] brSel,
-    output logic brEx,
-    output logic [1:0] selWrData
+    output logic [1:0] 	brSel,
+    output logic 		brEx,
+    output logic [1:0] 	selWrData
 );
 
-/* 
-FINAL CONTROL SIGNALS
-
-RegWrite = ;
-MemWrite = ;
-MemRead = ;
-MemToReg = ;
-ALUSrc = ;
-ShiftDir = ;
-keepFlags = ;
-Reg1Loc = ;
-Reg2Loc = ;
-Reg3Loc = ;
-ImmSrc = ;
-ALUOp = ;
-calcSrc = ;
-brSel = ;
-brEx = ;
-noop = ;
-*/
 	logic [9:0] opcode;
 	assign opcode =  instr[15:6];
+
 	always_comb begin
-        /*
-		// initialize
-		if (PC == 0) begin
-			RegWrite = 0;
-			MemWrite = 0;
-			MemRead = 0;
-            Reg1Loc = 0;
-            Reg2Loc = 0;
-            Reg3Loc = 0;
-			selOpA = 0;
-            selOpB = 3'b00;
-            ALUOp = 0;
-			ShiftDir = 0;
-			keepFlags = 4'b0000;
-			brSel = 2'b11;
-			brEx = 0;
-            selWrData = 2'b00;
-			noop = 0;
-		end
-		else begin
-        */
 		// MOVE =========================================
 		casez (opcode)
 			// MOVS
 			10'b0010?_?????: begin
 				RegWrite = 1;
 				MemWrite = 0; 
-                MemRead = 0;
+ 				MemRead = 0;
 				keepFlags = 4'b1100;
 				Reg3Loc = 2'b10;
 				brSel = 2'b11;
 				brEx = 0;
-                selWrData = 2'd2;
-				noop = 0;
+ 				selWrData = 2'd2;
 			end
 			//MOV
 			10'b010001100_?: begin
@@ -93,12 +52,11 @@ noop = ;
 				keepFlags = 4'b0000;
 				Reg2Loc = 2'b11;
 				Reg3Loc = 2'b00;
-                selOpB = 3'd0;
-                ALUOp = 3'd6;
+ 				selOpB = 3'd0;
+ 				ALUOp = 3'd6;
 				brSel = 2'b11;
 				brEx = 0;
-                selWrData = 2'b01;
-				noop = 0;
+ 				selWrData = 2'b01;
 			end
 		// ADD =========================================
 			// ADDS (imm)
@@ -109,13 +67,12 @@ noop = ;
 				keepFlags = 4'b1111;
 				Reg1Loc = 2'b01;
 				Reg3Loc = 2'b00;
-                selOpA = 1'b0;
-                selOpB = 3'd1;
+ 				selOpA = 1'b0;
+ 				selOpB = 3'd1;
 				ALUOp = 3'b000;
 				brSel = 2'b11;
 				brEx = 0;
-                selWrData = 2'b01;
-				noop = 0;
+ 				selWrData = 2'b01;
 			end
 			// ADDS (reg)
 			10'b0001100_???: begin
@@ -126,13 +83,12 @@ noop = ;
 				Reg1Loc = 1;
 				Reg2Loc = 2'b00;
 				Reg3Loc = 2'b00;
-                selOpA = 1'b0;
-                selOpB = 3'b0;
+ 				selOpA = 1'b0;
+ 				selOpB = 3'b0;
 				ALUOp = 3'b000;
 				brSel = 2'b11;
 				brEx = 0;
-                selWrData = 2'b01;
-				noop = 0;
+ 				selWrData = 2'b01;
 			end
 			// ADD
 			10'b101100000_?: begin
@@ -142,13 +98,12 @@ noop = ;
 				keepFlags = 4'b0000;
 				Reg1Loc = 1'b0;
 				Reg3Loc = 2'b01;
-                selOpA = 1'b0;
-                selOpB = 3'd2;
+ 				selOpA = 1'b0;
+ 				selOpB = 3'd2;
 				ALUOp = 3'b000;
 				brSel = 2'b11;
 				brEx = 0;
-                selWrData = 2'b01;
-				noop = 0;
+ 				selWrData = 2'b01;
 			end
 		// SUBTRACT =========================================
 			// SUBS (imm)
@@ -159,13 +114,12 @@ noop = ;
 				keepFlags = 4'b1111;
 				Reg1Loc = 1;
 				Reg3Loc = 2'b00;
-                selOpA = 1'b0;
-                selOpB = 3'd1;
+ 				selOpA = 1'b0;
+ 				selOpB = 3'd1;
 				ALUOp = 3'b001;
 				brSel = 2'b11;
 				brEx = 0;
-                selWrData = 2'b01;
-				noop = 0;
+ 				selWrData = 2'b01;
 			end
 			// SUBS (reg)
 			10'b0001101_???: begin
@@ -176,13 +130,12 @@ noop = ;
 				Reg1Loc = 2'd1;
 				Reg2Loc = 2'b00;
 				Reg3Loc = 2'b00;
-                selOpA = 1'b0;
-                selOpB = 3'b0;
+ 				selOpA = 1'b0;
+ 				selOpB = 3'b0;
 				ALUOp = 3'b001;
 				brSel = 2'b11;
 				brEx = 0;
-                selWrData = 2'b01;
-				noop = 0;
+ 				selWrData = 2'b01;
 			end
 			// SUB
 			10'b101100001_?: begin
@@ -192,13 +145,12 @@ noop = ;
 				keepFlags = 4'b0000;
 				Reg1Loc = 0;
 				Reg3Loc = 2'b01;
-                selOpA = 1'b0;
-                selOpB = 3'd2;
+ 				selOpA = 1'b0;
+ 				selOpB = 3'd2;
 				ALUOp = 3'b001;
 				brSel = 2'b11;
 				brEx = 0;
-                selWrData = 2'b01;
-				noop = 0;
+ 				selWrData = 2'b01;
 			end
 		// COMPARE =========================================
 			// CMP
@@ -209,12 +161,11 @@ noop = ;
 				keepFlags = 4'b1111;
 				Reg1Loc = 2'b10;
 				Reg2Loc = 2'b01;
-                selOpA = 1'b0;
-                selOpB = 3'd0;
+ 				selOpA = 1'b0;
+ 				selOpB = 3'd0;
 				ALUOp = 3'b001;
 				brSel = 2'b11;
 				brEx = 0;
-				noop = 0;
 			end
 		// LOGICAL =========================================
 			// ANDS
@@ -226,13 +177,12 @@ noop = ;
 				Reg1Loc = 2'b01;
 				Reg2Loc = 2'b10;
 				Reg3Loc = 2'b00;
-                selOpA = 1'b0;
-                selOpB = 3'd0;
+ 				selOpA = 1'b0;
+ 				selOpB = 3'd0;
 				ALUOp = 3'b010;
 				brSel = 2'b11;
 				brEx = 0;
-                selWrData = 2'b01;
-				noop = 0;
+ 				selWrData = 2'b01;
 			end
 			// EORS
 			10'b0100000001: begin
@@ -243,13 +193,12 @@ noop = ;
 				Reg1Loc = 2'b01;
 				Reg2Loc = 2'b10;
 				Reg3Loc = 2'b00;
-                selOpA = 1'b0;
-                selOpB = 3'd0;
+ 				selOpA = 1'b0;
+ 				selOpB = 3'd0;
 				ALUOp = 3'd4;
 				brSel = 2'b11;
 				brEx = 0;
-                selWrData = 2'b01;
-				noop = 0;
+ 				selWrData = 2'b01;
 			end
 			// ORRS
 			10'b0100001100: begin
@@ -260,13 +209,12 @@ noop = ;
 				Reg1Loc = 2'b01;
 				Reg2Loc = 2'b10;
 				Reg3Loc = 2'b00;
-                selOpA = 1'b0;
-                selOpB = 3'd0;
+ 				selOpA = 1'b0;
+ 				selOpB = 3'd0;
 				ALUOp = 3'd3;
 				brSel = 2'b11;
 				brEx = 0;
-                selWrData = 2'b01;
-				noop = 0;
+ 				selWrData = 2'b01;
 			end
 			// MVNS
 			10'b0100001111: begin
@@ -277,13 +225,12 @@ noop = ;
 				Reg1Loc = 2'b01;
 				Reg2Loc = 2'b10;
 				Reg3Loc = 2'b00;
-                selOpA = 1'b0;
-                selOpB = 3'd0;
+ 				selOpA = 1'b0;
+ 				selOpB = 3'd0;
 				ALUOp = 3'd5;
 				brSel = 2'b11;
 				brEx = 0;
-                selWrData = 2'b01;
-				noop = 0;
+ 				selWrData = 2'b01;
 			end
 		// ROTATE =========================================
 			// LSLS
@@ -295,11 +242,10 @@ noop = ;
 				Reg1Loc = 2'b01;
 				Reg2Loc = 2'b10;
 				Reg3Loc = 2'b00;
-                ShiftDir = 2'd0;
+ 				ShiftDir = 2'd0;
 				brSel = 2'b11;
 				brEx = 0;
-                selWrData = 2'b00;
-				noop = 0;
+ 				selWrData = 2'b00;
 			end
 			// LSRS
 			10'b0100000011: begin
@@ -310,12 +256,10 @@ noop = ;
 				Reg1Loc = 2'b01;
 				Reg2Loc = 2'b10;
 				Reg3Loc = 2'b00;
-                ShiftDir = 2'd1;
+ 				ShiftDir = 2'd1;
 				brSel = 2'b11;
 				brEx = 0;
-                selWrData = 2'b00;
-				noop = 0;
-
+ 				selWrData = 2'b00;
 			end
 			// ASRS
 			10'b0100000100: begin
@@ -326,12 +270,10 @@ noop = ;
 				Reg1Loc = 2'b01;
 				Reg2Loc = 2'b10;
 				Reg3Loc = 2'b00;
-                ShiftDir = 2'd2;
+ 				ShiftDir = 2'd2;
 				brSel = 2'b11;
 				brEx = 0;
-                selWrData = 2'b00;
-				noop = 0;
-
+ 				selWrData = 2'b00;
 			end
 			// RORS
 			10'b0100000111: begin
@@ -342,12 +284,10 @@ noop = ;
 				Reg1Loc = 2'b01;
 				Reg2Loc = 2'b10;
 				Reg3Loc = 2'b00;
-                ShiftDir = 2'd3;
+ 				ShiftDir = 2'd3;
 				brSel = 2'b11;
 				brEx = 0;
-                selWrData = 2'b00;
-				noop = 0;
-
+ 				selWrData = 2'b00;
 			end
 		// STORE =========================================
 			// STR
@@ -357,15 +297,13 @@ noop = ;
 				MemRead = 0;
 				keepFlags = 4'b1100;
 				Reg1Loc = 2'b01;
-                Reg2Loc = 2'd10;
+ 				Reg2Loc = 2'd10;
 				Reg3Loc = 2'b00;
-                selOpA = 1'b0;
-                selOpB = 3'd3;
+ 				selOpA = 1'b0;
+ 				selOpB = 3'd3;
 				ALUOp = 3'd0;
 				brSel = 2'b11;
 				brEx = 0;
-				noop = 0;
-
 			end
 		// LOAD =========================================
 			// LDR
@@ -376,14 +314,12 @@ noop = ;
 				keepFlags = 4'b1100;
 				Reg1Loc = 2'b01;
 				Reg3Loc = 2'b00;
-                selOpA = 1'b0;
-                selOpB = 3'd3;
+ 				selOpA = 1'b0;
+ 				selOpB = 3'd3;
 				ALUOp = 3'd0;
 				brSel = 2'b11;
 				brEx = 0;
-                selWrData = 2'd3;
-				noop = 0;
-
+ 				selWrData = 2'd3;
 			end
 		// BRANCH =========================================
 			// BEQ
@@ -391,7 +327,6 @@ noop = ;
 				RegWrite = 0;
 				MemWrite = 0;
 				keepFlags = 4'b0000;
-				noop = 0;
 				brSel = FlagsReg[2] ? 2'b01 : 2'b11;
 				brEx = 0;
 			end
@@ -400,7 +335,6 @@ noop = ;
 				RegWrite = 0;
 				MemWrite = 0;
 				keepFlags = 4'b0000;
-				noop = 0;
 				brSel = FlagsReg[2] ? 2'b11 : 2'b01;
 				brEx = 0;
 			end
@@ -409,7 +343,6 @@ noop = ;
 				RegWrite = 0;
 				MemWrite = 0;
 				keepFlags = 4'b0000;
-				noop = 0;
 				brSel = FlagsReg[1] ? 2'b01 : 2'b11;
 				brEx = 0;
 			end
@@ -418,7 +351,6 @@ noop = ;
 				RegWrite = 0;
 				MemWrite = 0;
 				keepFlags = 4'b0000;
-				noop = 0;
 				brSel = FlagsReg[1] ? 2'b11 : 2'b01;
 				brEx = 0;
 			end
@@ -427,7 +359,6 @@ noop = ;
 				RegWrite = 0;
 				MemWrite = 0;
 				keepFlags = 4'b0000;
-				noop = 0;
 				brSel = FlagsReg[3] ? 2'b01 : 2'b11;
 				brEx = 0;
 			end
@@ -436,7 +367,6 @@ noop = ;
 				RegWrite = 0;
 				MemWrite = 0;
 				keepFlags = 4'b0000;
-				noop = 0;
 				brSel = FlagsReg[3] ? 2'b11 : 2'b01;
 				brEx = 0;
 			end
@@ -445,7 +375,6 @@ noop = ;
 				RegWrite = 0;
 				MemWrite = 0;
 				keepFlags = 4'b0000;
-				noop = 0;
 				brSel = FlagsReg[0] ? 2'b01 : 2'b11;
 				brEx = 0;
 			end
@@ -454,7 +383,6 @@ noop = ;
 				RegWrite = 0;
 				MemWrite = 0;
 				keepFlags = 4'b0000;
-				noop = 0;
 				brSel = FlagsReg[0] ? 2'b11 : 2'b01;
 				brEx = 0;
 			end
@@ -463,7 +391,6 @@ noop = ;
 				RegWrite = 0;
 				MemWrite = 0;
 				keepFlags = 4'b0000;
-				noop = 0;
 				brSel = (FlagsReg[1] & !FlagsReg[2]) ? 2'b01 : 2'b11;
 				brEx = 0;
 			end
@@ -472,7 +399,6 @@ noop = ;
 				RegWrite = 0;
 				MemWrite = 0;
 				keepFlags = 4'b0000;
-				noop = 0;
 				brSel = (!FlagsReg[1] | FlagsReg[2]) ? 2'b01 : 2'b11;
 				brEx = 0;
 			end
@@ -481,7 +407,6 @@ noop = ;
 				RegWrite = 0;
 				MemWrite = 0;
 				keepFlags = 4'b0000;
-				noop = 0;
 				brSel = (FlagsReg[3] == FlagsReg[0]) ? 2'b01 : 2'b11;
 				brEx = 0;
 			end
@@ -490,7 +415,6 @@ noop = ;
 				RegWrite = 0;
 				MemWrite = 0;
 				keepFlags = 4'b0000;
-				noop = 0;
 				brSel = (!FlagsReg[3] == FlagsReg[0]) ? 2'b01 : 2'b11;
 				brEx = 0;
 			end
@@ -499,7 +423,6 @@ noop = ;
 				RegWrite = 0;
 				MemWrite = 0;
 				keepFlags = 4'b0000;
-				noop = 0;
 				brSel = (!FlagsReg[2] & (FlagsReg[3] == FlagsReg[0])) ? 2'b01 : 2'b11;
 				brEx = 0;
 			end
@@ -508,7 +431,6 @@ noop = ;
 				RegWrite = 0;
 				MemWrite = 0;
 				keepFlags = 4'b0000;
-				noop = 0;
 				brSel = (FlagsReg[2] | (!FlagsReg[3] == FlagsReg[0])) ? 2'b01 : 2'b11;
 				brEx = 0;
 			end
@@ -517,7 +439,6 @@ noop = ;
 				RegWrite = 0;
 				MemWrite = 0;
 				keepFlags = 4'b0000;
-				noop = 0;
 				brSel = 2'b01;
 				brEx = 0;
 			end
@@ -528,7 +449,6 @@ noop = ;
 				RegWrite = 0;
 				MemWrite = 0;
 				keepFlags = 4'b0000;
-				noop = 0;
 				brSel = 2'b10;
 				brEx = 0;
 			end
@@ -538,7 +458,6 @@ noop = ;
 				MemWrite = 0;
 				keepFlags = 4'b0000;
 				Reg3Loc = 2'b11;
-				noop = 0;
 				brSel = 2'b00;
 				brEx = 0;
 				selWrData = 2'b10;
@@ -549,7 +468,6 @@ noop = ;
 				MemWrite = 0;
 				Reg2Loc = 2'b11;
 				keepFlags = 4'b0000;
-				noop = 0;
 				brEx = 1;
 			end
 		// NONE =========================================
@@ -558,11 +476,9 @@ noop = ;
 				RegWrite = 0;
 				MemWrite = 0;
 				keepFlags = 4'b0000;
-				noop = 1;
 			end
 		endcase
 	end
-
 endmodule
 
 // Tests that control logic operates properly for each type of instruction used in the benchmark tests
