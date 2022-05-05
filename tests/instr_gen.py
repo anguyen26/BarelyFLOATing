@@ -85,7 +85,7 @@ while (instrLeft > 0):
 
     if instr == "B":
         writeBDone = False
-        randNum = random.randint(2,instrLeft)
+#         randNum = random.randint(2,instrLeft)
         sinceBranch = 1
         count = True
 
@@ -131,12 +131,14 @@ while (instrLeft > 0):
         toPrint += '#' + im7 + '\n'
     elif instr == "STR" or  instr == "LDR":
         rd = 'R'+str(random.randint(0,7))
+        rn = 'R'+str(random.randint(0,7))
         im5 = str(random.randint(0,7)*4)
-        toPrint += instr + ' ' + rd + ', ' + '[R0, #' + im5 + ']' + '\n'
+        toPrint += instr + ' ' + rd + ', ' + '[' + rn + ', #' + im5 + ']' + '\n'
     elif instr == "B":
         instrLeft-=1
         instr = random.choice(["B", "BL", "BCOND"])
         print(instr)
+        # print the right instruction name
         if instr == "BCOND":
             rn = 'R'+str(random.randint(0,7))
             rm = 'R'+str(random.randint(0,7))
@@ -145,9 +147,18 @@ while (instrLeft > 0):
             toPrint += ' B' + cond + ' '
         else:
             toPrint += instr + ' '
-        if instr == "BL":
+        # TODO: finish BX implementation
+        # if instr == "BL":
             # randNumBL = random.randint(2,instrLeft-randNum)
-            instrWasBL = True
+            # instrWasBL = True
+        # generate branch #
+        if instr == "B": 
+            maxBranch = min(instrLeft, 2**10-1)
+        elif instr == "BCOND":
+            maxBranch = min(instrLeft, 2**7-1)
+        else: # instr == "BL"
+            maxBranch = min(instrLeft, 2**5-1)
+        randNum = random.randint(2,maxBranch)
         toPrint += str(randNum) + '\n'
         toPrint += ' NOOP\n'
     elif instr == "BX":

@@ -25,7 +25,8 @@ class RegisterCpu(object):
         self._bit_width = 16 # bit_width
         self._max_registers = max_registers - 1  # Code was made around this being zero indexed
         self._memory_width = 16 # memory_width
-        self._memory_size = memory_size
+        # self._memory_size = memory_size
+        self._memory_size = 65536 # memory_size
         self._generate_random = generate_random
         self._postpone_execution = postpone_execution
 
