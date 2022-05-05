@@ -1,4 +1,4 @@
-module pipelineReg #(parameter bitWidth = 32) (
+module pipelineReg #(parameter bitWidth = 16) (
 	input logic [bitWidth-1:0] D,
 	input logic en, clear, clk,
 	output logic [bitWidth-1:0] Q

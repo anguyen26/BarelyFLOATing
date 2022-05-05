@@ -6,7 +6,7 @@ Warning-[DEBUG_DEP] Option will be deprecated
 Command: vcs -f cpu.include +v2k -R +lint=all -sverilog -full64 -debug_pp -timescale=1ns/10ps \
 -l cpu.log
                          Chronologic VCS (TM)
-       Version S-2021.09-SP1_Full64 -- Wed May  4 12:10:20 2022
+       Version S-2021.09-SP1_Full64 -- Thu May  5 11:19:51 2022
 
                     Copyright (c) 1991 - 2021 Synopsys, Inc.
    This software and the associated documentation are proprietary to Synopsys,
@@ -35,62 +35,7 @@ Parsing design file 'adder.sv'
 Parsing design file 'fullAdder.sv'
 Parsing design file 'alu.sv'
 Parsing design file 'cpuControl.sv'
-
-Warning-[DCTTSW] Decimal constant truncated
-  Constant '10' is truncated to 2 bits: 2.
-  "cpuControl.sv", 360
-  Source info:                 Reg2Loc = 2'd10;
-
-
-Lint-[NS] Null statement
-cpuControl.sv, 586
-  Null statement is used in following verilog source.
-  Source info: 		negative = 0; zero = 0; overflow = 0; alu_zero 
-  = 0; #10;
-
-
-Lint-[NS] Null statement
-cpuControl.sv, 587
-  Null statement is used in following verilog source.
-  Source info: 		instr = 32'b10010001000000000000001111100000; 
-  #500; // ADDI
-
-
-Lint-[NS] Null statement
-cpuControl.sv, 588
-  Null statement is used in following verilog source.
-  Source info: 		instr = 32'b00010100000000000000000000000000; 
-  #500; // B
-
-
-Lint-[NS] Null statement
-cpuControl.sv, 589
-  Null statement is used in following verilog source.
-  Source info: 		instr = 32'b11101011000111110000000000101000; 
-  #500; // SUBS
-
-
-Lint-[NS] Null statement
-cpuControl.sv, 590
-  Null statement is used in following verilog source.
-  Source info: 		instr = 32'b11111000000000000001000010000011; 
-  #500; // STUR
-
-
-Lint-[NS] Null statement
-cpuControl.sv, 591
-  Null statement is used in following verilog source.
-  Source info: 		instr = 32'b11111000010000000000001111101111; 
-  #500; // LDUR
-
-
-Lint-[NS] Null statement
-cpuControl.sv, 592
-  Null statement is used in following verilog source.
-  Source info: 		instr = 32'b01010100000000000000000010001011; 
-  #500; // B.LT
-
-Parsing design file 'D_FF.sv'
+Parsing design file 'pipelineReg.sv'
 Parsing design file 'register.sv'
 Parsing design file 'register_2.sv'
 Parsing design file 'register_3.sv'
@@ -128,14 +73,32 @@ instructmem.sv, 39
   `INSTRUCT_MEM_SIZE);	// Make sure address in bounds.
 
 Parsing design file 'rippleCarryAdder.sv'
-Parsing design file 'forwarding.sv'
+Parsing design file 'forwardingUnit.sv'
+Parsing design file 'D_FF.sv'
 Parsing design file 'cpu.sv'
 
-Lint-[IWU] Implicit wire is used
-cpu.sv, 61
-  No type is specified for wire 'lr'. Default wire type is being applied 
-  according to the IEEE spec.
-  See the Verilog LRM(1364-2005), section 4.5.
+Warning-[IPDW] Identifier previously declared
+cpu.sv, 23
+  Second declaration for identifier 'imm3' ignored
+  Identifier 'imm3' previously declared as logic. [cpu.sv, 18]
+
+
+Warning-[IPDW] Identifier previously declared
+cpu.sv, 23
+  Second declaration for identifier 'imm5' ignored
+  Identifier 'imm5' previously declared as logic. [cpu.sv, 18]
+
+
+Warning-[IPDW] Identifier previously declared
+cpu.sv, 23
+  Second declaration for identifier 'imm7' ignored
+  Identifier 'imm7' previously declared as logic. [cpu.sv, 18]
+
+
+Warning-[IPDW] Identifier previously declared
+cpu.sv, 23
+  Second declaration for identifier 'imm8' ignored
+  Identifier 'imm8' previously declared as logic. [cpu.sv, 18]
 
 Parsing design file 'cpuStim.sv'
 
@@ -170,13 +133,20 @@ cpuStim.sv, 54
 
 Top Level Modules:
        mux3x16_16
-       cpuControl_testbench
        register_2
        register_3
        register_5
-       forwarding
        cpuStim
 TimeScale is 1 ps / 1 ps
+
+Lint-[TFIPC-L] Too few instance port connections
+cpu.sv, 86
+cpu, "cpuControl controlUnit( .PC (PC),  .instr (instr),  .FlagsReg (FlagsReg),  .clk (clk),  .reset (reset),  .RegWrite (RegWrite),  .MemWrite (MemWrite),  .MemRead (MemRead),  .ShiftDir (ShiftDir),  .keepFlags (keepFlags),  .Reg1Loc (Reg1Loc),  .Reg2Loc (Reg2Loc),  .Reg3Loc (Reg3Loc),  .selOpB (selOpB),  .selOpA (selOpA),  .ALUOp (ALUOp),  .brSel (brSel),  .brEx (brEx),  .selWrData (selWrData));"
+  The above instance has fewer port connections than the module definition,
+  There are 20 port(s) in module "cpuControl" definition, but only 19 port 
+  connect(s) in the instance.
+  output port 'noop' is not connected.
+
 
 Lint-[ULCO] Unequal length in comparison operator
 alu.sv, 27
@@ -204,8 +174,15 @@ cpuControl.sv, 11
   Source info: reset
 
 
+Lint-[ONGS] Output never gets set
+cpuControl.sv, 15
+"noop"
+  Output port 'noop' has never been assigned to any value.
+  
+
+
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 78
+cpuControl.sv, 38
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: RegWrite = 1;
@@ -213,7 +190,7 @@ cpuControl.sv, 78
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 79
+cpuControl.sv, 39
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemWrite = 0;
@@ -221,7 +198,7 @@ cpuControl.sv, 79
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 80
+cpuControl.sv, 40
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemRead = 0;
@@ -229,7 +206,7 @@ cpuControl.sv, 80
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 84
+cpuControl.sv, 44
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: brEx = 0;
@@ -237,15 +214,7 @@ cpuControl.sv, 84
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 86
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 90
+cpuControl.sv, 49
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: RegWrite = 1;
@@ -253,7 +222,7 @@ cpuControl.sv, 90
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 91
+cpuControl.sv, 50
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemWrite = 0;
@@ -261,7 +230,7 @@ cpuControl.sv, 91
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 92
+cpuControl.sv, 51
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemRead = 0;
@@ -269,7 +238,7 @@ cpuControl.sv, 92
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 96
+cpuControl.sv, 55
   Width mismatch between LHS and RHS is found in assignment:
   The following 3-bit wide expression is assigned to a 4-bit LHS target:
   Source info: selOpB = 3'b0;
@@ -277,7 +246,7 @@ cpuControl.sv, 96
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 99
+cpuControl.sv, 58
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: brEx = 0;
@@ -285,15 +254,7 @@ cpuControl.sv, 99
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 101
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 106
+cpuControl.sv, 64
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: RegWrite = 1;
@@ -301,7 +262,7 @@ cpuControl.sv, 106
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 107
+cpuControl.sv, 65
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemWrite = 0;
@@ -309,7 +270,7 @@ cpuControl.sv, 107
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 108
+cpuControl.sv, 66
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemRead = 0;
@@ -317,7 +278,7 @@ cpuControl.sv, 108
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 113
+cpuControl.sv, 71
   Width mismatch between LHS and RHS is found in assignment:
   The following 3-bit wide expression is assigned to a 4-bit LHS target:
   Source info: selOpB = 3'b1;
@@ -325,7 +286,7 @@ cpuControl.sv, 113
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 116
+cpuControl.sv, 74
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: brEx = 0;
@@ -333,15 +294,7 @@ cpuControl.sv, 116
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 118
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 122
+cpuControl.sv, 79
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: RegWrite = 1;
@@ -349,7 +302,7 @@ cpuControl.sv, 122
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 123
+cpuControl.sv, 80
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemWrite = 0;
@@ -357,7 +310,7 @@ cpuControl.sv, 123
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 124
+cpuControl.sv, 81
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemRead = 0;
@@ -365,7 +318,7 @@ cpuControl.sv, 124
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 126
+cpuControl.sv, 83
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 2-bit LHS target:
   Source info: Reg1Loc = 1;
@@ -373,7 +326,7 @@ cpuControl.sv, 126
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 130
+cpuControl.sv, 87
   Width mismatch between LHS and RHS is found in assignment:
   The following 3-bit wide expression is assigned to a 4-bit LHS target:
   Source info: selOpB = 3'b0;
@@ -381,7 +334,7 @@ cpuControl.sv, 130
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 133
+cpuControl.sv, 90
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: brEx = 0;
@@ -389,15 +342,7 @@ cpuControl.sv, 133
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 135
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 139
+cpuControl.sv, 95
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: RegWrite = 1;
@@ -405,7 +350,7 @@ cpuControl.sv, 139
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 140
+cpuControl.sv, 96
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemWrite = 0;
@@ -413,7 +358,7 @@ cpuControl.sv, 140
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 141
+cpuControl.sv, 97
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemRead = 0;
@@ -421,7 +366,7 @@ cpuControl.sv, 141
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 143
+cpuControl.sv, 99
   Width mismatch between LHS and RHS is found in assignment:
   The following 1-bit wide expression is assigned to a 2-bit LHS target:
   Source info: Reg1Loc = 1'b0;
@@ -429,7 +374,7 @@ cpuControl.sv, 143
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 146
+cpuControl.sv, 102
   Width mismatch between LHS and RHS is found in assignment:
   The following 3-bit wide expression is assigned to a 4-bit LHS target:
   Source info: selOpB = 3'd2;
@@ -437,7 +382,7 @@ cpuControl.sv, 146
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 149
+cpuControl.sv, 105
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: brEx = 0;
@@ -445,15 +390,7 @@ cpuControl.sv, 149
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 151
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 156
+cpuControl.sv, 111
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: RegWrite = 1;
@@ -461,7 +398,7 @@ cpuControl.sv, 156
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 157
+cpuControl.sv, 112
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemWrite = 0;
@@ -469,7 +406,7 @@ cpuControl.sv, 157
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 158
+cpuControl.sv, 113
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemRead = 0;
@@ -477,7 +414,7 @@ cpuControl.sv, 158
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 160
+cpuControl.sv, 115
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 2-bit LHS target:
   Source info: Reg1Loc = 1;
@@ -485,7 +422,7 @@ cpuControl.sv, 160
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 163
+cpuControl.sv, 118
   Width mismatch between LHS and RHS is found in assignment:
   The following 3-bit wide expression is assigned to a 4-bit LHS target:
   Source info: selOpB = 3'b1;
@@ -493,7 +430,7 @@ cpuControl.sv, 163
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 166
+cpuControl.sv, 121
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: brEx = 0;
@@ -501,15 +438,7 @@ cpuControl.sv, 166
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 168
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 172
+cpuControl.sv, 126
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: RegWrite = 1;
@@ -517,7 +446,7 @@ cpuControl.sv, 172
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 173
+cpuControl.sv, 127
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemWrite = 0;
@@ -525,7 +454,7 @@ cpuControl.sv, 173
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 174
+cpuControl.sv, 128
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemRead = 0;
@@ -533,7 +462,7 @@ cpuControl.sv, 174
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 180
+cpuControl.sv, 134
   Width mismatch between LHS and RHS is found in assignment:
   The following 3-bit wide expression is assigned to a 4-bit LHS target:
   Source info: selOpB = 3'b0;
@@ -541,7 +470,7 @@ cpuControl.sv, 180
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 183
+cpuControl.sv, 137
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: brEx = 0;
@@ -549,11 +478,131 @@ cpuControl.sv, 183
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 185
+cpuControl.sv, 142
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
+  Source info: RegWrite = 1;
+  Expression: RegWrite
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 143
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: MemWrite = 0;
+  Expression: MemWrite
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 144
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: MemRead = 0;
+  Expression: MemRead
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 146
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 2-bit LHS target:
+  Source info: Reg1Loc = 0;
+  Expression: Reg1Loc
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 149
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 3-bit wide expression is assigned to a 4-bit LHS target:
+  Source info: selOpB = 3'd2;
+  Expression: selOpB
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 152
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: brEx = 0;
+  Expression: brEx
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 158
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: RegWrite = 0;
+  Expression: RegWrite
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 159
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: MemWrite = 0;
+  Expression: MemWrite
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 160
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: MemRead = 0;
+  Expression: MemRead
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 165
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 3-bit wide expression is assigned to a 4-bit LHS target:
+  Source info: selOpB = 3'b0;
+  Expression: selOpB
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 168
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: brEx = 0;
+  Expression: brEx
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 173
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: RegWrite = 1;
+  Expression: RegWrite
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 174
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: MemWrite = 0;
+  Expression: MemWrite
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 175
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: MemRead = 0;
+  Expression: MemRead
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 181
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 3-bit wide expression is assigned to a 4-bit LHS target:
+  Source info: selOpB = 3'b0;
+  Expression: selOpB
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 184
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: brEx = 0;
+  Expression: brEx
 
 
 Lint-[WMIA-L] Width mismatch in assignment
@@ -581,23 +630,15 @@ cpuControl.sv, 191
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 193
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 2-bit LHS target:
-  Source info: Reg1Loc = 0;
-  Expression: Reg1Loc
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 196
+cpuControl.sv, 197
   Width mismatch between LHS and RHS is found in assignment:
   The following 3-bit wide expression is assigned to a 4-bit LHS target:
-  Source info: selOpB = 3'd2;
+  Source info: selOpB = 3'b0;
   Expression: selOpB
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 199
+cpuControl.sv, 200
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: brEx = 0;
@@ -605,23 +646,15 @@ cpuControl.sv, 199
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 201
+cpuControl.sv, 205
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 206
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: RegWrite = 0;
+  Source info: RegWrite = 1;
   Expression: RegWrite
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 207
+cpuControl.sv, 206
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemWrite = 0;
@@ -629,7 +662,7 @@ cpuControl.sv, 207
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 208
+cpuControl.sv, 207
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemRead = 0;
@@ -653,15 +686,7 @@ cpuControl.sv, 216
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 217
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 222
+cpuControl.sv, 221
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: RegWrite = 1;
@@ -669,7 +694,7 @@ cpuControl.sv, 222
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 223
+cpuControl.sv, 222
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemWrite = 0;
@@ -677,7 +702,7 @@ cpuControl.sv, 223
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 224
+cpuControl.sv, 223
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemRead = 0;
@@ -685,7 +710,7 @@ cpuControl.sv, 224
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 230
+cpuControl.sv, 229
   Width mismatch between LHS and RHS is found in assignment:
   The following 3-bit wide expression is assigned to a 4-bit LHS target:
   Source info: selOpB = 3'b0;
@@ -693,7 +718,7 @@ cpuControl.sv, 230
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 233
+cpuControl.sv, 232
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: brEx = 0;
@@ -701,15 +726,7 @@ cpuControl.sv, 233
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 235
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 239
+cpuControl.sv, 238
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: RegWrite = 1;
@@ -717,7 +734,7 @@ cpuControl.sv, 239
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 240
+cpuControl.sv, 239
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemWrite = 0;
@@ -725,7 +742,7 @@ cpuControl.sv, 240
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 241
+cpuControl.sv, 240
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemRead = 0;
@@ -734,14 +751,6 @@ cpuControl.sv, 241
 
 Lint-[WMIA-L] Width mismatch in assignment
 cpuControl.sv, 247
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 3-bit wide expression is assigned to a 4-bit LHS target:
-  Source info: selOpB = 3'b0;
-  Expression: selOpB
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 250
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: brEx = 0;
@@ -752,20 +761,12 @@ Lint-[WMIA-L] Width mismatch in assignment
 cpuControl.sv, 252
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 256
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: RegWrite = 1;
   Expression: RegWrite
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 257
+cpuControl.sv, 253
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemWrite = 0;
@@ -773,7 +774,7 @@ cpuControl.sv, 257
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 258
+cpuControl.sv, 254
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemRead = 0;
@@ -781,79 +782,47 @@ cpuControl.sv, 258
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 264
+cpuControl.sv, 261
   Width mismatch between LHS and RHS is found in assignment:
-  The following 3-bit wide expression is assigned to a 4-bit LHS target:
-  Source info: selOpB = 3'b0;
-  Expression: selOpB
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: brEx = 0;
+  Expression: brEx
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 266
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: RegWrite = 1;
+  Expression: RegWrite
 
 
 Lint-[WMIA-L] Width mismatch in assignment
 cpuControl.sv, 267
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: brEx = 0;
-  Expression: brEx
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 269
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 273
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: RegWrite = 1;
-  Expression: RegWrite
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 274
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemWrite = 0;
   Expression: MemWrite
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 268
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: MemRead = 0;
+  Expression: MemRead
 
 
 Lint-[WMIA-L] Width mismatch in assignment
 cpuControl.sv, 275
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: MemRead = 0;
-  Expression: MemRead
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 281
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 3-bit wide expression is assigned to a 4-bit LHS target:
-  Source info: selOpB = 3'b0;
-  Expression: selOpB
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 284
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: brEx = 0;
   Expression: brEx
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 286
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 291
+cpuControl.sv, 280
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: RegWrite = 1;
@@ -861,7 +830,7 @@ cpuControl.sv, 291
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 292
+cpuControl.sv, 281
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemWrite = 0;
@@ -869,7 +838,7 @@ cpuControl.sv, 292
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 293
+cpuControl.sv, 282
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemRead = 0;
@@ -877,7 +846,7 @@ cpuControl.sv, 293
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 300
+cpuControl.sv, 289
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: brEx = 0;
@@ -885,23 +854,55 @@ cpuControl.sv, 300
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 302
+cpuControl.sv, 295
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
+  Source info: RegWrite = 0;
+  Expression: RegWrite
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 296
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: MemWrite = 1;
+  Expression: MemWrite
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 297
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: MemRead = 0;
+  Expression: MemRead
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 303
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 3-bit wide expression is assigned to a 4-bit LHS target:
+  Source info: selOpB = 3'd3;
+  Expression: selOpB
 
 
 Lint-[WMIA-L] Width mismatch in assignment
 cpuControl.sv, 306
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: brEx = 0;
+  Expression: brEx
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 311
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: RegWrite = 1;
   Expression: RegWrite
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 307
+cpuControl.sv, 312
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemWrite = 0;
@@ -909,15 +910,23 @@ cpuControl.sv, 307
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 308
+cpuControl.sv, 313
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: MemRead = 0;
+  Source info: MemRead = 1;
   Expression: MemRead
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 315
+cpuControl.sv, 318
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 3-bit wide expression is assigned to a 4-bit LHS target:
+  Source info: selOpB = 3'd3;
+  Expression: selOpB
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 321
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: brEx = 0;
@@ -925,35 +934,19 @@ cpuControl.sv, 315
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 317
+cpuControl.sv, 327
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 322
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: RegWrite = 1;
+  Source info: RegWrite = 0;
   Expression: RegWrite
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 323
+cpuControl.sv, 328
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemWrite = 0;
   Expression: MemWrite
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 324
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: MemRead = 0;
-  Expression: MemRead
 
 
 Lint-[WMIA-L] Width mismatch in assignment
@@ -965,23 +958,15 @@ cpuControl.sv, 331
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 333
+cpuControl.sv, 335
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 338
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: RegWrite = 1;
+  Source info: RegWrite = 0;
   Expression: RegWrite
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 339
+cpuControl.sv, 336
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemWrite = 0;
@@ -989,11 +974,27 @@ cpuControl.sv, 339
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 340
+cpuControl.sv, 339
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: MemRead = 0;
-  Expression: MemRead
+  Source info: brEx = 0;
+  Expression: brEx
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 343
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: RegWrite = 0;
+  Expression: RegWrite
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 344
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: MemWrite = 0;
+  Expression: MemWrite
 
 
 Lint-[WMIA-L] Width mismatch in assignment
@@ -1005,15 +1006,7 @@ cpuControl.sv, 347
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 349
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 355
+cpuControl.sv, 351
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: RegWrite = 0;
@@ -1021,31 +1014,39 @@ cpuControl.sv, 355
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 356
+cpuControl.sv, 352
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: MemWrite = 1;
+  Source info: MemWrite = 0;
   Expression: MemWrite
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 357
+cpuControl.sv, 355
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: MemRead = 0;
-  Expression: MemRead
+  Source info: brEx = 0;
+  Expression: brEx
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 359
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: RegWrite = 0;
+  Expression: RegWrite
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 360
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: MemWrite = 0;
+  Expression: MemWrite
 
 
 Lint-[WMIA-L] Width mismatch in assignment
 cpuControl.sv, 363
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 3-bit wide expression is assigned to a 4-bit LHS target:
-  Source info: selOpB = 3'd3;
-  Expression: selOpB
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 366
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: brEx = 0;
@@ -1056,20 +1057,12 @@ Lint-[WMIA-L] Width mismatch in assignment
 cpuControl.sv, 367
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 373
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: RegWrite = 1;
+  Source info: RegWrite = 0;
   Expression: RegWrite
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 374
+cpuControl.sv, 368
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemWrite = 0;
@@ -1077,23 +1070,7 @@ cpuControl.sv, 374
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 375
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: MemRead = 1;
-  Expression: MemRead
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 380
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 3-bit wide expression is assigned to a 4-bit LHS target:
-  Source info: selOpB = 3'd3;
-  Expression: selOpB
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 383
+cpuControl.sv, 371
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: brEx = 0;
@@ -1101,11 +1078,51 @@ cpuControl.sv, 383
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 385
+cpuControl.sv, 375
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
+  Source info: RegWrite = 0;
+  Expression: RegWrite
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 376
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: MemWrite = 0;
+  Expression: MemWrite
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 379
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: brEx = 0;
+  Expression: brEx
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 383
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: RegWrite = 0;
+  Expression: RegWrite
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 384
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: MemWrite = 0;
+  Expression: MemWrite
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 387
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: brEx = 0;
+  Expression: brEx
 
 
 Lint-[WMIA-L] Width mismatch in assignment
@@ -1125,15 +1142,7 @@ cpuControl.sv, 392
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 394
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 396
+cpuControl.sv, 395
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: brEx = 0;
@@ -1141,7 +1150,7 @@ cpuControl.sv, 396
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 400
+cpuControl.sv, 399
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: RegWrite = 0;
@@ -1149,7 +1158,7 @@ cpuControl.sv, 400
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 401
+cpuControl.sv, 400
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemWrite = 0;
@@ -1160,20 +1169,12 @@ Lint-[WMIA-L] Width mismatch in assignment
 cpuControl.sv, 403
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 405
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: brEx = 0;
   Expression: brEx
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 409
+cpuControl.sv, 407
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: RegWrite = 0;
@@ -1181,7 +1182,7 @@ cpuControl.sv, 409
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 410
+cpuControl.sv, 408
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemWrite = 0;
@@ -1189,15 +1190,7 @@ cpuControl.sv, 410
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 412
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 414
+cpuControl.sv, 411
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: brEx = 0;
@@ -1205,111 +1198,87 @@ cpuControl.sv, 414
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 418
+cpuControl.sv, 415
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: RegWrite = 0;
   Expression: RegWrite
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 416
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: MemWrite = 0;
+  Expression: MemWrite
 
 
 Lint-[WMIA-L] Width mismatch in assignment
 cpuControl.sv, 419
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: MemWrite = 0;
-  Expression: MemWrite
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 421
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
+  Source info: brEx = 0;
+  Expression: brEx
 
 
 Lint-[WMIA-L] Width mismatch in assignment
 cpuControl.sv, 423
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: brEx = 0;
-  Expression: brEx
+  Source info: RegWrite = 0;
+  Expression: RegWrite
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 424
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: MemWrite = 0;
+  Expression: MemWrite
 
 
 Lint-[WMIA-L] Width mismatch in assignment
 cpuControl.sv, 427
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: brEx = 0;
+  Expression: brEx
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 431
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: RegWrite = 0;
   Expression: RegWrite
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 428
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: MemWrite = 0;
-  Expression: MemWrite
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 430
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
 
 
 Lint-[WMIA-L] Width mismatch in assignment
 cpuControl.sv, 432
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: brEx = 0;
-  Expression: brEx
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 436
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: RegWrite = 0;
-  Expression: RegWrite
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 437
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemWrite = 0;
   Expression: MemWrite
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 435
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: brEx = 0;
+  Expression: brEx
 
 
 Lint-[WMIA-L] Width mismatch in assignment
 cpuControl.sv, 439
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 441
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: brEx = 0;
-  Expression: brEx
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 445
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: RegWrite = 0;
   Expression: RegWrite
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 446
+cpuControl.sv, 440
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemWrite = 0;
@@ -1317,311 +1286,39 @@ cpuControl.sv, 446
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 448
+cpuControl.sv, 443
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
+  Source info: brEx = 0;
+  Expression: brEx
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 449
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: RegWrite = 0;
+  Expression: RegWrite
 
 
 Lint-[WMIA-L] Width mismatch in assignment
 cpuControl.sv, 450
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: brEx = 0;
-  Expression: brEx
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 454
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: RegWrite = 0;
-  Expression: RegWrite
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 455
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemWrite = 0;
   Expression: MemWrite
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+cpuControl.sv, 453
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: brEx = 0;
+  Expression: brEx
 
 
 Lint-[WMIA-L] Width mismatch in assignment
 cpuControl.sv, 457
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 459
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: brEx = 0;
-  Expression: brEx
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 463
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: RegWrite = 0;
-  Expression: RegWrite
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 464
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: MemWrite = 0;
-  Expression: MemWrite
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 466
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 468
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: brEx = 0;
-  Expression: brEx
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 472
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: RegWrite = 0;
-  Expression: RegWrite
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 473
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: MemWrite = 0;
-  Expression: MemWrite
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 475
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 477
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: brEx = 0;
-  Expression: brEx
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 481
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: RegWrite = 0;
-  Expression: RegWrite
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 482
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: MemWrite = 0;
-  Expression: MemWrite
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 484
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 486
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: brEx = 0;
-  Expression: brEx
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 490
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: RegWrite = 0;
-  Expression: RegWrite
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 491
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: MemWrite = 0;
-  Expression: MemWrite
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 493
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 495
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: brEx = 0;
-  Expression: brEx
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 499
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: RegWrite = 0;
-  Expression: RegWrite
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 500
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: MemWrite = 0;
-  Expression: MemWrite
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 502
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 504
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: brEx = 0;
-  Expression: brEx
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 508
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: RegWrite = 0;
-  Expression: RegWrite
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 509
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: MemWrite = 0;
-  Expression: MemWrite
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 511
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 513
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: brEx = 0;
-  Expression: brEx
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 517
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: RegWrite = 0;
-  Expression: RegWrite
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 518
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: MemWrite = 0;
-  Expression: MemWrite
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 520
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 522
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: brEx = 0;
-  Expression: brEx
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 528
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: RegWrite = 0;
-  Expression: RegWrite
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 529
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: MemWrite = 0;
-  Expression: MemWrite
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 531
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 533
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: brEx = 0;
-  Expression: brEx
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 537
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: RegWrite = 1;
@@ -1629,7 +1326,7 @@ cpuControl.sv, 537
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 538
+cpuControl.sv, 458
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemWrite = 0;
@@ -1637,15 +1334,7 @@ cpuControl.sv, 538
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 541
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 543
+cpuControl.sv, 462
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: brEx = 0;
@@ -1653,7 +1342,7 @@ cpuControl.sv, 543
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 548
+cpuControl.sv, 467
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: RegWrite = 0;
@@ -1661,7 +1350,7 @@ cpuControl.sv, 548
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 549
+cpuControl.sv, 468
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemWrite = 0;
@@ -1669,15 +1358,7 @@ cpuControl.sv, 549
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 552
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 0;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 553
+cpuControl.sv, 471
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: brEx = 1;
@@ -1685,7 +1366,7 @@ cpuControl.sv, 553
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 558
+cpuControl.sv, 476
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: RegWrite = 0;
@@ -1693,7 +1374,7 @@ cpuControl.sv, 558
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 559
+cpuControl.sv, 477
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 1-bit LHS target:
   Source info: MemWrite = 0;
@@ -1701,51 +1382,11 @@ cpuControl.sv, 559
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 561
+pipelineReg.sv, 8
   Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: noop = 1;
-  Expression: noop
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 586
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: negative = 0;
-  Expression: negative
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 586
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: zero = 0;
-  Expression: zero
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 586
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: overflow = 0;
-  Expression: overflow
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-cpuControl.sv, 586
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: alu_zero = 0;
-  Expression: alu_zero
-
-
-Lint-[WMIA-L] Width mismatch in assignment
-D_FF.sv, 7
-  Width mismatch between LHS and RHS is found in assignment:
-  The following 32-bit wide expression is assigned to a 1-bit LHS target:
-  Source info: q <= 0;
-  Expression: q
+  The following 32-bit wide expression is assigned to a 16-bit LHS target:
+  Source info: Q <= 'b0;
+  Expression: Q
 
 
 Lint-[ULCO] Unequal length in comparison operator
@@ -1764,24 +1405,43 @@ regfile, "(rd_addr_1 == 16'd15)"
   with '16'd15' of type bit [15:0].
 
 
-Lint-[CAWM-L] Width mismatch
-cpu.sv, 61
-  Continuous assignment width mismatch
-  1 bits (lhs) versus 4 bits (rhs).
-  Source info: assign lr = 4'b1110;  
+Lint-[WMIA-L] Width mismatch in assignment
+D_FF.sv, 7
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: q <= 0;
+  Expression: q
 
 
 Lint-[PCWM-L] Port connection width mismatch
-cpu.sv, 135
-"mux5x16_16 opBMux( .i0 (ReadData2),  .i1 (imm3),  .i2 (imm7),  .i3 (imm5),  .i4 (16'b1),  .sel (selOpB),  .out (opB));"
-  The following 4-bit expression is connected to 3-bit port "sel" of module 
-  "mux5x16_16", instance "opBMux".
-  Expression: selOpB
+cpu.sv, 117
+"pipelineReg #(16) decodeToExec3( .D (regWriteAddr),  .Q (regWriteAddrE),  .en (1'b1),  .clear (1'b0),  .clk (clk));"
+  The following 4-bit expression is connected to 16-bit port "D" of module 
+  "pipelineReg", instance "decodeToExec3".
+  Expression: regWriteAddr
   The expression is from module cpu, instance testCpu 
 
 
 Lint-[PCWM-L] Port connection width mismatch
-cpu.sv, 141
+cpu.sv, 117
+"pipelineReg #(16) decodeToExec3( .D (regWriteAddr),  .Q (regWriteAddrE),  .en (1'b1),  .clear (1'b0),  .clk (clk));"
+  The following 4-bit expression is connected to 16-bit port "Q" of module 
+  "pipelineReg", instance "decodeToExec3".
+  Expression: regWriteAddrE
+  The expression is from module cpu, instance testCpu 
+
+
+Lint-[PCWM-L] Port connection width mismatch
+cpu.sv, 142
+"mux5x16_16 opBMux0( .i0 (ReadData2E),  .i1 (imm3),  .i2 (imm7),  .i3 (imm5),  .i4 (16'b1),  .sel (selOpBE),  .out (opB_pre));"
+  The following 4-bit expression is connected to 3-bit port "sel" of module 
+  "mux5x16_16", instance "opBMux0".
+  Expression: selOpBE
+  The expression is from module cpu, instance testCpu 
+
+
+Lint-[PCWM-L] Port connection width mismatch
+cpu.sv, 149
 "register_4 FlagsRegister( .dataIn (ALUFlags),  .dataOut (FlagsReg),  .writeEnable (keepFlags),  .reset (reset),  .clk (clk));"
   The following 4-bit expression is connected to 1-bit port "writeEnable" of 
   module "register_4", instance "FlagsRegister".
@@ -1813,6 +1473,38 @@ cpuStim.sv, 22
   Expression: reset
 
 
+Lint-[WMIA-L] Width mismatch in assignment
+pipelineReg.sv, 8
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 2-bit LHS target:
+  Source info: Q <= 'b0;
+  Expression: Q
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+pipelineReg.sv, 8
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 3-bit LHS target:
+  Source info: Q <= 'b0;
+  Expression: Q
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+pipelineReg.sv, 8
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: Q <= 'b0;
+  Expression: Q
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+pipelineReg.sv, 8
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 4-bit LHS target:
+  Source info: Q <= 'b0;
+  Expression: Q
+
+
 Lint-[SVA-UA] Unnamed Assertion
 datamem.sv, 27
 datamem
@@ -1842,35 +1534,37 @@ instructmem
 
 Starting vcs inline pass...
 
-16 modules and 0 UDP read.
+15 modules and 0 UDP read.
 	However, due to incremental compilation, no re-compilation is necessary.
-make[2]: Entering directory `/home/nguyea9/ee478/Core/csrc'
+make[2]: Entering directory `/home/projects/ee478.2022spr/hoppii/BarelyFLOATing/Core/csrc' \
+
 rm -f _cuarc*.so _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
 ld -shared  -Bsymbolic --no-relax  -o .//../simv.daidir//_cuarc0.so objs/amcQw_d.o \
 
 rm -f _cuarc0.so
 if [ -x ../simv ]; then chmod a-x ../simv; fi
 g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir \
--Wl,-rpath=/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib -L/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib \
--Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _1845_archive_1.so _prev_archive_1.so \
+-Wl,-rpath=/home/lab.apps/vlsiapps_new//vcs/current/linux64/lib -L/home/lab.apps/vlsiapps_new//vcs/current/linux64/lib \
+-Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _26171_archive_1.so _prev_archive_1.so \
 _cuarc0.so  SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o \
 rmar_llvm_0_0.o           -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile \
--luclinative /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_tls.o   -Wl,-whole-archive \
--lvcsucli    -Wl,-no-whole-archive          /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_save_restore_new.o \
+-luclinative /home/lab.apps/vlsiapps_new//vcs/current/linux64/lib/vcs_tls.o   -Wl,-whole-archive \
+-lvcsucli    -Wl,-no-whole-archive          /home/lab.apps/vlsiapps_new//vcs/current/linux64/lib/vcs_save_restore_new.o \
 -ldl  -lc -lm -lpthread -ldl 
 ../simv up to date
-make[2]: Leaving directory `/home/nguyea9/ee478/Core/csrc'
-Command: /home/nguyea9/ee478/Core/./simv +v2k +lint=all -a cpu.log
+make[2]: Leaving directory `/home/projects/ee478.2022spr/hoppii/BarelyFLOATing/Core/csrc' \
+
+Command: /home/projects/ee478.2022spr/hoppii/BarelyFLOATing/Core/./simv +v2k +lint=all -a cpu.log
 Chronologic VCS simulator copyright 1991-2021
 Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May  4 12:10 2022
+Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May  5 11:19 2022
 VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
 Running benchmark: ../tests/random.arm
- 405.00 ns Test Done
+ 665.00 ns Test Done
 $finish called from file "cpuStim.sv", line 60.
-$finish at simulation time  405.00 ns
+$finish at simulation time  665.00 ns
            V C S   S i m u l a t i o n   R e p o r t 
-Time: 405000 ps
-CPU Time:      0.370 seconds;       Data structure size:   1.3Mb
-Wed May  4 12:10:23 2022
-CPU time: .478 seconds to compile + .420 seconds to elab + .385 seconds to link + .415 seconds in simulation
+Time: 665000 ps
+CPU Time:      0.240 seconds;       Data structure size:   1.3Mb
+Thu May  5 11:19:53 2022
+CPU time: .331 seconds to compile + .267 seconds to elab + .340 seconds to link + .266 seconds in simulation

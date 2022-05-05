@@ -297,7 +297,7 @@ module cpuControl(
 				MemRead = 0;
 				keepFlags = 4'b1100;
 				Reg1Loc = 2'b01;
- 				Reg2Loc = 2'd10;
+ 				Reg2Loc = 2'b10;
 				Reg3Loc = 2'b00;
  				selOpA = 1'b0;
  				selOpB = 3'd3;
@@ -481,6 +481,7 @@ module cpuControl(
 	end
 endmodule
 
+/*
 // Tests that control logic operates properly for each type of instruction used in the benchmark tests
 module cpuControl_testbench();
 	// Current Instruction being ran by CPU
@@ -507,4 +508,4 @@ module cpuControl_testbench();
 		instr = 32'b11111000010000000000001111101111; #500; // LDUR
 		instr = 32'b01010100000000000000000010001011; #500; // B.LT
 	end
-endmodule
+endmodule */
