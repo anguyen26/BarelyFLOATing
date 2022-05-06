@@ -5,14 +5,34 @@ module shifter(
 	output logic signed [15:0]	result
 	);
 	
+	logic signed [15:0] distancePrime;
+	logic [15:0] ROT, ROTPrime;
+	assign distancePrime = distance * -1;
+	assign ROT = (distance % 16) + 1;
+	assign ROTPrime = (distancePrime % 16) + 1;
+
 	always_comb begin
-        case(mode)
-            0: result = value << distance;
-			1: result = value >> distance;
-            2: result = value >>> distance;
-            3: result = (value << 16-distance) | (value >> distance); 
-            default: result = 16'd0;
-        endcase
+		case(distance[15])
+			1: begin
+				
+				case(mode)
+					0: result = $signed(value >> distancePrime);
+					1: result = $signed(value << distancePrime);
+					2: result = $signed(value << distancePrime);
+					3: result = $signed((value >> 16-distancePrime) | (value << distancePrime)); //This might be broken
+					default: result = 16'd0;
+				endcase
+			end
+			0: begin
+				case(mode)
+					0: result = $signed(value << distance);
+					1: result = $signed(value >> distance);
+					2: result = $signed(value >>> distance);
+					3: result = $signed((value << 16-ROT) | (value >> ROT));  //This works 
+					default: result = 16'd0;
+				endcase
+			end
+		endcase
 	end
 endmodule
 /*

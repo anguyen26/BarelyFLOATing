@@ -1,6 +1,6 @@
 import sys
 iarm_output = sys.stdin.readline()
-print("Registers = " + iarm_output)
+# print("Registers = " + iarm_output)
 # take off {
 iarm_output = iarm_output[1:len(iarm_output)-1]
 f = open("iarm-master/iarm_output.txt", "w")
@@ -33,7 +33,7 @@ for i in range(15):
 f.write("15 = " + str(int(str(regDict.get(15)))-1) + "\n")
     
 iarm_output = sys.stdin.readline()
-print("Memory = " + iarm_output)
+# print("Memory = " + iarm_output)
 # take off {
 iarm_output = iarm_output[1:len(iarm_output)-1]
 f.write("Memory content:\n")

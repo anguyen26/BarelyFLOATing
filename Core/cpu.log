@@ -6,7 +6,7 @@ Warning-[DEBUG_DEP] Option will be deprecated
 Command: vcs -f cpu.include +v2k -R +lint=all -sverilog -full64 -debug_pp -timescale=1ns/10ps \
 -l cpu.log
                          Chronologic VCS (TM)
-       Version S-2021.09-SP1_Full64 -- Wed May  4 12:10:20 2022
+       Version S-2021.09-SP1_Full64 -- Fri May  6 16:30:54 2022
 
                     Copyright (c) 1991 - 2021 Synopsys, Inc.
    This software and the associated documentation are proprietary to Synopsys,
@@ -177,6 +177,27 @@ Top Level Modules:
        forwarding
        cpuStim
 TimeScale is 1 ps / 1 ps
+
+Lint-[CAWM-L] Width mismatch
+shifter.sv, 10
+  Continuous assignment width mismatch
+  16 bits (lhs) versus 32 bits (rhs).
+  Source info: assign distancePrime = (distance * (-1));  
+
+
+Lint-[CAWM-L] Width mismatch
+shifter.sv, 11
+  Continuous assignment width mismatch
+  16 bits (lhs) versus 32 bits (rhs).
+  Source info: assign ROT = ((distance % 16) + 1);  
+
+
+Lint-[CAWM-L] Width mismatch
+shifter.sv, 12
+  Continuous assignment width mismatch
+  16 bits (lhs) versus 32 bits (rhs).
+  Source info: assign ROTPrime = ((distancePrime % 16) + 1);  
+
 
 Lint-[ULCO] Unequal length in comparison operator
 alu.sv, 27
@@ -1843,8 +1864,8 @@ instructmem
 Starting vcs inline pass...
 
 16 modules and 0 UDP read.
-	However, due to incremental compilation, no re-compilation is necessary.
-make[2]: Entering directory `/home/nguyea9/ee478/Core/csrc'
+recompiling module cpuStim
+	However, due to incremental compilation, only 1 module needs to be compiled. 
 rm -f _cuarc*.so _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
 ld -shared  -Bsymbolic --no-relax  -o .//../simv.daidir//_cuarc0.so objs/amcQw_d.o \
 
@@ -1852,25 +1873,24 @@ rm -f _cuarc0.so
 if [ -x ../simv ]; then chmod a-x ../simv; fi
 g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir \
 -Wl,-rpath=/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib -L/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib \
--Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _1845_archive_1.so _prev_archive_1.so \
+-Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _29384_archive_1.so _prev_archive_1.so \
 _cuarc0.so  SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o \
 rmar_llvm_0_0.o           -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile \
 -luclinative /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_tls.o   -Wl,-whole-archive \
 -lvcsucli    -Wl,-no-whole-archive          /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_save_restore_new.o \
 -ldl  -lc -lm -lpthread -ldl 
 ../simv up to date
-make[2]: Leaving directory `/home/nguyea9/ee478/Core/csrc'
 Command: /home/nguyea9/ee478/Core/./simv +v2k +lint=all -a cpu.log
 Chronologic VCS simulator copyright 1991-2021
 Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May  4 12:10 2022
+Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May  6 16:30 2022
 VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
-Running benchmark: ../tests/random.arm
- 405.00 ns Test Done
+Running benchmark: ../tests/rand_benchmarks/random50.arm
+ 415.00 ns Test Done
 $finish called from file "cpuStim.sv", line 60.
-$finish at simulation time  405.00 ns
+$finish at simulation time  415.00 ns
            V C S   S i m u l a t i o n   R e p o r t 
-Time: 405000 ps
-CPU Time:      0.370 seconds;       Data structure size:   1.3Mb
-Wed May  4 12:10:23 2022
-CPU time: .478 seconds to compile + .420 seconds to elab + .385 seconds to link + .415 seconds in simulation
+Time: 415000 ps
+CPU Time:      0.250 seconds;       Data structure size:   1.3Mb
+Fri May  6 16:30:58 2022
+CPU time: .570 seconds to compile + .355 seconds to elab + .389 seconds to link + .310 seconds in simulation

@@ -1,8 +1,16 @@
 import iarm.exceptions
 from ._meta import _Meta
 
-
 class Shift(_Meta):
+
+    def negShift(self, value):
+        size = 16
+        unsigned = value % 2**size
+        signed = unsigned - 2**size
+        signed = unsigned - 2**size
+        abs_signed = signed * -1
+        return abs_signed
+
     def ASRS(self, params):
         """
         ASRS [Ra,] Ra, Rc
@@ -27,7 +35,6 @@ class Shift(_Meta):
             # ASRS Ra, Ra, Rb
             self.check_arguments(low_registers=(Ra, Rc))
             self.match_first_two_parameters(Ra, Rb)
-
             def ASRS_func():
                 # Set the C flag, or the last shifted out bit
                 if (self.register[Rc] > 0) and (self.register[Rb] & (1 << (self.register[Rc] - 1))):
@@ -35,24 +42,24 @@ class Shift(_Meta):
                 else:
                     self.set_APSR_flag_to_value('C', 0)
     
-                # if (self.register[Ra] > 65536):
-                #     binValue = bin(self.register[Ra])
-                #     binValue = binValue[len(binValue)-16:]
-                #     self.register[Ra] = int(binValue,2)
-#                print('Rc='+ str(self.register[Rc])+', bitwidth=' + str(self._bit_width))
-                if self.register[Ra] & (1 << (self._bit_width - 1)):
-                    if (self.register[Rc] == 0):
-                        self.register[Ra] = (self.register[Ra] >> self.register[Rc]) | (
-                            int('0', 2) << (self._bit_width - self.register[Rc]))
-                    else:
-                        if (self.register[Rc] > self._bit_width):
-                            self.register[Ra] = (self.register[Ra] >> self.register[Rc]) | (
-                                int('1' * self.register[Rc], 2) << (self._bit_width - self._bit_width))
-                        else: 
-                            self.register[Ra] = (self.register[Ra] >> self.register[Rc]) | (
-                                int('1' * self.register[Rc], 2) << (self._bit_width - self.register[Rc]))
+                if (self.register[Rc] > 32767):
+                    shiftAmount = self.negShift(self.register[Rc])
+                    self.register[Ra] = self.register[Ra] << shiftAmount
                 else:
-                    self.register[Ra] = self.register[Ra] >> self.register[Rc]
+                    if self.register[Ra] & (1 << (self._bit_width - 1)):
+                        shiftAmount = self.register[Rc]
+                        if (shiftAmount == 0):
+                            self.register[Ra] = (self.register[Ra] >> shiftAmount) | (
+                                int('0', 2) << (self._bit_width - shiftAmount))
+                        else:
+                            if (shiftAmount > self._bit_width):
+                                self.register[Ra] = (self.register[Ra] >> shiftAmount) | (
+                                    int('1' * shiftAmount, 2) << (self._bit_width - self._bit_width))
+                            else: 
+                                self.register[Ra] = (self.register[Ra] >> shiftAmount) | (
+                                    int('1' * shiftAmount, 2) << (self._bit_width - shiftAmount))
+                    else:
+                        self.register[Ra] = self.register[Ra] >> self.register[Rc]
                 self.set_NZ_flags(self.register[Ra])
         else:
             # ASRS Ra, Rb, #imm5_counting
@@ -106,8 +113,11 @@ class Shift(_Meta):
                     self.set_APSR_flag_to_value('C', 1)
                 else:
                     self.set_APSR_flag_to_value('C', 0)
-
-                self.register[Ra] = self.register[Ra] << self.register[Rc]
+                if (self.register[Rc] > 32767):
+                    shiftAmount = self.negShift(self.register[Rc]) 
+                    self.register[Ra] = self.register[Ra] >> shiftAmount
+                else:
+                    self.register[Ra] = self.register[Ra] << self.register[Rc]
                 self.set_NZ_flags(self.register[Ra])
         else:
             # LSLS Ra, Rb, #imm5
@@ -158,7 +168,11 @@ class Shift(_Meta):
                 else:
                     self.set_APSR_flag_to_value('C', 0)
 
-                self.register[Ra] = self.register[Ra] >> self.register[Rc]
+                if (self.register[Rc] > 32767):
+                    shiftAmount = self.negShift(self.register[Rc])
+                    self.register[Ra] = self.register[Ra] << shiftAmount
+                else:
+                    self.register[Ra] = self.register[Ra] >> self.register[Rc]
                 self.set_NZ_flags(self.register[Ra])
         else:
             # LSRS Ra, Rb, #imm5_counting
@@ -210,14 +224,49 @@ class Shift(_Meta):
             else:
                 self.set_APSR_flag_to_value('C', 0)
 
-            shift_amount = self.register[Rc]
-            save = format(self.register[Ra], '016b')
-            save = save[len(save)-(shift_amount):len(save)]
-            self.register[Ra] = self.register[Ra] >> shift_amount
-            shifted = format(self.register[Ra], '016b')
-            shifted = shifted[shift_amount:len(shifted)]
-            new = save + shifted
-            self.register[Ra] = int(new, 2)
+            if (self.register[Rc] > 32767):
+                shift_amount = self.negShift(self.register[Rc])
+                shift_amount = (shift_amount % 16) 
+                #print("shift_amount="+str(shift_amount))
+# put reg in binary
+                save = format(self.register[Ra], '016b')
+                #print("old="+str(save))
+               # cut save to perfect amount 
+                save = save[:shift_amount]
+# shift the rest
+                shifted = self.register[Ra] << shift_amount
+# cut shifted to perfect amount
+#format shifted
+                shifted = format(shifted, '016b')
+                #print('shifted='+str(shifted))
+                #print('lenshifted='+str(len(shifted)))
+                shifted = shifted[shift_amount:len(shifted)- shift_amount]
+                #print('shifted='+str(shifted))
+                #print('lenshifted='+str(len(shifted)))
+                #print('lensave='+str(len(save)))
+                
+                new = shifted + save
+                #print("new="+str(new))
+                self.register[Ra] = int(new, 2)
+            else:
+                shift_amount = self.register[Rc]
+                shift_amount = (shift_amount % 16) + 1 
+                #print("shift_amount="+str(shift_amount))
+# save = bits that will rotate out
+                save = format(self.register[Ra], '016b')
+                #print("Ra="+Ra+"old="+str(save))
+                # cut to perfect length
+                save = save[len(save)-(shift_amount):len(save)]
+                # shift register over
+                self.register[Ra] = self.register[Ra] >> shift_amount
+# format register as bits
+                shifted = format(self.register[Ra], '016b')
+                # cut to perfect length
+                shifted = shifted[shift_amount:len(shifted)]
+                # concatenate bits
+                new = save + shifted
+                #print("new="+str(new))
+                self.register[Ra] = int(new, 2)
 
             self.set_NZ_flags(self.register[Ra])
 

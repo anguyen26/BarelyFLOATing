@@ -53,7 +53,10 @@ for line in fAssem:
         for token in words:
             if token != words[0]:
                 if token[0] == 'R':
-                    regs.append(int(token[1]))
+                    if token[len(token)-1] == ',':
+                        regs.append(int(token[1:len(token)-1]))
+                    else:
+                        regs.append(int(token[1:]))
                 elif token[0] == '[':
                     regs.append(int(token[2]))
                 elif token[len(token)-1] == ']':

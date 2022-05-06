@@ -168,16 +168,27 @@ class Memory(_Meta):
                 # TODO does memory read up?
                 # if (self.register[Rb] + self.convert_to_integer(Rc[1:])) % 4 != 0:
                 #    raise iarm.exceptions.HardFault("Memory access not word aligned; Register: {}  Immediate: {}".format(self.register[Rb], self.convert_to_integer(Rc[1:])))
-                self.register[Ra] = 0
+                #self.register[Ra] = 0
                 # print('HERE')
                 # for i in range(4):
                 #     self.register[Ra] |= (self.memory[self.register[Rb] + self.convert_to_integer(Rc[1:]) + i] << (8 * i))
+                #print("Rb="+str(Rb))
+                #print(self.register)
+                #print("Rbcontents="+str(self.register[Rb]))
+                #print("old_address="+ str(self.register[Rb] + self.convert_to_integer(Rc[1:])))
                 if (self.register[Rb] + self.convert_to_integer(Rc[1:]) > 65535):
                     mem_address = self.register[Rb] + self.convert_to_integer(Rc[1:]) - 65536
                 else:
                     mem_address = self.register[Rb] + self.convert_to_integer(Rc[1:])
+                    # print(str(mem_address))
                 # self.register[Ra] |= (self.memory[self.register[Rb] + self.convert_to_integer(Rc[1:])])
-                self.register[Ra] |= (self.memory[mem_address])
+                self.register[Ra] = (self.memory[mem_address])
+                #print(str(self.register[Ra]))
+                #print("Ra="+str(Ra))
+                #print("address="+str(mem_address))
+                #print("mem="+str(self.memory[mem_address]))
+                #print(self.register)
+                #print(self.memory)
         else:
             self.check_arguments(low_registers=(Ra, Rb, Rc))
 

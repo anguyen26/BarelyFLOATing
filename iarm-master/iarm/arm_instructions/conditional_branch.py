@@ -66,6 +66,9 @@ class ConditionalBranch(_Meta):
         # BGE label
         def BGE_func():
             if self.is_N_set() == self.is_V_set():
+                #print(self.register)
+                #print(self.is_N_set())
+                #print(self.is_V_set())
                 self.register['PC'] = self.labels[label]
 
         return BGE_func

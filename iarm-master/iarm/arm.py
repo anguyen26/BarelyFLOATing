@@ -103,6 +103,7 @@ class Arm(instructions.DataMovement, instructions.Arithmetic,
             if steps < 0:
                 break
             # print(str(self.program[self.register['PC']-1]))
+            # print(str(self.program[self.register['PC']-1])[:31] == '<function ConditionalBranch.BHI')
             if (self.program[self.register['PC']-1] != 'NOOP'):
                 self.program[self.register['PC'] - 1]()
             self.register['PC'] += 1

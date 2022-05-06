@@ -311,13 +311,13 @@ class _Meta(iarm.cpu.RegisterCpu):
         :return:
         """
         if flag == 'N':
-            bit = 31
+            bit = 15
         elif flag == 'Z':
-            bit = 30
+            bit = 14
         elif flag == 'C':
-            bit = 29
+            bit = 13
         elif flag == 'V':
-            bit = 28
+            bit = 12
         else:
             raise AttributeError("Flag {} does not exist in the APSR".format(flag))
 
@@ -339,14 +339,20 @@ class _Meta(iarm.cpu.RegisterCpu):
 
     def set_N_flag(self, result):
         if result & (1 << self._bit_width - 1):
+            #print(self.register)
+            #print("N=1")
             self.set_APSR_flag_to_value('N', 1)
         else:
+            #print(self.register)
+            #print("N=0")
             self.set_APSR_flag_to_value('N', 0)
 
     def set_Z_flag(self, result):
         if result == 0:
+            #print("Z=1")
             self.set_APSR_flag_to_value('Z', 1)
         else:
+            #print("Z=0")
             self.set_APSR_flag_to_value('Z', 0)
 
     def set_C_flag(self, oper_1, oper_2, result, type):
@@ -412,16 +418,16 @@ class _Meta(iarm.cpu.RegisterCpu):
             self.check_arguments(general_purpose_registers=(arg,))
 
     def is_N_set(self):
-        return True if (self.register['APSR'] & (1 << 31)) else False
+        return True if (self.register['APSR'] & (1 << 15)) else False
 
     def is_Z_set(self):
-        return True if (self.register['APSR'] & (1 << 30)) else False
+        return True if (self.register['APSR'] & (1 << 14)) else False
 
     def is_C_set(self):
-        return True if (self.register['APSR'] & (1 << 29)) else False
+        return True if (self.register['APSR'] & (1 << 13)) else False
 
     def is_V_set(self):
-        return True if (self.register['APSR'] & (1 << 28)) else False
+        return True if (self.register['APSR'] & (1 << 12)) else False
 
     def rule_label_exists(self, arg):
         if (arg not in self.labels) and (arg != '.'):

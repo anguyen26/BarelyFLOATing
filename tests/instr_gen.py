@@ -1,12 +1,14 @@
 # This generates NUM_INSTR random instructions in assembly.
 # Some simplifications have been made to make it easier to write this module:
 # - Branches can only branch forward to prevent infinite loops
-# - Every BL instruction is coupled with a BX instruction
-# - BX is only used if BL is used first
+# - BX isn't implemented
 # - If one branch instruction is written, another branch instruction
 # can't be written until the label that the branch jumps to has been 
 # written. If the branch is a BL instruction, a new branch instruction
 # isn't written until after BX.
+# - If there are multiple branch operations with the same branch distance,
+# there will be multiple instructions with the same label, which will create
+# errors in the iarm results
 
 import random
 
@@ -36,8 +38,6 @@ instrs = [
 
 conds = ["EQ", "NE", "CS", "CC", "MI", "PL", "VS", "VC", "HI", "LS", "GE", "LT", "GT", "LE", "AL"]
 
-print(instrs[:len(instrs)-1])
-
 f = open("tests/random.txt", 'w');
 
 instrLeft = NUM_INSTR
@@ -54,14 +54,14 @@ while (instrLeft > 0):
     instrLeft-=1
     if (writeBDone) & (instrLeft > 2):
         instr = random.choice(instrs)
-        print('here')
+        # print('here')
     else:
         instr = random.choice(instrs[:len(instrs)-1])
     toPrint = ' '
-    print('instr='+instr+', instrLeft=' + str(instrLeft))
+    # print('instr='+instr+', instrLeft=' + str(instrLeft))
     
     if count4BL:
-        print('instr='+instr+', sinceLabel=' + str(sinceBranch))
+        # print('instr='+instr+', sinceLabel=' + str(sinceBranch))
         sinceLabel+=1
         if (sinceLabel == randNumBL):
             instr = "BX"
@@ -69,7 +69,7 @@ while (instrLeft > 0):
             count4BL = False
 
     if count:
-        print('instr='+instr+', sinceBranch=' + str(sinceBranch))
+        # print('instr='+instr+', sinceBranch=' + str(sinceBranch))
         sinceBranch+=1
         if (sinceBranch == randNum):
             toPrint=str(randNum) + toPrint
@@ -137,7 +137,7 @@ while (instrLeft > 0):
     elif instr == "B":
         instrLeft-=1
         instr = random.choice(["B", "BL", "BCOND"])
-        print(instr)
+        # print(instr)
         # print the right instruction name
         if instr == "BCOND":
             rn = 'R'+str(random.randint(0,7))

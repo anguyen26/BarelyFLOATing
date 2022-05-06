@@ -163,8 +163,30 @@ class Arithmetic(_Meta):
             self.check_arguments(R0_thru_R14=(Rm, Rn))
 
             def CMP_func():
-                self.set_NZCV_flags(self.register[Rm], self.register[Rn],
+                if (str(self.program[self.register['PC']-1])[:31] == '<function ConditionalBranch.BHI') | (str(self.program[self.register['PC']-1])[:31] == '<function ConditionalBranch.BLS'):
+                    self.set_NZCV_flags(self.register[Rm], self.register[Rn],
                                     self.register[Rm] - self.register[Rn], 'sub')
+                else:
+                    maxPos = 32767
+# only Rm is neg    ative
+                    if (self.register[Rm] > maxPos) & (self.register[Rn] < maxPos):
+                        self.set_NZCV_flags(self.register[Rm], self.register[Rn],
+                                        -1 - self.register[Rn], 'sub')
+                        #print("Rm="+str(Rm)+str(1))
+# only Rn is neg    ative 
+                    elif (self.register[Rn] > maxPos) & (self.register[Rm] < maxPos):
+                        self.set_NZCV_flags(self.register[Rm], self.register[Rn],
+                                        self.register[Rm] - -1, 'sub')
+                        #print("Rm="+str(Rm)+str(self.register[Rm] - self.register[Rn]))
+                    # both are negative 
+                    elif (self.register[Rm] > maxPos) & (self.register[Rn] > maxPos):
+                        self.set_NZCV_flags(self.register[Rm], self.register[Rn],
+                                        self.register[Rn] - self.register[Rm], 'sub')
+                        #print("Rm="+Rm+str(3))
+                    else:
+                        self.set_NZCV_flags(self.register[Rm], self.register[Rn],
+                                        self.register[Rm] - self.register[Rn], 'sub')
+                        #print("Rm="+str(Rm)+str(4))
         else:
             # CMP Rm, #imm8
             self.check_arguments(R0_thru_R14=(Rm,), imm8=(Rn,))
