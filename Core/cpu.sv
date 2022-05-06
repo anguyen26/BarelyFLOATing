@@ -22,7 +22,8 @@ module cpu(
 
 	logic [15:0]	ReadData1E, ReadData2E, selectedData2E, imm3, imm5, imm7, imm8,
 					selectedExtendedE, aluOutputE, shiftOutputE,
-					computationResultE, dataOutE, opAE, opBE, whichMOVE, MOVorLRE;
+					computationResultE, dataOutE, opAE, opBE, 
+					whichMOVE, MOVorLRE, prev_calc;
 	
 	// Used to determine what data register should come out of ReadData2
 	logic [3:0] 	reg1Addr, reg2Addr,  regWriteAddr;
@@ -69,7 +70,7 @@ module cpu(
 	//*************** Forwarding Unit *****************\\
 	
 	//Takes in readAddresses and determines where to forward data from 
-	forwardingUnit forward(.RA1(reg1Addr), .RA2(reg2Addr), .WA3W(), .RegWriteW(RegWriteE), .Forward1, .Forward2);
+	forwardingUnit forward(.RA1(reg1Addr), .RA2(reg2Addr), .WA3W(regWriteAdderE), .RegWriteW(RegWriteE), .Forward1, .Forward2);
 	
 	// Selects the regWriteAddr
 	mux4x4_4 regWriteMux(.i0({1'b0, instr[2:0]}), .i1(4'b1101), .i2({1'b0, instr[10:8]}), .i3(4'b1110), .sel(Reg3Loc), .out(regWriteAddr));
@@ -137,6 +138,8 @@ module cpu(
 
 	// Selects operand A for ALU
 	assign opA_pre = selOpAE ? PCE : ReadData1E;
+	
+
 	assign opAE = Forward1 ? regWrData : opA_pre;
 	// Selects operand B for ALU
 	mux5x16_16 opBMux0(.i0(ReadData2E), .i1(imm3), .i2(imm7), .i3(imm5), .i4(16'd1), .sel(selOpBE), .out(opB_pre));

@@ -6,7 +6,7 @@ Warning-[DEBUG_DEP] Option will be deprecated
 Command: vcs -f cpu.include +v2k -R +lint=all -sverilog -full64 -debug_pp -timescale=1ns/10ps \
 -l cpu.log
                          Chronologic VCS (TM)
-       Version S-2021.09-SP1_Full64 -- Thu May  5 11:19:51 2022
+       Version S-2021.09-SP1_Full64 -- Thu May  5 22:19:40 2022
 
                     Copyright (c) 1991 - 2021 Synopsys, Inc.
    This software and the associated documentation are proprietary to Synopsys,
@@ -100,6 +100,13 @@ cpu.sv, 23
   Second declaration for identifier 'imm8' ignored
   Identifier 'imm8' previously declared as logic. [cpu.sv, 18]
 
+
+Lint-[IWU] Implicit wire is used
+cpu.sv, 73
+  No type is specified for wire 'regWriteAdderE'. Default wire type is being 
+  applied according to the IEEE spec.
+  See the Verilog LRM(1364-2005), section 4.5.
+
 Parsing design file 'cpuStim.sv'
 
 Lint-[NS] Null statement
@@ -140,7 +147,7 @@ Top Level Modules:
 TimeScale is 1 ps / 1 ps
 
 Lint-[TFIPC-L] Too few instance port connections
-cpu.sv, 86
+cpu.sv, 87
 cpu, "cpuControl controlUnit( .PC (PC),  .instr (instr),  .FlagsReg (FlagsReg),  .clk (clk),  .reset (reset),  .RegWrite (RegWrite),  .MemWrite (MemWrite),  .MemRead (MemRead),  .ShiftDir (ShiftDir),  .keepFlags (keepFlags),  .Reg1Loc (Reg1Loc),  .Reg2Loc (Reg2Loc),  .Reg3Loc (Reg3Loc),  .selOpB (selOpB),  .selOpA (selOpA),  .ALUOp (ALUOp),  .brSel (brSel),  .brEx (brEx),  .selWrData (selWrData));"
   The above instance has fewer port connections than the module definition,
   There are 20 port(s) in module "cpuControl" definition, but only 19 port 
@@ -1413,8 +1420,29 @@ D_FF.sv, 7
   Expression: q
 
 
+Warning-[IWNF] Implicit wire has no fanin
+cpu.sv, 73
+  Implicit wire 'regWriteAdderE' does not have any driver, please make sure 
+  this is intended.
+
+
+Lint-[VNGS] Variable never gets set
+cpu.sv, 73
+  Following variable has never been set any value.
+  Source info: regWriteAdderE
+
+
 Lint-[PCWM-L] Port connection width mismatch
-cpu.sv, 117
+cpu.sv, 73
+"forwardingUnit forward( .RA1 (reg1Addr),  .RA2 (reg2Addr),  .WA3W (regWriteAdderE),  .RegWriteW (RegWriteE),  .Forward1 (Forward1),  .Forward2 (Forward2));"
+  The following 1-bit expression is connected to 4-bit port "WA3W" of module 
+  "forwardingUnit", instance "forward".
+  Expression: regWriteAdderE
+  The expression is from module cpu, instance testCpu 
+
+
+Lint-[PCWM-L] Port connection width mismatch
+cpu.sv, 118
 "pipelineReg #(16) decodeToExec3( .D (regWriteAddr),  .Q (regWriteAddrE),  .en (1'b1),  .clear (1'b0),  .clk (clk));"
   The following 4-bit expression is connected to 16-bit port "D" of module 
   "pipelineReg", instance "decodeToExec3".
@@ -1423,7 +1451,7 @@ cpu.sv, 117
 
 
 Lint-[PCWM-L] Port connection width mismatch
-cpu.sv, 117
+cpu.sv, 118
 "pipelineReg #(16) decodeToExec3( .D (regWriteAddr),  .Q (regWriteAddrE),  .en (1'b1),  .clear (1'b0),  .clk (clk));"
   The following 4-bit expression is connected to 16-bit port "Q" of module 
   "pipelineReg", instance "decodeToExec3".
@@ -1432,7 +1460,7 @@ cpu.sv, 117
 
 
 Lint-[PCWM-L] Port connection width mismatch
-cpu.sv, 142
+cpu.sv, 145
 "mux5x16_16 opBMux0( .i0 (ReadData2E),  .i1 (imm3),  .i2 (imm7),  .i3 (imm5),  .i4 (16'b1),  .sel (selOpBE),  .out (opB_pre));"
   The following 4-bit expression is connected to 3-bit port "sel" of module 
   "mux5x16_16", instance "opBMux0".
@@ -1441,7 +1469,7 @@ cpu.sv, 142
 
 
 Lint-[PCWM-L] Port connection width mismatch
-cpu.sv, 149
+cpu.sv, 152
 "register_4 FlagsRegister( .dataIn (ALUFlags),  .dataOut (FlagsReg),  .writeEnable (keepFlags),  .reset (reset),  .clk (clk));"
   The following 4-bit expression is connected to 1-bit port "writeEnable" of 
   module "register_4", instance "FlagsRegister".
@@ -1545,7 +1573,7 @@ rm -f _cuarc0.so
 if [ -x ../simv ]; then chmod a-x ../simv; fi
 g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir \
 -Wl,-rpath=/home/lab.apps/vlsiapps_new//vcs/current/linux64/lib -L/home/lab.apps/vlsiapps_new//vcs/current/linux64/lib \
--Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _26171_archive_1.so _prev_archive_1.so \
+-Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _23953_archive_1.so _prev_archive_1.so \
 _cuarc0.so  SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o \
 rmar_llvm_0_0.o           -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile \
 -luclinative /home/lab.apps/vlsiapps_new//vcs/current/linux64/lib/vcs_tls.o   -Wl,-whole-archive \
@@ -1557,14 +1585,14 @@ make[2]: Leaving directory `/home/projects/ee478.2022spr/hoppii/BarelyFLOATing/C
 Command: /home/projects/ee478.2022spr/hoppii/BarelyFLOATing/Core/./simv +v2k +lint=all -a cpu.log
 Chronologic VCS simulator copyright 1991-2021
 Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May  5 11:19 2022
+Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May  5 22:19 2022
 VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
 Running benchmark: ../tests/random.arm
- 665.00 ns Test Done
+ 415.00 ns Test Done
 $finish called from file "cpuStim.sv", line 60.
-$finish at simulation time  665.00 ns
+$finish at simulation time  415.00 ns
            V C S   S i m u l a t i o n   R e p o r t 
-Time: 665000 ps
-CPU Time:      0.240 seconds;       Data structure size:   1.3Mb
-Thu May  5 11:19:53 2022
-CPU time: .331 seconds to compile + .267 seconds to elab + .340 seconds to link + .266 seconds in simulation
+Time: 415000 ps
+CPU Time:      0.280 seconds;       Data structure size:   1.3Mb
+Thu May  5 22:19:42 2022
+CPU time: .419 seconds to compile + .420 seconds to elab + .243 seconds to link + .333 seconds in simulation
