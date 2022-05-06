@@ -34,10 +34,23 @@ class Shift(_Meta):
                     self.set_APSR_flag_to_value('C', 1)
                 else:
                     self.set_APSR_flag_to_value('C', 0)
-
+    
+                # if (self.register[Ra] > 65536):
+                #     binValue = bin(self.register[Ra])
+                #     binValue = binValue[len(binValue)-16:]
+                #     self.register[Ra] = int(binValue,2)
+#                print('Rc='+ str(self.register[Rc])+', bitwidth=' + str(self._bit_width))
                 if self.register[Ra] & (1 << (self._bit_width - 1)):
-                    self.register[Ra] = (self.register[Ra] >> self.register[Rc]) | (
-                        int('1' * self.register[Rc], 2) << (self._bit_width - self.register[Rc]))
+                    if (self.register[Rc] == 0):
+                        self.register[Ra] = (self.register[Ra] >> self.register[Rc]) | (
+                            int('0', 2) << (self._bit_width - self.register[Rc]))
+                    else:
+                        if (self.register[Rc] > self._bit_width):
+                            self.register[Ra] = (self.register[Ra] >> self.register[Rc]) | (
+                                int('1' * self.register[Rc], 2) << (self._bit_width - self._bit_width))
+                        else: 
+                            self.register[Ra] = (self.register[Ra] >> self.register[Rc]) | (
+                                int('1' * self.register[Rc], 2) << (self._bit_width - self.register[Rc]))
                 else:
                     self.register[Ra] = self.register[Ra] >> self.register[Rc]
                 self.set_NZ_flags(self.register[Ra])

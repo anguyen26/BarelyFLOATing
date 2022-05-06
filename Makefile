@@ -1,21 +1,28 @@
-TEST=?
+TEST=random
 
-benchmark: set_benchmark iarm vcs compare
+# generates random instructions and tests them
+all: instr_gen edit_tb iarm vcs compare
 
-set_benchmark:
-	sed -i 's;^with\(.*\);with open("benchmarks/$(TEST).txt", "r") as f:;g' \
+# user sets $TEST and runs test
+# run 'make custom' to rerun the last random test that was generated
+custom: edit_tb iarm vcs compare
+
+edit_tb:
+	sed -i 's;^with\(.*\);with open("tests/$(TEST).txt", "r") as f:;g' \
 		iarm-master/run_iarm.py
-	sed -i 's;^`define\(.*\).arm";`define BENCHMARK "../benchmarks/$(TEST).arm"; g' \
+	sed -i 's;^`define\(.*\).arm";`define BENCHMARK "../tests/$(TEST).arm"; g' \
 		Core/instructmem.sv
+
 instr_gen:
 	@ echo "Generating random instructions..."
-	python3 instr_gen.py
+	python3 tests/instr_gen.py
 	@ echo "Converting assembly instructions to binary..."
-	python3 assem_to_bin.py
+	python3 tests/assem_to_bin.py random > tests/notes_assem_to_bin.txt
 
 iarm:
 	@ echo "Running instructions on iarm..."
-	@ python3 iarm-master/run_iarm.py | python3 format_iarm.py
+	@ python3 iarm-master/run_iarm.py | python3 iarm-master/format_iarm.py
+	mv debug_iarm.txt iarm-master/.
 
 vcs:
 	@ echo "Running instructions on BarelyFLOATing CPU..."
@@ -26,4 +33,4 @@ dve:
 
 compare: 
 	@ echo "Comparing expected results to actual results..."
-	@ diff -cs iarm_output.txt Core/sv_output.txt
+	@ diff -cs iarm-master/iarm_output.txt Core/sv_output.txt

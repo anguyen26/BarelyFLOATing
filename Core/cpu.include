@@ -9,7 +9,7 @@ adder.sv
 fullAdder.sv
 alu.sv
 cpuControl.sv
-D_FF.sv
+pipelineReg.sv
 register.sv
 register_2.sv
 register_3.sv
@@ -19,8 +19,7 @@ regfile.sv
 datamem.sv
 instructmem.sv 
 rippleCarryAdder.sv
-
-forwarding.sv
-
+forwardingUnit.sv
+D_FF.sv
 cpu.sv
 cpuStim.sv

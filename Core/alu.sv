@@ -23,7 +23,7 @@ module ALU #(parameter SIZE = 16) (
 	rippleCarryAdder #(.N(SIZE)) A0 (.opp0(a), .opp1(temp_op), .cin(ALUControl[0]), .cout(carry), .out(adder_out));
 
 	//assign static bits
-	assign ALUFlags[3] = Result[31]; //negative bit is the sign bit of the result
+	assign ALUFlags[3] = Result[SIZE-1]; //negative bit is the sign bit of the result
 	assign ALUFlags[2] = (Result == 32'b0); //zero bit if result is zero
 	assign ALUFlags[1] = carry; //carry out
 	assign ALUFlags[0] = (temp_op[SIZE-1] && a[SIZE-1] && (!Result[SIZE-1])) || ((!temp_op[SIZE-1]) && (!a[SIZE-1]) && Result[SIZE-1]);

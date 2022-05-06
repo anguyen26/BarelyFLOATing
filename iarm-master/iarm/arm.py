@@ -60,26 +60,28 @@ class Arm(instructions.DataMovement, instructions.Arithmetic,
                     [self.labels.pop(i, None) for i in temp_labels]  # Clean up the added labels
                     e.args = ("Line {}; Error on '{}': ".format(line_counter, label + ' ' + op + ' ' + params),) + e.args
                     raise
-
-            # Next,
-            # If the op lookup fails, it was a bad instruction
-            if op:
-                try:
-                    func = self.ops[op]
-                except KeyError as e:
-                    [self.labels.pop(i, None) for i in temp_labels]  # Clean up the added labels
-                    raise iarm.exceptions.ValidationError("Line {}; Error on '{}': Instruction '{}' does not exist".format(line_counter, label + ' ' + op + ' ' + params, op))
-
-                # Run the instruction, if it raised an error, roll back the labels
-                try:
-                    instruction = func(params)
-                except Exception as e:
-                    # TODO We may have a key error, or something other than an IarmError
-                    [self.labels.pop(i, None) for i in temp_labels]  # Clean up the added labels
-                    e.args = ("Line {}; Error on '{}': ".format(line_counter, label + ' ' + op + ' ' + params),) + e.args
-                    raise
-                else:
-                    program.append(instruction)  # It validated, add it to the temp instruction list
+            if (op != 'NOOP'):
+                # Next,
+                # If the op lookup fails, it was a bad instruction
+                if op:
+                    try:
+                        func = self.ops[op]
+                    except KeyError as e:
+                        [self.labels.pop(i, None) for i in temp_labels]  # Clean up the added labels
+                        raise iarm.exceptions.ValidationError("Line {}; Error on '{}': Instruction '{}' does not exist".format(line_counter, label + ' ' + op + ' ' + params, op))
+    
+                    # Run the instruction, if it raised an error, roll back the labels
+                    try:
+                        instruction = func(params)
+                    except Exception as e:
+                        # TODO We may have a key error, or something other than an IarmError
+                        [self.labels.pop(i, None) for i in temp_labels]  # Clean up the added labels
+                        e.args = ("Line {}; Error on '{}': ".format(line_counter, label + ' ' + op + ' ' + params),) + e.args
+                        raise
+                    else:
+                        program.append(instruction)  # It validated, add it to the temp instruction list
+            else:
+                program.append('NOOP')
 
         # Code block was successfully validated, update the main program
         self.program += program
@@ -93,11 +95,16 @@ class Arm(instructions.DataMovement, instructions.Arithmetic,
         Run to the current end of the program or a number of steps
         :return:
         """
+        f = open("debug_iarm.txt", "w")
         while len(self.program) > (self.register['PC'] - 1):
+            f.write(str(self.register))
+            f.write(str(self.memory)+'\n')
             steps -= 1
             if steps < 0:
                 break
-            self.program[self.register['PC'] - 1]()
+            # print(str(self.program[self.register['PC']-1]))
+            if (self.program[self.register['PC']-1] != 'NOOP'):
+                self.program[self.register['PC'] - 1]()
             self.register['PC'] += 1
 
     def print_status_bits(self):

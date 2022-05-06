@@ -6,7 +6,7 @@ class RegisterCpu(object):
     """
     A register based CPU
     """
-    def __init__(self, bit_width, max_registers, memory_width=8, memory_size=1024, generate_random=False, postpone_execution=True):
+    def __init__(self, bit_width, max_registers, memory_width=16, memory_size=65536, generate_random=False, postpone_execution=True):
         """
         Initialize the CPU and get all instructions and "rules"
 
@@ -22,10 +22,11 @@ class RegisterCpu(object):
         :return:
         """
         super().__init__()
-        self._bit_width = bit_width
+        self._bit_width = 16 # bit_width
         self._max_registers = max_registers - 1  # Code was made around this being zero indexed
-        self._memory_width = memory_width
-        self._memory_size = memory_size
+        self._memory_width = 16 # memory_width
+        # self._memory_size = memory_size
+        self._memory_size = 65536 # memory_size
         self._generate_random = generate_random
         self._postpone_execution = postpone_execution
 
