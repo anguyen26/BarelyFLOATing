@@ -8,8 +8,8 @@ Core/sdfAnnotateInfo
 Core/*.log
 Core/*.key
 Core/cpu.syn.v
-sapr/syn/
+sapr/syn/*.*
 !cpu.tcl
 !Makefile
-sim/post-syn/
+sim/post-syn/*.*
 command.log
