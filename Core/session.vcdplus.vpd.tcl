@@ -1,19 +1,19 @@
 # Begin_DVE_Session_Save_Info
 # DVE full session
-# Saved on Thu May 5 22:23:05 2022
+# Saved on Tue May 10 10:45:09 2022
 # Designs open: 1
 #   V1: vcdplus.vpd
 # Toplevel windows open: 2
 # 	TopLevel.1
 # 	TopLevel.2
-#   Wave.1: 69 signals
-#   Group count = 7
-#   Group cpuControl_testbench signal count = 0
-#   Group cpuStim_1 signal count = 11
-#   Group registers signal count = 13
-#   Group controlUnit signal count = 20
-#   Group aluBlock signal count = 12
-#   Group forward signal count = 8
+#   Source.1: AN2D8
+#   Wave.1: 51 signals
+#   Group count = 5
+#   Group Group1 signal count = 13
+#   Group registers signal count = 12
+#   Group controlUnit signal count = 19
+#   Group aluBlock signal count = 7
+#   Group forward signal count = 0
 # End_DVE_Session_Save_Info
 
 # DVE version: S-2021.09-SP1_Full64
@@ -72,7 +72,7 @@ if {![gui_exist_window -window TopLevel.1]} {
 } else { 
     set TopLevel.1 TopLevel.1
 }
-gui_show_window -window ${TopLevel.1} -show_state normal -rect {{3 60} {1276 1053}}
+gui_show_window -window ${TopLevel.1} -show_state normal -rect {{1287 64} {2556 974}}
 
 # ToolBar settings
 gui_set_toolbar_attributes -toolbar {TimeOperations} -dock_state top
@@ -113,23 +113,23 @@ gui_hide_toolbar -toolbar {Testbench}
 # End ToolBar settings
 
 # Docked window settings
-set HSPane.1 [gui_create_window -type HSPane -parent ${TopLevel.1} -dock_state left -dock_on_new_line true -dock_extent 365]
+set HSPane.1 [gui_create_window -type HSPane -parent ${TopLevel.1} -dock_state left -dock_on_new_line true -dock_extent 358]
 catch { set Hier.1 [gui_share_window -id ${HSPane.1} -type Hier] }
-gui_set_window_pref_key -window ${HSPane.1} -key dock_width -value_type integer -value 365
+gui_set_window_pref_key -window ${HSPane.1} -key dock_width -value_type integer -value 358
 gui_set_window_pref_key -window ${HSPane.1} -key dock_height -value_type integer -value -1
 gui_set_window_pref_key -window ${HSPane.1} -key dock_offset -value_type integer -value 0
-gui_update_layout -id ${HSPane.1} {{left 0} {top 0} {width 364} {height 428} {dock_state left} {dock_on_new_line true} {child_hier_colhier 261} {child_hier_coltype 94} {child_hier_colpd 0} {child_hier_col1 0} {child_hier_col2 1} {child_hier_col3 -1}}
-set DLPane.1 [gui_create_window -type DLPane -parent ${TopLevel.1} -dock_state left -dock_on_new_line true -dock_extent 390]
+gui_update_layout -id ${HSPane.1} {{left 0} {top 0} {width 357} {height 352} {dock_state left} {dock_on_new_line true} {child_hier_colhier 261} {child_hier_coltype 94} {child_hier_colpd 0} {child_hier_col1 0} {child_hier_col2 1} {child_hier_col3 -1}}
+set DLPane.1 [gui_create_window -type DLPane -parent ${TopLevel.1} -dock_state left -dock_on_new_line true -dock_extent 383]
 catch { set Data.1 [gui_share_window -id ${DLPane.1} -type Data] }
-gui_set_window_pref_key -window ${DLPane.1} -key dock_width -value_type integer -value 390
-gui_set_window_pref_key -window ${DLPane.1} -key dock_height -value_type integer -value 500
+gui_set_window_pref_key -window ${DLPane.1} -key dock_width -value_type integer -value 383
+gui_set_window_pref_key -window ${DLPane.1} -key dock_height -value_type integer -value 352
 gui_set_window_pref_key -window ${DLPane.1} -key dock_offset -value_type integer -value 0
-gui_update_layout -id ${DLPane.1} {{left 0} {top 0} {width 389} {height 428} {dock_state left} {dock_on_new_line true} {child_data_colvariable 194} {child_data_colvalue 105} {child_data_coltype 94} {child_data_col1 0} {child_data_col2 1} {child_data_col3 2}}
-set Console.1 [gui_create_window -type Console -parent ${TopLevel.1} -dock_state bottom -dock_on_new_line true -dock_extent 459]
-gui_set_window_pref_key -window ${Console.1} -key dock_width -value_type integer -value 755
-gui_set_window_pref_key -window ${Console.1} -key dock_height -value_type integer -value 459
+gui_update_layout -id ${DLPane.1} {{left 0} {top 0} {width 382} {height 352} {dock_state left} {dock_on_new_line true} {child_data_colvariable 194} {child_data_colvalue 105} {child_data_coltype 94} {child_data_col1 0} {child_data_col2 1} {child_data_col3 2}}
+set Console.1 [gui_create_window -type Console -parent ${TopLevel.1} -dock_state bottom -dock_on_new_line true -dock_extent 452]
+gui_set_window_pref_key -window ${Console.1} -key dock_width -value_type integer -value 1273
+gui_set_window_pref_key -window ${Console.1} -key dock_height -value_type integer -value 452
 gui_set_window_pref_key -window ${Console.1} -key dock_offset -value_type integer -value 0
-gui_update_layout -id ${Console.1} {{left 0} {top 0} {width 1273} {height 458} {dock_state bottom} {dock_on_new_line true}}
+gui_update_layout -id ${Console.1} {{left 0} {top 0} {width 1269} {height 451} {dock_state bottom} {dock_on_new_line true}}
 #### Start - Readjusting docked view's offset / size
 set dockAreaList { top left right bottom }
 foreach dockArea $dockAreaList {
@@ -150,6 +150,13 @@ foreach dockArea $dockAreaList {
 #### End - Readjusting docked view's offset / size
 gui_sync_global -id ${TopLevel.1} -option true
 
+# MDI window settings
+set Source.1 [gui_create_window -type {Source}  -parent ${TopLevel.1}]
+gui_show_window -window ${Source.1} -show_state maximized
+gui_update_layout -id ${Source.1} {{show_state maximized} {dock_state undocked} {dock_on_new_line false}}
+
+# End MDI window settings
+
 
 # Create and position top-level window: TopLevel.2
 
@@ -159,7 +166,7 @@ if {![gui_exist_window -window TopLevel.2]} {
 } else { 
     set TopLevel.2 TopLevel.2
 }
-gui_show_window -window ${TopLevel.2} -show_state maximized -rect {{1283 60} {2556 974}}
+gui_show_window -window ${TopLevel.2} -show_state maximized -rect {{3 60} {1276 974}}
 
 # ToolBar settings
 gui_set_toolbar_attributes -toolbar {TimeOperations} -dock_state top
@@ -207,7 +214,7 @@ gui_sync_global -id ${TopLevel.2} -option true
 # MDI window settings
 set Wave.1 [gui_create_window -type {Wave}  -parent ${TopLevel.2}]
 gui_show_window -window ${Wave.1} -show_state maximized
-gui_update_layout -id ${Wave.1} {{show_state maximized} {dock_state undocked} {dock_on_new_line false} {child_wave_left 426} {child_wave_right 842} {child_wave_colname 70} {child_wave_colvalue 352} {child_wave_col1 0} {child_wave_col2 1}}
+gui_update_layout -id ${Wave.1} {{show_state maximized} {dock_state undocked} {dock_on_new_line false} {child_wave_left 368} {child_wave_right 900} {child_wave_colname 173} {child_wave_colvalue 191} {child_wave_col1 0} {child_wave_col2 1}}
 
 # End MDI window settings
 
@@ -246,131 +253,70 @@ gui_set_time_units 1ps
 # Global: Signal Compare
 
 # Global: Signal Groups
-gui_load_child_values {cpuStim.testCpu.forward}
-gui_load_child_values {cpuStim.testCpu}
-gui_load_child_values {cpuStim}
-gui_load_child_values {cpuStim.testCpu.regWrMux}
-gui_load_child_values {cpuStim.testCpu.instructionMemory}
-gui_load_child_values {cpuStim.testCpu.controlUnit}
-gui_load_child_values {cpuStim.testCpu.aluBlock}
-gui_load_child_values {cpuStim.testCpu.registers}
+gui_load_child_values {cpuStim_post.testCpu}
+gui_load_child_values {cpuStim_post}
+gui_load_child_values {cpuStim_post.testCpu.instructionMemory}
+gui_load_child_values {cpuStim_post.testCpu.controlUnit}
+gui_load_child_values {cpuStim_post.testCpu.aluBlock}
+gui_load_child_values {cpuStim_post.testCpu.registers}
 
 
-set _session_group_1 cpuControl_testbench
-gui_sg_create "$_session_group_1"
-set cpuControl_testbench "$_session_group_1"
-
-
-set _session_group_2 cpuStim_1
-gui_sg_create "$_session_group_2"
-set cpuStim_1 "$_session_group_2"
-
-gui_sg_addsignal -group "$_session_group_2" { cpuStim.ClockDelay cpuStim.clk cpuStim.reset cpuStim.testCpu.PC cpuStim.testCpu.PCNext cpuStim.testCpu.instr cpuStim.testCpu.instrE cpuStim.testCpu.registers.r15 cpuStim.testCpu.linkBrAddr cpuStim.testCpu.brExcAddr cpuStim.testCpu.shiftedBranchAddr }
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.ClockDelay}
-gui_set_radix -radix {twosComplement} -signals {V1:cpuStim.ClockDelay}
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.PC}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.PC}
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.PCNext}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.PCNext}
-gui_set_radix -radix {binary} -signals {V1:cpuStim.testCpu.instr}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.instr}
-gui_set_radix -radix {binary} -signals {V1:cpuStim.testCpu.instrE}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.instrE}
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.registers.r15}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.registers.r15}
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.linkBrAddr}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.linkBrAddr}
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.brExcAddr}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.brExcAddr}
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.shiftedBranchAddr}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.shiftedBranchAddr}
-
-set _session_group_3 registers
-gui_sg_create "$_session_group_3"
-set registers "$_session_group_3"
-
-gui_sg_addsignal -group "$_session_group_3" { cpuStim.testCpu.registers.MEM cpuStim.testCpu.brSelE cpuStim.testCpu.whichMOV cpuStim.testCpu.registers.wr_data cpuStim.testCpu.registers.rd_addr_0 cpuStim.testCpu.registers.rd_addr_1 cpuStim.testCpu.registers.wr_addr cpuStim.testCpu.regWriteAddr cpuStim.testCpu.registers.wr_en cpuStim.testCpu.registers.rd_data_0 cpuStim.testCpu.registers.rd_data_1 cpuStim.testCpu.registers.clk }
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.registers.MEM}
-gui_set_radix -radix {twosComplement} -signals {V1:cpuStim.testCpu.registers.MEM}
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.whichMOV}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.whichMOV}
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.registers.wr_data}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.registers.wr_data}
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.registers.rd_addr_0}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.registers.rd_addr_0}
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.registers.rd_addr_1}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.registers.rd_addr_1}
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.registers.wr_addr}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.registers.wr_addr}
-gui_set_radix -radix {binary} -signals {V1:cpuStim.testCpu.registers.rd_data_0}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.registers.rd_data_0}
-gui_set_radix -radix {binary} -signals {V1:cpuStim.testCpu.registers.rd_data_1}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.registers.rd_data_1}
-
-set _session_group_4 $_session_group_3|
-append _session_group_4 regWrMux
-gui_sg_create "$_session_group_4"
-set registers|regWrMux "$_session_group_4"
-
-gui_sg_addsignal -group "$_session_group_4" { cpuStim.testCpu.regWrMux.i0 cpuStim.testCpu.regWrMux.i1 cpuStim.testCpu.regWrMux.i2 cpuStim.testCpu.regWrMux.i3 cpuStim.testCpu.regWrMux.sel cpuStim.testCpu.regWrMux.out }
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.regWrMux.i0}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.regWrMux.i0}
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.regWrMux.i1}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.regWrMux.i1}
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.regWrMux.i2}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.regWrMux.i2}
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.regWrMux.i3}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.regWrMux.i3}
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.regWrMux.sel}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.regWrMux.sel}
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.regWrMux.out}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.regWrMux.out}
-
-gui_sg_move "$_session_group_4" -after "$_session_group_3" -pos 3 
-
-set _session_group_5 controlUnit
-gui_sg_create "$_session_group_5"
-set controlUnit "$_session_group_5"
-
-gui_sg_addsignal -group "$_session_group_5" { cpuStim.testCpu.controlUnit.PC cpuStim.testCpu.controlUnit.instr cpuStim.testCpu.controlUnit.FlagsReg cpuStim.testCpu.controlUnit.clk cpuStim.testCpu.controlUnit.reset cpuStim.testCpu.controlUnit.RegWrite cpuStim.testCpu.controlUnit.MemWrite cpuStim.testCpu.controlUnit.MemRead cpuStim.testCpu.controlUnit.ShiftDir cpuStim.testCpu.controlUnit.keepFlags cpuStim.testCpu.controlUnit.Reg1Loc cpuStim.testCpu.controlUnit.Reg2Loc cpuStim.testCpu.controlUnit.Reg3Loc cpuStim.testCpu.controlUnit.selOpB cpuStim.testCpu.controlUnit.selOpA cpuStim.testCpu.controlUnit.ALUOp cpuStim.testCpu.controlUnit.brSel cpuStim.testCpu.controlUnit.brEx cpuStim.testCpu.controlUnit.selWrData cpuStim.testCpu.controlUnit.opcode }
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.controlUnit.keepFlags}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.controlUnit.keepFlags}
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.controlUnit.Reg1Loc}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.controlUnit.Reg1Loc}
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.controlUnit.Reg2Loc}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.controlUnit.Reg2Loc}
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.controlUnit.Reg3Loc}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.controlUnit.Reg3Loc}
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.controlUnit.selOpB}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.controlUnit.selOpB}
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.controlUnit.ALUOp}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.controlUnit.ALUOp}
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.controlUnit.brSel}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.controlUnit.brSel}
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.controlUnit.selWrData}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.controlUnit.selWrData}
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.controlUnit.opcode}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.controlUnit.opcode}
-
-set _session_group_6 aluBlock
+set _session_group_6 Group1
 gui_sg_create "$_session_group_6"
-set aluBlock "$_session_group_6"
+set Group1 "$_session_group_6"
 
-gui_sg_addsignal -group "$_session_group_6" { cpuStim.testCpu.aluBlock.a cpuStim.testCpu.aluBlock.b cpuStim.testCpu.aluBlock.ALUControl cpuStim.testCpu.aluBlock.Result cpuStim.testCpu.aluBlock.ALUFlags cpuStim.testCpu.aluBlock.temp_op cpuStim.testCpu.aluBlock.carry cpuStim.testCpu.aluBlock.adder_out cpuStim.testCpu.aluBlock.SIZE cpuStim.testCpu.instructionMemory.address cpuStim.testCpu.instructionMemory.instruction cpuStim.testCpu.instructionMemory.clk }
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.aluBlock.SIZE}
-gui_set_radix -radix {twosComplement} -signals {V1:cpuStim.testCpu.aluBlock.SIZE}
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.instructionMemory.address}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.instructionMemory.address}
+gui_sg_addsignal -group "$_session_group_6" { cpuStim_post.testCpu.instructionMemory.address cpuStim_post.testCpu.instructionMemory.instruction cpuStim_post.testCpu.clk cpuStim_post.testCpu.reset cpuStim_post.testCpu.instr cpuStim_post.testCpu.PC cpuStim_post.testCpu.PCNext cpuStim_post.testCpu.brEx cpuStim_post.testCpu.PCE cpuStim_post.testCpu.pcOffset cpuStim_post.testCpu.branchAddr cpuStim_post.testCpu.brSel cpuStim_post.testCpu.FlagsReg }
+gui_set_radix -radix {decimal} -signals {V1:cpuStim_post.testCpu.instructionMemory.address}
+gui_set_radix -radix {unsigned} -signals {V1:cpuStim_post.testCpu.instructionMemory.address}
+gui_set_radix -radix {binary} -signals {V1:cpuStim_post.testCpu.instructionMemory.instruction}
+gui_set_radix -radix {unsigned} -signals {V1:cpuStim_post.testCpu.instructionMemory.instruction}
+gui_set_radix -radix {binary} -signals {V1:cpuStim_post.testCpu.instr}
+gui_set_radix -radix {unsigned} -signals {V1:cpuStim_post.testCpu.instr}
+gui_set_radix -radix {decimal} -signals {V1:cpuStim_post.testCpu.PC}
+gui_set_radix -radix {unsigned} -signals {V1:cpuStim_post.testCpu.PC}
 
-set _session_group_7 forward
+set _session_group_7 registers
 gui_sg_create "$_session_group_7"
-set forward "$_session_group_7"
+set registers "$_session_group_7"
 
-gui_sg_addsignal -group "$_session_group_7" { cpuStim.testCpu.forward.RA1 cpuStim.testCpu.forward.RA2 cpuStim.testCpu.forward.WA3W cpuStim.testCpu.forward.RegWriteW cpuStim.testCpu.forward.Forward1 cpuStim.testCpu.forward.Forward2 cpuStim.testCpu.forward.Match_1 cpuStim.testCpu.forward.Match_2 }
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.forward.RA1}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.forward.RA1}
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.forward.RA2}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.forward.RA2}
+gui_sg_addsignal -group "$_session_group_7" { cpuStim_post.MEM cpuStim_post.testCpu.regWrData cpuStim_post.testCpu.registers.wr_data cpuStim_post.testCpu.registers.PC cpuStim_post.testCpu.registers.wr_addr cpuStim_post.testCpu.registers.rd_addr_0 cpuStim_post.testCpu.registers.rd_addr_1 cpuStim_post.testCpu.registers.rd_data_0 cpuStim_post.testCpu.registers.rd_data_1 cpuStim_post.testCpu.registers.clk cpuStim_post.testCpu.registers.reset cpuStim_post.testCpu.registers.wr_en }
+gui_set_radix -radix {decimal} -signals {V1:cpuStim_post.testCpu.regWrData}
+gui_set_radix -radix {twosComplement} -signals {V1:cpuStim_post.testCpu.regWrData}
+gui_set_radix -radix {decimal} -signals {V1:cpuStim_post.testCpu.registers.wr_data}
+gui_set_radix -radix {twosComplement} -signals {V1:cpuStim_post.testCpu.registers.wr_data}
+gui_set_radix -radix {decimal} -signals {V1:cpuStim_post.testCpu.registers.rd_data_0}
+gui_set_radix -radix {twosComplement} -signals {V1:cpuStim_post.testCpu.registers.rd_data_0}
+gui_set_radix -radix {decimal} -signals {V1:cpuStim_post.testCpu.registers.rd_data_1}
+gui_set_radix -radix {twosComplement} -signals {V1:cpuStim_post.testCpu.registers.rd_data_1}
+
+set _session_group_8 controlUnit
+gui_sg_create "$_session_group_8"
+set controlUnit "$_session_group_8"
+
+gui_sg_addsignal -group "$_session_group_8" { cpuStim_post.testCpu.controlUnit.PC cpuStim_post.testCpu.controlUnit.instr cpuStim_post.testCpu.controlUnit.FlagsReg cpuStim_post.testCpu.controlUnit.ShiftDir cpuStim_post.testCpu.controlUnit.keepFlags cpuStim_post.testCpu.controlUnit.Reg1Loc cpuStim_post.testCpu.controlUnit.Reg2Loc cpuStim_post.testCpu.controlUnit.Reg3Loc cpuStim_post.testCpu.controlUnit.selOpB cpuStim_post.testCpu.controlUnit.ALUOp cpuStim_post.testCpu.controlUnit.brSel cpuStim_post.testCpu.controlUnit.selWrData cpuStim_post.testCpu.controlUnit.clk cpuStim_post.testCpu.controlUnit.reset cpuStim_post.testCpu.controlUnit.RegWrite cpuStim_post.testCpu.controlUnit.MemWrite cpuStim_post.testCpu.controlUnit.MemRead cpuStim_post.testCpu.controlUnit.selOpA cpuStim_post.testCpu.controlUnit.brEx }
+gui_set_radix -radix {binary} -signals {V1:cpuStim_post.testCpu.controlUnit.instr}
+gui_set_radix -radix {unsigned} -signals {V1:cpuStim_post.testCpu.controlUnit.instr}
+
+set _session_group_9 aluBlock
+gui_sg_create "$_session_group_9"
+set aluBlock "$_session_group_9"
+
+gui_sg_addsignal -group "$_session_group_9" { cpuStim_post.testCpu.aluBlock.a cpuStim_post.testCpu.aluBlock.b cpuStim_post.testCpu.aluBlock.ALUControl cpuStim_post.testCpu.aluBlock.Result cpuStim_post.testCpu.aluBlock.ALUFlags cpuStim_post.testCpu.aluBlock.temp_op cpuStim_post.testCpu.aluBlock.adder_out }
+gui_set_radix -radix {decimal} -signals {V1:cpuStim_post.testCpu.aluBlock.a}
+gui_set_radix -radix {twosComplement} -signals {V1:cpuStim_post.testCpu.aluBlock.a}
+gui_set_radix -radix {decimal} -signals {V1:cpuStim_post.testCpu.aluBlock.b}
+gui_set_radix -radix {twosComplement} -signals {V1:cpuStim_post.testCpu.aluBlock.b}
+gui_set_radix -radix {decimal} -signals {V1:cpuStim_post.testCpu.aluBlock.Result}
+gui_set_radix -radix {twosComplement} -signals {V1:cpuStim_post.testCpu.aluBlock.Result}
+gui_set_radix -radix {decimal} -signals {V1:cpuStim_post.testCpu.aluBlock.temp_op}
+gui_set_radix -radix {twosComplement} -signals {V1:cpuStim_post.testCpu.aluBlock.temp_op}
+gui_set_radix -radix {decimal} -signals {V1:cpuStim_post.testCpu.aluBlock.adder_out}
+gui_set_radix -radix {twosComplement} -signals {V1:cpuStim_post.testCpu.aluBlock.adder_out}
+
+set _session_group_10 forward
+gui_sg_create "$_session_group_10"
+set forward "$_session_group_10"
+
 
 # Global: Highlighting
 
@@ -380,7 +326,7 @@ gui_change_stack_mode -mode list
 # Post database loading setting...
 
 # Restore C1 time
-gui_set_time -C1_only 190351
+gui_set_time -C1_only 384570
 
 
 
@@ -405,19 +351,23 @@ gui_list_set_filter -id ${Hier.1} -list { {Package 1} {All 0} {Process 1} {VirtP
 gui_list_set_filter -id ${Hier.1} -text {*}
 gui_hier_list_init -id ${Hier.1}
 gui_change_design -id ${Hier.1} -design V1
-catch {gui_list_expand -id ${Hier.1} cpuStim}
-catch {gui_list_select -id ${Hier.1} {cpuStim.testCpu}}
-gui_view_scroll -id ${Hier.1} -vertical -set 0
+gui_view_scroll -id ${Hier.1} -vertical -set 180
 gui_view_scroll -id ${Hier.1} -horizontal -set 0
 
 # Data 'Data.1'
 gui_list_set_filter -id ${Data.1} -list { {Buffer 1} {Input 1} {Others 1} {Linkage 1} {Output 1} {LowPower 1} {Parameter 1} {All 1} {Aggregate 1} {LibBaseMember 1} {Event 1} {Assertion 1} {Constant 1} {Interface 1} {BaseMembers 1} {Signal 1} {$unit 1} {Inout 1} {Variable 1} }
-gui_list_set_filter -id ${Data.1} -text {brSelE}
-gui_list_show_data -id ${Data.1} {cpuStim.testCpu}
+gui_list_set_filter -id ${Data.1} -text {forward*}
 gui_view_scroll -id ${Data.1} -vertical -set 0
 gui_view_scroll -id ${Data.1} -horizontal -set 0
-gui_view_scroll -id ${Hier.1} -vertical -set 0
+gui_view_scroll -id ${Hier.1} -vertical -set 180
 gui_view_scroll -id ${Hier.1} -horizontal -set 0
+
+# Source 'Source.1'
+gui_src_value_annotate -id ${Source.1} -switch false
+gui_set_env TOGGLE::VALUEANNOTATE 0
+gui_open_source -id ${Source.1}  -replace -active AN2D8 /home/lab.apps/vlsiapps/kits/tsmc/N65RF/1.0c_cdb/digital/Front_End/verilog/tcbn65gplus_140b/tcbn65gplus.v
+gui_view_scroll -id ${Source.1} -vertical -set 720
+gui_src_set_reusable -id ${Source.1}
 
 # View 'Wave.1'
 gui_wv_sync -id ${Wave.1} -switch false
@@ -428,62 +378,60 @@ gui_list_set_height -id Wave -height 25
 set origGroupCreationState [gui_list_create_group_when_add -wave]
 gui_list_create_group_when_add -wave -disable
 gui_marker_set_ref -id ${Wave.1}  C1
-gui_wv_zoom_timerange -id ${Wave.1} 89440 221908
-gui_list_add_group -id ${Wave.1} -after {New Group} {cpuStim_1}
+gui_wv_zoom_timerange -id ${Wave.1} 0 1790000
+gui_list_add_group -id ${Wave.1} -after {New Group} {Group1}
 gui_list_add_group -id ${Wave.1} -after {New Group} {registers}
-gui_list_add_group -id ${Wave.1} -after {{cpuStim.testCpu.whichMOV[15:0]}} {registers|regWrMux}
 gui_list_add_group -id ${Wave.1} -after {New Group} {controlUnit}
 gui_list_add_group -id ${Wave.1} -after {New Group} {aluBlock}
 gui_list_add_group -id ${Wave.1} -after {New Group} {forward}
-gui_list_expand -id ${Wave.1} cpuStim.testCpu.registers.MEM
-gui_list_expand -id ${Wave.1} cpuStim.testCpu.brSelE
-gui_list_select -id ${Wave.1} {cpuStim.testCpu.registers.MEM }
-gui_set_radix -radix unsigned -signal {{cpuStim.testCpu.registers.MEM[14]}}
-gui_set_radix -radix decimal -signal {{cpuStim.testCpu.registers.MEM[14]}}
-gui_set_radix -radix twosComplement -signal {{cpuStim.testCpu.registers.MEM[14]}}
-gui_set_radix -radix unsigned -signal {{cpuStim.testCpu.registers.MEM[13]}}
-gui_set_radix -radix decimal -signal {{cpuStim.testCpu.registers.MEM[13]}}
-gui_set_radix -radix twosComplement -signal {{cpuStim.testCpu.registers.MEM[13]}}
-gui_set_radix -radix unsigned -signal {{cpuStim.testCpu.registers.MEM[12]}}
-gui_set_radix -radix decimal -signal {{cpuStim.testCpu.registers.MEM[12]}}
-gui_set_radix -radix twosComplement -signal {{cpuStim.testCpu.registers.MEM[12]}}
-gui_set_radix -radix unsigned -signal {{cpuStim.testCpu.registers.MEM[11]}}
-gui_set_radix -radix decimal -signal {{cpuStim.testCpu.registers.MEM[11]}}
-gui_set_radix -radix twosComplement -signal {{cpuStim.testCpu.registers.MEM[11]}}
-gui_set_radix -radix unsigned -signal {{cpuStim.testCpu.registers.MEM[10]}}
-gui_set_radix -radix decimal -signal {{cpuStim.testCpu.registers.MEM[10]}}
-gui_set_radix -radix twosComplement -signal {{cpuStim.testCpu.registers.MEM[10]}}
-gui_set_radix -radix unsigned -signal {{cpuStim.testCpu.registers.MEM[9]}}
-gui_set_radix -radix decimal -signal {{cpuStim.testCpu.registers.MEM[9]}}
-gui_set_radix -radix twosComplement -signal {{cpuStim.testCpu.registers.MEM[9]}}
-gui_set_radix -radix unsigned -signal {{cpuStim.testCpu.registers.MEM[8]}}
-gui_set_radix -radix decimal -signal {{cpuStim.testCpu.registers.MEM[8]}}
-gui_set_radix -radix twosComplement -signal {{cpuStim.testCpu.registers.MEM[8]}}
-gui_set_radix -radix unsigned -signal {{cpuStim.testCpu.registers.MEM[7]}}
-gui_set_radix -radix decimal -signal {{cpuStim.testCpu.registers.MEM[7]}}
-gui_set_radix -radix twosComplement -signal {{cpuStim.testCpu.registers.MEM[7]}}
-gui_set_radix -radix unsigned -signal {{cpuStim.testCpu.registers.MEM[6]}}
-gui_set_radix -radix decimal -signal {{cpuStim.testCpu.registers.MEM[6]}}
-gui_set_radix -radix twosComplement -signal {{cpuStim.testCpu.registers.MEM[6]}}
-gui_set_radix -radix unsigned -signal {{cpuStim.testCpu.registers.MEM[5]}}
-gui_set_radix -radix decimal -signal {{cpuStim.testCpu.registers.MEM[5]}}
-gui_set_radix -radix twosComplement -signal {{cpuStim.testCpu.registers.MEM[5]}}
-gui_set_radix -radix unsigned -signal {{cpuStim.testCpu.registers.MEM[4]}}
-gui_set_radix -radix decimal -signal {{cpuStim.testCpu.registers.MEM[4]}}
-gui_set_radix -radix twosComplement -signal {{cpuStim.testCpu.registers.MEM[4]}}
-gui_set_radix -radix unsigned -signal {{cpuStim.testCpu.registers.MEM[3]}}
-gui_set_radix -radix decimal -signal {{cpuStim.testCpu.registers.MEM[3]}}
-gui_set_radix -radix twosComplement -signal {{cpuStim.testCpu.registers.MEM[3]}}
-gui_set_radix -radix unsigned -signal {{cpuStim.testCpu.registers.MEM[2]}}
-gui_set_radix -radix decimal -signal {{cpuStim.testCpu.registers.MEM[2]}}
-gui_set_radix -radix twosComplement -signal {{cpuStim.testCpu.registers.MEM[2]}}
-gui_set_radix -radix unsigned -signal {{cpuStim.testCpu.registers.MEM[1]}}
-gui_set_radix -radix decimal -signal {{cpuStim.testCpu.registers.MEM[1]}}
-gui_set_radix -radix twosComplement -signal {{cpuStim.testCpu.registers.MEM[1]}}
-gui_set_radix -radix unsigned -signal {{cpuStim.testCpu.registers.MEM[0]}}
-gui_set_radix -radix decimal -signal {{cpuStim.testCpu.registers.MEM[0]}}
-gui_set_radix -radix twosComplement -signal {{cpuStim.testCpu.registers.MEM[0]}}
-gui_seek_criteria -id ${Wave.1} {Rising}
+gui_list_expand -id ${Wave.1} cpuStim_post.MEM
+gui_list_select -id ${Wave.1} {cpuStim_post.testCpu.aluBlock.ALUControl }
+gui_set_radix -radix unsigned -signal {{cpuStim_post.MEM[14]}}
+gui_set_radix -radix decimal -signal {{cpuStim_post.MEM[14]}}
+gui_set_radix -radix twosComplement -signal {{cpuStim_post.MEM[14]}}
+gui_set_radix -radix unsigned -signal {{cpuStim_post.MEM[13]}}
+gui_set_radix -radix decimal -signal {{cpuStim_post.MEM[13]}}
+gui_set_radix -radix twosComplement -signal {{cpuStim_post.MEM[13]}}
+gui_set_radix -radix unsigned -signal {{cpuStim_post.MEM[12]}}
+gui_set_radix -radix decimal -signal {{cpuStim_post.MEM[12]}}
+gui_set_radix -radix twosComplement -signal {{cpuStim_post.MEM[12]}}
+gui_set_radix -radix unsigned -signal {{cpuStim_post.MEM[11]}}
+gui_set_radix -radix decimal -signal {{cpuStim_post.MEM[11]}}
+gui_set_radix -radix twosComplement -signal {{cpuStim_post.MEM[11]}}
+gui_set_radix -radix unsigned -signal {{cpuStim_post.MEM[10]}}
+gui_set_radix -radix decimal -signal {{cpuStim_post.MEM[10]}}
+gui_set_radix -radix twosComplement -signal {{cpuStim_post.MEM[10]}}
+gui_set_radix -radix unsigned -signal {{cpuStim_post.MEM[9]}}
+gui_set_radix -radix decimal -signal {{cpuStim_post.MEM[9]}}
+gui_set_radix -radix twosComplement -signal {{cpuStim_post.MEM[9]}}
+gui_set_radix -radix unsigned -signal {{cpuStim_post.MEM[8]}}
+gui_set_radix -radix decimal -signal {{cpuStim_post.MEM[8]}}
+gui_set_radix -radix twosComplement -signal {{cpuStim_post.MEM[8]}}
+gui_set_radix -radix unsigned -signal {{cpuStim_post.MEM[7]}}
+gui_set_radix -radix decimal -signal {{cpuStim_post.MEM[7]}}
+gui_set_radix -radix twosComplement -signal {{cpuStim_post.MEM[7]}}
+gui_set_radix -radix unsigned -signal {{cpuStim_post.MEM[6]}}
+gui_set_radix -radix decimal -signal {{cpuStim_post.MEM[6]}}
+gui_set_radix -radix twosComplement -signal {{cpuStim_post.MEM[6]}}
+gui_set_radix -radix unsigned -signal {{cpuStim_post.MEM[5]}}
+gui_set_radix -radix decimal -signal {{cpuStim_post.MEM[5]}}
+gui_set_radix -radix twosComplement -signal {{cpuStim_post.MEM[5]}}
+gui_set_radix -radix unsigned -signal {{cpuStim_post.MEM[4]}}
+gui_set_radix -radix decimal -signal {{cpuStim_post.MEM[4]}}
+gui_set_radix -radix twosComplement -signal {{cpuStim_post.MEM[4]}}
+gui_set_radix -radix unsigned -signal {{cpuStim_post.MEM[3]}}
+gui_set_radix -radix decimal -signal {{cpuStim_post.MEM[3]}}
+gui_set_radix -radix twosComplement -signal {{cpuStim_post.MEM[3]}}
+gui_set_radix -radix unsigned -signal {{cpuStim_post.MEM[2]}}
+gui_set_radix -radix decimal -signal {{cpuStim_post.MEM[2]}}
+gui_set_radix -radix twosComplement -signal {{cpuStim_post.MEM[2]}}
+gui_set_radix -radix unsigned -signal {{cpuStim_post.MEM[1]}}
+gui_set_radix -radix decimal -signal {{cpuStim_post.MEM[1]}}
+gui_set_radix -radix twosComplement -signal {{cpuStim_post.MEM[1]}}
+gui_set_radix -radix unsigned -signal {{cpuStim_post.MEM[0]}}
+gui_set_radix -radix decimal -signal {{cpuStim_post.MEM[0]}}
+gui_set_radix -radix twosComplement -signal {{cpuStim_post.MEM[0]}}
+gui_seek_criteria -id ${Wave.1} {Any Edge}
 
 
 
@@ -498,16 +446,17 @@ if { $groupExD } {
 }
 gui_list_set_filter -id ${Wave.1} -list { {Buffer 1} {Input 1} {Others 1} {Linkage 1} {Output 1} {Parameter 1} {All 1} {Aggregate 1} {LibBaseMember 1} {Event 1} {Assertion 1} {Constant 1} {Interface 1} {BaseMembers 1} {Signal 1} {$unit 1} {Inout 1} {Variable 1} }
 gui_list_set_filter -id ${Wave.1} -text {*}
-gui_list_set_insertion_bar  -id ${Wave.1} -group registers  -item {cpuStim.testCpu.registers.MEM[14:0][15:0]} -position below
+gui_list_set_insertion_bar  -id ${Wave.1} -group forward  -position in
 
-gui_marker_move -id ${Wave.1} {C1} 190351
+gui_marker_move -id ${Wave.1} {C1} 384570
 gui_view_scroll -id ${Wave.1} -vertical -set 0
 gui_show_grid -id ${Wave.1} -enable false
 # Restore toplevel window zorder
 # The toplevel window could be closed if it has no view/pane
 if {[gui_exist_window -window ${TopLevel.1}]} {
 	gui_set_active_window -window ${TopLevel.1}
-	gui_set_active_window -window ${Console.1}
+	gui_set_active_window -window ${Source.1}
+	gui_set_active_window -window ${HSPane.1}
 }
 if {[gui_exist_window -window ${TopLevel.2}]} {
 	gui_set_active_window -window ${TopLevel.2}

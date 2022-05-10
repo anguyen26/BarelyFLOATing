@@ -1,6 +1,7 @@
 `timescale 1ps/1ps
 module cpu(
-	input logic clk, reset
+	input logic clk, reset,
+	output logic [14:0][15:0] MEM
 );
 	
 	// Program Counter logic
@@ -20,7 +21,7 @@ module cpu(
 					computationResult, dataOut, opA, opB, whichMOV, 
 					regWrData, MOVorLR, opA_pre, opB_pre;
 
-	logic [15:0]	ReadData1E, ReadData2E, selectedData2E, imm3, imm5, imm7, imm8,
+	logic [15:0]	ReadData1E, ReadData2E, selectedData2E,
 					selectedExtendedE, aluOutputE, shiftOutputE,
 					computationResultE, dataOutE, opAE, opBE, 
 					whichMOVE, MOVorLRE, prev_calc;
@@ -40,11 +41,12 @@ module cpu(
 	// Control Logic
 	logic 		RegWrite, MemWrite, MemRead, ALUSrc, brEx, selOpA;
 	logic [1:0] 	ShiftDir, brSel, Reg1Loc, Reg2Loc, Reg3Loc, selWrData;
-	logic [3:0] 	keepFlags, selOpB;
+	logic [3:0] 	keepFlags;
+	logic [1:0]	selOpB, selOpBE;
 
 	logic 			RegWriteE, MemWriteE, MemReadE, ALUSrcE, brExE, selOpAE;
 	logic [1:0] 	ShiftDirE, brSelE, Reg1LocE, Reg2LocE, Reg3LocE, selWrDataE;
-	logic [3:0] 	keepFlagsE, selOpBE;
+	logic [3:0] 	keepFlagsE;
 
 	// Forwarding Logic
 	logic Forward1, Forward2;
@@ -57,7 +59,7 @@ module cpu(
 	register PCRegister(.dataIn(PCNext), .dataOut(PC), .writeEnable(1'b1), .reset, .clk);
 	
 	// Outputs the instruction that correlates with the current clock cycle's PC
-	instructmem instructionMemory(.address(PC), .instruction(instr), .clk);
+	instructmem_syn instructionMemory(.address(PC), .instruction(instr), .clk);
 
 	//********************************************************************************************\\
 	//************************************** Register Fetch **************************************\\
@@ -70,14 +72,14 @@ module cpu(
 	//*************** Forwarding Unit *****************\\
 	
 	//Takes in readAddresses and determines where to forward data from 
-	forwardingUnit forward(.RA1(reg1Addr), .RA2(reg2Addr), .WA3W(regWriteAdderE), .RegWriteW(RegWriteE), .Forward1, .Forward2);
+	//forwardingUnit forward(.RA1(reg1Addr), .RA2(reg2Addr), .WA3W(), .RegWriteW(RegWriteE), .Forward1, .Forward2);
 	
 	// Selects the regWriteAddr
 	mux4x4_4 regWriteMux(.i0({1'b0, instr[2:0]}), .i1(4'b1101), .i2({1'b0, instr[10:8]}), .i3(4'b1110), .sel(Reg3Loc), .out(regWriteAddr));
 
 	// Instantiates the register files. Write address and RegWrite are controlled by the Write Back stage. 
 	regfile registers(.clk(!clk), .reset, .wr_en(RegWriteE), .wr_data(regWrData), .PC, .wr_addr(regWriteAddrE), .rd_data_0(ReadData1), .rd_data_1(ReadData2), 
-						.rd_addr_0(reg1Addr), .rd_addr_1(reg2Addr));
+						.rd_addr_0(reg1Addr), .rd_addr_1(reg2Addr), .MEM);
 	
 	//*************** Control Unit *****************\\
 
@@ -103,7 +105,8 @@ module cpu(
 	adder brancherAdder(.in1(PC), .in2(shiftedBranchAddr), .out(pcOffset), .cout());
 
 	// Chooses between either the normal PC offset from standard branch or branch exchange
-	assign PCNext = brEx ? (brExcAddr << 2) : pcOffset;
+	//assign PCNext = brEx ? (brExcAddr << 2) : pcOffset;
+	mux2xn_n #(.N(16)) mux_PCNext (.i0(pcOffset), .i1(brExcAddr << 2), .sel(brEx), .out(PCNext));
 
 	
 	//********************************************************************************************\\
@@ -115,13 +118,13 @@ module cpu(
 	pipelineReg #(.bitWidth(16)) decodeToExec0 (.D(instr), .Q(instrE), .en(1'b1), .clear(1'b0), .clk);
 	pipelineReg #(.bitWidth(16)) decodeToExec1 (.D(ReadData1), .Q(ReadData1E), .en(1'b1), .clear(1'b0), .clk);
 	pipelineReg #(.bitWidth(16)) decodeToExec2 (.D(ReadData2), .Q(ReadData2E), .en(1'b1), .clear(1'b0), .clk);
-	pipelineReg #(.bitWidth(16)) decodeToExec3 (.D(regWriteAddr), .Q(regWriteAddrE), .en(1'b1), .clear(1'b0), .clk);
+	pipelineReg #(.bitWidth(4)) decodeToExec3 (.D(regWriteAddr), .Q(regWriteAddrE), .en(1'b1), .clear(1'b0), .clk);
 	pipelineReg #(.bitWidth(2)) decodeToExec4 (.D(brSel), .Q(brSelE), .en(1'b1), .clear(1'b0), .clk);
 	pipelineReg #(.bitWidth(3)) decodeToExec5 (.D(ALUOp), .Q(ALUOpE), .en(1'b1), .clear(1'b0), .clk);
 	pipelineReg #(.bitWidth(2)) decodeToExec6 (.D(ShiftDir), .Q(ShiftDirE), .en(1'b1), .clear(1'b0), .clk);
 	pipelineReg #(.bitWidth(16)) decodeToExec7 (.D(PC), .Q(PCE), .en(1'b1), .clear(1'b0), .clk);
 	pipelineReg #(.bitWidth(1)) decodeToExec8 (.D(selOpA), .Q(selOpAE), .en(1'b1), .clear(1'b0), .clk);
-	pipelineReg #(.bitWidth(4)) decodeToExec9 (.D(selOpB), .Q(selOpBE), .en(1'b1), .clear(1'b0), .clk);
+	pipelineReg #(.bitWidth(2)) decodeToExec9 (.D(selOpB), .Q(selOpBE), .en(1'b1), .clear(1'b0), .clk);
 	pipelineReg #(.bitWidth(1)) decodeToExec10 (.D(MemWrite), .Q(MemWriteE), .en(1'b1), .clear(1'b0), .clk);
 	pipelineReg #(.bitWidth(1)) decodeToExec11 (.D(RegWrite), .Q(RegWriteE), .en(1'b1), .clear(1'b0), .clk);
 	pipelineReg #(.bitWidth(1)) decodeToExec12 (.D(MemRead), .Q(MemReadE), .en(1'b1), .clear(1'b0), .clk);
@@ -137,20 +140,24 @@ module cpu(
 	assign imm5 = {{11{1'b0}}, {instrE[10:6]}};
 
 	// Selects operand A for ALU
-	assign opA_pre = selOpAE ? PCE : ReadData1E;
-	
+	//assign opA_pre = selOpAE ? PCE : ReadData1E;
+	mux2xn_n #(.N(16)) mux_alu0_pre (.i0(ReadData1E), .i1(PCE), .sel(selOpAE), .out(opAE));
 
-	assign opAE = Forward1 ? regWrData : opA_pre;
+	//assign opAE = Forward1 ? regWrData : opA_pre;
+	//mux2xn_n #(.N(16)) mux_alu0 (.i0(opA_pre), .i1(regWrData), .sel(Forward1), .out(opAE));
 	// Selects operand B for ALU
-	mux5x16_16 opBMux0(.i0(ReadData2E), .i1(imm3), .i2(imm7), .i3(imm5), .i4(16'd1), .sel(selOpBE), .out(opB_pre));
-	assign opBE = Forward2 ? regWrData : opB_pre;
+	mux4x16_16 opBMux0(.i0(ReadData2E), .i1(imm3), .i2(imm7), .i3(imm5), .sel(selOpBE), .out(opBE));
+	//assign opBE = Forward2 ? regWrData : opB_pre;
+	//mux2xn_n #(.N(16)) mux_alu1 (.i0(opB_pre), .i1(regWrData), .sel(Forward2), .out(opBE));
 
 	// Instantiates the ALU
-	ALU aluBlock(.a(opAE), .b(opBE), .ALUControl(ALUOpE), .Result(aluOutput), .ALUFlags);
+	alu aluBlock(.a(opAE), .b(opBE), .ALUControl(ALUOpE), .Result(aluOutput), .ALUFlags);
 	
 	// Determines whether to set the system flags to the new values from ALU based on the instruction
-	register_4 FlagsRegister(.dataIn(ALUFlags), .dataOut(FlagsReg), .writeEnable(keepFlags), .reset, .clk);
-	//assign FlagsReg = keepFlags ? FlagsReg : ALUFlags;
+	register #(.WIDTH(1)) FlagsRegister0(.dataIn(ALUFlags[0]), .dataOut(FlagsReg[0]), .writeEnable(keepFlags[0]), .reset, .clk);
+	register #(.WIDTH(1)) FlagsRegister1(.dataIn(ALUFlags[1]), .dataOut(FlagsReg[1]), .writeEnable(keepFlags[1]), .reset, .clk);
+	register #(.WIDTH(1)) FlagsRegister2(.dataIn(ALUFlags[2]), .dataOut(FlagsReg[2]), .writeEnable(keepFlags[2]), .reset, .clk);
+	register #(.WIDTH(1)) FlagsRegister3(.dataIn(ALUFlags[3]), .dataOut(FlagsReg[3]), .writeEnable(keepFlags[3]), .reset, .clk);
 
 	// Shifts ReadData1 left or right based on a given distance from the instruction. ShiftDirection is determined by control unit
 	shifter shiftBlock(.value(ReadData2E), .mode(ShiftDirE), .distance(ReadData1E), .result(shiftOutput));
@@ -172,9 +179,11 @@ module cpu(
 
 	assign imm8 = {{8{1'b0}}, {instrE[7:0]}};
 	// Select type of MOV
-	assign whichMOV = instrE[13] ? imm8 : ReadData2E;
+	//assign whichMOV = instrE[13] ? imm8 : ReadData2E;
+	mux2xn_n #(.N(16)) mux_MOV (.i0(ReadData2E), .i1(imm8), .sel(instrE[13]), .out(whichMOV));
 	adder LRAdder(.in1(PCE), .in2(16'd4), .out(PCPlus1), .cout());
-	assign MOVorLR = brSelE[0] ? whichMOV : (PCPlus1 >> 2);
+	//assign MOVorLR = brSelE[0] ? whichMOV : (PCPlus1 >> 2);
+	mux2xn_n #(.N(16)) mux_MOV_LR (.i0(PCPlus1 >> 2), .i1(whichMOV), .sel(brSelE[0]), .out(MOVorLR));
 
 	// Based on the instruction choose between the ALU ouput/shifter output/MOV output
 	mux4x16_16 regWrMux(.i0(shiftOutput), .i1(aluOutput), .i2(MOVorLR), .i3(dataOut), .sel(selWrDataE), .out(regWrData));

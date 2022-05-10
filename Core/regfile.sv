@@ -11,11 +11,12 @@ module regfile (
 	input logic [15:0] wr_data, PC, 
 	input logic [3:0] wr_addr,
 	input logic [3:0] rd_addr_0, rd_addr_1,
-	output logic [15:0] rd_data_0, rd_data_1
+	output logic [15:0] rd_data_0, rd_data_1,
+	output logic [14:0][15:0] MEM
 );
 
 	//main memory within the regfile
-	logic [14:0][15:0] MEM;
+	
     logic [15:0] r15;
     assign r15 = PC[15:2];
 

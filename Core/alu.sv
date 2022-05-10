@@ -7,26 +7,43 @@
 // Result - 32b output of the operation from the ALU
 // ALUFlags - vector to hold the four possible flags that the ALU can throw (zero, negative, carry, overflow)
 // FlagsReg - register to hold the flags given FlagWrite
-module ALU #(parameter SIZE = 16) (
-	input logic [SIZE-1:0] a, b,
+module alu (
+	input logic [15:0] a, b,
 	input logic [2:0] ALUControl,
-	output logic [SIZE-1:0] Result,
+	output logic [15:0] Result,
 	output logic [3:0] ALUFlags
 );
 	//this hold the second opperand that goes to the ripple carry addder in the case of subtraction
 	//when it needs to be inverted
-	logic [SIZE-1:0] temp_op;
+	logic [15:0] temp_op;
 
 	//initalize rippleCarryAdder
 	logic carry;
-	logic [SIZE-1:0] adder_out;
-	rippleCarryAdder #(.N(SIZE)) A0 (.opp0(a), .opp1(temp_op), .cin(ALUControl[0]), .cout(carry), .out(adder_out));
+	logic [15:0] adder_out;
+	rippleCarryAdder #(.N(16)) A0 (.opp0(a), .opp1(temp_op), .cin(ALUControl[0]), .cout(carry), .out(adder_out));
 
 	//assign static bits
-	assign ALUFlags[3] = Result[SIZE-1]; //negative bit is the sign bit of the result
-	assign ALUFlags[2] = (Result == 32'b0); //zero bit if result is zero
-	assign ALUFlags[1] = carry; //carry out
-	assign ALUFlags[0] = (temp_op[SIZE-1] && a[SIZE-1] && (!Result[SIZE-1])) || ((!temp_op[SIZE-1]) && (!a[SIZE-1]) && Result[SIZE-1]);
+	always_comb begin
+		if (ALUControl == 3'b000 | ALUControl == 3'b001) begin
+			ALUFlags[3] = Result[15]; //negative bit is the sign bit of the result
+			ALUFlags[2] = (Result == 16'b0); //zero bit if result is zero
+			ALUFlags[1] = 0; //carry out
+			ALUFlags[0] = (temp_op[15] && a[15] && (!Result[15])) || ((!temp_op[15]) && (!a[15]) && Result[15]);
+		end
+		else if(ALUControl == 3'b110) begin
+			ALUFlags[3] = Result[15]; //negative bit is the sign bit of the result
+			ALUFlags[2] = (Result == 16'b0); //zero bit if result is zero
+			ALUFlags[1] = 0; //carry out
+			ALUFlags[0] = 0;
+		end
+		else begin
+			ALUFlags[3] = Result[15]; //negative bit is the sign bit of the result
+			ALUFlags[2] = (Result == 16'b0); //zero bit if result is zero
+			ALUFlags[1] = carry; //carry out
+			ALUFlags[0] = 0;
+		end
+	end
+	
 
 	//perform combinational logic for operations
 	always_comb begin

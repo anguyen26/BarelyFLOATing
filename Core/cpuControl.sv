@@ -12,11 +12,10 @@ module cpuControl(
 	
 	// Control signals for datapath
 	output logic 		RegWrite, MemWrite, MemRead,
-						noop,
     output logic [1:0] 	ShiftDir,
 	output logic [3:0] 	keepFlags,
     output logic [1:0] 	Reg1Loc, Reg2Loc, Reg3Loc,
-    output logic [3:0] 	selOpB,
+    output logic [1:0] 	selOpB,
     output logic 		selOpA,
 
 	// Controls the operation the ALU will perform
@@ -52,7 +51,7 @@ module cpuControl(
 				keepFlags = 4'b0000;
 				Reg2Loc = 2'b11;
 				Reg3Loc = 2'b00;
- 				selOpB = 3'd0;
+ 				selOpB = 2'd0;
  				ALUOp = 3'd6;
 				brSel = 2'b11;
 				brEx = 0;
@@ -68,7 +67,7 @@ module cpuControl(
 				Reg1Loc = 2'b01;
 				Reg3Loc = 2'b00;
  				selOpA = 1'b0;
- 				selOpB = 3'd1;
+ 				selOpB = 2'd1;
 				ALUOp = 3'b000;
 				brSel = 2'b11;
 				brEx = 0;
@@ -84,7 +83,7 @@ module cpuControl(
 				Reg2Loc = 2'b00;
 				Reg3Loc = 2'b00;
  				selOpA = 1'b0;
- 				selOpB = 3'b0;
+ 				selOpB = 2'b0;
 				ALUOp = 3'b000;
 				brSel = 2'b11;
 				brEx = 0;
@@ -99,7 +98,7 @@ module cpuControl(
 				Reg1Loc = 1'b0;
 				Reg3Loc = 2'b01;
  				selOpA = 1'b0;
- 				selOpB = 3'd2;
+ 				selOpB = 2'd2;
 				ALUOp = 3'b000;
 				brSel = 2'b11;
 				brEx = 0;
@@ -115,7 +114,7 @@ module cpuControl(
 				Reg1Loc = 1;
 				Reg3Loc = 2'b00;
  				selOpA = 1'b0;
- 				selOpB = 3'd1;
+ 				selOpB = 2'd1;
 				ALUOp = 3'b001;
 				brSel = 2'b11;
 				brEx = 0;
@@ -131,7 +130,7 @@ module cpuControl(
 				Reg2Loc = 2'b00;
 				Reg3Loc = 2'b00;
  				selOpA = 1'b0;
- 				selOpB = 3'b0;
+ 				selOpB = 2'b0;
 				ALUOp = 3'b001;
 				brSel = 2'b11;
 				brEx = 0;
@@ -146,7 +145,7 @@ module cpuControl(
 				Reg1Loc = 0;
 				Reg3Loc = 2'b01;
  				selOpA = 1'b0;
- 				selOpB = 3'd2;
+ 				selOpB = 2'd2;
 				ALUOp = 3'b001;
 				brSel = 2'b11;
 				brEx = 0;
@@ -162,7 +161,7 @@ module cpuControl(
 				Reg1Loc = 2'b10;
 				Reg2Loc = 2'b01;
  				selOpA = 1'b0;
- 				selOpB = 3'd0;
+ 				selOpB = 2'd0;
 				ALUOp = 3'b001;
 				brSel = 2'b11;
 				brEx = 0;
@@ -178,7 +177,7 @@ module cpuControl(
 				Reg2Loc = 2'b10;
 				Reg3Loc = 2'b00;
  				selOpA = 1'b0;
- 				selOpB = 3'd0;
+ 				selOpB = 2'd0;
 				ALUOp = 3'b010;
 				brSel = 2'b11;
 				brEx = 0;
@@ -194,7 +193,7 @@ module cpuControl(
 				Reg2Loc = 2'b10;
 				Reg3Loc = 2'b00;
  				selOpA = 1'b0;
- 				selOpB = 3'd0;
+ 				selOpB = 2'd0;
 				ALUOp = 3'd4;
 				brSel = 2'b11;
 				brEx = 0;
@@ -210,7 +209,7 @@ module cpuControl(
 				Reg2Loc = 2'b10;
 				Reg3Loc = 2'b00;
  				selOpA = 1'b0;
- 				selOpB = 3'd0;
+ 				selOpB = 2'd0;
 				ALUOp = 3'd3;
 				brSel = 2'b11;
 				brEx = 0;
@@ -226,7 +225,7 @@ module cpuControl(
 				Reg2Loc = 2'b10;
 				Reg3Loc = 2'b00;
  				selOpA = 1'b0;
- 				selOpB = 3'd0;
+ 				selOpB = 2'd0;
 				ALUOp = 3'd5;
 				brSel = 2'b11;
 				brEx = 0;
@@ -300,7 +299,7 @@ module cpuControl(
  				Reg2Loc = 2'b10;
 				Reg3Loc = 2'b00;
  				selOpA = 1'b0;
- 				selOpB = 3'd3;
+ 				selOpB = 2'd3;
 				ALUOp = 3'd0;
 				brSel = 2'b11;
 				brEx = 0;
@@ -315,7 +314,7 @@ module cpuControl(
 				Reg1Loc = 2'b01;
 				Reg3Loc = 2'b00;
  				selOpA = 1'b0;
- 				selOpB = 3'd3;
+ 				selOpB = 2'd3;
 				ALUOp = 3'd0;
 				brSel = 2'b11;
 				brEx = 0;
@@ -476,6 +475,7 @@ module cpuControl(
 				RegWrite = 0;
 				MemWrite = 0;
 				keepFlags = 4'b0000;
+
 			end
 		endcase
 	end
