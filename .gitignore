@@ -15,5 +15,8 @@ sim/post-syn/*.*
 command.log
 sapr/syn/design_files/*.*
 sapr/syn/reports/*.*
+sapr/syn/db/*.*
+sapr/syn/ddc/*.*
 sapr/syn/cpu_design/*.*
+sapr/apr/*.*
 

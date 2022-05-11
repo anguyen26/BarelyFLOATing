@@ -5,10 +5,10 @@ module cpuStim_post();
 	
 	logic clk, reset;
 	logic [14:0][15:0] MEM;
+	logic [1023:0][15:0] DMEM;
 	logic [15:0] PC;
-	assign PC = PC >> 2;
 	
-	cpu testCpu(.clk, .reset, .MEM);
+	cpu testCpu(.clk, .reset, .MEM, .PC, .DMEM);
 	
 	initial $timeformat(-9, 2, " ns", 10);
 
@@ -55,15 +55,13 @@ module cpuStim_post();
         for (int i=0; i<15; i++) begin
             $fwrite(f, "%d = %d\n", i, MEM[i]);
         end
-        $fwrite(f, "15 = %d\n", PC);
-	/*
+        $fwrite(f, "15 = %d\n", PC/4);
         $fwrite(f, "Memory content:\n");
         for (int i=0; i<65536; i++) begin
-            if (testCpu.dataMemory.mem[i] != 16'd0) begin;
-                $fwrite(f, "mem[%d] = %d\n", i, testCpu.dataMemory.mem[i]);
+            if (DMEM[i] != 16'd0) begin;
+                $fwrite(f, "mem[%d] = %d\n", i, DMEM[i]);
             end
         end
-	*/
         $fclose(f);
 	
 //		$stop;

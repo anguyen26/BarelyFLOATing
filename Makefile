@@ -13,11 +13,16 @@ simPost: vcs_post dve
 allSYN: instr_gen instr_syn syn vcs_post compare clean
 
 #runs one of the benchmark random tests on syn core
-customSYN: instr_syn_bench edit_iarm iarm syn vcs_post compare
+customSYN: instr_syn_bench edit_iarm iarm syn vcs_post compare clean
+
+simAPR: vcs_apr edit_iarm iarm compare clean
 
 # synthesizes the core RTL with the local tcl scrips
 syn: 
 	make -C sapr/syn syn
+apr:
+	make -C sapr/apr apr
+
 
 edit_tb:
 	sed -i 's;^with\(.*\);with open("tests/$(TEST).txt", "r") as f:;g' \
@@ -56,6 +61,10 @@ vcs_post:
 	@ echo "Running instructions on BarelyFLOATing CPU..."
 	make -C Core vcs_post
 
+vcs_apr:
+	@ echo "Running instructions on BarelyFLOATing CPU..."
+	make -C Core vcs_apr
+
 dve:
 	make -C Core dve
 
@@ -72,4 +81,6 @@ clean:
 	-rm sapr/syn/*.log
 	-rm -r sapr/syn/alib-52/
 	-rm -rf sapr/syn/cpu_design/
+	-rm -rf sapr/apr/cpu_design/
+	-find sapr/apr/ ! -name Makefile ! -name *.sdf ! -name *.v -type f -delete
 	-rm command.log

@@ -1,7 +1,9 @@
 `timescale 1ps/1ps
 module cpu(
 	input logic clk, reset,
-	output logic [14:0][15:0] MEM
+	output logic [14:0][15:0] MEM,
+	output logic [1023:0][15:0] DMEM,
+	output logic [15:0] PC
 );
 	
 	// Program Counter logic

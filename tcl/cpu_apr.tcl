@@ -12,11 +12,11 @@ set link_path {"*" tcbn65gpluswc0d72_ccs.db tcbn65gplusbc0d88_ccs.db tcbn65gplus
 set mw_techfile_path /home/lab.apps/vlsiapps/kits/tsmc/N65RF/1.0c_cdb/digital/Back_End/milkyway/tcbn65gplus_200a/techfiles
 set mw_tech_file $mw_techfile_path/tsmcn65_9lmT2.tf
 set mw_reference_library $TSMCPATH/Back_End/milkyway/tcbn65gplus_200a/frame_only/tcbn65gplus
-create_mw_lib -technology $mw_tech_file -mw_reference_library $mw_reference_library fsm_design      
-open_mw_lib fsm_design
+create_mw_lib -technology $mw_tech_file -mw_reference_library $mw_reference_library cpu_design      
+open_mw_lib cpu_design
 
 #Read in the verilog, uniquify and save the CEL view.
-import_designs fsm.v -format verilog -top fsm
+import_designs ../syn/design_files/cpu.syn.v -format verilog -top cpu
 
 #set up tlu_plus files (for virtual route and post route extraction)
 set_tlu_plus_files \
@@ -41,7 +41,7 @@ derive_pg_connection -power_net VDD -ground_net VSS\
 check_mv_design -power_nets
 
 #Read timing and apply constraints
-read_sdc ./fsm.sdc
+read_sdc ./cpu.sdc
 check_timing
 
 #Check for false or multicycle path settings, any disabled arcs and case_analysis settings
@@ -55,25 +55,19 @@ set_min_library tcbn65gpluswc0d72_ccs.db -min_version tcbn65gplusbc0d88_ccs.db
 
 #Loading and drive settings. 
 # set_drive_cell for inputs
-set_driving_cell -lib_cell INVD1 Reset
-set_driving_cell -lib_cell INVD1 Clock
-set_driving_cell -lib_cell INVD1 A
-set_driving_cell -lib_cell INVD1 B
-# set_load for outputs
-set_load [load_of tcbn65gpluswc0d72_ccs/INVD1/I] [get_ports Status]
-set_load [load_of tcbn65gpluswc0d72_ccs/INVD1/I] [get_ports Output1]
-set_load [load_of tcbn65gpluswc0d72_ccs/INVD1/I] [get_ports Output2]
+set_driving_cell -lib_cell INVD1 reset
+set_driving_cell -lib_cell INVD1 clk
 
 link
 
 #Define design constraints
-set_max_transition 0.1 [get_designs fsm]
-set_max_fanout 6 fsm
-create_clock -name "clk" -period 2 -waveform {0 1} [get_ports Clock] 
+set_max_transition 0.1 [get_designs cpu]
+set_max_fanout 6 cpu
+create_clock -name "clk" -period 2 -waveform {0 1} [get_ports clk] 
 set_clock_uncertainty -setup 0.05 clk
 set_clock_uncertainty -hold 0.01 clk
 set_clock_transition 0.05 [get_clocks]
-set_input_delay 0.1 -clock clk [remove_from_collection [all_inputs] [get_ports Clock]]
+set_input_delay 0.1 -clock clk [remove_from_collection [all_inputs] [get_ports clk]]
 
 #Check clock health and assumptions
 report_clock -skew
@@ -93,7 +87,7 @@ report_timing
 set_zero_interconnect_delay_mode false
 
 #save current milkyway Design so you can obtain it again with open_mw_cel ....
-save_mw_cel -as fsm_data_setup
+save_mw_cel -as cpu_data_setup
 
 #Now you're ready to floorplan the design
 create_floorplan -control_type aspect_ratio\
@@ -135,7 +129,7 @@ create_power_straps -direction horizontal\
 create_fp_placement 
 
 #save current design
-save_mw_cel -as fsm_post_place
+save_mw_cel -as cpu_post_place
 
 #define clock contrains
 set cts_force_user_constraints true
@@ -158,7 +152,7 @@ clock_opt -inter_clock_balance\
 route_zrt_group -all_clock_nets -reuse_existing_global_route true
 
 #save current design
-save_mw_cel -as fsm_post_clk_route
+save_mw_cel -as cpu_post_clk_route
 
 #Fills empty spaces in std cell rows w/ filler cells
 insert_stdcell_filler -cell_with_metal {GFILL10 GFILL4 GFILL3 GFILL2 GFILL1}\
@@ -178,7 +172,7 @@ set short_errors [get_drc_errors -type {Short}]
 verify_lvs
 
 #save the final design
-save_mw_cel -as fsm_post_route
+save_mw_cel -as cpu_post_route
 
 #Avoid issues with upper/lower case confusion esp with spice.
 define_name_rules STANDARD -case
@@ -188,20 +182,20 @@ change_names -rules STANDARD
 extract_rc
 write_parasitics
 
-report_constraints -all_violators -verbose -nosplit > fsm.apr.constraint
-report_timing -path end  -delay max -max_paths 200 -nosplit > fsm.apr.paths.max.rpt
+report_constraints -all_violators -verbose -nosplit > cpu.apr.constraint
+report_timing -path end  -delay max -max_paths 200 -nosplit > cpu.apr.paths.max.rpt
 # report_timing -path full -delay max -max_paths 50  -nosplit > fsm.apr.full_paths.max.rpt
-report_timing -path end  -delay min -max_paths 200 -nosplit > fsm.apr.paths.min.rpt
+report_timing -path end  -delay min -max_paths 200 -nosplit > cpu.apr.paths.min.rpt
 # report_timing -path full -delay min -max_paths 50  -nosplit > fsm.apr.full_paths.min.rpt
 
 #Write out design data
 write_def -lef may_need_for_rotated_vias.lef \
-          -output "fsm.def"\
+          -output "cpu.def"\
           -all_vias
 
 #Write out Verilog of finalized design
-write_verilog fsm.apr.v \
+write_verilog cpu.apr.v \
               -unconnected_ports
 
 #Write out delay and constraints
-write_sdf -context verilog -version 1.0 fsm.apr.sdf
+write_sdf -context verilog -version 1.0 cpu.apr.sdf
