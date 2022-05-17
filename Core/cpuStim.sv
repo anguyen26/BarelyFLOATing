@@ -4,8 +4,11 @@ module cpuStim();
 	parameter ClockDelay = 10000;
 	
 	logic clk, reset;
+	logic [14:0][15:0] MEM;
+	logic [1023:0][15:0] DMEM;
+	logic [15:0] PC;
 	
-	cpu testCpu(.*);
+	cpu testCpu(.clk, .reset, .MEM, .PC, .DMEM);
 	
 	initial $timeformat(-9, 2, " ns", 10);
 

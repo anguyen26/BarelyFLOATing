@@ -1,11 +1,11 @@
-TEST=random10
+TEST=fibonacci
 
 
 # generates random instructions and tests them
 allRTL: instr_gen edit_tb iarm vcs compare
 
 # run 'make custom' to rerun the last random test that was generated
-customRTL: edit_tb iarm vcs compare
+customRTL: instr_syn_bench edit_tb vcs compare
 
 simPost: vcs_post dve
 
@@ -62,7 +62,7 @@ vcs_post:
 	make -C Core vcs_post
 
 vcs_apr:
-	@ echo "Running instructions on BarelyFLOATing CPU..."
+	@ echo "Running instructions on APR Design..."
 	make -C Core vcs_apr
 
 dve:

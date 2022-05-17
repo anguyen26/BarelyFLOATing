@@ -1,11 +1,11 @@
 import sys
 test = sys.argv[1]
 
-bin_file = 'tests/rand_benchmarks/' + test + ".arm"
+bin_file = 'tests/' + test + ".arm"
 fBin = open(bin_file, 'r')
 fVer = open('Core/random.sv', 'w')
 	
-fVer.write('module random (output logic [63:0][15:0] MEM);\n\n')
+fVer.write('module random (output logic [15:0] MEM [63:0]);\n\n')
 i = 0
 for line in fBin:
 	words = []

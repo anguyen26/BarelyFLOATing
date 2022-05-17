@@ -15,5 +15,9 @@ vcs_post:
 	sed -i 's,\[[ \t]*,[,' sv_output.txt
 
 vcs_apr:
-	vcs -f cpu_apr.include +v2k -sverilog -full64 \
-		-debug_pp -timescale=1ns/10ps -l cpu_apr.log
+	vcs -f cpu_apr.include -R +v2k +lint=all -sverilog -full64 \
+		-debug_all -timescale=1ns/10ps -l cpu_apr.log +sdfverbose
+	sed -i 's,^[ \t]*,,' sv_output.txt
+	sed -i 's,=[ \t]*,= ,' sv_output.txt
+	sed -i 's,\[[ \t]*,[,' sv_output.txt
+

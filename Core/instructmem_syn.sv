@@ -34,10 +34,10 @@ module instructmem_syn (
 	
 	// Load the program - change the filename to pick a different program.
 	random loadInstr(.MEM(mem));
-	initial begin
+	/*initial begin
 		
 		$display("Running benchmark: ", `BENCHMARK);
-	end
+	end */
 
 	// Handle the reads.
 	integer i;

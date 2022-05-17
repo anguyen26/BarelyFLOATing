@@ -1,0 +1,22 @@
+ B main
+fibonacci 
+ ADDS R2, R0, R1
+ BX R14
+main 
+ MOVS R0, #1
+ MOVS R1, #1
+ MOVS R3, #0
+ MOVS R4, #7
+for_fibonacci
+ CMP R3, R4
+ BHI end_for_fibonacci
+ BL fibonacci
+ MOV R0, R1
+ MOV R1, R2
+ ADDS R3, R3, #1
+ B for_fibonacci
+end_for_fibonacci
+ MOV R3, R2
+end 
+ NOOP
+ B end

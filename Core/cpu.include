@@ -1,4 +1,5 @@
 mux3x4_4.sv
+mux2xn_n.sv
 mux3x16_16.sv
 mux4x16_16.sv
 mux4x4_4.sv
@@ -16,8 +17,9 @@ register_3.sv
 register_4.sv
 register_5.sv
 regfile.sv
+random.sv
 datamem.sv
-instructmem.sv 
+instructmem_syn.sv 
 rippleCarryAdder.sv
 forwardingUnit.sv
 D_FF.sv
