@@ -1,10 +1,52 @@
 The file 'vcdplus.vpd' was opened successfully.
+With selected criteria, DVE has found 'results at time 115000000
+    tb_fp_div.dut.divMantissas.ac[8:0]'.
+With selected criteria, DVE has found 'results at time 35000000
+    tb_fp_div.dut.divMantissas.ac[8:0]'.
+With selected criteria, DVE has found 'results at time 115000000
+    tb_fp_div.dut.divMantissas.ac[8:0]'.
+With selected criteria, DVE has found 'results at time 35000000
+    tb_fp_div.dut.divMantissas.ac[8:0]'.
+With selected criteria, DVE has found 'results at time 45000000
+    tb_fp_div.dut.divMantissas.ac[8:0]'.
+With selected criteria, DVE has found 'results at time 55000000
+    tb_fp_div.dut.divMantissas.ac[8:0]'.
+With selected criteria, DVE has found 'results at time 65000000
+    tb_fp_div.dut.divMantissas.ac[8:0]'.
+With selected criteria, DVE has found 'results at time 75000000
+    tb_fp_div.dut.divMantissas.ac[8:0]'.
+With selected criteria, DVE has found 'results at time 85000000
+    tb_fp_div.dut.divMantissas.ac[8:0]'.
+With selected criteria, DVE has found 'results at time 95000000
+    tb_fp_div.dut.divMantissas.ac[8:0]'.
+With selected criteria, DVE has found 'results at time 85000000
+    tb_fp_div.dut.divMantissas.ac[8:0]'.
+With selected criteria, DVE has found 'results at time 95000000
+    tb_fp_div.dut.divMantissas.ac[8:0]'.
+With selected criteria, DVE has found 'results at time 85000000
+    tb_fp_div.dut.divMantissas.ac[8:0]'.
 The file '/home/nguyea9/ee478/fpu/vcdplus.vpd' was opened successfully.
-Error: [DVAP037] 
-Errors while sourcing the file '/home/nguyea9/ee478/fpu/DVEfiles/session.tcl':
-
- Line 106: [DVSG007] 
-Signal ' "fp_add.opA" "fp_add.opB" "fp_add.sum" "fp_add.subE_cout" "fp_add.overflow" "fp_add.fullMA" "fp_add.fullMB" "fp_add.diffE" "fp_add.absDiffE" "fp_add.shiftInput" "fp_add.op2" "fp_add.mSum" "fp_add.bigE" "fp_add.finalM" "fp_add.finalE" "fp_add.shiftOutput" "fp_add.underflow"' cannot be found..
+With selected criteria, DVE has found 'results at time 95000000
+    tb_fp_div.dut.divMantissas.ac[8:0]'.
+With selected criteria, DVE has found 'results at time 85000000
+    tb_fp_div.dut.divMantissas.ac[8:0]'.
+The file '/home/nguyea9/ee478/fpu/vcdplus.vpd' was opened successfully.
+With selected criteria, DVE has found 'results at time 55000000
+    tb_fp_div.dut.divMantissas.ac[8:0]'.
+With selected criteria, DVE has found 'results at time 65000000
+    tb_fp_div.dut.divMantissas.ac[8:0]'.
+With selected criteria, DVE has found 'results at time 75000000
+    tb_fp_div.dut.divMantissas.ac[8:0]'.
+With selected criteria, DVE has found 'results at time 85000000
+    tb_fp_div.dut.divMantissas.ac[8:0]'.
+With selected criteria, DVE has found 'results at time 115000000
+    tb_fp_div.dut.divMantissas.ac[8:0]'.
+With selected criteria, DVE has found 'results at time 85000000
+    tb_fp_div.dut.divMantissas.ac[8:0]'.
+The file '/home/nguyea9/ee478/fpu/vcdplus.vpd' was opened successfully.
+The file '/home/nguyea9/ee478/fpu/vcdplus.vpd' was opened successfully.
+The file '/home/nguyea9/ee478/fpu/vcdplus.vpd' was opened successfully.
+The file '/home/nguyea9/ee478/fpu/vcdplus.vpd' was opened successfully.
 The file '/home/nguyea9/ee478/fpu/vcdplus.vpd' was opened successfully.
 The file '/home/nguyea9/ee478/fpu/vcdplus.vpd' was opened successfully.
 The file '/home/nguyea9/ee478/fpu/vcdplus.vpd' was opened successfully.

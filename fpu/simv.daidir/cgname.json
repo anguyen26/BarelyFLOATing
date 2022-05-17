@@ -5,27 +5,9 @@
         "module",
         1
     ],
-    "tb_fp_add": [
-        "tb_fp_add",
-        "xPGkA",
-        "module",
-        3
-    ],
-    "mux2": [
-        "mux2",
-        "i3rNP",
-        "module",
-        4
-    ],
-    "adder_0000": [
-        "adder_0000",
-        "wtLLx",
-        "module",
-        5
-    ],
-    "full_adder": [
-        "full_adder",
-        "BEdzp",
+    "tb_fp_div": [
+        "tb_fp_div",
+        "AA3DT",
         "module",
         6
     ],

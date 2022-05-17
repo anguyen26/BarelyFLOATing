@@ -1,5 +1,5 @@
 psSimBaseName                      	simv
-psLogFileName                      	cpu.log
+psLogFileName                      	fp.log
 pDaiDir                            	/home/nguyea9/ee478/fpu/simv.daidir
 destPath                           	csrc/
 fSharedMaster                      	0
@@ -980,7 +980,7 @@ fHsimMxConnFrc                     	0
 fHsimNewForceCbkVec                	0
 fHsimNewForceCbkVecDiag            	0
 fHsimMdbReplaceVpdHighConn         	1
-fHsimVpdHighConnReplaced           	1
+fHsimVpdHighConnReplaced           	0
 fHsimVpdOptSVTypes                 	1
 fHsimDlyInitFrc                    	0
 fHsimCompactVpdFn                  	1

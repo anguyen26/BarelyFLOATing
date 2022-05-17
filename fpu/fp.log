@@ -1,0 +1,414 @@
+
+Warning-[DEBUG_DEP] Option will be deprecated
+  The option '-debug_pp' will be deprecated in a future release.  Please use 
+  '-debug_acc+pp+dmptf -debug_region+cell+encrypt' instead.
+
+Command: vcs -f fp.include +v2k -R +lint=all -sverilog -full64 -debug_pp -timescale=1ns/10ps \
+-l fp.log
+                         Chronologic VCS (TM)
+       Version S-2021.09-SP1_Full64 -- Wed May 11 05:02:10 2022
+
+                    Copyright (c) 1991 - 2021 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+
+Parsing design file 'div.sv'
+Parsing design file 'fp_div.sv'
+
+Warning-[IPDW] Identifier previously declared
+fp_div.sv, 11
+  Second declaration for identifier 'start' ignored
+  Identifier 'start' previously declared as input port. [fp_div.sv, 2]
+
+Parsing design file 'tb_fp_div.sv'
+
+Lint-[NS] Null statement
+tb_fp_div.sv, 18
+  Null statement is used in following verilog source.
+  Source info:         repeat(3) @(posedge clk);
+
+
+Lint-[NS] Null statement
+tb_fp_div.sv, 24
+  Null statement is used in following verilog source.
+  Source info:             @(posedge clk);
+
+
+Lint-[NS] Null statement
+tb_fp_div.sv, 30
+  Null statement is used in following verilog source.
+  Source info:         reset <= 1'b1; @(posedge clk);
+
+
+Lint-[NS] Null statement
+tb_fp_div.sv, 36
+  Null statement is used in following verilog source.
+  Source info:         start <= 1'b1; @(posedge clk);
+
+
+Lint-[NS] Null statement
+tb_fp_div.sv, 37
+  Null statement is used in following verilog source.
+  Source info:         start <= 1'b0; repeat(16) @(posedge clk);
+
+
+Lint-[NS] Null statement
+tb_fp_div.sv, 42
+  Null statement is used in following verilog source.
+  Source info:         start <= 1'b1; @(posedge clk);
+
+
+Lint-[NS] Null statement
+tb_fp_div.sv, 43
+  Null statement is used in following verilog source.
+  Source info:         start <= 1'b0; repeat(16) @(posedge clk);
+
+
+Lint-[NS] Null statement
+tb_fp_div.sv, 47
+  Null statement is used in following verilog source.
+  Source info:         start <= 1'b1; @(posedge clk);
+
+
+Lint-[NS] Null statement
+tb_fp_div.sv, 48
+  Null statement is used in following verilog source.
+  Source info:         start <= 1'b0; repeat(16) @(posedge clk);
+
+
+Lint-[NS] Null statement
+tb_fp_div.sv, 53
+  Null statement is used in following verilog source.
+  Source info:         start <= 1'b1; @(posedge clk);
+
+
+Lint-[NS] Null statement
+tb_fp_div.sv, 54
+  Null statement is used in following verilog source.
+  Source info:         start <= 1'b0; repeat(16) @(posedge clk);
+
+
+Lint-[NS] Null statement
+tb_fp_div.sv, 59
+  Null statement is used in following verilog source.
+  Source info:         start <= 1'b1; @(posedge clk);
+
+
+Lint-[NS] Null statement
+tb_fp_div.sv, 60
+  Null statement is used in following verilog source.
+  Source info:         start <= 1'b0; repeat(16) @(posedge clk);
+
+
+Lint-[NS] Null statement
+tb_fp_div.sv, 65
+  Null statement is used in following verilog source.
+  Source info:         start <= 1'b1; @(posedge clk);
+
+
+Lint-[NS] Null statement
+tb_fp_div.sv, 66
+  Null statement is used in following verilog source.
+  Source info:         start <= 1'b0; repeat(16) @(posedge clk);
+
+
+Lint-[NS] Null statement
+tb_fp_div.sv, 71
+  Null statement is used in following verilog source.
+  Source info:         start <= 1'b1; @(posedge clk);
+
+
+Lint-[NS] Null statement
+tb_fp_div.sv, 72
+  Null statement is used in following verilog source.
+  Source info:         start <= 1'b0; repeat(16) @(posedge clk);
+
+
+Lint-[NS] Null statement
+tb_fp_div.sv, 73
+  Null statement is used in following verilog source.
+  Source info:         @(posedge clk);
+
+Top Level Modules:
+       tb_fp_div
+TimeScale is 1 ns / 1 ps
+
+Lint-[WMIA-L] Width mismatch in assignment
+div.sv, 45
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: valid <= 0;
+  Expression: valid
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+div.sv, 46
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: ovf <= 0;
+  Expression: ovf
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+div.sv, 47
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 4-bit LHS target:
+  Source info: i <= 0;
+  Expression: i
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+div.sv, 49
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: busy <= 0;
+  Expression: busy
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+div.sv, 50
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: dbz <= 1;
+  Expression: dbz
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+div.sv, 52
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: busy <= 1;
+  Expression: busy
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+div.sv, 53
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: dbz <= 0;
+  Expression: dbz
+
+
+Lint-[ULCO] Unequal length in comparison operator
+div.sv, 58
+div, "(i == (ITER - 1))"
+  A left 4-bit expression is compared to a right 32-bit expression.
+  Comparing 'i' of type logic [($clog2(ITER) - 1):0]
+  with '(ITER - 1)' of type int.
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+div.sv, 59
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: busy <= 0;
+  Expression: busy
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+div.sv, 60
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: valid <= 1;
+  Expression: valid
+
+
+Lint-[ULCO] Unequal length in comparison operator
+div.sv, 63
+div, "(i == (WIDTH - 1))"
+  A left 4-bit expression is compared to a right 32-bit expression.
+  Comparing 'i' of type logic [($clog2(ITER) - 1):0]
+  with '(WIDTH - 1)' of type int.
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+div.sv, 64
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: busy <= 0;
+  Expression: busy
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+div.sv, 65
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: ovf <= 1;
+  Expression: ovf
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+div.sv, 66
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: q <= 0;
+  Expression: q
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+div.sv, 67
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: r <= 0;
+  Expression: r
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+div.sv, 69
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 4-bit LHS target:
+  Source info: i <= (i + 1);
+  Expression: i
+
+
+Lint-[UI] Unused input
+fp_div.sv, 2
+  Following is an unused input.
+  Source info: reset
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fp_div.sv, 44
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: shiftAmount = 0;
+  Expression: shiftAmount
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fp_div.sv, 45
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: shiftAmount = 1;
+  Expression: shiftAmount
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fp_div.sv, 46
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: shiftAmount = 2;
+  Expression: shiftAmount
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fp_div.sv, 47
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: shiftAmount = 3;
+  Expression: shiftAmount
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fp_div.sv, 48
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: shiftAmount = 4;
+  Expression: shiftAmount
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fp_div.sv, 49
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: shiftAmount = 5;
+  Expression: shiftAmount
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fp_div.sv, 50
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: shiftAmount = 6;
+  Expression: shiftAmount
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fp_div.sv, 51
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: shiftAmount = 7;
+  Expression: shiftAmount
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fp_div.sv, 52
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: shiftAmount = 8;
+  Expression: shiftAmount
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fp_div.sv, 53
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: shiftAmount = 10;
+  Expression: shiftAmount
+
+
+Lint-[CAWM-L] Width mismatch
+fp_div.sv, 34
+  Continuous assignment width mismatch
+  8 bits (lhs) versus 32 bits (rhs).
+  Source info: assign biasedEDiff = (eDiff + 127);  
+
+
+Lint-[CAWM-L] Width mismatch
+fp_div.sv, 57
+  Continuous assignment width mismatch
+  7 bits (lhs) versus 8 bits (rhs).
+  Source info: assign finalM = (mQuotient << shiftAmount);  
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+tb_fp_div.sv, 8
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: clk <= 0;
+  Expression: clk
+
+Starting vcs inline pass...
+
+1 module and 0 UDP read.
+recompiling module tb_fp_div
+make[1]: Entering directory `/home/nguyea9/ee478/fpu/csrc'
+rm -f _cuarc*.so _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
+ld -shared  -Bsymbolic --no-relax  -o .//../simv.daidir//_cuarc0.so objs/amcQw_d.o \
+
+rm -f _cuarc0.so
+if [ -x ../simv ]; then chmod a-x ../simv; fi
+g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir \
+-Wl,-rpath=/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib -L/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib \
+-Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _4845_archive_1.so _prev_archive_1.so \
+_cuarc0.so  SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o \
+rmar_llvm_0_0.o           -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile \
+-luclinative /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_tls.o   -Wl,-whole-archive \
+-lvcsucli    -Wl,-no-whole-archive          /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_save_restore_new.o \
+-ldl  -lc -lm -lpthread -ldl 
+../simv up to date
+make[1]: Leaving directory `/home/nguyea9/ee478/fpu/csrc'
+Command: /home/nguyea9/ee478/fpu/./simv +v2k +lint=all -a fp.log
+Chronologic VCS simulator copyright 1991-2021
+Contains Synopsys proprietary information.
+Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May 11 05:02 2022
+VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
+$finish called from file "tb_fp_div.sv", line 74.
+$finish at simulation time           1205000000
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 1205000000 ps
+CPU Time:      0.320 seconds;       Data structure size:   0.0Mb
+Wed May 11 05:02:27 2022
+CPU time: .541 seconds to compile + .389 seconds to elab + .370 seconds to link + .349 seconds in simulation

@@ -1,5 +1,3 @@
-/home/nguyea9/ee478/fpu/adder.sv
-/home/nguyea9/ee478/fpu/fp_add.sv
-/home/nguyea9/ee478/fpu/full_adder.sv
-/home/nguyea9/ee478/fpu/mux2.sv
-/home/nguyea9/ee478/fpu/tb_fp_add.sv
+/home/nguyea9/ee478/fpu/div.sv
+/home/nguyea9/ee478/fpu/fp_div.sv
+/home/nguyea9/ee478/fpu/tb_fp_div.sv

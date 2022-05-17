@@ -1,0 +1,7 @@
+5.0
+-5.0
+-5.0
+5.0
+-30.0	inexact
+6.380294379767596e+38	underflow	inexact
+1.1020259538958945e-38	underflow	inexact
