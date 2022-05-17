@@ -7,10 +7,25 @@ all: instr_gen edit_tb iarm vcs compare
 # run 'make custom' to rerun the last random test that was generated
 custom: edit_tb iarm vcs compare
 
+gcd:
+	sed -i 's;^`define\(.*\)";`define BENCHMARK "../assembler/gcd.v"; g' \
+		Core/instructmem.sv
+	make -C Core vcs
+
+fib:
+	sed -i 's;^`define\(.*\)";`define BENCHMARK "../assembler/fibonacci.v"; g' \
+		Core/instructmem.sv
+	make -C Core vcs
+
+acker:
+	sed -i 's;^`define\(.*\)";`define BENCHMARK "../assembler/ackermann.v"; g' \
+		Core/instructmem.sv
+	make -C Core vcs
+
 edit_tb:
 	sed -i 's;^with\(.*\);with open("tests/$(TEST).txt", "r") as f:;g' \
 		iarm-master/run_iarm.py
-	sed -i 's;^`define\(.*\).arm";`define BENCHMARK "../tests/$(TEST).arm"; g' \
+	sed -i 's;^`define\(.*\)";`define BENCHMARK "../tests/$(TEST).arm"; g' \
 		Core/instructmem.sv
 
 instr_gen:

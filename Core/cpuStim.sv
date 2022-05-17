@@ -18,12 +18,13 @@ module cpuStim();
 	
 	initial begin
         $vcdpluson;
+        $vcdplusmemon;
 		reset <= 1; @(posedge clk);
 		reset <= 0;
 		repeat(10) begin
 			@(posedge clk); // Fill Pipeline
 		end
-		while(testCpu.instr != 16'b11100_00000000000) begin
+		while(testCpu.instr != 16'b11100_00000000000 & testCpu.instr != 16'b1110011111111111) begin
             f = $fopen("debug_sv.txt", "w");
             for (int i=0; i<15; i++) begin
                 $fwrite(f, "%d = %d\n", i, testCpu.registers.MEM[i]);

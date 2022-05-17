@@ -27,7 +27,7 @@ module datamem (
 	initial assert((`DATA_MEM_SIZE & (`DATA_MEM_SIZE-1)) == 0 && `DATA_MEM_SIZE > 8);
 	
 	// The data storage itself.
-	logic [`DATA_MEM_SIZE-1:0][15:0] mem;
+	logic [15:0] mem [`DATA_MEM_SIZE-1:0];
 	
 	// Handle the reads.
 	always_comb begin

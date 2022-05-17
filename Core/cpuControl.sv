@@ -476,6 +476,8 @@ module cpuControl(
 				RegWrite = 0;
 				MemWrite = 0;
 				keepFlags = 4'b0000;
+				brSel = 2'b11;
+				brEx = 0;
 			end
 		endcase
 	end
