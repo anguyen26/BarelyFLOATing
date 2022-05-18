@@ -2,7 +2,6 @@ NOOP
 MOVS 0, #195        //00100[Rd][im8] 195 //init:
 MOVS 1, #255        //00100[Rd][im8] 255
 MOVS 2, #0          //00100[Rd][im8] 0
-ENCR #10, #50       //Mid- GCD encryption step.
 NOOP                //Some delays to let the encryption start.
 NOOP
 STR 0, [0, #5]      //01100<im5><Rm><Rd> //CPU Stalls because ENCR is running.

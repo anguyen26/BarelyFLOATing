@@ -21,5 +21,6 @@ instructmem.sv
 rippleCarryAdder.sv
 forwardingUnit.sv
 D_FF.sv
+a_phase4.sv
 cpu.sv
-cpuStim.sv
+cpuStim_fixed.sv

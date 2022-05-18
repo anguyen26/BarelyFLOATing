@@ -4,12 +4,14 @@ module cpu(
 );
 	
 	// Program Counter logic
-	logic [15:0] 	PC, PCNext, PCE;
+	logic [15:0] 	PC, PCNext, PCE, PCNext_preStall;
 	logic [15:0] 	PCPlus1;
+	logic 		stallF;
 	
 	// Branch logic
 	logic [15:0] 	condBrAddr, uncondBrAddr, selectedBranch,
 					shiftedSelectedAddr, branchAddr, noBranchAddr;
+	logic Branch, BranchE, Branch_pre;
 
 	// Instruction Logic	 
 	logic [15:0] 	instr, instrE;
@@ -54,7 +56,13 @@ module cpu(
 	//********************************************************************************************\\
 
 	// Outputs next PC every clock cycle
-	register PCRegister(.dataIn(PCNext), .dataOut(PC), .writeEnable(1'b1), .reset, .clk);
+	always_comb begin
+		
+		if(BranchE & (instr == instrE)) stallF = 0; //branch determined
+		else if(Branch) stallF = 1; //branch upcoming
+		else stallF = 0; //normal incrementing
+	end
+	register PCRegister(.dataIn(PCNext), .dataOut(PC), .writeEnable(!stallF), .reset, .clk);
 	
 	// Outputs the instruction that correlates with the current clock cycle's PC
 	instructmem instructionMemory(.address(PC), .instruction(instr), .clk);
@@ -85,25 +93,32 @@ module cpu(
 	// Other flags do not need to be changed since they will be updated in the EX stage of the previous instruction, which happens
 	// at the same time as this RF stage for the branch instruction
 	cpuControl controlUnit(.PC, .instr, .FlagsReg, .Reg1Loc, .Reg2Loc, .Reg3Loc, .RegWrite, 
-							.MemWrite, .MemRead, .ShiftDir, .keepFlags, .ALUOp, 
+							.MemWrite, .MemRead, .ShiftDir, .keepFlags, .ALUOp, .Branch(Branch_pre), 
 							.brSel, .brEx, .clk, .reset, .selWrData, .selOpA, .selOpB);
-
+	
+	
+	assign	Branch = Branch_pre & !reset;
+	
 	//************ Calculate Next PC **************\\
 	
 	// Sign extends the branch immediate values
-	assign condBrAddr =	{{8{instr[7]}}, {instr[7:0]}};
-	assign uncondBrAddr =	{{5{instr[10]}}, {instr[10:0]}};
-	assign linkBrAddr =	{{10{instr[5]}}, {instr[5:0]}};
-	assign brExcAddr =	ReadData2;
+	assign condBrAddr =	{{8{instrE[7]}}, {instrE[7:0]}};
+	assign uncondBrAddr =	{{5{instrE[10]}}, {instrE[10:0]}};
+	assign linkBrAddr =	{{10{instrE[5]}}, {instrE[5:0]}};
+	assign brExcAddr =	ReadData2E;
     
 	// selects which immediate to use
-	mux4x16_16 branchAddrMux(.i0(linkBrAddr), .i1(condBrAddr), .i2(uncondBrAddr), .i3(16'd1), .sel(brSel), .out(branchAddr));
+	mux4x16_16 branchAddrMux(.i0(linkBrAddr), .i1(condBrAddr), .i2(uncondBrAddr), .i3(16'd1), .sel(brSelE), .out(branchAddr));
 	assign shiftedBranchAddr = branchAddr << 2;
 	// add to PC
 	adder brancherAdder(.in1(PC), .in2(shiftedBranchAddr), .out(pcOffset), .cout());
 
 	// Chooses between either the normal PC offset from standard branch or branch exchange
-	assign PCNext = brEx ? (brExcAddr << 2) : pcOffset;
+	assign PCNext_preStall = brExE ? (brExcAddr << 2) : pcOffset;
+	always_comb begin
+		if(!BranchE | !Branch) PCNext = PC + 4;
+		else if (Branch & BranchE) PCNext = PCNext_preStall;
+	end
 
 	
 	//********************************************************************************************\\
@@ -126,6 +141,9 @@ module cpu(
 	pipelineReg #(.bitWidth(1)) decodeToExec11 (.D(RegWrite), .Q(RegWriteE), .en(1'b1), .clear(1'b0), .clk);
 	pipelineReg #(.bitWidth(1)) decodeToExec12 (.D(MemRead), .Q(MemReadE), .en(1'b1), .clear(1'b0), .clk);
 	pipelineReg #(.bitWidth(2)) decodeToExec13 (.D(selWrData), .Q(selWrDataE), .en(1'b1), .clear(1'b0), .clk);
+	pipelineReg #(.bitWidth(1)) decodeToExec14 (.D(brEx), .Q(brExE), .en(1'b1), .clear(1'b0), .clk);
+	pipelineReg #(.bitWidth(1)) decodeToExec15 (.D(Branch), .Q(BranchE), .en(1'b1), .clear(reset), .clk);
+	pipelineReg #(.bitWidth(4)) keepFlagsReg (.D(keepFlags), .Q(keepFlagsE), .en(1'b1), .clear(1'b0), .clk);
 	
 
 	// Sign extend immidates
@@ -149,7 +167,7 @@ module cpu(
 	ALU aluBlock(.a(opAE), .b(opBE), .ALUControl(ALUOpE), .Result(aluOutput), .ALUFlags);
 	
 	// Determines whether to set the system flags to the new values from ALU based on the instruction
-	register_4 FlagsRegister(.dataIn(ALUFlags), .dataOut(FlagsReg), .writeEnable(keepFlags), .reset, .clk);
+	a_phase4 FlagsLatch(.IN(ALUFlags), .OUT(FlagsReg), .EN(keepFlagsE), .RST(reset));
 	//assign FlagsReg = keepFlags ? FlagsReg : ALUFlags;
 
 	// Shifts ReadData1 left or right based on a given distance from the instruction. ShiftDirection is determined by control unit

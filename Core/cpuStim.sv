@@ -20,23 +20,24 @@ module cpuStim();
         $vcdpluson;
         $vcdplusmemon;
 		reset <= 1; @(posedge clk);
-		reset <= 0;
-		repeat(10) begin
-			@(posedge clk); // Fill Pipeline
+		repeat(3) begin
+			@(posedge clk); // Reset Pipeline
 		end
+		reset <= 0;
 		while(testCpu.instr != 16'b11100_00000000000 & testCpu.instr != 16'b1110011111111111) begin
-            f = $fopen("debug_sv.txt", "w");
-            for (int i=0; i<15; i++) begin
-                $fwrite(f, "%d = %d\n", i, testCpu.registers.MEM[i]);
-            end
-            $fwrite(f, "15 = %d\n", testCpu.registers.r15);
-            $fwrite(f, "Memory content:\n");
-            for (int i=0; i<65536; i++) begin
-                if (testCpu.dataMemory.mem[i] != 16'd0) begin;
-                    $fwrite(f, "mem[%d] = %d\n", i, testCpu.dataMemory.mem[i]);
-                end
-            end
-			@(posedge clk);
+			f = $fopen("debug_sv.txt", "w");
+			    for (int i=0; i<15; i++) begin
+				$fwrite(f, "%d = %d\n", i, testCpu.registers.MEM[i]);
+			    end
+			    $fwrite(f, "15 = %d\n", testCpu.registers.r15);
+			    $fwrite(f, "Memory content:\n");
+			    for (int i=0; i<65536; i++) begin
+				if (testCpu.dataMemory.mem[i] != 16'd0) begin;
+				    $fwrite(f, "mem[%d] = %d\n", i, testCpu.dataMemory.mem[i]);
+				end
+			    end
+				@(posedge clk);
+			$fclose(f);
 		end
         /*
 		for (i = 0; i < 10; i++) begin
@@ -44,21 +45,21 @@ module cpuStim();
 		end
         */
 		$display("%t Test Done", $time);
-        f = $fopen("sv_output.txt", "w");
-        $fwrite(f, "Register content:\n");
-        for (int i=0; i<15; i++) begin
-            $fwrite(f, "%d = %d\n", i, testCpu.registers.MEM[i]);
-        end
-        $fwrite(f, "15 = %d\n", testCpu.registers.r15);
-        $fwrite(f, "Memory content:\n");
-        for (int i=0; i<65536; i++) begin
-            if (testCpu.dataMemory.mem[i] != 16'd0) begin;
-                $fwrite(f, "mem[%d] = %d\n", i, testCpu.dataMemory.mem[i]);
-            end
-        end
-        $fclose(f);
-//		$stop;
-        $finish;
+		f = $fopen("sv_output.txt", "w");
+		$fwrite(f, "Register content:\n");
+		for (int i=0; i<15; i++) begin
+		    $fwrite(f, "%d = %d\n", i, testCpu.registers.MEM[i]);
+		end
+		$fwrite(f, "15 = %d\n", testCpu.registers.r15);
+		$fwrite(f, "Memory content:\n");
+		for (int i=0; i<65536; i++) begin
+		    if (testCpu.dataMemory.mem[i] != 16'd0) begin;
+		        $fwrite(f, "mem[%d] = %d\n", i, testCpu.dataMemory.mem[i]);
+		    end
+		end
+		$fclose(f);
+	//		$stop;
+		$finish;
 	end
 	
 endmodule

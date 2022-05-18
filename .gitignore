@@ -4,3 +4,4 @@ Core/DVEfiles/
 Core/csrc/
 Core/work/
 Core/simv.daidir/
+Core/*.log

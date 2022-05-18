@@ -2,7 +2,6 @@
 0010000011000011    // movs 0  #195        (line 2, memory address 1)
 0010000111111111    // movs 1  #255        (line 3, memory address 2)
 0010001000000000    // movs 2  #0          (line 4, memory address 3)
-1000001010110010    // encr #10  #50       (line 5, memory address 4)
 1011111100000000    // noop                (line 6, memory address 5)
 1011111100000000    // noop  (line 7, memory address 6)
 0110000101000000    // str 0  [0  #5]      (line 8, memory address 7)

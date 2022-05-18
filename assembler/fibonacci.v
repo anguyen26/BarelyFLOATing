@@ -5,7 +5,7 @@
 0010000100000001    //     movs 1  #1      (line 22, memory address 4)
 0010001100000000    //     movs 3  #0      (line 24, memory address 5)
 0010010000000111    //     movs 4  #7      (line 25, memory address 6)
-0100001010011100    //         cmp 4  3  (line 27, memory address 7)
+0100001010100011    //         cmp 3  4  (line 27, memory address 7)
 1101100000000110    // bhi #6 (line 28, memory address 8)
 0100010100111000    // bl #-8 (line 29, memory address 9)
 0100011000001000    //         mov 0  1        (line 30, memory address 10)
