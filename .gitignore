@@ -5,3 +5,5 @@ Core/csrc/
 Core/work/
 Core/simv.daidir/
 Core/*.log
+debug*
+Core/debug*
