@@ -3,47 +3,47 @@ gui_create_pref_key -category {Globals} -key {load_detail_for_funcov} -value_typ
 
 # State setting overrides
 gui_state_default_create -off -ini
-gui_set_state_value -category Globals -key recent_databases -value {{gui_open_db -file /home/nguyea9/ee478/fpu/vcdplus.vpd -design V1} {gui_open_db -file vcdplus.vpd} {gui_open_db -file /home/nguyea9/ee478/Core/vcdplus.vpd -design V1} {gui_open_db -file vcdplus.vpd -design V1} {gui_open_db -file waves.vpd}}
-gui_set_state_value -category Globals -key recent_sessions -value {{gui_load_session -ignore_errors -file /home/nguyea9/ee478/fpu/fp_add.tcl} {gui_load_session -ignore_errors -file /home/nguyea9/ee478/fpu/session.vcdplus.vpd.tcl} {gui_load_session -ignore_errors -file /home/nguyea9/ee478/Core/session.vcdplus.vpd.tcl -ignore_errors} {gui_load_session -ignore_errors -file /home/nguyea9/ee478/Core/session.vcdplus.vpd.tcl}}
-gui_set_state_value -category Layout -key child_console_size_x -value 739
-gui_set_state_value -category Layout -key child_console_size_y -value 228
+gui_set_state_value -category Globals -key recent_databases -value {{gui_open_db -file /home/nguyea9/ee478/fpu/vcdplus.vpd -design V1} {gui_open_db -file vcdplus.vpd} {gui_open_db -file vcdplus.vpd -design V1} {gui_open_db -file /home/nguyea9/ee478/Core/vcdplus.vpd -design V1} {gui_open_db -file waves.vpd}}
+gui_set_state_value -category Globals -key recent_sessions -value {{gui_load_session -ignore_errors -file /home/nguyea9/ee478/fpu/session.vcdplus.vpd.tcl -ignore_errors} {gui_load_session -ignore_errors -file /home/nguyea9/ee478/Core/session.vcdplus.vpd.tcl -ignore_errors} {gui_load_session -ignore_errors -file /home/nguyea9/ee478/fpu/fp_add.tcl} {gui_load_session -ignore_errors -file /home/nguyea9/ee478/fpu/session.vcdplus.vpd.tcl} {gui_load_session -ignore_errors -file /home/nguyea9/ee478/Core/session.vcdplus.vpd.tcl}}
+gui_set_state_value -category Layout -key child_console_size_x -value 755
+gui_set_state_value -category Layout -key child_console_size_y -value 235
 gui_set_state_value -category Layout -key child_data_coltype -value 94
 gui_set_state_value -category Layout -key child_data_colvalue -value 105
 gui_set_state_value -category Layout -key child_data_colvariable -value 194
-gui_set_state_value -category Layout -key child_data_size_x -value 384
-gui_set_state_value -category Layout -key child_data_size_y -value 417
+gui_set_state_value -category Layout -key child_data_size_x -value 382
+gui_set_state_value -category Layout -key child_data_size_y -value 424
 gui_set_state_value -category Layout -key child_hier_col3 -value {-1}
 gui_set_state_value -category Layout -key child_hier_colhier -value 261
 gui_set_state_value -category Layout -key child_hier_colpd -value 0
 gui_set_state_value -category Layout -key child_hier_coltype -value 94
-gui_set_state_value -category Layout -key child_hier_size_x -value 359
-gui_set_state_value -category Layout -key child_hier_size_y -value 417
+gui_set_state_value -category Layout -key child_hier_size_x -value 357
+gui_set_state_value -category Layout -key child_hier_size_y -value 424
 gui_set_state_value -category Layout -key child_source_docknewline -value false
 gui_set_state_value -category Layout -key child_source_pos_x -value {-2}
 gui_set_state_value -category Layout -key child_source_pos_y -value {-15}
 gui_set_state_value -category Layout -key child_source_size_x -value 128
-gui_set_state_value -category Layout -key child_source_size_y -value 412
-gui_set_state_value -category Layout -key child_wave_colname -value 153
-gui_set_state_value -category Layout -key child_wave_colvalue -value 174
+gui_set_state_value -category Layout -key child_source_size_y -value 419
+gui_set_state_value -category Layout -key child_wave_colname -value 125
+gui_set_state_value -category Layout -key child_wave_colvalue -value 209
 gui_set_state_value -category Layout -key child_wave_docknewline -value false
-gui_set_state_value -category Layout -key child_wave_left -value 331
+gui_set_state_value -category Layout -key child_wave_left -value 338
 gui_set_state_value -category Layout -key child_wave_pos_x -value {-2}
 gui_set_state_value -category Layout -key child_wave_pos_y -value {-15}
-gui_set_state_value -category Layout -key child_wave_right -value 618
+gui_set_state_value -category Layout -key child_wave_right -value 441
 gui_set_state_value -category Layout -key child_wave_size_x -value 1005
 gui_set_state_value -category Layout -key child_wave_size_y -value 516
-gui_set_state_value -category Layout -key main_pos_x -value 0
-gui_set_state_value -category Layout -key main_pos_y -value 83
-gui_set_state_value -category Layout -key main_size_x -value 739
+gui_set_state_value -category Layout -key main_pos_x -value 661
+gui_set_state_value -category Layout -key main_pos_y -value 69
+gui_set_state_value -category Layout -key main_size_x -value 1416
 gui_set_state_value -category Layout -key main_size_y -value 861
 gui_set_state_value -category Layout -key stand_wave_child_docknewline -value false
 gui_set_state_value -category Layout -key stand_wave_child_pos_x -value {-2}
 gui_set_state_value -category Layout -key stand_wave_child_pos_y -value {-15}
-gui_set_state_value -category Layout -key stand_wave_child_size_x -value 959
-gui_set_state_value -category Layout -key stand_wave_child_size_y -value 679
-gui_set_state_value -category Layout -key stand_wave_top_pos_x -value 540
+gui_set_state_value -category Layout -key stand_wave_child_size_x -value 789
+gui_set_state_value -category Layout -key stand_wave_child_size_y -value 653
+gui_set_state_value -category Layout -key stand_wave_top_pos_x -value 728
 gui_set_state_value -category Layout -key stand_wave_top_pos_y -value 70
-gui_set_state_value -category Layout -key stand_wave_top_size_x -value 1494
+gui_set_state_value -category Layout -key stand_wave_top_size_x -value 1512
 gui_set_state_value -category Layout -key stand_wave_top_size_y -value 861
 gui_create_state_key -category FindDialog -key m_pMatchCase -value_type bool -value false
 gui_create_state_key -category FindDialog -key m_pMatchWord -value_type bool -value false
@@ -59,210 +59,205 @@ gui_state_default_create -off
 # Begin command logging
 gui_open_db -file vcdplus.vpd
 gui_open_window Wave
-gui_list_add -id Wave.1 -from Source.1 { tb_fp_div } -insertionbar
-gui_zoom -window Wave.1 -full
-gui_list_expand -id  Hier.1   tb_fp_div
-gui_list_select -id Hier.1 -current_item_name tb_fp_div.dut -current_item_type Scope  -selected  { tb_fp_div.dut   }
+gui_list_add -id Wave.1 -from Source.1 { fpuStim } -insertionbar
+gui_list_expand -id  Hier.1   fpuStim
+gui_list_select -id Hier.1 -current_item_name fpuStim.dut -current_item_type Scope  -selected  { fpuStim.dut   }
+gui_list_expand -id  Hier.1   fpuStim.dut
 gui_sg_create dut
 gui_list_add_group -id  Wave.1   {dut} 
-gui_list_add  -id  Wave.1   -after dut {{tb_fp_div.dut}}
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.opA[15:0]}   }
-gui_list_expand -id  Hier.1   tb_fp_div.dut
-gui_list_select -id Hier.1 -current_item_name tb_fp_div.dut.divMantissas -current_item_type Scope  -selected  { tb_fp_div.dut.divMantissas   }
-gui_marker_move -id  Wave.1 C1 64417178
-gui_sg_create divMantissas
-gui_list_add_group -id  Wave.1   {divMantissas} 
-gui_list_add  -id  Wave.1   -after divMantissas {{tb_fp_div.dut.divMantissas}}
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.mQuotient[7:0]}   }
-gui_marker_move -id  Wave.1 C1 215000000
+gui_list_add  -id  Wave.1   -after dut {{fpuStim.dut}}
+gui_list_select -id Wave.1 -selected  { dut   }
+gui_list_select -id Hier.1 -current_item_name fpuStim.dut.add_sub -current_item_type Scope  -selected  { fpuStim.dut.add_sub   }
+gui_sg_create add_sub
+gui_list_add_group -id  Wave.1   {add_sub} 
+gui_list_add  -id  Wave.1   -after add_sub {{fpuStim.dut.add_sub}}
+gui_wv_zoom_timerange -id  Wave.1 0 351
+gui_wv_zoom_timerange -id  Wave.1 0 175
+gui_wv_zoom_timerange -id  Wave.1 0 351
 gui_zoom -window Wave.1 -full
-gui_zoom -window Wave.1 -full
-gui_zoom -window Wave.1 -full
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.divMantissas.x[7:0]}   }
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.divMantissas.x[7:0]}  {tb_fp_div.dut.divMantissas.y[7:0]}   }
-gui_list_set_selected_property -id Wave.1 -radix binary
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.divMantissas.y1[7:0]}   }
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.divMantissas.y1[7:0]}  {tb_fp_div.dut.divMantissas.q1[7:0]}  {tb_fp_div.dut.divMantissas.q1_next[7:0]}  {tb_fp_div.dut.divMantissas.ac[8:0]}  {tb_fp_div.dut.divMantissas.ac_next[8:0]}   }
-gui_list_set_selected_property -id Wave.1 -radix binary
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.divMantissas.i[3:0]}   }
-gui_list_set_selected_property -id Wave.1 -radix decimal
 gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 2
+gui_marker_move -id  Wave.1 C1 25000000000
+gui_list_collapse -id  Wave.1   dut
+gui_list_collapse -id  Wave.1   fpuStim
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.opA[15:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.opA[15:0]}  {fpuStim.dut.add_sub.opB[15:0]}   }
+gui_list_set_selected_property -id Wave.1 -radix binary
+gui_wv_zoom_timerange -id  Wave.1 0 309375592979
+gui_wv_zoom_timerange -id  Wave.1 0 302406309298
+gui_wv_zoom_timerange -id  Wave.1 19089777040 23331949715
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_marker_move -id  Wave.1 C1 17716809324
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.opB[15:0]}   }
+gui_list_select -id Wave.1 -selected  { fpuStim.dut.add_sub.subtract   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.diffE[7:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.absDiffE[7:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.shiftInput[7:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.shiftOutput[7:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.op2[7:0]}   }
+gui_zoom -window Wave.1 -full
 gui_marker_select -id  Wave.1 { C1 }
-gui_marker_move -id  Wave.1 C1 195000000
-gui_wv_zoom_timerange -id  Wave.1 107496166 347450154
-gui_marker_move -id  Wave.1 C1 108301380
-gui_wv_scroll_hslidermove -id  Wave.1 0
-gui_marker_move -id  Wave.1 C1 65000000
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.divMantissas.ac[8:0]}   }
-gui_seek_criteria -id Wave.1 "Rising" 
-gui_seek_next -id Wave.1 -number 1 
-gui_seek_previous -id Wave.1 -number 1 
-gui_seek_next -id Wave.1 -number 1 
-gui_seek_previous -id Wave.1 -number 1 
-gui_seek_criteria -id Wave.1 "Any Edge" 
-gui_seek_next -id Wave.1 -number 1 
-gui_seek_next -id Wave.1 -number 1 
-gui_seek_next -id Wave.1 -number 1 
-gui_seek_next -id Wave.1 -number 1 
-gui_seek_next -id Wave.1 -number 1 
-gui_seek_next -id Wave.1 -number 1 
-gui_seek_previous -id Wave.1 -number 1 
-gui_seek_next -id Wave.1 -number 1 
-gui_seek_previous -id Wave.1 -number 1 
-gui_wv_zoom_timerange -id  Wave.1 0 223849693
-gui_save_session -reload -default_file
-gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {false}
-gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {true}
-gui_seek_next -id Wave.1 -number 1 
-gui_seek_previous -id Wave.1 -number 1 
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.divMantissas.WIDTH[31:0]}   }
-gui_save_session -reload -default_file
-gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {false}
-gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {true}
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.divMantissas.q[7:0]}   }
-gui_list_set_selected_property -id Wave.1 -radix binary
-gui_marker_move -id  Wave.1 C1 115000000
-gui_marker_move -id  Wave.1 C1 25000000
-gui_marker_move -id  Wave.1 C1 45000000
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.divMantissas.ac[8:0]}   }
-gui_seek_next -id Wave.1 -number 1 
-gui_seek_next -id Wave.1 -number 1 
-gui_seek_next -id Wave.1 -number 1 
-gui_seek_next -id Wave.1 -number 1 
-gui_seek_next -id Wave.1 -number 1 
-gui_seek_previous -id Wave.1 -number 1 
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.divMantissas.q1[7:0]}   }
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.divMantissas.q1_next[7:0]}   }
-gui_save_session -reload -default_file
-gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {false}
-gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {true}
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.divMantissas.q1[7:0]}   }
-gui_marker_move -id  Wave.1 C1 105000000
-gui_save_session -reload -default_file
-gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {false}
-gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {true}
-gui_marker_move -id  Wave.1 C1 167887270
-gui_marker_move -id  Wave.1 C1 165874233
+gui_marker_move -id  Wave.1 C1 1495000000000
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 2
+gui_marker_move -id  Wave.1 C1 1485000000000
+gui_marker_move -id  Wave.1 C1 1480709544093
+gui_marker_move -id  Wave.1 C1 1479109468943
+gui_marker_move -id  Wave.1 C1 1480069514033
+gui_marker_move -id  Wave.1 C1 1475000000000
+gui_wv_zoom_timerange -id  Wave.1 1470149048101 1473349198401
 gui_zoom -window Wave.1 -full
-gui_marker_move -id  Wave.1 C1 845000000
-gui_marker_move -id  Wave.1 C1 165000000
-gui_marker_move -id  Wave.1 C1 195143885
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 2
+gui_marker_move -id  Wave.1 C1 1469509018041
 gui_save_session -reload -default_file
 gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {false}
 gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {true}
-gui_list_select -id Hier.1 -current_item_name tb_fp_div -current_item_type Scope  -selected  { tb_fp_div   }
-gui_list_select -id Hier.1 -current_item_name tb_fp_div.dut -current_item_type Scope  -selected  { tb_fp_div.dut   }
-gui_list_select -id Data.1 -selected  { tb_fp_div.dut.mValid   }
-gui_list_add  -id  Wave.1   -after tb_fp_div.overflow {{tb_fp_div.dut.mValid}} 
-gui_list_select -id Wave.1 -selected  { tb_fp_div.overflow   }
-gui_list_select -id Wave.1 -selected  { tb_fp_div.dut.mValid   }
-gui_list_move  -id  Wave.1    -sid  Wave.1   -after tb_fp_div.inexact {{tb_fp_div.dut.mValid}} 
-gui_marker_move -id  Wave.1 C1 525000000
-gui_marker_move -id  Wave.1 C1 695000000
-gui_marker_move -id  Wave.1 C1 673561151
-gui_list_move  -id  Wave.1    -sid  Wave.1   -after tb_fp_div.dut.inexact {{tb_fp_div.dut.mValid}} 
-gui_list_select -id Wave.1 -selected  { tb_fp_div.dut.sA   }
-gui_list_select -id Wave.1 -selected  { tb_fp_div.dut.sB   }
-gui_list_select -id Wave.1 -selected  { tb_fp_div.dut.sign   }
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.eA[7:0]}   }
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.mB[6:0]}   }
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.finalM[6:0]}   }
-gui_marker_move -id  Wave.1 C1 685000000
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.finalE[7:0]}   }
-gui_zoom -window Wave.1 -factor 2
-gui_zoom -window Wave.1 -factor 2
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.mQuotient[7:0]}   }
-gui_list_set_selected_property -id Wave.1 -radix binary
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.shiftAmount[7:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.eA[7:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.eB[7:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.eA[7:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.eA[7:0]}  {fpuStim.dut.add_sub.eB[7:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.eA[7:0]}  {fpuStim.dut.add_sub.eB[7:0]}  {fpuStim.dut.add_sub.mA[6:0]}  {fpuStim.dut.add_sub.mB[6:0]}  {fpuStim.dut.add_sub.diffE[7:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.eB[7:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.eB[7:0]}  {fpuStim.dut.add_sub.mA[6:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.eB[7:0]}  {fpuStim.dut.add_sub.mA[6:0]}  {fpuStim.dut.add_sub.diffE[7:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.mB[6:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.eA[7:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.eA[7:0]}  {fpuStim.dut.add_sub.eB[7:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.eA[7:0]}  {fpuStim.dut.add_sub.eB[7:0]}  {fpuStim.dut.add_sub.diffE[7:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.eA[7:0]}  {fpuStim.dut.add_sub.eB[7:0]}  {fpuStim.dut.add_sub.diffE[7:0]}  {fpuStim.dut.add_sub.absDiffE[7:0]}   }
 gui_list_set_selected_property -id Wave.1 -radix decimal
-gui_list_select -id Wave.1 -selected  { tb_fp_div.dut.valid   }
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.mQuotient[7:0]}   }
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.finalM[6:0]}   }
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.finalE[7:0]}   }
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.eA[7:0]}   }
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.eA[7:0]}  {tb_fp_div.dut.eB[7:0]}  {tb_fp_div.dut.eDiff[7:0]}  {tb_fp_div.dut.biasedEDiff[7:0]}  {tb_fp_div.dut.finalE[7:0]}  {tb_fp_div.dut.mA[6:0]}  {tb_fp_div.dut.mB[6:0]}  {tb_fp_div.dut.finalM[6:0]}   }
-gui_list_set_selected_property -id Wave.1 -radix binary
-gui_list_select -id Wave.1 -selected  { tb_fp_div.dut.busy   }
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.finalM[6:0]}   }
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.finalE[7:0]}   }
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.biasedEDiff[7:0]}   }
-gui_list_select -id Wave.1 -selected  { tb_fp_div.dut.valid   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.absDiffE[7:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.subShiftAmount[7:0]}   }
+gui_list_set_selected_property -id Wave.1 -radix decimal
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.addShiftAmount[7:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.shiftOutput[7:0]}   }
 gui_save_session -reload -default_file
 gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {false}
 gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {true}
-gui_marker_move -id  Wave.1 C1 655000000
+gui_zoom -window Wave.1 -full
+gui_marker_move -id  Wave.1 C1 2135000000000
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 2
+gui_marker_move -id  Wave.1 C1 2148531437882
+gui_marker_move -id  Wave.1 C1 2142387900808
+gui_wv_scroll_hslidermove -id  Wave.1 5995
+gui_list_expand -id  Wave.1   fpuStim
+gui_marker_move -id  Wave.1 C1 2125000000000
+gui_wv_zoom_timerange -id  Wave.1 2126687750507 2135220440888
 gui_zoom -window Wave.1 -full
 gui_zoom -window Wave.1 -factor 2
 gui_zoom -window Wave.1 -factor 2
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.quotient[15:0]}   }
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 2
+gui_wv_scroll_hslidermove -id  Wave.1 12310
+gui_marker_move -id  Wave.1 C1 2128564942397
+gui_marker_move -id  Wave.1 C1 2109963677367
+gui_wv_scrollleft -id  Wave.1  line
+gui_wv_scrollleft -id  Wave.1  line
+gui_wv_scrollleft -id  Wave.1  line
+gui_wv_scrollleft -id  Wave.1  line
+gui_marker_move -id  Wave.1 C1 2091362412337
+gui_zoom -window Wave.1 -full
+gui_marker_move -id  Wave.1 C1 2515000000000
+gui_marker_move -id  Wave.1 C1 2115000000000
+gui_marker_move -id  Wave.1 C1 2135000000000
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 2
+gui_marker_move -id  Wave.1 C1 2130783441890
+gui_marker_move -id  Wave.1 C1 2091533066138
+gui_marker_move -id  Wave.1 C1 2128735596199
+gui_save_session -reload -default_file
+gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {false}
+gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {true}
+gui_marker_move -id  Wave.1 C1 2148190130267
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 2
+gui_marker_move -id  Wave.1 C1 2135000000000
+gui_marker_move -id  Wave.1 C1 2130442134275
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.opB[15:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.opA[15:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.opB[15:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.mSum[7:0]}   }
+gui_list_select -id Wave.1 -selected  { fpuStim.dut.add_sub.selBigE   }
+gui_list_select -id Wave.1 -selected  { fpuStim.dut.add_sub.cout   }
+gui_save_session -reload -default_file
+gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {false}
+gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {true}
+gui_zoom -window Wave.1 -full
+gui_marker_move -id  Wave.1 C1 144343687375
+gui_marker_move -id  Wave.1 C1 195000000000
+gui_marker_move -id  Wave.1 C1 159699398798
+gui_marker_move -id  Wave.1 C1 267189378758
+gui_marker_move -id  Wave.1 C1 1135000000000
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 2
+gui_marker_move -id  Wave.1 C1 1125000000000
+gui_marker_move -id  Wave.1 C1 1120391094695
+gui_marker_move -id  Wave.1 C1 1125765593693
+gui_marker_move -id  Wave.1 C1 1121158880266
+gui_marker_move -id  Wave.1 C1 1118663577160
+gui_zoom -window Wave.1 -full
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 2
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.eA[7:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.diffE[7:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.mA[6:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.mA[6:0]}  {fpuStim.dut.add_sub.mB[6:0]}   }
 gui_list_set_selected_property -id Wave.1 -radix binary
-gui_wv_zoom_timerange -id  Wave.1 491142089 685521586
-gui_wv_scroll_hslidermove -id  Wave.1 1574
-gui_wv_scroll_hslidermove -id  Wave.1 1231
-gui_zoom -window Wave.1 -full
-gui_marker_move -id  Wave.1 C1 494370229
-gui_marker_move -id  Wave.1 C1 495000000
-gui_wv_zoom_timerange -id  Wave.1 0 653387405
-gui_wv_zoom_timerange -id  Wave.1 0 872232824
-gui_list_select -id Wave.1 -selected  { tb_fp_div.dut.valid   }
-gui_marker_move -id  Wave.1 C1 655000000
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.finalE[7:0]}   }
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.finalM[6:0]}   }
-gui_list_select -id Wave.1 -selected  { tb_fp_div.dut.sign   }
-gui_wv_zoom_timerange -id  Wave.1 0 828148855
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.finalE[7:0]}   }
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.finalM[6:0]}   }
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.finalE[7:0]}   }
-gui_list_move  -id  Wave.1    -sid  Wave.1   -after {tb_fp_div.dut.mB[6:0]} {{tb_fp_div.dut.finalE[7:0]}} 
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.quotient[15:0]}   }
-gui_list_move  -id  Wave.1    -sid  Wave.1   -after {tb_fp_div.dut.mB[6:0]} {{tb_fp_div.dut.quotient[15:0]}} 
-gui_marker_move -id  Wave.1 C1 505000000
-gui_marker_move -id  Wave.1 C1 505000000
-gui_marker_move -id  Wave.1 C1 645000000
-gui_marker_move -id  Wave.1 C1 815000000
-gui_marker_move -id  Wave.1 C1 645000000
-gui_marker_move -id  Wave.1 C1 645000000
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.divMantissas.x[7:0]}   }
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.divMantissas.y[7:0]}   }
-gui_marker_move -id  Wave.1 C1 805000000
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.finalM[6:0]}   }
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.divMantissas.q[7:0]}   }
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.quotient[15:0]}   }
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.mQuotient[7:0]}   }
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.finalE[7:0]}   }
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.shiftAmount[7:0]}   }
-gui_save_session -reload -default_file
-gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {false}
-gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {true}
-gui_list_select -id Data.1 -selected  { {tb_fp_div.dut.eA[7:0]}   }
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.quotient[15:0]}   }
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.divMantissas.r[7:0]}   }
-gui_zoom -window Wave.1 -full
-gui_marker_move -id  Wave.1 C1 865019011
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.divMantissas.q[7:0]}   }
-gui_save_session -reload -default_file
-gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {false}
-gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {true}
-gui_marker_move -id  Wave.1 C1 296102662
-gui_zoom -window Wave.1 -full
-gui_marker_move -id  Wave.1 C1 355000000
-gui_marker_move -id  Wave.1 C1 525000000
-gui_marker_move -id  Wave.1 C1 695000000
-gui_marker_move -id  Wave.1 C1 855000000
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.opA[15:0]}   }
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.opA[15:0]}  {tb_fp_div.opB[15:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.mB[6:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.absDiffE[7:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.shiftInput[7:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.shiftOutput[7:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.shiftInput[7:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.shiftInput[7:0]}  {fpuStim.dut.add_sub.shiftOutput[7:0]}   }
 gui_list_set_selected_property -id Wave.1 -radix binary
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.eA[7:0]}   }
-gui_marker_move -id  Wave.1 C1 928574144
-gui_list_select -id Data.1 -selected  { tb_fp_div.dut.eSub0   }
-gui_list_select -id Data.1 -selected  { tb_fp_div.dut.eSub0  tb_fp_div.dut.eNormal0   }
-gui_list_add  -id  Wave.1   -after {tb_fp_div.dut.finalM[6:0]} {{tb_fp_div.dut.eSub0} {tb_fp_div.dut.eNormal0}} 
-gui_list_select -id Wave.1 -selected  { tb_fp_div.dut.eSub0   }
-gui_list_select -id Wave.1 -selected  { tb_fp_div.dut.eNormal0   }
-gui_list_select -id Wave.1 -selected  { tb_fp_div.dut.eSub0   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.shiftOutput[7:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.shiftOutput[7:0]}  {fpuStim.dut.add_sub.op2[7:0]}   }
+gui_list_set_selected_property -id Wave.1 -radix decimal
+gui_list_select -id Wave.1 -selected  { fpuStim.dut.add_sub.cout   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.mSum[7:0]}   }
+gui_list_set_selected_property -id Wave.1 -radix decimal
+gui_list_select -id Wave.1 -selected  { fpuStim.dut.add_sub.subtract   }
+gui_list_select -id Data.1 -selected  { {fpuStim.dut.add_sub.diffM[7:0]}   }
+gui_list_select -id Data.1 -selected  { {fpuStim.dut.add_sub.diffM[7:0]}  {fpuStim.dut.add_sub.absDiffM[7:0]}   }
+gui_list_add  -id  Wave.1   -after fpuStim.dut.add_sub.subtract {{fpuStim.dut.add_sub.diffM[7:0]} {fpuStim.dut.add_sub.absDiffM[7:0]}} 
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.diffM[7:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.diffM[7:0]}  {fpuStim.dut.add_sub.absDiffM[7:0]}   }
+gui_list_set_selected_property -id Wave.1 -radix decimal
+gui_list_set_selected_property -id Wave.1 -radix signMagnitude
+gui_marker_move -id  Wave.1 C1 1073364228463
+gui_marker_move -id  Wave.1 C1 1119239416339
+gui_list_set_selected_property -id Wave.1 -radix unsigned
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.op2[7:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.diffM[7:0]}   }
+gui_list_set_selected_property -id Wave.1 -radix binary
 gui_save_session -reload -default_file
 gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {false}
 gui_set_pref_value -category {Globals} -key {use_mhpi_lookup} -value {true}
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.biasedEDiff[7:0]}   }
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.eDiff[7:0]}   }
-gui_list_select -id Wave.1 -selected  { {tb_fp_div.dut.biasedEDiff[7:0]}   }
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.absDiffM[7:0]}   }
+gui_list_set_selected_property -id Wave.1 -radix binary
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.mSum[7:0]}   }
+gui_list_set_selected_property -id Wave.1 -radix binary
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.sumM[7:0]}   }
+gui_list_set_selected_property -id Wave.1 -radix binary
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.mSum[7:0]}   }
+gui_list_set_selected_property -id Wave.1 -radix decimal
+gui_list_select -id Wave.1 -selected  { {fpuStim.dut.add_sub.sumM[7:0]}   }
+gui_list_set_selected_property -id Wave.1 -radix decimal
+gui_list_set_selected_property -id Wave.1 -radix binary

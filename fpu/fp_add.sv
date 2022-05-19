@@ -10,9 +10,9 @@ module fp_add(
     logic [6:0] mA, mB;
     
     logic [7:0] diffE, absDiffE, shiftInput, shiftOutput, op2;
-    logic sticky, subtract;
+    logic sticky, sticky2, subtract;
 
-    logic [7:0] mSum;
+    logic [7:0] mSum, diffM, absDiffM;
     logic cout, selBigE;
 
     logic finalS;
@@ -47,7 +47,7 @@ module fp_add(
             8'd5: sticky = |shiftInput[4:0];
             8'd6: sticky = |shiftInput[5:0];
             8'd7: sticky = |shiftInput[6:0];
-            8'd8: sticky = |shiftInput;
+            default: sticky = |shiftInput;
         endcase
     end
     
@@ -64,7 +64,9 @@ module fp_add(
     // always_ff @(posedge clk) begin
     //     {cout, mSum} <= subtract ? (op2 - shiftOutput) : (op2 + shiftOutput);
     // end
-    assign {cout, mSum} = subtract ? (op2 - shiftOutput) : 
+    assign diffM = op2 - shiftOutput;
+    assign absDiffM = (op2 < shiftOutput) ? ~diffM+1 : diffM; 
+    assign {cout, mSum} = subtract ? (absDiffM) : 
                                     (op2 + shiftOutput);
     
     /////////////////////////////////////////////////////////
@@ -72,7 +74,25 @@ module fp_add(
     // ------------------------------
 
     // Normalize
-    assign finalS = (subtract & selBigE) ? sB : sA;
+    // assign finalS = (subtract & selBigE) ? sB : sA;
+    always_comb begin
+        if (subtract) begin
+            if (eA == eB) begin
+                if (mA > mB)
+                    finalS = sA;
+                else
+                    finalS = sB;
+            end else begin
+                if (eA > eB)
+                    finalS = sA;
+                else 
+                    finalS = sB;
+            end
+        end else begin
+            finalS = sA;
+        end
+    end
+
     assign bigE = selBigE ? eB : eA;
     always_comb begin
         casez(mSum)
@@ -96,6 +116,7 @@ module fp_add(
     assign sumE = subtract ? (bigE - subShiftAmount) : (bigE + addShiftAmount);
     assign sumM = subtract ? (mSum << subShiftAmount) : 
                              (mSum >> addShiftAmount);
+    assign sticky2 = cout & mSum[0];
 
     // Handle special cases
     assign finalM = (sumE == 8'b11111111) ? 8'd0 : sumM;
@@ -105,6 +126,6 @@ module fp_add(
         sum <= {finalS, finalE, finalM[6:0]};
         overflow <= (sumE == 8'b11111111) ? 1'b1 : 1'b0;
         underflow <= (finalE == 8'd0 & sticky) ? 1'b1 : 1'b0;
-        inexact <= sticky;
+        inexact <= sticky | sticky2;
     end
 endmodule

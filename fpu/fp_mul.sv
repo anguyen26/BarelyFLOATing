@@ -10,7 +10,7 @@ module fp_mul(
     logic [6:0] mA, mB;
 
     logic [15:0] mProduct, normalP, finalP;
-    logic [10:0] eSum;
+    logic [10:0] eSum; // should just be 8:0?
     logic [7:0] biasedESum, normalE, finalE;
     logic sign, cout, eAddOverflow, eNormalOverflow;
     
@@ -46,7 +46,7 @@ module fp_mul(
     assign sign = sA ^ sB;
 
     always_ff @(posedge clk) begin
-        product <= {sign, finalE, finalP[13:7]};
+        product <= {sign, finalE, finalP[13:7]}; // 15=overflow, 14=hidden
         overflow <= (eAddOverflow | eNormalOverflow);
         inexact <= |normalP[7:0];
         underflow <= 1'b0;

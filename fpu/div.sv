@@ -9,7 +9,7 @@ module div #(
     parameter WIDTH=8,  // width of numbers in bits
     parameter FBITS=7   // fractional bits (for fixed point)
     ) (
-    input wire logic clk,
+    input wire logic clk, reset,
     input wire logic start,          // start signal
     output     logic busy,           // calculation in progress
     output     logic valid,          // quotient and remainder are valid
@@ -41,7 +41,11 @@ module div #(
     end
 
     always_ff @(posedge clk) begin
-        if (start) begin
+        if (reset) begin
+            busy <= 0;
+            valid <= 1;
+        end
+        else if (start) begin
             valid <= 0;
             ovf <= 0;
             i <= 0;

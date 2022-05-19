@@ -1,3 +1,4 @@
+# converts binary output from FPU to decimal to compare with expected results
 import convert
 import sys
 output = sys.argv[1]
@@ -6,15 +7,15 @@ fbin = open(output, 'r')
 fdec = open("fp_output_dec.txt", "w")
 for line in fbin:
     tokens = line.split()
-    print(tokens)
-    num = convert.bfloat_to_dec(tokens[0])
-    fdec.write(str(num))
-    if (tokens[1] == '1'):
-        fdec.write('\tunderflow')
+    # print(tokens)
     if (tokens[2] == '1'):
-        fdec.write('\toverflow')
+        fdec.write('UNDERFLOW ')
     if (tokens[3] == '1'):
-        fdec.write('\tinexact')
+        fdec.write('OVERFLOW ')
+    elif (tokens[4] == '1'):
+        fdec.write('INEXACT ')
+    num = convert.bfloat_to_dec(tokens[1])
+    fdec.write(str(num))
     fdec.write('\n')
 
 fbin.close()

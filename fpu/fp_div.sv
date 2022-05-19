@@ -2,13 +2,13 @@ module fp_div(
     input logic clk, reset, start,
     input logic [15:0] opA, opB,
     output logic [15:0] quotient,
-    output logic underflow, overflow, inexact, valid
+    output logic underflow, overflow, inexact, valid, busy
     );
 
     logic sA, sB, sign;
     logic [7:0] eA, eB, eDiff, biasedEDiff, finalE;
     logic [6:0] mA, mB, finalM;
-    logic start, busy, mValid, dbz, ovf;
+    logic start, mValid, dbz, ovf;
     logic [7:0] mQuotient, r, shiftAmount;
     logic sticky, eSub0, eNormal0;
     
@@ -23,7 +23,7 @@ module fp_div(
     // Divide mantissas
     // ------------------------------
 
-    div divMantissas(.clk, .start, .busy, .valid(mValid), .dbz, .ovf, 
+    div divMantissas(.clk, .reset, .start, .busy, .valid(mValid), .dbz, .ovf, 
         .x({1'b1, mA}), .y({1'b1, mB}), .q(mQuotient), .r);
 
     /////////////////////////////////////////////////////////
@@ -60,7 +60,10 @@ module fp_div(
     assign sticky = (r != 8'd0);
 
     always_ff @(posedge clk) begin
-        if (mValid) begin
+        if (reset) begin
+            valid <= 1'b1;
+        end
+        else if (mValid) begin
             quotient <= {sign, finalE, finalM[6:0]};
             overflow <= 1'b0;
             inexact <= sticky;

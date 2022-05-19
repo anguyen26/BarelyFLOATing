@@ -5,9 +5,9 @@
         "module",
         1
     ],
-    "tb_fp_div": [
-        "tb_fp_div",
-        "AA3DT",
+    "fpuStim": [
+        "fpuStim",
+        "mu4Ug",
         "module",
         6
     ],

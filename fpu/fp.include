@@ -1,8 +1,10 @@
-#fp_add.sv
-#fpu.sv
-#fp_mul.sv
-#tb_fp_mul.sv
-#tb_fpu.sv
+fp_add.sv
+fp_mul.sv
 div.sv
+fpu.sv
 fp_div.sv
-tb_fp_div.sv
+opmem.sv
+fpuStim.sv
+#tb_fpu.sv
+#tb_fp_mul.sv
+#tb_fp_div.sv
