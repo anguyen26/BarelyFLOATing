@@ -7,3 +7,10 @@ Core/simv.daidir/
 Core/*.log
 debug*
 Core/debug*
+fpu/Core/simv.daidir/
+fpu/simv.daidir/
+fpu/work/
+fpu/csrc/
+fpu/DVEfiles/
+fpu/.n*
+fpu/__pycache__/
