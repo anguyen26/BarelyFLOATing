@@ -11,20 +11,20 @@ module cpuControl(
 	input logic 		clk, reset,
 	
 	// Control signals for datapath
-	output logic 		RegWrite, MemWrite, MemRead,
-						noop,
-    output logic [1:0] 	ShiftDir,
+	output logic 		RegWrite, MemWrite, MemRead, noop,
+	output logic [1:0] 	ShiftDir,
 	output logic [3:0] 	keepFlags,
-    output logic [1:0] 	Reg1Loc, Reg2Loc, Reg3Loc,
-    output logic [3:0] 	selOpB,
-    output logic 		selOpA,
+	output logic [1:0] 	Reg1Loc, Reg2Loc, Reg3Loc,
+	output logic [3:0] 	selOpB,
+	output logic 		selOpA,
 
-	// Controls the operation the ALU will perform
+	// Controls the operation the ALU / FPU will perform
 	output logic [2:0] 	ALUOp,
+	output logic [1:0] 	FPUOp,
 	// Controls manipulation of PC
-    output logic [1:0] 	brSel,
-    output logic 		brEx, Branch,
-    output logic [1:0] 	selWrData
+	output logic [1:0] 	brSel,
+	output logic 		brEx, Branch,
+	output logic [1:0] 	selWrData
 );
 
 	logic [9:0] opcode;
@@ -516,6 +516,71 @@ module cpuControl(
 				keepFlags = 4'b0000;
 				brSel = 2'b11;
 				brEx = 0;
+			end
+		// Floating Point ================================
+			// FADD
+			10'b01110_00???: begin
+				Branch = 0;
+				RegWrite = 1;
+				MemWrite = 0;
+				MemRead = 0;
+				keepFlags = 4'b0000;
+				Reg1Loc = 1'b0;
+				Reg3Loc = 2'b01;
+ 				selOpA = 1'b0;
+ 				selOpB = 3'b010;
+				FPUOp = 2'b00;
+				brSel = 2'b11;
+				brEx = 0;
+ 				selWrData = 2'b01;
+			end
+			// FSUB
+			10'b01110_01???: begin
+				Branch = 0;
+				RegWrite = 1;
+				MemWrite = 0;
+				MemRead = 0;
+				keepFlags = 4'b0000;
+				Reg1Loc = 1'b0;
+				Reg3Loc = 2'b01;
+ 				selOpA = 1'b0;
+ 				selOpB = 3'b010;
+				FPUOp = 2'b00;
+				brSel = 2'b11;
+				brEx = 0;
+ 				selWrData = 2'b01;
+			end
+			// FMUL
+			10'b01110_10???: begin
+				Branch = 0;
+				RegWrite = 1;
+				MemWrite = 0;
+				MemRead = 0;
+				keepFlags = 4'b0000;
+				Reg1Loc = 1'b0;
+				Reg3Loc = 2'b01;
+ 				selOpA = 1'b0;
+ 				selOpB = 3'b010;
+				FPUOp = 2'b00;
+				brSel = 2'b11;
+				brEx = 0;
+ 				selWrData = 2'b01;
+			end
+			// FDIV
+			10'b01110_11???: begin
+				Branch = 0;
+				RegWrite = 1;
+				MemWrite = 0;
+				MemRead = 0;
+				keepFlags = 4'b0000;
+				Reg1Loc = 1'b0;
+				Reg3Loc = 2'b01;
+ 				selOpA = 1'b0;
+ 				selOpB = 3'b010;
+				FPUOp = 2'b00;
+				brSel = 2'b11;
+				brEx = 0;
+ 				selWrData = 2'b01;
 			end
 		endcase
 	end
