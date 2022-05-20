@@ -1,24 +1,23 @@
 # Begin_DVE_Session_Save_Info
 # DVE full session
-# Saved on Mon May 9 15:49:28 2022
+# Saved on Mon May 9 13:12:39 2022
 # Designs open: 1
 #   V1: vcdplus.vpd
 # Toplevel windows open: 2
 # 	TopLevel.1
 # 	TopLevel.2
 #   Source.1: tb_fp_add
-#   Wave.1: 38 signals
-#   Group count = 3
-#   Group tb_fp_add signal count = 8
-#   Group dut signal count = 33
-#   Group Group1 signal count = 1
+#   Wave.1: 48 signals
+#   Group count = 2
+#   Group tb_fp_add signal count = 9
+#   Group dut signal count = 43
 # End_DVE_Session_Save_Info
 
 # DVE version: S-2021.09-SP1_Full64
 # DVE build date: Nov 30 2021 00:09:19
 
 
-#<Session mode="Full" path="/home/nguyea9/ee478/fpu/fp_add.tcl" type="Debug">
+#<Session mode="Full" path="/home/nguyea9/ee478/fpu/session.vcdplus.vpd.tcl" type="Debug">
 
 gui_set_loading_session_type Post
 gui_continuetime_set
@@ -212,7 +211,7 @@ gui_sync_global -id ${TopLevel.2} -option true
 # MDI window settings
 set Wave.1 [gui_create_window -type {Wave}  -parent ${TopLevel.2}]
 gui_show_window -window ${Wave.1} -show_state maximized
-gui_update_layout -id ${Wave.1} {{show_state maximized} {dock_state undocked} {dock_on_new_line false} {child_wave_left 380} {child_wave_right 397} {child_wave_colname 196} {child_wave_colvalue 180} {child_wave_col1 0} {child_wave_col2 1}}
+gui_update_layout -id ${Wave.1} {{show_state maximized} {dock_state undocked} {dock_on_new_line false} {child_wave_left 305} {child_wave_right 472} {child_wave_colname 164} {child_wave_colvalue 137} {child_wave_col1 0} {child_wave_col2 1}}
 
 # End MDI window settings
 
@@ -255,49 +254,53 @@ gui_load_child_values {tb_fp_add}
 gui_load_child_values {tb_fp_add.dut}
 
 
-set _session_group_69 tb_fp_add
-gui_sg_create "$_session_group_69"
-set tb_fp_add "$_session_group_69"
+set _session_group_48 tb_fp_add
+gui_sg_create "$_session_group_48"
+set tb_fp_add "$_session_group_48"
 
-gui_sg_addsignal -group "$_session_group_69" { tb_fp_add.clk tb_fp_add.reset tb_fp_add.opA tb_fp_add.opB tb_fp_add.sum tb_fp_add.underflow tb_fp_add.overflow tb_fp_add.ClockDelay }
+gui_sg_addsignal -group "$_session_group_48" { tb_fp_add.clk tb_fp_add.reset tb_fp_add.opA tb_fp_add.opB tb_fp_add.sum tb_fp_add.underflow tb_fp_add.overflow tb_fp_add.sticky tb_fp_add.ClockDelay }
 gui_set_radix -radix {decimal} -signals {V1:tb_fp_add.ClockDelay}
 gui_set_radix -radix {twosComplement} -signals {V1:tb_fp_add.ClockDelay}
 
-set _session_group_70 dut
-gui_sg_create "$_session_group_70"
-set dut "$_session_group_70"
+set _session_group_49 dut
+gui_sg_create "$_session_group_49"
+set dut "$_session_group_49"
 
-gui_sg_addsignal -group "$_session_group_70" { tb_fp_add.dut.clk tb_fp_add.dut.reset tb_fp_add.dut.opA tb_fp_add.dut.opB }
-gui_sg_addsignal -group "$_session_group_70" { {Exponent stage} } -divider
-gui_sg_addsignal -group "$_session_group_70" { tb_fp_add.dut.sA tb_fp_add.dut.sB tb_fp_add.dut.eA tb_fp_add.dut.eB tb_fp_add.dut.mA tb_fp_add.dut.mB tb_fp_add.dut.diffE tb_fp_add.dut.absDiffE tb_fp_add.dut.shiftInput tb_fp_add.dut.sticky tb_fp_add.dut.subtract }
-gui_sg_addsignal -group "$_session_group_70" { {Mantissa stage} } -divider
-gui_sg_addsignal -group "$_session_group_70" { tb_fp_add.dut.selBigE tb_fp_add.dut.op2 tb_fp_add.dut.shiftOutput }
-gui_sg_addsignal -group "$_session_group_70" { {Flag stage} } -divider
-gui_sg_addsignal -group "$_session_group_70" { tb_fp_add.dut.cout tb_fp_add.dut.mSum tb_fp_add.dut.bigE tb_fp_add.dut.sumM tb_fp_add.dut.sumE tb_fp_add.dut.finalM tb_fp_add.dut.finalE tb_fp_add.dut.finalS }
-gui_sg_addsignal -group "$_session_group_70" { Result } -divider
-gui_sg_addsignal -group "$_session_group_70" { tb_fp_add.dut.sum tb_fp_add.dut.underflow tb_fp_add.dut.overflow }
+gui_sg_addsignal -group "$_session_group_49" { tb_fp_add.dut.clk tb_fp_add.dut.reset tb_fp_add.dut.opA tb_fp_add.dut.opB }
+gui_sg_addsignal -group "$_session_group_49" { {Exponent stage} } -divider
+gui_sg_addsignal -group "$_session_group_49" { tb_fp_add.dut.sA tb_fp_add.dut.sB tb_fp_add.dut.eA tb_fp_add.dut.eB tb_fp_add.dut.mA tb_fp_add.dut.mB tb_fp_add.dut.diffE tb_fp_add.dut.absDiffE tb_fp_add.dut.shiftInput tb_fp_add.dut.sticky }
+gui_sg_addsignal -group "$_session_group_49" { {Mantissa stage} } -divider
+gui_sg_addsignal -group "$_session_group_49" { tb_fp_add.dut.keepSA tb_fp_add.dut.keepSB tb_fp_add.dut.keepEA tb_fp_add.dut.keepEB tb_fp_add.dut.keepSticky tb_fp_add.dut.selBigE tb_fp_add.dut.subtract tb_fp_add.dut.shiftOutput tb_fp_add.dut.op2 }
+gui_sg_addsignal -group "$_session_group_49" { {Flag stage} } -divider
+gui_sg_addsignal -group "$_session_group_49" { tb_fp_add.dut.keepSA2 tb_fp_add.dut.keepSB2 tb_fp_add.dut.keepEA2 tb_fp_add.dut.keepEB2 tb_fp_add.dut.keepSticky2 tb_fp_add.dut.cout tb_fp_add.dut.mSum tb_fp_add.dut.bigE tb_fp_add.dut.sumM tb_fp_add.dut.sumE tb_fp_add.dut.finalM tb_fp_add.dut.finalE tb_fp_add.dut.finalS }
+gui_sg_addsignal -group "$_session_group_49" { Result } -divider
+gui_sg_addsignal -group "$_session_group_49" { tb_fp_add.dut.sum tb_fp_add.dut.underflow tb_fp_add.dut.overflow }
 gui_set_radix -radix {binary} -signals {V1:tb_fp_add.dut.opA}
 gui_set_radix -radix {unsigned} -signals {V1:tb_fp_add.dut.opA}
 gui_set_radix -radix {binary} -signals {V1:tb_fp_add.dut.opB}
 gui_set_radix -radix {unsigned} -signals {V1:tb_fp_add.dut.opB}
-gui_set_radix -radix {binary} -signals {V1:tb_fp_add.dut.eA}
+gui_set_radix -radix {decimal} -signals {V1:tb_fp_add.dut.eA}
 gui_set_radix -radix {unsigned} -signals {V1:tb_fp_add.dut.eA}
-gui_set_radix -radix {binary} -signals {V1:tb_fp_add.dut.eB}
+gui_set_radix -radix {decimal} -signals {V1:tb_fp_add.dut.eB}
 gui_set_radix -radix {unsigned} -signals {V1:tb_fp_add.dut.eB}
 gui_set_radix -radix {binary} -signals {V1:tb_fp_add.dut.mA}
 gui_set_radix -radix {unsigned} -signals {V1:tb_fp_add.dut.mA}
 gui_set_radix -radix {binary} -signals {V1:tb_fp_add.dut.mB}
 gui_set_radix -radix {unsigned} -signals {V1:tb_fp_add.dut.mB}
-gui_set_radix -radix {decimal} -signals {V1:tb_fp_add.dut.diffE}
+gui_set_radix -radix {binary} -signals {V1:tb_fp_add.dut.diffE}
 gui_set_radix -radix {unsigned} -signals {V1:tb_fp_add.dut.diffE}
 gui_set_radix -radix {binary} -signals {V1:tb_fp_add.dut.absDiffE}
 gui_set_radix -radix {unsigned} -signals {V1:tb_fp_add.dut.absDiffE}
 gui_set_radix -radix {binary} -signals {V1:tb_fp_add.dut.shiftInput}
 gui_set_radix -radix {unsigned} -signals {V1:tb_fp_add.dut.shiftInput}
-gui_set_radix -radix {binary} -signals {V1:tb_fp_add.dut.op2}
-gui_set_radix -radix {unsigned} -signals {V1:tb_fp_add.dut.op2}
 gui_set_radix -radix {binary} -signals {V1:tb_fp_add.dut.shiftOutput}
 gui_set_radix -radix {unsigned} -signals {V1:tb_fp_add.dut.shiftOutput}
+gui_set_radix -radix {binary} -signals {V1:tb_fp_add.dut.op2}
+gui_set_radix -radix {unsigned} -signals {V1:tb_fp_add.dut.op2}
+gui_set_radix -radix {binary} -signals {V1:tb_fp_add.dut.keepEA2}
+gui_set_radix -radix {unsigned} -signals {V1:tb_fp_add.dut.keepEA2}
+gui_set_radix -radix {binary} -signals {V1:tb_fp_add.dut.keepEB2}
+gui_set_radix -radix {unsigned} -signals {V1:tb_fp_add.dut.keepEB2}
 gui_set_radix -radix {binary} -signals {V1:tb_fp_add.dut.mSum}
 gui_set_radix -radix {unsigned} -signals {V1:tb_fp_add.dut.mSum}
 gui_set_radix -radix {binary} -signals {V1:tb_fp_add.dut.bigE}
@@ -313,12 +316,6 @@ gui_set_radix -radix {unsigned} -signals {V1:tb_fp_add.dut.finalE}
 gui_set_radix -radix {binary} -signals {V1:tb_fp_add.dut.sum}
 gui_set_radix -radix {unsigned} -signals {V1:tb_fp_add.dut.sum}
 
-set _session_group_71 Group1
-gui_sg_create "$_session_group_71"
-set Group1 "$_session_group_71"
-
-gui_sg_addsignal -group "$_session_group_71" { tb_fp_add.dut.inexact }
-
 # Global: Highlighting
 
 # Global: Stack
@@ -327,7 +324,7 @@ gui_change_stack_mode -mode list
 # Post database loading setting...
 
 # Restore C1 time
-gui_set_time -C1_only 7018568
+gui_set_time -C1_only 4748584
 
 
 
@@ -362,9 +359,9 @@ gui_list_set_filter -id ${Data.1} -list { {Buffer 1} {Input 1} {Others 1} {Linka
 gui_list_set_filter -id ${Data.1} -text {*}
 gui_list_show_data -id ${Data.1} {tb_fp_add.dut}
 gui_show_window -window ${Data.1}
-catch { gui_list_select -id ${Data.1} {tb_fp_add.dut.inexact }}
-gui_view_scroll -id ${Data.1} -vertical -set 0
-gui_view_scroll -id ${Data.1} -horizontal -set 8
+catch { gui_list_select -id ${Data.1} {tb_fp_add.dut.keepSticky2 }}
+gui_view_scroll -id ${Data.1} -vertical -set 537
+gui_view_scroll -id ${Data.1} -horizontal -set 7
 gui_view_scroll -id ${Hier.1} -vertical -set 0
 gui_view_scroll -id ${Hier.1} -horizontal -set 0
 
@@ -387,8 +384,8 @@ gui_marker_set_ref -id ${Wave.1}  C1
 gui_wv_zoom_timerange -id ${Wave.1} 0 10500000
 gui_list_add_group -id ${Wave.1} -after {New Group} {tb_fp_add}
 gui_list_add_group -id ${Wave.1} -after {New Group} {dut}
-gui_list_add_group -id ${Wave.1} -after {New Group} {Group1}
-gui_seek_criteria -id ${Wave.1} {Rising}
+gui_list_select -id ${Wave.1} {tb_fp_add.dut.sum }
+gui_seek_criteria -id ${Wave.1} {Any Edge}
 
 
 
@@ -403,10 +400,10 @@ if { $groupExD } {
 }
 gui_list_set_filter -id ${Wave.1} -list { {Buffer 1} {Input 1} {Others 1} {Linkage 1} {Output 1} {Parameter 1} {All 1} {Aggregate 1} {LibBaseMember 1} {Event 1} {Assertion 1} {Constant 1} {Interface 1} {BaseMembers 1} {Signal 1} {$unit 1} {Inout 1} {Variable 1} }
 gui_list_set_filter -id ${Wave.1} -text {*}
-gui_list_set_insertion_bar  -id ${Wave.1} -group Group1  -item tb_fp_add.dut.inexact -position below
+gui_list_set_insertion_bar  -id ${Wave.1} -group dut  -item Result -position below
 
-gui_marker_move -id ${Wave.1} {C1} 7018568
-gui_view_scroll -id ${Wave.1} -vertical -set 602
+gui_marker_move -id ${Wave.1} {C1} 4748584
+gui_view_scroll -id ${Wave.1} -vertical -set 827
 gui_show_grid -id ${Wave.1} -enable false
 # Restore toplevel window zorder
 # The toplevel window could be closed if it has no view/pane
