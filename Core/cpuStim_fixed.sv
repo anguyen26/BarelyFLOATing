@@ -24,7 +24,8 @@ module cpuStim_fixed();
 			@(posedge clk); // Run
 		end
 		reset <= 0;
-		repeat(2000) begin
+		while(testCpu.instr != 16'b1110011111111111) begin
+        // repeat(2000) begin
 			@(posedge clk); // Run
 		end
 

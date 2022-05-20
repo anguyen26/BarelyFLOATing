@@ -23,9 +23,11 @@ module regfile (
     integer i;
     always_ff @(posedge clk) begin
         if (reset) begin
-            for (int i=0; i<15; i++) begin
+            for (int i=0; i<13; i++) begin
                 MEM[i] <= 16'd0;
             end
+            MEM[13] <= 16'hFFFF;
+            MEM[14] <= 16'd0;
         end
 		else if(wr_en) begin
 			MEM[wr_addr] <= wr_data;

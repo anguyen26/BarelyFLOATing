@@ -22,6 +22,11 @@ acker:
 		Core/instructmem.sv
 	make -C Core vcs
 
+simple:
+	sed -i 's;^`define\(.*\)";`define BENCHMARK "../assembler/simpleAckermann.v"; g' \
+		Core/instructmem.sv
+	make -C Core vcs
+
 edit_tb:
 	sed -i 's;^with\(.*\);with open("tests/$(TEST).txt", "r") as f:;g' \
 		iarm-master/run_iarm.py
