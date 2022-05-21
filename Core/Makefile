@@ -5,4 +5,4 @@ vcs:
 	sed -i 's,=[ \t]*,= ,' sv_output.txt
 	sed -i 's,\[[ \t]*,[,' sv_output.txt
 dve:
-	dve -full64 -vpd vcdplus.vpd &
+	dve -full64 -vpd vcdplus.vpd -session "fpuCoreWave.tcl" &

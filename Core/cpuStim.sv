@@ -18,7 +18,6 @@ module cpuStim();
 	
 	initial begin
         $vcdpluson;
-        $vcdplusmemon;
 		reset <= 1; @(posedge clk);
 		repeat(3) begin
 			@(posedge clk); // Reset Pipeline

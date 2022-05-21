@@ -11,12 +11,12 @@ module cpuControl(
 	input logic 		clk, reset,
 	
 	// Control signals for datapath
-	output logic 		RegWrite, MemWrite, MemRead, noop,
+	output logic 		RegWrite, MemWrite, MemRead,
 	output logic [1:0] 	ShiftDir,
 	output logic [3:0] 	keepFlags,
 	output logic [1:0] 	Reg1Loc, Reg2Loc, Reg3Loc,
-	output logic [3:0] 	selOpB,
-	output logic 		selOpA,
+	output logic [2:0] 	selOpB,
+	output logic 		selOpA, ALUorFPU,
 
 	// Controls the operation the ALU / FPU will perform
 	output logic [2:0] 	ALUOp,
@@ -30,11 +30,12 @@ module cpuControl(
 	logic [9:0] opcode;
 	assign opcode =  instr[15:6];
 
-	always_comb begin
+always_comb begin
 		// MOVE =========================================
 		casez (opcode)
 			// MOVS
 			10'b0010?_?????: begin
+				ALUorFPU = 0;
 				Branch = 0;
 				RegWrite = 1;
 				MemWrite = 0; 
@@ -47,6 +48,7 @@ module cpuControl(
 			end
 			//MOV
 			10'b010001100_?: begin
+				ALUorFPU = 0;
 				Branch = 0;
 				RegWrite = 1;
 				MemWrite = 0; 
@@ -63,12 +65,13 @@ module cpuControl(
 		// ADD =========================================
 			// ADDS (imm)
 			10'b0001110_???: begin
+				ALUorFPU = 0;
 				Branch = 0;
 				RegWrite = 1;
 				MemWrite = 0;
 				MemRead = 0;
 				keepFlags = 4'b1111;
-				Reg1Loc = 2'b01;
+				Reg1Loc = 2'd1;
 				Reg3Loc = 2'b00;
  				selOpA = 1'b0;
  				selOpB = 3'd1;
@@ -79,12 +82,13 @@ module cpuControl(
 			end
 			// ADDS (reg)
 			10'b0001100_???: begin
+				ALUorFPU = 0;
 				Branch = 0;
 				RegWrite = 1;
 				MemWrite = 0;
 				MemRead = 0;
 				keepFlags = 4'b1111;
-				Reg1Loc = 1;
+				Reg1Loc = 2'd1;
 				Reg2Loc = 2'b00;
 				Reg3Loc = 2'b00;
  				selOpA = 1'b0;
@@ -96,12 +100,12 @@ module cpuControl(
 			end
 			// ADD
 			10'b101100000_?: begin
+				ALUorFPU = 0;
 				Branch = 0;
 				RegWrite = 1;
 				MemWrite = 0;
 				MemRead = 0;
 				keepFlags = 4'b0000;
-				Reg1Loc = 1'b0;
 				Reg3Loc = 2'b01;
  				selOpA = 1'b0;
  				selOpB = 3'd2;
@@ -113,12 +117,13 @@ module cpuControl(
 		// SUBTRACT =========================================
 			// SUBS (imm)
 			10'b0001111_???: begin
+				ALUorFPU = 0;
 				Branch = 0;
 				RegWrite = 1;
 				MemWrite = 0;
 				MemRead = 0;
 				keepFlags = 4'b1111;
-				Reg1Loc = 1;
+				Reg1Loc = 2'd1;
 				Reg3Loc = 2'b00;
  				selOpA = 1'b0;
  				selOpB = 3'd1;
@@ -129,6 +134,7 @@ module cpuControl(
 			end
 			// SUBS (reg)
 			10'b0001101_???: begin
+				ALUorFPU = 0;
 				Branch = 0;
 				RegWrite = 1;
 				MemWrite = 0;
@@ -146,12 +152,12 @@ module cpuControl(
 			end
 			// SUB
 			10'b101100001_?: begin
+				ALUorFPU = 0;
 				Branch = 0;
 				RegWrite = 1;
 				MemWrite = 0;
 				MemRead = 0;
 				keepFlags = 4'b0000;
-				Reg1Loc = 0;
 				Reg3Loc = 2'b01;
  				selOpA = 1'b0;
  				selOpB = 3'd2;
@@ -163,6 +169,7 @@ module cpuControl(
 		// COMPARE =========================================
 			// CMP
 			10'b0100001010: begin
+				ALUorFPU = 0;
 				Branch = 0;
 				RegWrite = 0;
 				MemWrite = 0;
@@ -179,6 +186,7 @@ module cpuControl(
 		// LOGICAL =========================================
 			// ANDS
 			10'b0100000000: begin
+				ALUorFPU = 0;
 				Branch = 0;
 				RegWrite = 1;
 				MemWrite = 0;
@@ -196,6 +204,7 @@ module cpuControl(
 			end
 			// EORS
 			10'b0100000001: begin
+				ALUorFPU = 0;
 				Branch = 0;
 				RegWrite = 1;
 				MemWrite = 0;
@@ -213,6 +222,7 @@ module cpuControl(
 			end
 			// ORRS
 			10'b0100001100: begin
+				ALUorFPU = 0;
 				Branch = 0;
 				RegWrite = 1;
 				MemWrite = 0;
@@ -230,6 +240,7 @@ module cpuControl(
 			end
 			// MVNS
 			10'b0100001111: begin
+				ALUorFPU = 0;
 				Branch = 0;
 				RegWrite = 1;
 				MemWrite = 0;
@@ -248,6 +259,7 @@ module cpuControl(
 		// ROTATE =========================================
 			// LSLS
 			10'b0100000010: begin
+				ALUorFPU = 0;
 				Branch = 0;
 				RegWrite = 1;
 				MemWrite = 0;
@@ -263,6 +275,7 @@ module cpuControl(
 			end
 			// LSRS
 			10'b0100000011: begin
+				ALUorFPU = 0;
 				Branch = 0;
 				RegWrite = 1;
 				MemWrite = 0;
@@ -278,6 +291,7 @@ module cpuControl(
 			end
 			// ASRS
 			10'b0100000100: begin
+				ALUorFPU = 0;
 				Branch = 0;
 				RegWrite = 1;
 				MemWrite = 0;
@@ -293,6 +307,7 @@ module cpuControl(
 			end
 			// RORS
 			10'b0100000111: begin
+				ALUorFPU = 0;
 				Branch = 0;
 				RegWrite = 1;
 				MemWrite = 0;
@@ -309,6 +324,7 @@ module cpuControl(
 		// STORE =========================================
 			// STR
 			10'b01100_?????: begin
+				ALUorFPU = 0;
 				Branch = 0;
 				RegWrite = 0;
 				MemWrite = 1;
@@ -326,6 +342,7 @@ module cpuControl(
 		// LOAD =========================================
 			// LDR
 			10'b01101_?????: begin
+				ALUorFPU = 0;
 				Branch = 0;
 				RegWrite = 1;
 				MemWrite = 0;
@@ -343,6 +360,7 @@ module cpuControl(
 		// BRANCH =========================================
 			// BEQ
 			10'b1101_0000??: begin
+				ALUorFPU = 0;
 				Branch = 1;
 				RegWrite = 0;
 				MemWrite = 0;
@@ -352,6 +370,7 @@ module cpuControl(
 			end
 			// BNE
 			10'b1101_0001??: begin
+				ALUorFPU = 0;
 				Branch = 1;
 				RegWrite = 0;
 				MemWrite = 0;
@@ -361,6 +380,7 @@ module cpuControl(
 			end
 			// BCS
 			10'b1101_0010??: begin
+				ALUorFPU = 0;
 				Branch = 1;
 				RegWrite = 0;
 				MemWrite = 0;
@@ -370,6 +390,7 @@ module cpuControl(
 			end
 			// BCC
 			10'b1101_0011??: begin
+				ALUorFPU = 0;
 				Branch = 1;
 				RegWrite = 0;
 				MemWrite = 0;
@@ -379,6 +400,7 @@ module cpuControl(
 			end
 			// BMI
 			10'b1101_0100??: begin
+				ALUorFPU = 0;
 				Branch = 1;
 				RegWrite = 0;
 				MemWrite = 0;
@@ -388,6 +410,7 @@ module cpuControl(
 			end
 			// BPL
 			10'b1101_0101??: begin
+				ALUorFPU = 0;
 				Branch = 1;
 				RegWrite = 0;
 				MemWrite = 0;
@@ -397,6 +420,7 @@ module cpuControl(
 			end
 			// BVS
 			10'b1101_0110??: begin
+				ALUorFPU = 0;
 				Branch = 1;
 				RegWrite = 0;
 				MemWrite = 0;
@@ -406,6 +430,7 @@ module cpuControl(
 			end
 			// BVC
 			10'b1101_0111??: begin
+				ALUorFPU = 0;
 				Branch = 1;
 				RegWrite = 0;
 				MemWrite = 0;
@@ -415,6 +440,7 @@ module cpuControl(
 			end
 			// BHI
 			10'b1101_1000??: begin
+				ALUorFPU = 0;
 				Branch = 1;
 				RegWrite = 0;
 				MemWrite = 0;
@@ -424,6 +450,7 @@ module cpuControl(
 			end
 			// BLS
 			10'b1101_1001??: begin
+				ALUorFPU = 0;
 				Branch = 1;
 				RegWrite = 0;
 				MemWrite = 0;
@@ -433,6 +460,7 @@ module cpuControl(
 			end
 			// BGE
 			10'b1101_1010??: begin
+				ALUorFPU = 0;
 				Branch = 1;
 				RegWrite = 0;
 				MemWrite = 0;
@@ -442,6 +470,7 @@ module cpuControl(
 			end
 			// BLT
 			10'b1101_1011??: begin
+				ALUorFPU = 0;
 				Branch = 1;
 				RegWrite = 0;
 				MemWrite = 0;
@@ -451,6 +480,7 @@ module cpuControl(
 			end
 			// BGT
 			10'b1101_1100??: begin
+				ALUorFPU = 0;
 				Branch = 1;
 				RegWrite = 0;
 				MemWrite = 0;
@@ -460,6 +490,7 @@ module cpuControl(
 			end
 			// BLE
 			10'b1101_1101??: begin
+				ALUorFPU = 0;
 				Branch = 1;
 				RegWrite = 0;
 				MemWrite = 0;
@@ -469,6 +500,7 @@ module cpuControl(
 			end
 			// BAL
 			10'b1101_1110??: begin
+				ALUorFPU = 0;
 				Branch = 1;
 				RegWrite = 0;
 				MemWrite = 0;
@@ -480,6 +512,7 @@ module cpuControl(
 			// Unconditional Branching
 			// B
 			10'b11100_?????: begin
+				ALUorFPU = 0;
 				Branch = 1;
 				RegWrite = 0;
 				MemWrite = 0;
@@ -489,6 +522,7 @@ module cpuControl(
 			end
 			// BL
 			10'b0100010100: begin
+				ALUorFPU = 0;
 				Branch = 1;
 				RegWrite = 1;
 				MemWrite = 0;
@@ -500,6 +534,7 @@ module cpuControl(
 			end
 			// BX
 			10'b010001110_?: begin
+				ALUorFPU = 0;
 				Branch = 1;
 				RegWrite = 0;
 				MemWrite = 0;
@@ -510,6 +545,7 @@ module cpuControl(
 		// NONE =========================================
 			// NOOP
 			10'b1011111100: begin
+				ALUorFPU = 0;
 				Branch = 0;
 				RegWrite = 0;
 				MemWrite = 0;
@@ -520,13 +556,15 @@ module cpuControl(
 		// Floating Point ================================
 			// FADD
 			10'b01110_00???: begin
+				ALUorFPU = 1;
 				Branch = 0;
 				RegWrite = 1;
 				MemWrite = 0;
 				MemRead = 0;
 				keepFlags = 4'b0000;
-				Reg1Loc = 1'b0;
-				Reg3Loc = 2'b01;
+				Reg1Loc = 2'd1;
+				Reg2Loc = 2'd0;
+				Reg3Loc = 2'd0;
  				selOpA = 1'b0;
  				selOpB = 3'b010;
 				FPUOp = 2'b00;
@@ -536,48 +574,54 @@ module cpuControl(
 			end
 			// FSUB
 			10'b01110_01???: begin
+				ALUorFPU = 1;
 				Branch = 0;
 				RegWrite = 1;
 				MemWrite = 0;
 				MemRead = 0;
 				keepFlags = 4'b0000;
-				Reg1Loc = 1'b0;
-				Reg3Loc = 2'b01;
+				Reg1Loc = 2'd1;
+				Reg2Loc = 2'd0;
+				Reg3Loc = 2'd0;
  				selOpA = 1'b0;
  				selOpB = 3'b010;
-				FPUOp = 2'b00;
+				FPUOp = 2'b01;
 				brSel = 2'b11;
 				brEx = 0;
  				selWrData = 2'b01;
 			end
 			// FMUL
 			10'b01110_10???: begin
+				ALUorFPU = 1;
 				Branch = 0;
 				RegWrite = 1;
 				MemWrite = 0;
 				MemRead = 0;
 				keepFlags = 4'b0000;
-				Reg1Loc = 1'b0;
-				Reg3Loc = 2'b01;
+				Reg1Loc = 2'd1;
+				Reg2Loc = 2'd0;
+				Reg3Loc = 2'd0;
  				selOpA = 1'b0;
  				selOpB = 3'b010;
-				FPUOp = 2'b00;
+				FPUOp = 2'b10;
 				brSel = 2'b11;
 				brEx = 0;
  				selWrData = 2'b01;
 			end
 			// FDIV
 			10'b01110_11???: begin
+				ALUorFPU = 1;
 				Branch = 0;
 				RegWrite = 1;
 				MemWrite = 0;
 				MemRead = 0;
 				keepFlags = 4'b0000;
-				Reg1Loc = 1'b0;
-				Reg3Loc = 2'b01;
+				Reg1Loc = 2'd1;
+				Reg2Loc = 2'd0;
+				Reg3Loc = 2'd0;
  				selOpA = 1'b0;
  				selOpB = 3'b010;
-				FPUOp = 2'b00;
+				FPUOp = 2'b11;
 				brSel = 2'b11;
 				brEx = 0;
  				selWrData = 2'b01;

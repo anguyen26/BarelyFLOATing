@@ -6,7 +6,7 @@ Warning-[DEBUG_DEP] Option will be deprecated
 Command: vcs -f cpu.include +v2k -R -sverilog -full64 -debug_pp -timescale=1ns/10ps \
 -l cpu.log
                          Chronologic VCS (TM)
-       Version S-2021.09-SP1_Full64 -- Thu May 19 17:19:53 2022
+       Version S-2021.09-SP1_Full64 -- Sat May 21 08:23:14 2022
 
                     Copyright (c) 1991 - 2021 Synopsys, Inc.
    This software and the associated documentation are proprietary to Synopsys,
@@ -49,56 +49,29 @@ Parsing design file 'forwardingUnit.sv'
 Parsing design file 'D_FF.sv'
 Parsing design file 'a_phase4.sv'
 Parsing design file 'cpu.sv'
-
-Warning-[IPDW] Identifier previously declared
-cpu.sv, 25
-  Second declaration for identifier 'imm3' ignored
-  Identifier 'imm3' previously declared as logic. [cpu.sv, 20]
-
-
-Warning-[IPDW] Identifier previously declared
-cpu.sv, 25
-  Second declaration for identifier 'imm5' ignored
-  Identifier 'imm5' previously declared as logic. [cpu.sv, 20]
-
-
-Warning-[IPDW] Identifier previously declared
-cpu.sv, 25
-  Second declaration for identifier 'imm7' ignored
-  Identifier 'imm7' previously declared as logic. [cpu.sv, 20]
-
-
-Warning-[IPDW] Identifier previously declared
-cpu.sv, 25
-  Second declaration for identifier 'imm8' ignored
-  Identifier 'imm8' previously declared as logic. [cpu.sv, 20]
-
-Parsing design file 'cpuStim_fixed.sv'
+Parsing design file '../fpu/fp_add.sv'
+Parsing design file '../fpu/fp_mul.sv'
+Parsing design file '../fpu/div.sv'
+Parsing design file '../fpu/fpu.sv'
+Parsing design file '../fpu/fp_div.sv'
+Parsing design file 'cpuStim.sv'
 Top Level Modules:
        mux3x16_16
        register_2
        register_3
        register_4
        register_5
-       cpuStim_fixed
+       cpuStim
 TimeScale is 1 ps / 1 ps
 
-Warning-[TFIPC] Too few instance port connections
-cpu.sv, 95
-cpu, "cpuControl controlUnit( .Branch (Branch_pre),  .PC (PC),  .instr (instr),  .FlagsReg (FlagsReg),  .clk (clk),  .reset (reset),  .RegWrite (RegWrite),  .MemWrite (MemWrite),  .MemRead (MemRead),  .ShiftDir (ShiftDir),  .keepFlags (keepFlags),  .Reg1Loc (Reg1Loc),  .Reg2Loc (Reg2Loc),  .Reg3Loc (Reg3Loc),  .selOpB (selOpB),  .selOpA (selOpA),  .ALUOp (ALUOp),  .brSel (brSel),  .brEx (brEx),  .selWrData (selWrData));"
-  The above instance has fewer port connections than the module definition.
-  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
-  ports.
-
-
 Warning-[IWNF] Implicit wire has no fanin
-cpu.sv, 81
+cpu.sv, 97
   Implicit wire 'regWriteAdderE' does not have any driver, please make sure 
   this is intended.
 
 
 Warning-[PCWM-W] Port connection width mismatch
-cpu.sv, 81
+cpu.sv, 97
 "forwardingUnit forward( .RA1 (reg1Addr),  .RA2 (reg2Addr),  .WA3W (regWriteAdderE),  .RegWriteW (RegWriteE),  .Forward1 (Forward1),  .Forward2 (Forward2));"
   The following 1-bit expression is connected to 4-bit port "WA3W" of module 
   "forwardingUnit", instance "forward".
@@ -106,68 +79,40 @@ cpu.sv, 81
   Instantiated module defined at: "forwardingUnit.sv", 1
   Use +lint=PCWM for more details.
 
-
-Warning-[PCWM-W] Port connection width mismatch
-cpu.sv, 133
-"pipelineReg #(16) decodeToExec3( .D (regWriteAddr),  .Q (regWriteAddrE),  .en (1'b1),  .clear (1'b0),  .clk (clk));"
-  The following 4-bit expression is connected to 16-bit port "D" of module 
-  "pipelineReg", instance "decodeToExec3".
-  Expression: regWriteAddr
-  Instantiated module defined at: "pipelineReg.sv", 1
-  Use +lint=PCWM for more details.
-
-
-Warning-[PCWM-W] Port connection width mismatch
-cpu.sv, 133
-"pipelineReg #(16) decodeToExec3( .D (regWriteAddr),  .Q (regWriteAddrE),  .en (1'b1),  .clear (1'b0),  .clk (clk));"
-  The following 4-bit expression is connected to 16-bit port "Q" of module 
-  "pipelineReg", instance "decodeToExec3".
-  Expression: regWriteAddrE
-  Instantiated module defined at: "pipelineReg.sv", 1
-  Use +lint=PCWM for more details.
-
-
-Warning-[PCWM-W] Port connection width mismatch
-cpu.sv, 163
-"mux5x16_16 opBMux0( .i0 (ReadData2E),  .i1 (imm3),  .i2 (imm7),  .i3 (imm5),  .i4 (16'b1),  .sel (selOpBE),  .out (opB_pre));"
-  The following 4-bit expression is connected to 3-bit port "sel" of module 
-  "mux5x16_16", instance "opBMux0".
-  Expression: selOpBE
-  Instantiated module defined at: "mux5x16_16.sv", 4
-  Use +lint=PCWM for more details.
-
 Starting vcs inline pass...
 
-16 modules and 0 UDP read.
-recompiling module cpuStim_fixed
+17 modules and 0 UDP read.
+recompiling module cpuStim
 	However, due to incremental compilation, only 1 module needs to be compiled. 
-make[2]: Entering directory `/home/nguyea9/ee478/Core/csrc'
+make[2]: Entering directory `/home/projects/ee478.2022spr/hoppii/BarelyFLOATing/Core/csrc' \
+
 rm -f _cuarc*.so _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
 ld -shared  -Bsymbolic --no-relax  -o .//../simv.daidir//_cuarc0.so objs/amcQw_d.o \
 
 rm -f _cuarc0.so
 if [ -x ../simv ]; then chmod a-x ../simv; fi
 g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir \
--Wl,-rpath=/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib -L/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib \
--Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _18216_archive_1.so _prev_archive_1.so \
+-Wl,-rpath=/home/lab.apps/vlsiapps_new//vcs/current/linux64/lib -L/home/lab.apps/vlsiapps_new//vcs/current/linux64/lib \
+-Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _10897_archive_1.so _prev_archive_1.so \
 _cuarc0.so  SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o \
 rmar_llvm_0_0.o           -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile \
--luclinative /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_tls.o   -Wl,-whole-archive \
--lvcsucli    -Wl,-no-whole-archive          /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_save_restore_new.o \
+-luclinative /home/lab.apps/vlsiapps_new//vcs/current/linux64/lib/vcs_tls.o   -Wl,-whole-archive \
+-lvcsucli    -Wl,-no-whole-archive          /home/lab.apps/vlsiapps_new//vcs/current/linux64/lib/vcs_save_restore_new.o \
 -ldl  -lc -lm -lpthread -ldl 
 ../simv up to date
-make[2]: Leaving directory `/home/nguyea9/ee478/Core/csrc'
-Command: /home/nguyea9/ee478/Core/./simv +v2k -a cpu.log
+make[2]: Leaving directory `/home/projects/ee478.2022spr/hoppii/BarelyFLOATing/Core/csrc' \
+
+Command: /home/projects/ee478.2022spr/hoppii/BarelyFLOATing/Core/./simv +v2k -a cpu.log
 Chronologic VCS simulator copyright 1991-2021
 Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May 19 17:19 2022
+Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May 21 08:23 2022
 VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
-Running benchmark: ../assembler/ackermann.v
-173985.00 ns Test Done
-$finish called from file "cpuStim_fixed.sv", line 46.
-$finish at simulation time 173985.00 ns
-           V C S   S i m u l a t i o n   R e p o r t 
-Time: 173985000 ps
-CPU Time:      0.540 seconds;       Data structure size:   0.3Mb
-Thu May 19 17:19:56 2022
-CPU time: .507 seconds to compile + .309 seconds to elab + .391 seconds to link + .583 seconds in simulation
+Running benchmark: ../tests/fpuTest.arm
+Interrupt at time 22185.00 ns
+
+quit
+            V C S   S i m u l a t i o n   R e p o r t 
+Time: 22185000 ps
+CPU Time:      2.770 seconds;       Data structure size:   0.3Mb
+Sat May 21 08:23:41 2022
+CPU time: .630 seconds to compile + .375 seconds to elab + .387 seconds to link + 2.824 seconds in simulation

@@ -1,0 +1,9 @@
+ NOOP
+ MOVS R0, #90
+ MOVS R1, #18
+ FDIV R2, R0, R1
+ NOOP
+ NOOP
+ NOOP
+ NOOP
+ B 0

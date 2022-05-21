@@ -7,6 +7,7 @@ module cpu(
 	logic [15:0] 	PC, PCNext, PCE, PCNext_preStall;
 	logic [15:0] 	PCPlus1;
 	logic 		stallF;
+	logic [3:0]	divStall;
 	
 	// Branch logic
 	logic [15:0] 	condBrAddr, uncondBrAddr, selectedBranch,
@@ -22,7 +23,7 @@ module cpu(
 					computationResult, dataOut, opA, opB, whichMOV, 
 					regWrData, MOVorLR, opA_pre, opB_pre;
 
-	logic [15:0]	ReadData1E, ReadData2E, selectedData2E, imm3, imm5, imm7, imm8,
+	logic [15:0]	ReadData1E, ReadData2E, selectedData2E,
 					selectedExtendedE, aluOutputE, shiftOutputE,
 					computationResultE, dataOutE, opAE, opBE, 
 					whichMOVE, MOVorLRE, prev_calc;
@@ -30,8 +31,16 @@ module cpu(
 	// Used to determine what data register should come out of ReadData2
 	logic [3:0] 	reg1Addr, reg2Addr,  regWriteAddr;
 	logic [3:0] 	reg1AddrE, reg2AddrE,  regWriteAddrE;
+
 	// Used to determine which operation the ALU should do
 	logic [2:0] 	ALUOp, ALUOpE;
+	
+	// FPU in / out Singals
+	logic [1:0]	FPUOp, FPUOpE;
+	logic [15:0] 	FPUResult, CompOutput;
+    	logic 		overflow, underflow, inexact, 
+			valid, busy, start, ALUorFPU, ALUorFPUE;
+
 	// ALU Flag values and stored flag values
 	logic [3:0] 	ALUFlags;
 	logic [3:0] 	FlagsReg;
@@ -42,11 +51,13 @@ module cpu(
 	// Control Logic
 	logic 		RegWrite, MemWrite, MemRead, ALUSrc, brEx, selOpA;
 	logic [1:0] 	ShiftDir, brSel, Reg1Loc, Reg2Loc, Reg3Loc, selWrData;
-	logic [3:0] 	keepFlags, selOpB;
+	logic [3:0] 	keepFlags;
+	logic [2:0]	selOpB;
 
 	logic 			RegWriteE, MemWriteE, MemReadE, ALUSrcE, brExE, selOpAE;
 	logic [1:0] 	ShiftDirE, brSelE, Reg1LocE, Reg2LocE, Reg3LocE, selWrDataE;
-	logic [3:0] 	keepFlagsE, selOpBE;
+	logic [3:0] 	keepFlagsE;
+	logic [2:0]	selOpBE;
 
 	// Forwarding Logic
 	logic Forward1, Forward2;
@@ -59,8 +70,13 @@ module cpu(
 	always_comb begin
 		
 		if(BranchE & (instr == instrE)) stallF = 0; //branch determined
-		else if(Branch) stallF = 1; //branch upcoming
+		else if(Branch | (divStall != 0)) stallF = 1; //branch upcoming
 		else stallF = 0; //normal incrementing
+	end
+
+	always_ff @(posedge clk) begin
+		if((FPUOp == 2'b11) & !busy) divStall = 4'b1111;
+		else if (divStall != 0) divStall = divStall - 1'b1;
 	end
 	register PCRegister(.dataIn(PCNext), .dataOut(PC), .writeEnable(!stallF), .reset, .clk);
 	
@@ -94,9 +110,7 @@ module cpu(
 	// at the same time as this RF stage for the branch instruction
 	cpuControl controlUnit(.PC, .instr, .FlagsReg, .Reg1Loc, .Reg2Loc, .Reg3Loc, .RegWrite, 
 							.MemWrite, .MemRead, .ShiftDir, .keepFlags, .ALUOp, .Branch(Branch_pre), 
-							.brSel, .brEx, .clk, .reset, .selWrData, .selOpA, .selOpB);
-	
-	
+							.brSel, .brEx, .clk, .reset, .selWrData, .selOpA, .selOpB, .FPUOp, .ALUorFPU);	
 	assign	Branch = Branch_pre & !reset;
 	
 	//************ Calculate Next PC **************\\
@@ -130,19 +144,21 @@ module cpu(
 	pipelineReg #(.bitWidth(16)) decodeToExec0 (.D(instr), .Q(instrE), .en(1'b1), .clear(1'b0), .clk);
 	pipelineReg #(.bitWidth(16)) decodeToExec1 (.D(ReadData1), .Q(ReadData1E), .en(1'b1), .clear(1'b0), .clk);
 	pipelineReg #(.bitWidth(16)) decodeToExec2 (.D(ReadData2), .Q(ReadData2E), .en(1'b1), .clear(1'b0), .clk);
-	pipelineReg #(.bitWidth(16)) decodeToExec3 (.D(regWriteAddr), .Q(regWriteAddrE), .en(1'b1), .clear(1'b0), .clk);
+	pipelineReg #(.bitWidth(4)) decodeToExec3 (.D(regWriteAddr), .Q(regWriteAddrE), .en(1'b1), .clear(1'b0), .clk);
 	pipelineReg #(.bitWidth(2)) decodeToExec4 (.D(brSel), .Q(brSelE), .en(1'b1), .clear(1'b0), .clk);
 	pipelineReg #(.bitWidth(3)) decodeToExec5 (.D(ALUOp), .Q(ALUOpE), .en(1'b1), .clear(1'b0), .clk);
 	pipelineReg #(.bitWidth(2)) decodeToExec6 (.D(ShiftDir), .Q(ShiftDirE), .en(1'b1), .clear(1'b0), .clk);
 	pipelineReg #(.bitWidth(16)) decodeToExec7 (.D(PC), .Q(PCE), .en(1'b1), .clear(1'b0), .clk);
 	pipelineReg #(.bitWidth(1)) decodeToExec8 (.D(selOpA), .Q(selOpAE), .en(1'b1), .clear(1'b0), .clk);
-	pipelineReg #(.bitWidth(4)) decodeToExec9 (.D(selOpB), .Q(selOpBE), .en(1'b1), .clear(1'b0), .clk);
+	pipelineReg #(.bitWidth(3)) decodeToExec9 (.D(selOpB), .Q(selOpBE), .en(1'b1), .clear(1'b0), .clk);
 	pipelineReg #(.bitWidth(1)) decodeToExec10 (.D(MemWrite), .Q(MemWriteE), .en(1'b1), .clear(1'b0), .clk);
 	pipelineReg #(.bitWidth(1)) decodeToExec11 (.D(RegWrite), .Q(RegWriteE), .en(1'b1), .clear(1'b0), .clk);
 	pipelineReg #(.bitWidth(1)) decodeToExec12 (.D(MemRead), .Q(MemReadE), .en(1'b1), .clear(1'b0), .clk);
 	pipelineReg #(.bitWidth(2)) decodeToExec13 (.D(selWrData), .Q(selWrDataE), .en(1'b1), .clear(1'b0), .clk);
 	pipelineReg #(.bitWidth(1)) decodeToExec14 (.D(brEx), .Q(brExE), .en(1'b1), .clear(1'b0), .clk);
 	pipelineReg #(.bitWidth(1)) decodeToExec15 (.D(Branch), .Q(BranchE), .en(1'b1), .clear(reset), .clk);
+	pipelineReg #(.bitWidth(2)) FPUOpReg (.D(FPUOp), .Q(FPUOpE), .en(1'b1), .clear(1'b0), .clk);
+	pipelineReg #(.bitWidth(1)) CompSelReg (.D(ALUorFPU), .Q(ALUorFPUE), .en(1'b1), .clear(1'b0), .clk);
 	pipelineReg #(.bitWidth(4)) keepFlagsReg (.D(keepFlags), .Q(keepFlagsE), .en(1'b1), .clear(1'b0), .clk);
 	
 
@@ -173,6 +189,25 @@ module cpu(
 	// Shifts ReadData1 left or right based on a given distance from the instruction. ShiftDirection is determined by control unit
 	shifter shiftBlock(.value(ReadData2E), .mode(ShiftDirE), .distance(ReadData1E), .result(shiftOutput));
 	
+	// Set input signals for FPU
+	always_ff @(posedge clk) begin
+		if((FPUOpE == 2'b11) & !busy & ALUorFPUE) start = 1;
+		else start = 0;	
+	end
+
+	// Instantiate FPU
+	fpu FPU (
+		.clk, .reset,
+		.opA(ReadData1E), .opB(ReadData2E),
+		.op(FPUOpE),
+		.start,
+		.result(FPUResult),
+		.overflow, .underflow, .inexact, .valid, .busy
+	);
+
+	// Mux between ALU Output & FPU Output
+	assign CompOutput = ALUorFPUE ? FPUResult : aluOutput;
+
 
 	//********************************************************************************************\\
 	//*************************************** Data Memory ****************************************\\
@@ -195,7 +230,7 @@ module cpu(
 	assign MOVorLR = brSelE[0] ? whichMOV : (PCPlus1 >> 2);
 
 	// Based on the instruction choose between the ALU ouput/shifter output/MOV output
-	mux4x16_16 regWrMux(.i0(shiftOutput), .i1(aluOutput), .i2(MOVorLR), .i3(dataOut), .sel(selWrDataE), .out(regWrData));
+	mux4x16_16 regWrMux(.i0(shiftOutput), .i1(CompOutput), .i2(MOVorLR), .i3(dataOut), .sel(selWrDataE), .out(regWrData));
 
 
 endmodule

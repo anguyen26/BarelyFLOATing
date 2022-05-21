@@ -8,7 +8,7 @@ module fp_div(
     logic sA, sB, sign;
     logic [7:0] eA, eB, eDiff, biasedEDiff, finalE;
     logic [6:0] mA, mB, finalM;
-    logic start, mValid, dbz, ovf;
+    logic mValid, dbz, ovf;
     logic [7:0] mQuotient, r, shiftAmount;
     logic sticky, eSub0, eNormal0;
     

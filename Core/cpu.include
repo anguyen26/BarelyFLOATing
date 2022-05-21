@@ -23,4 +23,9 @@ forwardingUnit.sv
 D_FF.sv
 a_phase4.sv
 cpu.sv
-cpuStim_fixed.sv
+../fpu/fp_add.sv
+../fpu/fp_mul.sv
+../fpu/div.sv
+../fpu/fpu.sv
+../fpu/fp_div.sv
+cpuStim.sv

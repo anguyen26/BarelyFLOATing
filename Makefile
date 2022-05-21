@@ -1,4 +1,4 @@
-TEST=random
+TEST=fpuTest
 NUM_TESTS=50
 TESTID=1
 PASSED=0
@@ -29,7 +29,10 @@ rb_run1: rb_edit_tb vcs rb_compare
 
 # user sets $TEST and runs test
 # run 'make custom' to rerun the last random test that was generated
-custom: edit_tb iarm vcs rb_compare
+custom: rb_edit_tb iarm vcs rb_compare
+
+# runs user set $TEST on only the RTL
+custom_RTL: rb_edit_tb vcs 
 
 cb_edit_tb:
 	@ sed -i 's;^with\(.*\);with open("tests/$(TEST).txt", "r") as f:;g' \
@@ -53,7 +56,7 @@ iarm:
 
 vcs:
 	@ echo "Running instructions on BarelyFLOATing CPU..."
-	@ make -C Core vcs > /dev/null
+	@ make -C Core vcs
 
 dve:
 	@ make -C Core dve
