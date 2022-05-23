@@ -6,7 +6,7 @@ Warning-[DEBUG_DEP] Option will be deprecated
 Command: vcs -f cpu.include +v2k -R -sverilog -full64 -debug_pp -timescale=1ns/10ps \
 -l cpu.log
                          Chronologic VCS (TM)
-       Version S-2021.09-SP1_Full64 -- Sat May 21 08:23:14 2022
+       Version S-2021.09-SP1_Full64 -- Mon May 23 11:31:30 2022
 
                     Copyright (c) 1991 - 2021 Synopsys, Inc.
    This software and the associated documentation are proprietary to Synopsys,
@@ -65,18 +65,28 @@ Top Level Modules:
 TimeScale is 1 ps / 1 ps
 
 Warning-[IWNF] Implicit wire has no fanin
-cpu.sv, 97
+cpu.sv, 100
   Implicit wire 'regWriteAdderE' does not have any driver, please make sure 
   this is intended.
 
 
 Warning-[PCWM-W] Port connection width mismatch
-cpu.sv, 97
+cpu.sv, 100
 "forwardingUnit forward( .RA1 (reg1Addr),  .RA2 (reg2Addr),  .WA3W (regWriteAdderE),  .RegWriteW (RegWriteE),  .Forward1 (Forward1),  .Forward2 (Forward2));"
   The following 1-bit expression is connected to 4-bit port "WA3W" of module 
   "forwardingUnit", instance "forward".
   Expression: regWriteAdderE
   Instantiated module defined at: "forwardingUnit.sv", 1
+  Use +lint=PCWM for more details.
+
+
+Warning-[PCWM-W] Port connection width mismatch
+cpu.sv, 209
+"pipelineReg #(3) FPUWrAddrReg( .D (instrE[2:0]),  .Q (FPUWrAddr),  .en (1'b1),  .clear (1'b0),  .clk (clk));"
+  The following 4-bit expression is connected to 3-bit port "Q" of module 
+  "pipelineReg", instance "FPUWrAddrReg".
+  Expression: FPUWrAddr
+  Instantiated module defined at: "pipelineReg.sv", 1
   Use +lint=PCWM for more details.
 
 Starting vcs inline pass...
@@ -93,7 +103,7 @@ rm -f _cuarc0.so
 if [ -x ../simv ]; then chmod a-x ../simv; fi
 g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir \
 -Wl,-rpath=/home/lab.apps/vlsiapps_new//vcs/current/linux64/lib -L/home/lab.apps/vlsiapps_new//vcs/current/linux64/lib \
--Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _10897_archive_1.so _prev_archive_1.so \
+-Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _27137_archive_1.so _prev_archive_1.so \
 _cuarc0.so  SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o \
 rmar_llvm_0_0.o           -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile \
 -luclinative /home/lab.apps/vlsiapps_new//vcs/current/linux64/lib/vcs_tls.o   -Wl,-whole-archive \
@@ -105,14 +115,14 @@ make[2]: Leaving directory `/home/projects/ee478.2022spr/hoppii/BarelyFLOATing/C
 Command: /home/projects/ee478.2022spr/hoppii/BarelyFLOATing/Core/./simv +v2k -a cpu.log
 Chronologic VCS simulator copyright 1991-2021
 Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May 21 08:23 2022
+Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May 23 11:31 2022
 VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
 Running benchmark: ../tests/fpuTest.arm
-Interrupt at time 22185.00 ns
-
-quit
-            V C S   S i m u l a t i o n   R e p o r t 
-Time: 22185000 ps
-CPU Time:      2.770 seconds;       Data structure size:   0.3Mb
-Sat May 21 08:23:41 2022
-CPU time: .630 seconds to compile + .375 seconds to elab + .387 seconds to link + 2.824 seconds in simulation
+ 305.00 ns Test Done
+$finish called from file "cpuStim.sv", line 61.
+$finish at simulation time  305.00 ns
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 305000 ps
+CPU Time:      0.290 seconds;       Data structure size:   0.3Mb
+Mon May 23 11:31:33 2022
+CPU time: .466 seconds to compile + .386 seconds to elab + .375 seconds to link + .338 seconds in simulation
