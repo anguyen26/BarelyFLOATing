@@ -7,7 +7,6 @@ module cpu(
 	logic [15:0] 	PC, PCNext, PCE, PCNext_preStall;
 	logic [15:0] 	PCPlus1;
 	logic 		stallF;
-	logic [4:0]	divStall;
 	
 	// Branch logic
 	logic [15:0] 	condBrAddr, uncondBrAddr, selectedBranch,
@@ -70,17 +69,10 @@ module cpu(
 	always_comb begin
 		
 		if(BranchE & (instr == instrE)) stallF = 0; //branch determined
-		else if(Branch | (divStall != 0)) stallF = 1; //branch upcoming
+		else if(Branch) stallF = 1; //branch upcoming
 		else stallF = 0; //normal incrementing
 	end
 
-	always_ff @(posedge clk) begin
-		if((FPUOp == 2'b11) & !busy & ALUorFPU) divStall = 5'd16;
-		else if (divStall != 0) divStall = divStall - 1'b1;
-		//if(valid & ALUorFPU) divStall = 5'd17;
-		//else if(!valid & !busy) divStall = 5'd0;
-		
-	end
 	register PCRegister(.dataIn(PCNext), .dataOut(PC), .writeEnable(!stallF), .reset, .clk);
 	
 	// Outputs the instruction that correlates with the current clock cycle's PC
