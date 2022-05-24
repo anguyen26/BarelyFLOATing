@@ -6,7 +6,7 @@ Warning-[DEBUG_DEP] Option will be deprecated
 Command: vcs -f cpu.include +v2k -R -sverilog -full64 -debug_pp -timescale=1ns/10ps \
 -l cpu.log
                          Chronologic VCS (TM)
-       Version S-2021.09-SP1_Full64 -- Thu May 19 17:19:53 2022
+       Version S-2021.09-SP1_Full64 -- Thu May 19 17:55:20 2022
 
                     Copyright (c) 1991 - 2021 Synopsys, Inc.
    This software and the associated documentation are proprietary to Synopsys,
@@ -149,7 +149,7 @@ rm -f _cuarc0.so
 if [ -x ../simv ]; then chmod a-x ../simv; fi
 g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir \
 -Wl,-rpath=/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib -L/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib \
--Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _18216_archive_1.so _prev_archive_1.so \
+-Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _492_archive_1.so _prev_archive_1.so \
 _cuarc0.so  SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o \
 rmar_llvm_0_0.o           -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile \
 -luclinative /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_tls.o   -Wl,-whole-archive \
@@ -160,14 +160,14 @@ make[2]: Leaving directory `/home/nguyea9/ee478/Core/csrc'
 Command: /home/nguyea9/ee478/Core/./simv +v2k -a cpu.log
 Chronologic VCS simulator copyright 1991-2021
 Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May 19 17:19 2022
+Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May 19 17:55 2022
 VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
-Running benchmark: ../assembler/ackermann.v
-173985.00 ns Test Done
+Running benchmark: ../assembler/simpleAckermann.v
+2035.00 ns Test Done
 $finish called from file "cpuStim_fixed.sv", line 46.
-$finish at simulation time 173985.00 ns
+$finish at simulation time 2035.00 ns
            V C S   S i m u l a t i o n   R e p o r t 
-Time: 173985000 ps
-CPU Time:      0.540 seconds;       Data structure size:   0.3Mb
-Thu May 19 17:19:56 2022
-CPU time: .507 seconds to compile + .309 seconds to elab + .391 seconds to link + .583 seconds in simulation
+Time: 2035000 ps
+CPU Time:      0.250 seconds;       Data structure size:   0.3Mb
+Thu May 19 17:55:23 2022
+CPU time: .438 seconds to compile + .312 seconds to elab + .369 seconds to link + .270 seconds in simulation
