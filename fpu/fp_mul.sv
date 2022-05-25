@@ -32,7 +32,7 @@ module fp_mul(
     // ------------------------------
     assign eSum = eA + eB;
     assign {cout, biasedESum} = eSum - 127;
-    assign eAddOverflow = cout ? 1'b1 : 1'b0;
+    assign eAddOverflow = (cout | (biasedESum == 8'b11111111)) ? 1'b1 : 1'b0;
 
     /////////////////////////////////////////////////////////
     // Normalize

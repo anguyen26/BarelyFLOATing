@@ -10,6 +10,9 @@ for line in fin:
     if (res>3.38e+38):
         fout.write('OVERFLOW 3.402823669209385e+38\n')
     elif (res<-3.38e+38):
+        # note: if result is <-3.38e+38 for subtraction operations, 
+        # fpu will raise underflow flag instead, but compare.py will 
+        # ignore the result either way
         fout.write('OVERFLOW -3.402823669209385e+38\n')
     else:
         fout.write(str(res)+'\n')

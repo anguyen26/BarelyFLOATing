@@ -2,7 +2,6 @@ module tb_fpu();
     logic clk, reset;
     logic [15:0] opA, opB;
     logic [1:0] op;
-    logic start;
     logic [15:0] result;
     logic overflow, underflow, inexact, valid;
 
@@ -12,7 +11,7 @@ module tb_fpu();
 		forever #(ClockDelay/2) clk <= ~clk;
 	end
 
-    fpu dut(.clk, .reset, .opA, .opB, .op, .start, .result, 
+    fpu dut(.clk, .reset, .opA, .opB, .op, .result, 
         .underflow, .overflow, .inexact, .valid);
 
     integer f;    
@@ -20,15 +19,8 @@ module tb_fpu();
         f = $fopen("fp_output.txt", "w");
         repeat(3) @(posedge clk);
         while(1) begin
-            if (op == 2'd3) begin
-                if (valid & dut.divide.mValid) begin
-                    $fwrite(f, "%t %b\t %b %b %b\n", 
-                        $time, dut.result, dut.underflow, dut.overflow, dut.inexact);
-                end
-            end else begin
-                $fwrite(f, "%t %b\t %b %b %b\n", 
-                    $time, dut.result, dut.underflow, dut.overflow, dut.inexact);
-            end
+            $fwrite(f, "%t %b\t %b %b %b\n", 
+                $time, dut.result, dut.underflow, dut.overflow, dut.inexact);
             @(posedge clk);
         end
     end
@@ -156,7 +148,7 @@ module tb_fpu();
         opB <= 16'b0_11111110_0000000;
         @(posedge clk);
         // overflow (exponent normalizes to 255)
-        // 1.06e38 * 3.5 = 
+        // 1.33e37 * 3.5 = 4.66e37
         opA <= 16'b0_11111101_0100000;
         opB <= 16'b0_10000000_1100000;
         @(posedge clk);
@@ -164,7 +156,6 @@ module tb_fpu();
         // 40 * 6.8292e-21 = 
         opA <= 16'b0_10000100_0100000;
         opB <= 16'b0_00111100_0000001;
-        @(posedge clk);
         @(posedge clk);
         ///////////////////////////////////////////////////////////
         // Test divide
@@ -174,43 +165,46 @@ module tb_fpu();
         // 20 / 4 = 5
         opA <= 16'b0_10000011_0100000;
         opB <= 16'b0_10000001_0000000;
-        start <= 1'b1; @(posedge clk);
-        start <= 1'b0; repeat(16) @(posedge clk);
+        @(posedge clk);
         // 1 negative operand
         // -20 / 4 = -5
         opA <= 16'b1_10000011_0100000;
         opB <= 16'b0_10000001_0000000;
-        start <= 1'b1; @(posedge clk);
-        start <= 1'b0; repeat(16) @(posedge clk);
+        @(posedge clk);
         // 20 / -4 = -5
         opA <= 16'b0_10000011_0100000;
         opB <= 16'b1_10000001_0000000;
-        start <= 1'b1; @(posedge clk);
-        start <= 1'b0; repeat(16) @(posedge clk);
+        @(posedge clk);
         // 2 negative operands
         // -20 / -4 = 5
         opA <= 16'b1_10000011_0100000;
         opB <= 16'b1_10000001_0000000;
-        start <= 1'b1; @(posedge clk);
-        start <= 1'b0; repeat(16) @(posedge clk);
+        @(posedge clk);
         // normalize & inexact
         // 32 / -1.0625 = -30.12
         opA <= 16'b0_10000100_0000000;
         opB <= 16'b1_01111111_0001000;
-        start <= 1'b1; @(posedge clk);
-        start <= 1'b0; repeat(16) @(posedge clk);
-        // underflow (exponents too small)
-        // 5.877e-39 / 1.0625 
-        opA <= 16'b0_00000000_0000000;
-        opB <= 16'b0_01111111_0001000;
-        start <= 1'b1; @(posedge clk);
-        start <= 1'b0; repeat(16) @(posedge clk);
-        // underflow (exponent normalizes to 0)
-        // 1.06e38 / 2.07e-38= 2.1836??
+        @(posedge clk);
+        // underflow (normalizedE = 0)
+        // 1.18e-38 / 1.0625 = 1.11e-38 result also too small
         opA <= 16'b0_00000001_0000000;
         opB <= 16'b0_01111111_0001000;
-        start <= 1'b1; @(posedge clk);
-        start <= 1'b0; repeat(16) @(posedge clk);
+        @(posedge clk);
+        // underflow (diffE < -127)
+        // .0078125 / 8.51e37 = 9.18e-41 result also too small
+        opA <= 16'b0_01111000_0000000;
+        opB <= 16'b0_11111101_0000000;
+        @(posedge clk);
+        // underflow (diffE = -127)
+        // 1.17e-38/ 2.125 = 5.5e-39
+        opA <= 16'b0_00000001_0000000;
+        opB <= 16'b0_10000000_0001000;
+        @(posedge clk);
+        // overflow 
+        // 1.06e38 / 0.25 = 4.24e38 
+        opA <= 16'b0_11111101_0011111; // 1.06e38
+        opB <= 16'b0_01111101_0000000; // 0.25
+        @(posedge clk);
         @(posedge clk);
         $finish;
         $fclose(f);

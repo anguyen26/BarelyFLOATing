@@ -1,4 +1,7 @@
-f1 = open('output.txt', 'r')
+import sys
+expected = sys.argv[1]
+
+f1= open(expected, 'r')
 f2 = open('fp_output_dec.txt', 'r')
 
 i=0
@@ -47,6 +50,8 @@ for line1 in f1:
                         print("Expected: "+line1[:len(line1)-1])
                         print("Actual: "+line2[:len(line2)-1])
         break
+# Note: f1 has 1 more line than f2 because the last line is
+# the result of the stop op
 if matched:
     print("Outputs match!")
 f1.close()

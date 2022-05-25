@@ -24,7 +24,7 @@ read_out:
 
 compare:
 	@ echo "Comparing actual results to expected results..."
-	@ python3 compare.py
+	@ python3 compare.py output.txt
 
 dve:
 	dve -full64 -vpd vcdplus.vpd &
@@ -32,3 +32,6 @@ dve:
 bcalculate:
 	python3 calculate.py benchmark_input.txt benchmark_output.txt
 
+bcompare: 
+	@ echo "Comparing actual results to expected results..."
+	@ python3 compare.py benchmark_output.txt

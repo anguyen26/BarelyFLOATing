@@ -6,7 +6,7 @@ Warning-[DEBUG_DEP] Option will be deprecated
 Command: vcs -f fp.include +v2k -R +lint=all -sverilog -full64 -debug_pp -timescale=1ns/10ps \
 -l fp.log
                          Chronologic VCS (TM)
-       Version S-2021.09-SP1_Full64 -- Wed May 18 21:14:27 2022
+       Version S-2021.09-SP1_Full64 -- Wed May 25 01:57:02 2022
 
                     Copyright (c) 1991 - 2021 Synopsys, Inc.
    This software and the associated documentation are proprietary to Synopsys,
@@ -31,12 +31,12 @@ run VCS again.
 Command: /home/nguyea9/ee478/fpu/./simv +v2k +lint=all -a fp.log
 Chronologic VCS simulator copyright 1991-2021
 Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May 18 21:14 2022
+Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May 25 01:57 2022
 VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
-$finish called from file "fpuStim.sv", line 77.
-$finish at simulation time        2725000000000
+$finish called from file "fpuStim.sv", line 51.
+$finish at simulation time         515000000000
            V C S   S i m u l a t i o n   R e p o r t 
-Time: 2725000000000 ps
-CPU Time:      0.200 seconds;       Data structure size:   0.0Mb
-Wed May 18 21:14:28 2022
-CPU time: .222 seconds in simulation
+Time: 515000000000 ps
+CPU Time:      0.220 seconds;       Data structure size:   0.0Mb
+Wed May 25 01:57:02 2022
+CPU time: .263 seconds in simulation

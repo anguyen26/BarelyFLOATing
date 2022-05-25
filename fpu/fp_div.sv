@@ -1,16 +1,23 @@
 module fp_div(
-    input logic clk, reset, start,
+    input logic clk, reset,
     input logic [15:0] opA, opB,
     output logic [15:0] quotient,
-    output logic underflow, overflow, inexact, valid, busy
+    output logic underflow, overflow, inexact
     );
 
     logic sA, sB, sign;
-    logic [7:0] eA, eB, eDiff, biasedEDiff, finalE;
-    logic [6:0] mA, mB, finalM;
-    logic mValid, dbz, ovf;
+    logic [7:0] eA, eB, biasedEDiff, finalE;
+    logic [7:0] eDiff;
+    logic [8:0] normalizedE;
+    logic [6:0] mA, mB, finalM, normalizedM;
+    logic dbz, ovf;
     logic [7:0] mQuotient, r, shiftAmount;
     logic sticky, eSub0, eNormal0;
+    logic [7:0] fullmA, fullmB, r;
+    logic [14:0] op1, op2;
+    logic diffOverflow;
+    
+    assign dbz = (opB == 16'd0);
     
     assign sA = opA[15];
     assign eA = opA[14:7];
@@ -23,16 +30,23 @@ module fp_div(
     // Divide mantissas
     // ------------------------------
 
-    div divMantissas(.clk, .reset, .start, .busy, .valid(mValid), .dbz, .ovf, 
-        .x({1'b1, mA}), .y({1'b1, mB}), .q(mQuotient), .r);
+    assign fullmA = {1'b1, mA};
+    assign fullmB = {1'b1, mB};
+    assign op1 = {fullmA, 7'b0000000};
+    assign op2 = {7'b0000000, fullmB};
+    // concatenate 0's to operands for fixed point division
+    // 7 0's for 7 fractional bits
+    assign mQuotient = op1 / op2;
+    assign r = op1 % op2;
 
     /////////////////////////////////////////////////////////
     // Subtract exponents
     // ------------------------------
 
-    assign eDiff = eA - eB;
+    assign {diffOverflow, eDiff} = eA - eB;
     assign biasedEDiff = eDiff + 127;
-    assign eSub0 = (biasedEDiff == 8'd0) ? 1'b1 : 1'b0;
+    // exponent difference is too small
+    assign eSub0 = ((diffOverflow) & (eDiff < 8'd130)) ? 1'b1 : 1'b0;
         
     /////////////////////////////////////////////////////////
     // Normalize
@@ -54,28 +68,31 @@ module fp_div(
         endcase
     end
 
-    assign finalM = mQuotient << shiftAmount;
-    assign finalE = biasedEDiff - shiftAmount;
+    assign normalizedM = mQuotient << shiftAmount;
+    assign normalizedE = biasedEDiff - shiftAmount;
+    assign finalE = normalizedE[7:0];
+    // exponent normalizes to 0
     assign eNormal0 = (finalE == 8'd0) ? 1'b1 : 1'b0;
     assign sticky = (r != 8'd0);
 
+    // handle overflow
+    assign finalM = (finalE == 8'b11111111) ? 8'd0 : normalizedM;
+    assign ovf = (finalE == 8'b11111111) ? 1'b1 : 1'b0;
+
     always_ff @(posedge clk) begin
         if (reset) begin
-            valid <= 1'b1;
-        end
-        else if (mValid) begin
-            quotient <= {sign, finalE, finalM[6:0]};
-            overflow <= 1'b0;
-            inexact <= sticky;
-            underflow <= (eSub0 | eNormal0) & sticky;
-            valid <= 1'b1;
+            quotient <= '0;
+            overflow <= '0;
+            inexact <= '0;
+            underflow <= '0;
         end
         else begin
-            quotient <= quotient;
-            overflow <= overflow;
-            inexact <= inexact;
-            underflow <= underflow;
-            valid <= 1'b0;
+            quotient <= {sign, finalE, finalM[6:0]};
+            overflow <= ovf;
+            inexact <= sticky;
+            // google says underflow needs sticky flag true too, but
+            // that's not necessarily true if quotient is too small
+            underflow <= (eSub0 | eNormal0);
         end
     end
 

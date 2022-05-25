@@ -21,9 +21,8 @@ module fpu(
     fp_mul multiply(.clk, .reset, .opA, .opB, .product, .underflow(pUnderflow),
         .overflow(pOverflow), .inexact(pInexact));
 
-    fp_div divide(.clk, .reset, .start, .opA, .opB, .quotient,
-        .underflow(qUnderflow), .overflow(qOverflow), .inexact(qInexact), 
-        .valid, .busy);
+    fp_div divide(.clk, .reset, .opA, .opB, .quotient,
+        .underflow(qUnderflow), .overflow(qOverflow), .inexact(qInexact));
 
     always_ff @(posedge clk) begin
         hold_op <= op;

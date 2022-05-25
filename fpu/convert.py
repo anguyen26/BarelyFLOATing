@@ -19,19 +19,18 @@ def bfloat_to_dec(bits):
     dec = sign_dec * exponent_dec * mantissa_dec
     return dec
 
-# test1 = bfloat_to_dec('1011111101111000')
-# print("a&c="+str(test1))
-# test2 = bfloat_to_dec('1011111100111101')
-# print("b&d="+str(test2))
-# test3 = bfloat_to_dec('0111111100000000')
-# print("e="+str(test3))
-# test1 = bfloat_to_dec('0000000000000000')
+# test1 = bfloat_to_dec('0111111010011111')
 # print("underflow1="+str(test1))
-# test2 = bfloat_to_dec('0011111110001000')
+# test2 = bfloat_to_dec('0011111010000000')
 # print("underflow2="+str(test2))
-# test1 = bfloat_to_dec('0100001000100000')
-# print("multiply1="+str(test1))
-# test2 = bfloat_to_dec('0001111000000001')
+# test3 = bfloat_to_dec('0011110000000000')
+# print("underflow3"+str(test3))
+# test1 = bfloat_to_dec('0111111010000000')
+# print("underflow4="+str(test1))
+# test2 = bfloat_to_dec('0000000010000000')
+# print("underflow5="+str(test2))
+# test1 = bfloat_to_dec('0100000000001000')
+# print("underflow6="+str(test1))
 # print("multiply2="+str(test2))
 # test2 = bfloat_to_dec('1001111001100000')
 # print("multiply3="+str(test2))
@@ -73,7 +72,7 @@ def dec_to_bfloat(num):
     binary = str(sign) + exponent + mantissa
     return binary
 
-# test1 = dec_to_bfloat(323256418566144.0)
+# test1 = dec_to_bfloat(1.06e38)
 # print("scinottest="+str(test1))
 # test2 = dec_to_bfloat(1)
 # print("1="+str(test2))
