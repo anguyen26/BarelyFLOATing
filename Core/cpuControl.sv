@@ -626,6 +626,23 @@ always_comb begin
 				brEx = 0;
  				selWrData = 2'b01;
 			end
+			// FCMP
+			10'b01111_00000: begin
+				ALUorFPU = 1;
+				Branch = 0;
+				RegWrite = 0;
+				MemWrite = 0;
+				MemRead = 0;
+				keepFlags = 4'b1111;
+				Reg1Loc = 2'd2;
+				Reg2Loc = 2'd1;
+ 				selOpA = 1'b0;
+ 				selOpB = 3'b010;
+				FPUOp = 2'b01;
+				brSel = 2'b11;
+				brEx = 0;
+ 				selWrData = 2'b01;
+			end
 		endcase
 	end
 endmodule
