@@ -10,22 +10,22 @@ module cpu(
 	
 	// Branch logic
 	logic [15:0] 	condBrAddr, uncondBrAddr, selectedBranch,
-					shiftedSelectedAddr, branchAddr, noBranchAddr;
-	logic Branch, BranchE, Branch_pre;
+			shiftedSelectedAddr, branchAddr, noBranchAddr;
+	logic 		Branch, BranchE, Branch_pre;
 
 	// Instruction Logic	 
 	logic [15:0] 	instr, instrE;
 	
 	// ALU and RegFile Data logics
 	logic [15:0] 	ReadData1, ReadData2, selectedData2, imm3, imm5, imm7, imm8,
-					selectedExtended, aluOutput, shiftOutput,
-					computationResult, dataOut, opA, opB, whichMOV, 
-					regWrData, MOVorLR, opA_pre, opB_pre;
+			selectedExtended, aluOutput, shiftOutput,
+			computationResult, dataOut, opA, opB, whichMOV, 
+			regWrData, MOVorLR, opA_pre, opB_pre;
 
 	logic [15:0]	ReadData1E, ReadData2E, selectedData2E,
-					selectedExtendedE, aluOutputE, shiftOutputE,
-					computationResultE, dataOutE, opAE, opBE, 
-					whichMOVE, MOVorLRE, prev_calc;
+			selectedExtendedE, aluOutputE, shiftOutputE,
+			computationResultE, dataOutE, opAE, opBE, 
+			whichMOVE, MOVorLRE, prev_calc;
 	
 	// Used to determine what data register should come out of ReadData2
 	logic [3:0] 	reg1Addr, reg2Addr,  regWriteAddr;
@@ -38,10 +38,10 @@ module cpu(
 	logic [1:0]	FPUOp, FPUOpE;
 	logic [15:0] 	FPUResult, CompOutput;
     	logic 		overflow, underflow, inexact, 
-			valid, busy, start, ALUorFPU, ALUorFPUE;
+			ALUorFPU, ALUorFPUE;
 
-	// ALU Flag values and stored flag values
-	logic [3:0] 	ALUFlags;
+	// Computation Flag values and stored flag values
+	logic [3:0] 	ALUFlags, FPUFlags, CompFlags;
 	logic [3:0] 	FlagsReg;
 
 	// Interconnects for branch logic
@@ -53,7 +53,7 @@ module cpu(
 	logic [3:0] 	keepFlags;
 	logic [2:0]	selOpB;
 
-	logic 			RegWriteE, MemWriteE, MemReadE, ALUSrcE, brExE, selOpAE;
+	logic 		RegWriteE, MemWriteE, MemReadE, ALUSrcE, brExE, selOpAE;
 	logic [1:0] 	ShiftDirE, brSelE, Reg1LocE, Reg2LocE, Reg3LocE, selWrDataE;
 	logic [3:0] 	keepFlagsE;
 	logic [2:0]	selOpBE;
@@ -66,15 +66,13 @@ module cpu(
 	//********************************************************************************************\\
 
 	// Outputs next PC every clock cycle
+	register PCRegister(.dataIn(PCNext), .dataOut(PC), .writeEnable(!stallF), .reset, .clk);
 	always_comb begin
-		
 		if(BranchE & (instr == instrE)) stallF = 0; //branch determined
 		else if(Branch) stallF = 1; //branch upcoming
 		else stallF = 0; //normal incrementing
 	end
 
-	register PCRegister(.dataIn(PCNext), .dataOut(PC), .writeEnable(!stallF), .reset, .clk);
-	
 	// Outputs the instruction that correlates with the current clock cycle's PC
 	instructmem instructionMemory(.address(PC), .instruction(instr), .clk);
 
@@ -89,7 +87,7 @@ module cpu(
 	//*************** Forwarding Unit *****************\\
 	
 	//Takes in readAddresses and determines where to forward data from 
-	forwardingUnit forward(.RA1(reg1Addr), .RA2(reg2Addr), .WA3W(regWriteAdderE), .RegWriteW(RegWriteE), .Forward1, .Forward2);
+	forwardingUnit forward(.RA1(reg1Addr), .RA2(reg2Addr), .WA3W(regWriteAddrE), .RegWriteW(RegWriteE), .Forward1, .Forward2);
 
 	// Instantiates the register files. Write address and RegWrite are controlled by the Write Back stage. 
 	regfile registers(.clk(!clk), .reset, .wr_en(RegWriteE), .wr_data(regWrData), .PC, .wr_addr(regWriteAddrE), .rd_data_0(ReadData1), .rd_data_1(ReadData2), 
@@ -133,25 +131,25 @@ module cpu(
 
 
 	// Pipeline signals from Fetch/Decode
-	pipelineReg #(.bitWidth(16)) decodeToExec0 (.D(instr), .Q(instrE), .en(!stallF), .clear(1'b0), .clk);
-	pipelineReg #(.bitWidth(16)) decodeToExec1 (.D(ReadData1), .Q(ReadData1E), .en(!stallF), .clear(1'b0), .clk);
-	pipelineReg #(.bitWidth(16)) decodeToExec2 (.D(ReadData2), .Q(ReadData2E), .en(!stallF), .clear(1'b0), .clk);
-	pipelineReg #(.bitWidth(2)) decodeToExec3 (.D(Reg3Loc), .Q(Reg3LocE), .en(!stallF), .clear(1'b0), .clk);
-	pipelineReg #(.bitWidth(2)) decodeToExec4 (.D(brSel), .Q(brSelE), .en(!stallF), .clear(1'b0), .clk);
-	pipelineReg #(.bitWidth(3)) decodeToExec5 (.D(ALUOp), .Q(ALUOpE), .en(!stallF), .clear(1'b0), .clk);
-	pipelineReg #(.bitWidth(2)) decodeToExec6 (.D(ShiftDir), .Q(ShiftDirE), .en(!stallF), .clear(1'b0), .clk);
-	pipelineReg #(.bitWidth(16)) decodeToExec7 (.D(PC), .Q(PCE), .en(!stallF), .clear(1'b0), .clk);
-	pipelineReg #(.bitWidth(1)) decodeToExec8 (.D(selOpA), .Q(selOpAE), .en(!stallF), .clear(1'b0), .clk);
-	pipelineReg #(.bitWidth(3)) decodeToExec9 (.D(selOpB), .Q(selOpBE), .en(!stallF), .clear(1'b0), .clk);
-	pipelineReg #(.bitWidth(1)) decodeToExec10 (.D(MemWrite), .Q(MemWriteE), .en(!stallF), .clear(1'b0), .clk);
-	pipelineReg #(.bitWidth(1)) decodeToExec11 (.D(RegWrite), .Q(RegWriteE), .en(!stallF), .clear(1'b0), .clk);
-	pipelineReg #(.bitWidth(1)) decodeToExec12 (.D(MemRead), .Q(MemReadE), .en(!stallF), .clear(1'b0), .clk);
-	pipelineReg #(.bitWidth(2)) decodeToExec13 (.D(selWrData), .Q(selWrDataE), .en(!stallF), .clear(1'b0), .clk);
-	pipelineReg #(.bitWidth(1)) decodeToExec14 (.D(brEx), .Q(brExE), .en(!stallF), .clear(1'b0), .clk);
-	pipelineReg #(.bitWidth(1)) decodeToExec15 (.D(Branch), .Q(BranchE), .en(!stallF), .clear(reset), .clk);
-	pipelineReg #(.bitWidth(2)) FPUOpReg (.D(FPUOp), .Q(FPUOpE), .en(!stallF), .clear(1'b0), .clk);
-	pipelineReg #(.bitWidth(1)) CompSelReg (.D(ALUorFPU), .Q(ALUorFPUE), .en(!stallF), .clear(1'b0), .clk);
-	pipelineReg #(.bitWidth(4)) keepFlagsReg (.D(keepFlags), .Q(keepFlagsE), .en(!stallF), .clear(1'b0), .clk);
+	pipelineReg #(.bitWidth(16)) decodeToExec0 (.D(instr), .Q(instrE), .en(1'b1), .clear(1'b0), .clk);
+	pipelineReg #(.bitWidth(16)) decodeToExec1 (.D(ReadData1), .Q(ReadData1E), .en(1'b1), .clear(1'b0), .clk);
+	pipelineReg #(.bitWidth(16)) decodeToExec2 (.D(ReadData2), .Q(ReadData2E), .en(1'b1), .clear(1'b0), .clk);
+	pipelineReg #(.bitWidth(2)) decodeToExec3 (.D(Reg3Loc), .Q(Reg3LocE), .en(1'b1), .clear(1'b0), .clk);
+	pipelineReg #(.bitWidth(2)) decodeToExec4 (.D(brSel), .Q(brSelE), .en(1'b1), .clear(1'b0), .clk);
+	pipelineReg #(.bitWidth(3)) decodeToExec5 (.D(ALUOp), .Q(ALUOpE), .en(1'b1), .clear(1'b0), .clk);
+	pipelineReg #(.bitWidth(2)) decodeToExec6 (.D(ShiftDir), .Q(ShiftDirE), .en(1'b1), .clear(1'b0), .clk);
+	pipelineReg #(.bitWidth(16)) decodeToExec7 (.D(PC), .Q(PCE), .en(1'b1), .clear(1'b0), .clk);
+	pipelineReg #(.bitWidth(1)) decodeToExec8 (.D(selOpA), .Q(selOpAE), .en(1'b1), .clear(1'b0), .clk);
+	pipelineReg #(.bitWidth(3)) decodeToExec9 (.D(selOpB), .Q(selOpBE), .en(1'b1), .clear(1'b0), .clk);
+	pipelineReg #(.bitWidth(1)) decodeToExec10 (.D(MemWrite), .Q(MemWriteE), .en(1'b1), .clear(1'b0), .clk);
+	pipelineReg #(.bitWidth(1)) decodeToExec11 (.D(RegWrite), .Q(RegWriteE), .en(1'b1), .clear(1'b0), .clk);
+	pipelineReg #(.bitWidth(1)) decodeToExec12 (.D(MemRead), .Q(MemReadE), .en(1'b1), .clear(1'b0), .clk);
+	pipelineReg #(.bitWidth(2)) decodeToExec13 (.D(selWrData), .Q(selWrDataE), .en(1'b1), .clear(1'b0), .clk);
+	pipelineReg #(.bitWidth(1)) decodeToExec14 (.D(brEx), .Q(brExE), .en(1'b1), .clear(1'b0), .clk);
+	pipelineReg #(.bitWidth(1)) decodeToExec15 (.D(Branch), .Q(BranchE), .en(1'b1), .clear(reset), .clk);
+	pipelineReg #(.bitWidth(2)) FPUOpReg (.D(FPUOp), .Q(FPUOpE), .en(1'b1), .clear(1'b0), .clk);
+	pipelineReg #(.bitWidth(1)) CompSelReg (.D(ALUorFPU), .Q(ALUorFPUE), .en(1'b1), .clear(1'b0), .clk);
+	pipelineReg #(.bitWidth(4)) keepFlagsReg (.D(keepFlags), .Q(keepFlagsE), .en(1'b1), .clear(1'b0), .clk);
 	
 
 	// Sign extend immidates
@@ -174,39 +172,25 @@ module cpu(
 	// Instantiates the ALU
 	ALU aluBlock(.a(opAE), .b(opBE), .ALUControl(ALUOpE), .Result(aluOutput), .ALUFlags);
 	
-	// Determines whether to set the system flags to the new values from ALU based on the instruction
-	a_phase4 FlagsLatch(.IN(ALUFlags), .OUT(FlagsReg), .EN(keepFlagsE), .RST(reset));
-	//assign FlagsReg = keepFlags ? FlagsReg : ALUFlags;
+	// Determines whether to set the system flags to the new values from ALU / FPU based on the instruction
+	assign CompFlags = ALUorFPUE ? FPUFlags : ALUFlags;
+	a_phase4 FlagsLatch(.IN(CompFlags), .OUT(FlagsReg), .EN(keepFlagsE), .RST(reset));
 
-	// Shifts ReadData1 left or right based on a given distance from the instruction. ShiftDirection is determined by control unit
+	// Shifts ReadData1 left or right
 	shifter shiftBlock(.value(ReadData2E), .mode(ShiftDirE), .distance(ReadData1E), .result(shiftOutput));
-	
-	// Set input signals for FPU
-	always_ff @(posedge clk) begin
-		if((FPUOpE == 2'b11) & !busy & ALUorFPUE) start = 1;
-		else start = 0;	
-	end
 	
 	// Instantiate FPU
 	fpu FPU (
 		.clk, .reset,
 		.opA(ReadData1E), .opB(ReadData2E),
 		.op(FPUOpE),
-		.start,
 		.result(FPUResult),
-		.overflow, .underflow, .inexact, .valid, .busy
+		.overflow, .underflow, .inexact,
+		.FPUFlags
 	);
-	
-	//hold FPU write address so it can be properly sent to the reg file
-	// pipelineReg #(.bitWidth(3)) FPUWrAddrReg (.D(instrE[2:0]), .Q(FPUWrAddr), .en(1'b1), .clear(1'b0), .clk);
-    assign FPUWrAddr = instrE[2:0];
-	logic wasFPU;
-	// pipelineReg #(.bitWidth(1)) wasFPUReg (.D(instrE[15:11]==5'b01110), .Q(wasFPU), .en(1'b1), .clear(1'b0), .clk);
-    assign wasFPU = (instrE[15:11]==5'b01110);
-	assign regWriteAddrE = (wasFPU) ? FPUWrAddr : regWriteAddrDefault;
 
 	// Mux between ALU Output & FPU Output
-	assign CompOutput = (wasFPU) ? FPUResult : aluOutput;
+	assign CompOutput = (ALUorFPUE) ? FPUResult : aluOutput;
 
 
 	//********************************************************************************************\\
@@ -233,6 +217,6 @@ module cpu(
 	mux4x16_16 regWrMux(.i0(shiftOutput), .i1(CompOutput), .i2(MOVorLR), .i3(dataOut), .sel(selWrDataE), .out(regWrData));
 
 	// Selects the regWriteAddr
-	mux4x4_4 regWriteMux(.i0({1'b0, instrE[2:0]}), .i1(4'b1101), .i2({1'b0, instrE[10:8]}), .i3(4'b1110), .sel(Reg3LocE), .out(regWriteAddrDefault));
+	mux4x4_4 regWriteMux(.i0({1'b0, instrE[2:0]}), .i1(4'b1101), .i2({1'b0, instrE[10:8]}), .i3(4'b1110), .sel(Reg3LocE), .out(regWriteAddrE));
 
 endmodule
