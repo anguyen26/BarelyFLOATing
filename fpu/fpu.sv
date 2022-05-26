@@ -26,7 +26,7 @@ module fpu(
 
 	//assign flags bits
 	assign FPUFlags[3] = result[15]; //N-flag is the sign bit of the result
-	assign FPUFlags[2] = (Result == 32'b0); //Z-flag if result is zero
+	assign FPUFlags[2] = (result[14:0] == 15'b0); //Z-flag if result is zero
 	assign FPUFlags[1] = cout; //C-flag
 	assign FPUFlags[0] = overflow; //O-flag
 
