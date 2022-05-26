@@ -13,7 +13,7 @@ module fp_div(
     logic dbz, ovf;
     logic [7:0] mQuotient, r, shiftAmount;
     logic sticky, eSub0, eNormal0;
-    logic [7:0] fullmA, fullmB, r;
+    logic [7:0] fullmA, fullmB;
     logic [14:0] op1, op2;
     logic diffOverflow;
     
