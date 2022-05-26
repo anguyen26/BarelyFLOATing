@@ -2,7 +2,7 @@ module fp_add(
     input logic clk, reset,
     input logic [15:0] opA, opB,
     output logic [15:0] sum,
-    output logic underflow, overflow, inexact
+    output logic underflow, overflow, inexact, cout
     );
 
     logic sA, sB;
