@@ -1,24 +1,24 @@
 # Begin_DVE_Session_Save_Info
 # DVE full session
-# Saved on Mon May 23 11:26:08 2022
+# Saved on Thu May 26 16:37:07 2022
 # Designs open: 1
 #   V1: vcdplus.vpd
 # Toplevel windows open: 2
 # 	TopLevel.2
 # 	TopLevel.3
-#   Wave.1: 75 signals
+#   Wave.1: 70 signals
 #   Group count = 13
 #   Group cpuControl_testbench signal count = 0
 #   Group cpuStim_1 signal count = 5
 #   Group registers signal count = 1
 #   Group controlUnit signal count = 1
 #   Group aluBlock signal count = 9
-#   Group Regfile signal count = 10
-#   Group Top Level signal count = 13
-#   Group FPU signal count = 17
+#   Group Regfile signal count = 9
+#   Group Top Level signal count = 12
+#   Group FPU signal count = 15
 #   Group Control signal count = 21
 #   Group ALU signal count = 9
-#   Group FPUWrAddrReg signal count = 6
+#   Group FlagsLatch signal count = 5
 # End_DVE_Session_Save_Info
 
 # DVE version: S-2021.09-SP1_Full64
@@ -77,7 +77,7 @@ if {![gui_exist_window -window TopLevel.2]} {
 } else { 
     set TopLevel.2 TopLevel.2
 }
-gui_show_window -window ${TopLevel.2} -show_state normal -rect {{3 60} {3350 1287}}
+gui_show_window -window ${TopLevel.2} -show_state maximized -rect {{0 60} {2559 977}}
 
 # ToolBar settings
 gui_set_toolbar_attributes -toolbar {TimeOperations} -dock_state top
@@ -123,7 +123,7 @@ gui_sync_global -id ${TopLevel.2} -option true
 # MDI window settings
 set Wave.1 [gui_create_window -type {Wave}  -parent ${TopLevel.2}]
 gui_show_window -window ${Wave.1} -show_state maximized
-gui_update_layout -id ${Wave.1} {{show_state maximized} {dock_state undocked} {dock_on_new_line false} {child_wave_left 458} {child_wave_right 2884} {child_wave_colname 312} {child_wave_colvalue 141} {child_wave_col1 0} {child_wave_col2 1}}
+gui_update_layout -id ${Wave.1} {{show_state maximized} {dock_state undocked} {dock_on_new_line false} {child_wave_left 350} {child_wave_right 2204} {child_wave_colname 200} {child_wave_colvalue 146} {child_wave_col1 0} {child_wave_col2 1}}
 
 # End MDI window settings
 
@@ -136,7 +136,7 @@ if {![gui_exist_window -window TopLevel.3]} {
 } else { 
     set TopLevel.3 TopLevel.3
 }
-gui_show_window -window ${TopLevel.3} -show_state normal -rect {{328 158} {2033 841}}
+gui_show_window -window ${TopLevel.3} -show_state normal -rect {{568 191} {2271 872}}
 
 # ToolBar settings
 gui_set_toolbar_attributes -toolbar {TimeOperations} -dock_state top
@@ -172,19 +172,22 @@ gui_set_toolbar_attributes -toolbar {Grid} -offset 0
 gui_show_toolbar -toolbar {Grid}
 gui_hide_toolbar -toolbar {Simulator}
 gui_hide_toolbar -toolbar {Interactive Rewind}
-gui_set_toolbar_attributes -toolbar {Testbench} -dock_state top
-gui_set_toolbar_attributes -toolbar {Testbench} -offset 0
-gui_show_toolbar -toolbar {Testbench}
+gui_hide_toolbar -toolbar {Testbench}
 
 # End ToolBar settings
 
 # Docked window settings
-set HSPane.2 [gui_create_window -type HSPane -parent ${TopLevel.3} -dock_state left -dock_on_new_line true -dock_extent 200]
-catch { set Hier.2 [gui_share_window -id ${HSPane.2} -type Hier] }
-gui_set_window_pref_key -window ${HSPane.2} -key dock_width -value_type integer -value 200
-gui_set_window_pref_key -window ${HSPane.2} -key dock_height -value_type integer -value 250
-gui_set_window_pref_key -window ${HSPane.2} -key dock_offset -value_type integer -value 0
-gui_update_layout -id ${HSPane.2} {{left 0} {top 0} {width 199} {height 602} {dock_state left} {dock_on_new_line true} {child_hier_colhier 261} {child_hier_coltype 94} {child_hier_colpd 0} {child_hier_col1 0} {child_hier_col2 1} {child_hier_col3 -1}}
+set HSPane.1 [gui_create_window -type HSPane -parent ${TopLevel.3} -dock_state left -dock_on_new_line true -dock_extent 198]
+catch { set Hier.1 [gui_share_window -id ${HSPane.1} -type Hier] }
+gui_set_window_pref_key -window ${HSPane.1} -key dock_width -value_type integer -value 198
+gui_set_window_pref_key -window ${HSPane.1} -key dock_height -value_type integer -value 250
+gui_set_window_pref_key -window ${HSPane.1} -key dock_offset -value_type integer -value 0
+gui_update_layout -id ${HSPane.1} {{left 0} {top 0} {width 197} {height 370} {dock_state left} {dock_on_new_line true} {child_hier_colhier 261} {child_hier_coltype 94} {child_hier_colpd 0} {child_hier_col1 0} {child_hier_col2 1} {child_hier_col3 -1}}
+set Console.1 [gui_create_window -type Console -parent ${TopLevel.3} -dock_state bottom -dock_on_new_line true -dock_extent 231]
+gui_set_window_pref_key -window ${Console.1} -key dock_width -value_type integer -value 2500
+gui_set_window_pref_key -window ${Console.1} -key dock_height -value_type integer -value 231
+gui_set_window_pref_key -window ${Console.1} -key dock_offset -value_type integer -value 0
+gui_update_layout -id ${Console.1} {{left 0} {top 0} {width 1703} {height 230} {dock_state bottom} {dock_on_new_line true}}
 #### Start - Readjusting docked view's offset / size
 set dockAreaList { top left right bottom }
 foreach dockArea $dockAreaList {
@@ -214,7 +217,7 @@ if {[gui_get_shared_view -id ${DLPane.1} -type Data] == {}} {
 }
 
 gui_show_window -window ${DLPane.1} -show_state maximized
-gui_update_layout -id ${DLPane.1} {{show_state maximized} {dock_state undocked} {dock_on_new_line false} {child_data_colvariable 562} {child_data_colvalue 472} {child_data_coltype 468} {child_data_col1 0} {child_data_col2 1} {child_data_col3 2}}
+gui_update_layout -id ${DLPane.1} {{show_state maximized} {dock_state undocked} {dock_on_new_line false} {child_data_colvariable 577} {child_data_colvalue 435} {child_data_coltype 488} {child_data_col1 0} {child_data_col2 1} {child_data_col3 2}}
 
 # End MDI window settings
 
@@ -263,11 +266,11 @@ gui_expr_create {PC[15:0]/4+1}  -name EXP:LineNum -type Verilog -scope cpuStim.t
 
 # Global: Signal Groups
 gui_load_child_values {cpuStim.testCpu}
-gui_load_child_values {cpuStim.testCpu.FPUWrAddrReg}
 gui_load_child_values {cpuStim.testCpu.controlUnit}
 gui_load_child_values {cpuStim.testCpu.FPU}
 gui_load_child_values {cpuStim.testCpu.aluBlock}
 gui_load_child_values {cpuStim.testCpu.registers}
+gui_load_child_values {cpuStim.testCpu.FlagsLatch}
 
 
 set _session_group_1 cpuControl_testbench
@@ -337,7 +340,7 @@ set _session_group_8 Regfile
 gui_sg_create "$_session_group_8"
 set Regfile "$_session_group_8"
 
-gui_sg_addsignal -group "$_session_group_8" { cpuStim.testCpu.ALUorFPUE cpuStim.testCpu.registers.MEM cpuStim.testCpu.registers.rd_addr_0 cpuStim.testCpu.registers.rd_addr_1 cpuStim.testCpu.regWriteAddrDefault cpuStim.testCpu.registers.wr_addr cpuStim.testCpu.registers.wr_en cpuStim.testCpu.registers.wr_data cpuStim.testCpu.registers.rd_data_0 cpuStim.testCpu.registers.rd_data_1 }
+gui_sg_addsignal -group "$_session_group_8" { cpuStim.testCpu.ALUorFPUE cpuStim.testCpu.registers.MEM cpuStim.testCpu.registers.rd_addr_0 cpuStim.testCpu.registers.rd_addr_1 cpuStim.testCpu.registers.wr_addr cpuStim.testCpu.registers.wr_en cpuStim.testCpu.registers.wr_data cpuStim.testCpu.registers.rd_data_0 cpuStim.testCpu.registers.rd_data_1 }
 gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.registers.MEM}
 gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.registers.MEM}
 gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.registers.rd_addr_0}
@@ -355,7 +358,7 @@ set _session_group_9 {Top Level}
 gui_sg_create "$_session_group_9"
 set {Top Level} "$_session_group_9"
 
-gui_sg_addsignal -group "$_session_group_9" { cpuStim.testCpu.clk cpuStim.testCpu.reset cpuStim.testCpu.PC EXP:LineNum cpuStim.testCpu.PCNext cpuStim.testCpu.PCE cpuStim.testCpu.PCNext_preStall cpuStim.testCpu.PCPlus1 cpuStim.testCpu.instr cpuStim.testCpu.instrE cpuStim.testCpu.stallF cpuStim.testCpu.divStall cpuStim.testCpu.controlUnit.ALUorFPU }
+gui_sg_addsignal -group "$_session_group_9" { cpuStim.testCpu.clk cpuStim.testCpu.reset cpuStim.testCpu.PC EXP:LineNum cpuStim.testCpu.PCNext cpuStim.testCpu.PCE cpuStim.testCpu.PCNext_preStall cpuStim.testCpu.PCPlus1 cpuStim.testCpu.instr cpuStim.testCpu.instrE cpuStim.testCpu.stallF cpuStim.testCpu.controlUnit.ALUorFPU }
 gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.PC}
 gui_set_radix -radix {twosComplement} -signals {V1:cpuStim.testCpu.PC}
 gui_set_radix -radix {decimal} -signals {EXP:LineNum}
@@ -372,8 +375,6 @@ gui_set_radix -radix {binary} -signals {V1:cpuStim.testCpu.instr}
 gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.instr}
 gui_set_radix -radix {binary} -signals {V1:cpuStim.testCpu.instrE}
 gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.instrE}
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.divStall}
-gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.divStall}
 
 set _session_group_10 FPU
 gui_sg_create "$_session_group_10"
@@ -381,7 +382,7 @@ set FPU "$_session_group_10"
 
 gui_sg_addsignal -group "$_session_group_10" { cpuStim.testCpu.FPU.opA cpuStim.testCpu.FPU.opB EXP:mantA EXP:mantB EXP:expA EXP:expB }
 gui_sg_addsignal -group "$_session_group_10" { Divider } -divider
-gui_sg_addsignal -group "$_session_group_10" { cpuStim.testCpu.FPU.result EXP:mantR EXP:expR cpuStim.testCpu.FPU.op cpuStim.testCpu.FPU.start cpuStim.testCpu.FPU.valid cpuStim.testCpu.FPU.busy cpuStim.testCpu.FPU.overflow cpuStim.testCpu.FPU.underflow cpuStim.testCpu.FPU.inexact }
+gui_sg_addsignal -group "$_session_group_10" { cpuStim.testCpu.FPU.result EXP:mantR EXP:expR cpuStim.testCpu.FPU.op cpuStim.testCpu.FPU.overflow cpuStim.testCpu.FPU.underflow cpuStim.testCpu.FPU.inexact cpuStim.testCpu.FPU.FPUFlags }
 gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.FPU.opA}
 gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.FPU.opA}
 gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.FPU.opB}
@@ -394,6 +395,8 @@ gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.FPU.result}
 gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.FPU.result}
 gui_set_radix -radix {decimal} -signals {EXP:expR}
 gui_set_radix -radix {twosComplement} -signals {EXP:expR}
+gui_set_radix -radix {binary} -signals {V1:cpuStim.testCpu.FPU.FPUFlags}
+gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.FPU.FPUFlags}
 
 set _session_group_11 Control
 gui_sg_create "$_session_group_11"
@@ -411,13 +414,13 @@ gui_sg_addsignal -group "$_session_group_12" { cpuStim.testCpu.aluBlock.ALUFlags
 gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.aluBlock.SIZE}
 gui_set_radix -radix {twosComplement} -signals {V1:cpuStim.testCpu.aluBlock.SIZE}
 
-set _session_group_13 FPUWrAddrReg
+set _session_group_13 FlagsLatch
 gui_sg_create "$_session_group_13"
-set FPUWrAddrReg "$_session_group_13"
+set FlagsLatch "$_session_group_13"
 
-gui_sg_addsignal -group "$_session_group_13" { cpuStim.testCpu.FPUWrAddrReg.D cpuStim.testCpu.FPUWrAddrReg.en cpuStim.testCpu.FPUWrAddrReg.clear cpuStim.testCpu.FPUWrAddrReg.clk cpuStim.testCpu.FPUWrAddrReg.Q cpuStim.testCpu.FPUWrAddrReg.bitWidth }
-gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.FPUWrAddrReg.bitWidth}
-gui_set_radix -radix {twosComplement} -signals {V1:cpuStim.testCpu.FPUWrAddrReg.bitWidth}
+gui_sg_addsignal -group "$_session_group_13" { cpuStim.testCpu.FlagsLatch.IN cpuStim.testCpu.FlagsLatch.EN cpuStim.testCpu.FlagsLatch.RST cpuStim.testCpu.FlagsLatch.OUT cpuStim.testCpu.FlagsLatch.i }
+gui_set_radix -radix {binary} -signals {V1:cpuStim.testCpu.FlagsLatch.EN}
+gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.FlagsLatch.EN}
 
 # Global: Highlighting
 
@@ -427,7 +430,7 @@ gui_change_stack_mode -mode list
 # Post database loading setting...
 
 # Restore C1 time
-gui_set_time -C1_only 248715
+gui_set_time -C1_only 100280
 
 
 
@@ -455,17 +458,17 @@ gui_list_set_height -id Wave -height 25
 set origGroupCreationState [gui_list_create_group_when_add -wave]
 gui_list_create_group_when_add -wave -disable
 gui_marker_set_ref -id ${Wave.1}  C1
-gui_wv_zoom_timerange -id ${Wave.1} 0 337331
+gui_wv_zoom_timerange -id ${Wave.1} 64997 246524
 gui_list_add_group -id ${Wave.1} -after {New Group} {{Top Level}}
 gui_list_add_group -id ${Wave.1} -after {New Group} {FPU}
 gui_list_add_group -id ${Wave.1} -after {New Group} {Regfile}
 gui_list_add_group -id ${Wave.1} -after {New Group} {Control}
 gui_list_add_group -id ${Wave.1} -after {New Group} {ALU}
-gui_list_add_group -id ${Wave.1} -after {New Group} {FPUWrAddrReg}
+gui_list_add_group -id ${Wave.1} -after {New Group} {FlagsLatch}
 gui_list_collapse -id ${Wave.1} Control
 gui_list_collapse -id ${Wave.1} ALU
 gui_list_expand -id ${Wave.1} cpuStim.testCpu.registers.MEM
-gui_list_select -id ${Wave.1} {cpuStim.testCpu.regWriteAddrDefault }
+gui_list_select -id ${Wave.1} {cpuStim.testCpu.ALUorFPUE }
 gui_set_radix -radix unsigned -signal {{cpuStim.testCpu.registers.MEM[14]}}
 gui_set_radix -radix decimal -signal {{cpuStim.testCpu.registers.MEM[14]}}
 gui_set_radix -radix unsigned -signal {{cpuStim.testCpu.registers.MEM[14]}}
@@ -526,39 +529,44 @@ if { $groupExD } {
 }
 gui_list_set_filter -id ${Wave.1} -list { {Buffer 1} {Input 1} {Others 1} {Linkage 1} {Output 1} {Parameter 1} {All 1} {Aggregate 1} {LibBaseMember 1} {Event 1} {Assertion 1} {Constant 1} {Interface 1} {BaseMembers 1} {Signal 1} {$unit 1} {Inout 1} {Variable 1} }
 gui_list_set_filter -id ${Wave.1} -text {*}
-gui_list_set_insertion_bar  -id ${Wave.1} -group FPUWrAddrReg  -item {cpuStim.testCpu.FPUWrAddrReg.D[2:0]} -position below
+gui_list_set_insertion_bar  -id ${Wave.1} -group FPU  -item {cpuStim.testCpu.FPU.FPUFlags[3:0]} -position below
 
-gui_marker_move -id ${Wave.1} {C1} 248715
-gui_view_scroll -id ${Wave.1} -vertical -set 669
+gui_marker_move -id ${Wave.1} {C1} 100280
+gui_view_scroll -id ${Wave.1} -vertical -set 0
 gui_show_grid -id ${Wave.1} -enable false
 
-# Hier 'Hier.2'
-gui_show_window -window ${Hier.2}
-gui_list_set_filter -id ${Hier.2} -list { {Package 1} {All 0} {Process 1} {VirtPowSwitch 0} {UnnamedProcess 1} {UDP 0} {Function 1} {Block 1} {SrsnAndSpaCell 0} {OVA Unit 1} {LeafScCell 1} {LeafVlgCell 1} {Interface 1} {LeafVhdCell 1} {$unit 1} {NamedBlock 1} {Task 1} {VlgPackage 1} {ClassDef 1} {VirtIsoCell 0} }
-gui_list_set_filter -id ${Hier.2} -text {*}
-gui_hier_list_init -id ${Hier.2}
-gui_change_design -id ${Hier.2} -design V1
-catch {gui_list_select -id ${Hier.2} {register_3}}
-gui_view_scroll -id ${Hier.2} -vertical -set 0
-gui_view_scroll -id ${Hier.2} -horizontal -set 0
+# Hier 'Hier.1'
+gui_show_window -window ${Hier.1}
+gui_list_set_filter -id ${Hier.1} -list { {Package 1} {All 0} {Process 1} {VirtPowSwitch 0} {UnnamedProcess 1} {UDP 0} {Function 1} {Block 1} {SrsnAndSpaCell 0} {OVA Unit 1} {LeafScCell 1} {LeafVlgCell 1} {Interface 1} {LeafVhdCell 1} {$unit 1} {NamedBlock 1} {Task 1} {VlgPackage 1} {ClassDef 1} {VirtIsoCell 0} }
+gui_list_set_filter -id ${Hier.1} -text {*}
+gui_hier_list_init -id ${Hier.1}
+gui_change_design -id ${Hier.1} -design V1
+catch {gui_list_expand -id ${Hier.1} cpuStim}
+catch {gui_list_expand -id ${Hier.1} cpuStim.testCpu}
+catch {gui_list_select -id ${Hier.1} {cpuStim.testCpu.FPU}}
+gui_view_scroll -id ${Hier.1} -vertical -set 451
+gui_view_scroll -id ${Hier.1} -horizontal -set 0
 
 # Data 'Data.1'
 gui_list_set_filter -id ${Data.1} -list { {Buffer 1} {Input 1} {Others 1} {Linkage 1} {Output 1} {LowPower 1} {Parameter 1} {All 1} {Aggregate 1} {LibBaseMember 1} {Event 1} {Assertion 1} {Constant 1} {Interface 1} {BaseMembers 1} {Signal 1} {$unit 1} {Inout 1} {Variable 1} }
 gui_list_set_filter -id ${Data.1} -text {*}
+gui_list_show_data -id ${Data.1} {cpuStim.testCpu.FPU}
+gui_show_window -window ${Data.1}
+catch { gui_list_select -id ${Data.1} {cpuStim.testCpu.FPU.FPUFlags }}
 gui_view_scroll -id ${Data.1} -vertical -set 0
 gui_view_scroll -id ${Data.1} -horizontal -set 0
-gui_view_scroll -id ${Hier.2} -vertical -set 0
-gui_view_scroll -id ${Hier.2} -horizontal -set 0
+gui_view_scroll -id ${Hier.1} -vertical -set 451
+gui_view_scroll -id ${Hier.1} -horizontal -set 0
 # Restore toplevel window zorder
 # The toplevel window could be closed if it has no view/pane
-if {[gui_exist_window -window ${TopLevel.3}]} {
-	gui_set_active_window -window ${TopLevel.3}
-	gui_set_active_window -window ${DLPane.1}
-	gui_set_active_window -window ${HSPane.2}
-}
 if {[gui_exist_window -window ${TopLevel.2}]} {
 	gui_set_active_window -window ${TopLevel.2}
 	gui_set_active_window -window ${Wave.1}
+}
+if {[gui_exist_window -window ${TopLevel.3}]} {
+	gui_set_active_window -window ${TopLevel.3}
+	gui_set_active_window -window ${DLPane.1}
+	gui_set_active_window -window ${Console.1}
 }
 #</Session>
 

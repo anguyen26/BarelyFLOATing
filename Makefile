@@ -1,4 +1,4 @@
-TEST=fpBench
+TEST=fpuTest
 NUM_TESTS=50
 TESTID=1
 PASSED=0
