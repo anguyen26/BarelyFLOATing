@@ -13,7 +13,7 @@ module fp_add(
     logic sticky, sticky2, subtract;
 
     logic [7:0] mSum, diffM, absDiffM;
-    logic cout, selBigE;
+    logic selBigE;
 
     logic finalS;
     logic [7:0] bigE, sumM, sumE, finalM, finalE, 
