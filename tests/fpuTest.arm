@@ -1,18 +1,14 @@
 // Test of FPU
 // Requires:
-// MOVS, FDIV, FADD, FSUB
+// MOVS, FDIV, FADD, FSUB, BEQ, B
 
 
 1011111100000000	// NOOP
 00100_000_01011010	// MOVS R0, #90
 00100_001_00010010	// MOVS R1, #18
 01110_11_001_000_010	// FDIV R2, R0, R1
-1011111100000000	// NOOP might be needed because data from op comes out at t+1
-01110_00_010_011_101	// FADD R5, R2, R3
-1011111100000000	// NOOP
-1011111100000000	// NOOP
-1011111100000000	// NOOP
-1011111100000000	// NOOP
-
-
+01110_10_001_010_011	// FMUL R3, R2, R1
+01111_00000_011_010	// FCMP R3, R2
+1101_0001_00000010	// BNE 2 (should be false and program should terminate
+11100_11111111001	// B -7 (if above is not true (not working correctly) program should inf loop)
 11100_00000000000	// B 0, PC = PC + 0
