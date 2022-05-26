@@ -79,22 +79,12 @@ module fp_div(
     assign finalM = (finalE == 8'b11111111) ? 8'd0 : normalizedM;
     assign ovf = (finalE == 8'b11111111) ? 1'b1 : 1'b0;
 
-    always_ff @(posedge clk) begin
-        if (reset) begin
-            quotient <= '0;
-            overflow <= '0;
-            inexact <= '0;
-            underflow <= '0;
-        end
-        else begin
-            quotient <= {sign, finalE, finalM[6:0]};
-            overflow <= ovf;
-            inexact <= sticky;
-            // google says underflow needs sticky flag true too, but
-            // that's not necessarily true if quotient is too small
-            underflow <= (eSub0 | eNormal0);
-        end
-    end
+    assign quotient = {sign, finalE, finalM[6:0]};
+    assign overflow = ovf;
+    assign inexact = sticky;
+    // google says underflow needs sticky flag true too, but
+    // that's not necessarily true if quotient is too small
+    assign underflow = (eSub0 | eNormal0);
 
 endmodule
 

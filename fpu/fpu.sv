@@ -29,7 +29,7 @@ module fpu(
     end
 
     always_comb begin
-        case(hold_op)
+        case(op)
             2'b00: begin
                 result = sum;
                 overflow = aOverflow;

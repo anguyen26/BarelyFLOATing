@@ -92,7 +92,7 @@ module cpu(
 	forwardingUnit forward(.RA1(reg1Addr), .RA2(reg2Addr), .WA3W(regWriteAdderE), .RegWriteW(RegWriteE), .Forward1, .Forward2);
 
 	// Instantiates the register files. Write address and RegWrite are controlled by the Write Back stage. 
-	regfile registers(.clk(!clk), .reset, .wr_en(RegWriteE | valid), .wr_data(regWrData), .PC, .wr_addr(regWriteAddrE), .rd_data_0(ReadData1), .rd_data_1(ReadData2), 
+	regfile registers(.clk(!clk), .reset, .wr_en(RegWriteE), .wr_data(regWrData), .PC, .wr_addr(regWriteAddrE), .rd_data_0(ReadData1), .rd_data_1(ReadData2), 
 						.rd_addr_0(reg1Addr), .rd_addr_1(reg2Addr));
 	
 	//*************** Control Unit *****************\\
@@ -198,10 +198,12 @@ module cpu(
 	);
 	
 	//hold FPU write address so it can be properly sent to the reg file
-	pipelineReg #(.bitWidth(3)) FPUWrAddrReg (.D(instrE[2:0]), .Q(FPUWrAddr), .en(1'b1), .clear(1'b0), .clk);
+	// pipelineReg #(.bitWidth(3)) FPUWrAddrReg (.D(instrE[2:0]), .Q(FPUWrAddr), .en(1'b1), .clear(1'b0), .clk);
+    assign FPUWrAddr = instrE[2:0];
 	logic wasFPU;
-	pipelineReg #(.bitWidth(1)) wasFPUReg (.D(instrE[15:11]==5'b01110), .Q(wasFPU), .en(1'b1), .clear(1'b0), .clk);
-	assign regWriteAddrE = (wasFPU & valid) ? FPUWrAddr : regWriteAddrDefault;
+	// pipelineReg #(.bitWidth(1)) wasFPUReg (.D(instrE[15:11]==5'b01110), .Q(wasFPU), .en(1'b1), .clear(1'b0), .clk);
+    assign wasFPU = (instrE[15:11]==5'b01110);
+	assign regWriteAddrE = (wasFPU) ? FPUWrAddr : regWriteAddrDefault;
 
 	// Mux between ALU Output & FPU Output
 	assign CompOutput = (wasFPU) ? FPUResult : aluOutput;

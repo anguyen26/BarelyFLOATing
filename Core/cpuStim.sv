@@ -14,51 +14,60 @@ module cpuStim();
 		forever #(ClockDelay/2) clk <= ~clk;
 	end
 	
-	integer i, f;
+	integer i, f, f1;
 	
 	initial begin
         $vcdpluson;
+        $vcdplusmemon;
 		reset <= 1; @(posedge clk);
 		repeat(3) begin
 			@(posedge clk); // Reset Pipeline
 		end
 		reset <= 0;
-		while(testCpu.instr != 16'b11100_00000000000 & testCpu.instr != 16'b1110011111111111) begin
-			f = $fopen("debug_sv.txt", "w");
-			    for (int i=0; i<15; i++) begin
-				$fwrite(f, "%d = %d\n", i, testCpu.registers.MEM[i]);
-			    end
-			    $fwrite(f, "15 = %d\n", testCpu.registers.r15);
-			    $fwrite(f, "Memory content:\n");
-			    for (int i=0; i<65536; i++) begin
-				if (testCpu.dataMemory.mem[i] != 16'd0) begin;
-				    $fwrite(f, "mem[%d] = %d\n", i, testCpu.dataMemory.mem[i]);
-				end
-			    end
-				@(posedge clk);
-			$fclose(f);
+        
+		 while(testCpu.instr != 16'b11100_00000000000 & testCpu.instr != 16'b1110011111111111) begin
+			// f = $fopen("debug_sv.txt", "w");
+			// for (int i=0; i<15; i++) begin
+			// 	$fwrite(f, "%d = %d\n", i, testCpu.registers.MEM[i]);
+			// end
+			// $fwrite(f, "15 = %d\n", testCpu.registers.r15);
+			// $fwrite(f, "Memory content:\n");
+			// for (int i=0; i<65536; i++) begin
+			// 	if (testCpu.dataMemory.mem[i] != 16'd0) begin;
+			// 	    $fwrite(f, "mem[%d] = %d\n", i, testCpu.dataMemory.mem[i]);
+			// 	end
+			// end
+		    @(posedge clk);
+			// $fclose(f);
 		end
-        /*
+
+        
 		for (i = 0; i < 10; i++) begin
 			@(posedge clk); // Clear Pipeline
 		end
-        */
+        
 		$display("%t Test Done", $time);
 		f = $fopen("sv_output.txt", "w");
+		f1 = $fopen("convertMe.txt", "w");
 		$fwrite(f, "Register content:\n");
 		for (int i=0; i<15; i++) begin
-		    $fwrite(f, "%d = %d\n", i, testCpu.registers.MEM[i]);
+		    // $fwrite(f, "%d = %d\n", i, testCpu.registers.MEM[i]);
+		    $fwrite(f, "%d = %b\n", i, testCpu.registers.MEM[i]);
 		end
 		$fwrite(f, "15 = %d\n", testCpu.registers.r15);
 		$fwrite(f, "Memory content:\n");
 		for (int i=0; i<65536; i++) begin
 		    if (testCpu.dataMemory.mem[i] != 16'd0) begin;
-		        $fwrite(f, "mem[%d] = %d\n", i, testCpu.dataMemory.mem[i]);
+		        // $fwrite(f, "mem[%d] = %d\n", i, testCpu.dataMemory.mem[i]);
+                $fwrite(f, "mem[%d] = %b\n", i, testCpu.dataMemory.mem[i]);
+		        $fwrite(f1,"%b\n", testCpu.dataMemory.mem[i]);
 		    end
 		end
 		$fclose(f);
 	//		$stop;
-		$finish;
+		
+        @(posedge clk);
+        $finish;
 	end
 	
 endmodule

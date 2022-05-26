@@ -45,10 +45,10 @@ module fp_mul(
     assign finalP = (eAddOverflow | eNormalOverflow) ? 8'd0 : normalP;
     assign sign = sA ^ sB;
 
-    always_ff @(posedge clk) begin
-        product <= {sign, finalE, finalP[13:7]}; // 15=overflow, 14=hidden
-        overflow <= (eAddOverflow | eNormalOverflow);
-        inexact <= |normalP[7:0];
-        underflow <= 1'b0;
-    end
+    assign product = {sign, finalE, finalP[13:7]}; // 15=overflow, 14=hidden
+    assign overflow = (eAddOverflow | eNormalOverflow);
+    assign inexact = |normalP[7:0];
+    assign underflow = 1'b0;
+
 endmodule
+

@@ -1,4 +1,4 @@
-TEST=fpuTest
+TEST=fpBench
 NUM_TESTS=50
 TESTID=1
 PASSED=0
@@ -37,10 +37,10 @@ custom_RTL: rb_edit_tb vcs
 cb_edit_tb:
 	@ sed -i 's;^with\(.*\);with open("tests/$(TEST).txt", "r") as f:;g' \
 		iarm-master/run_iarm.py
-	@ sed -i 's;^`define\(.*\).arm";`define BENCHMARK "../tests/$(TEST).arm"; g' \
+	@ sed -i 's;^`define\(.*\)";`define BENCHMARK "../tests/$(TEST).arm"; g' \
 		Core/instructmem.sv
 rb_edit_tb:
-	@ sed -i 's;^`define\(.*\).arm";`define BENCHMARK "../tests/$(TEST).arm"; g' \
+	@ sed -i 's;^`define\(.*\)";`define BENCHMARK "../tests/$(TEST).arm"; g' \
 		Core/instructmem.sv
 
 instr_gen:

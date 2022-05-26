@@ -122,10 +122,8 @@ module fp_add(
     assign finalM = (sumE == 8'b11111111) ? 8'd0 : sumM;
     assign finalE = sumE;
 
-    always_ff @(posedge clk) begin
-        sum <= {finalS, finalE, finalM[6:0]};
-        overflow <= (sumE == 8'b11111111) ? 1'b1 : 1'b0;
-        underflow <= (finalE == 8'd0 & sticky) ? 1'b1 : 1'b0;
-        inexact <= sticky | sticky2;
-    end
-endmodule
+    assign sum = {finalS, finalE, finalM[6:0]};
+    assign overflow = (sumE == 8'b11111111) ? 1'b1 : 1'b0;
+    assign underflow = (finalE == 8'd0 & sticky) ? 1'b1 : 1'b0;
+    assign inexact = sticky | sticky2;
+endmodule 
