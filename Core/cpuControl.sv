@@ -41,7 +41,14 @@ always_comb begin
 				MemWrite = 0; 
  				MemRead = 0;
 				keepFlags = 4'b1100;
+				Reg1Loc = 'X;
+				Reg2Loc = 'X;
 				Reg3Loc = 2'b10;
+ 				selOpA = 'X;
+ 				selOpB = 'X;
+                ShiftDir = 'X;
+ 				ALUOp = 'X;
+				FPUOp = 2'b11;
 				brSel = 2'b11;
 				brEx = 0;
  				selWrData = 2'd2;
@@ -54,10 +61,13 @@ always_comb begin
 				MemWrite = 0; 
 				MemRead = 0;
 				keepFlags = 4'b0000;
+                Reg1Loc = 'X;
 				Reg2Loc = 2'b11;
 				Reg3Loc = 2'b00;
+ 				selOpA = 3'd0;
  				selOpB = 3'd0;
  				ALUOp = 3'd6;
+                FPUOp = 'X;
 				brSel = 2'b11;
 				brEx = 0;
  				selWrData = 2'b01;
@@ -72,13 +82,16 @@ always_comb begin
 				MemRead = 0;
 				keepFlags = 4'b1111;
 				Reg1Loc = 2'd1;
+                Reg2Loc = 'X;
 				Reg3Loc = 2'b00;
  				selOpA = 1'b0;
  				selOpB = 3'd1;
 				ALUOp = 3'b000;
+                FPUOp = 'X;
 				brSel = 2'b11;
 				brEx = 0;
  				selWrData = 2'b01;
+                ShiftDir = 'X;
 			end
 			// ADDS (reg)
 			10'b0001100_???: begin
@@ -94,9 +107,11 @@ always_comb begin
  				selOpA = 1'b0;
  				selOpB = 3'b0;
 				ALUOp = 3'b000;
+                FPUOp = 'X;
 				brSel = 2'b11;
 				brEx = 0;
  				selWrData = 2'b01;
+                ShiftDir = 'X;
 			end
 			// ADD
 			10'b101100000_?: begin
@@ -106,13 +121,17 @@ always_comb begin
 				MemWrite = 0;
 				MemRead = 0;
 				keepFlags = 4'b0000;
+				Reg1Loc = 'X;
+				Reg2Loc = 'X;
 				Reg3Loc = 2'b01;
  				selOpA = 1'b0;
  				selOpB = 3'd2;
 				ALUOp = 3'b000;
+                FPUOp = 'X;
 				brSel = 2'b11;
 				brEx = 0;
  				selWrData = 2'b01;
+                ShiftDir = 'X;
 			end
 		// SUBTRACT =========================================
 			// SUBS (imm)
@@ -124,13 +143,16 @@ always_comb begin
 				MemRead = 0;
 				keepFlags = 4'b1111;
 				Reg1Loc = 2'd1;
+                Reg2Loc = 'X;
 				Reg3Loc = 2'b00;
  				selOpA = 1'b0;
  				selOpB = 3'd1;
+                FPUOp = 'X;
 				ALUOp = 3'b001;
 				brSel = 2'b11;
 				brEx = 0;
  				selWrData = 2'b01;
+                ShiftDir = 'X;
 			end
 			// SUBS (reg)
 			10'b0001101_???: begin
@@ -146,9 +168,11 @@ always_comb begin
  				selOpA = 1'b0;
  				selOpB = 3'b0;
 				ALUOp = 3'b001;
+                FPUOp = 'X;
 				brSel = 2'b11;
 				brEx = 0;
  				selWrData = 2'b01;
+                ShiftDir = 'X;
 			end
 			// SUB
 			10'b101100001_?: begin
@@ -158,13 +182,17 @@ always_comb begin
 				MemWrite = 0;
 				MemRead = 0;
 				keepFlags = 4'b0000;
+				Reg1Loc = 'X;
+				Reg2Loc = 'X;
 				Reg3Loc = 2'b01;
  				selOpA = 1'b0;
  				selOpB = 3'd2;
+                FPUOp = 'X;
 				ALUOp = 3'b001;
 				brSel = 2'b11;
 				brEx = 0;
  				selWrData = 2'b01;
+                ShiftDir = 'X;
 			end
 		// COMPARE =========================================
 			// CMP
@@ -177,11 +205,14 @@ always_comb begin
 				keepFlags = 4'b1111;
 				Reg1Loc = 2'b10;
 				Reg2Loc = 2'b01;
+                Reg3Loc = 'X;
  				selOpA = 1'b0;
  				selOpB = 3'd0;
+                FPUOp = 'X;
 				ALUOp = 3'b001;
 				brSel = 2'b11;
 				brEx = 0;
+                selWrData = 'X;
 			end
 		// LOGICAL =========================================
 			// ANDS
@@ -197,7 +228,9 @@ always_comb begin
 				Reg3Loc = 2'b00;
  				selOpA = 1'b0;
  				selOpB = 3'd0;
+                FPUOp = 'X;
 				ALUOp = 3'b010;
+                ShiftDir = 'X;
 				brSel = 2'b11;
 				brEx = 0;
  				selWrData = 2'b01;
@@ -215,7 +248,9 @@ always_comb begin
 				Reg3Loc = 2'b00;
  				selOpA = 1'b0;
  				selOpB = 3'd0;
+                FPUOp = 'X;
 				ALUOp = 3'd4;
+                ShiftDir = 'X;
 				brSel = 2'b11;
 				brEx = 0;
  				selWrData = 2'b01;
@@ -233,7 +268,9 @@ always_comb begin
 				Reg3Loc = 2'b00;
  				selOpA = 1'b0;
  				selOpB = 3'd0;
+                FPUOp = 'X;
 				ALUOp = 3'd3;
+                ShiftDir = 'X;
 				brSel = 2'b11;
 				brEx = 0;
  				selWrData = 2'b01;
@@ -252,6 +289,8 @@ always_comb begin
  				selOpA = 1'b0;
  				selOpB = 3'd0;
 				ALUOp = 3'd5;
+                FPUOp = 'X;
+                ShiftDir = 'X;
 				brSel = 2'b11;
 				brEx = 0;
  				selWrData = 2'b01;
@@ -269,6 +308,10 @@ always_comb begin
 				Reg2Loc = 2'b10;
 				Reg3Loc = 2'b00;
  				ShiftDir = 2'd0;
+                selOpA = 'X;
+                selOpB = 'X;
+                ALUOp = 'X;
+                FPUOp = 'X;
 				brSel = 2'b11;
 				brEx = 0;
  				selWrData = 2'b00;
@@ -288,6 +331,10 @@ always_comb begin
 				brSel = 2'b11;
 				brEx = 0;
  				selWrData = 2'b00;
+                selOpA = 'X;
+                selOpB = 'X;
+                ALUOp = 'X;
+                FPUOp = 'X;
 			end
 			// ASRS
 			10'b0100000100: begin
@@ -301,6 +348,10 @@ always_comb begin
 				Reg2Loc = 2'b10;
 				Reg3Loc = 2'b00;
  				ShiftDir = 2'd2;
+                selOpA = 'X;
+                selOpB = 'X;
+                ALUOp = 'X;
+                FPUOp = 'X;
 				brSel = 2'b11;
 				brEx = 0;
  				selWrData = 2'b00;
@@ -316,6 +367,10 @@ always_comb begin
 				Reg1Loc = 2'b01;
 				Reg2Loc = 2'b10;
 				Reg3Loc = 2'b00;
+                selOpA = 'X;
+                selOpB = 'X;
+                ALUOp = 'X;
+                FPUOp = 'X;
  				ShiftDir = 2'd3;
 				brSel = 2'b11;
 				brEx = 0;
@@ -335,9 +390,12 @@ always_comb begin
 				Reg3Loc = 2'b00;
  				selOpA = 1'b0;
  				selOpB = 3'd3;
+                FPUOp = 'X;
+                ShiftDir = 'X;
 				ALUOp = 3'd0;
 				brSel = 2'b11;
 				brEx = 0;
+                selWrData = 'X;
 			end
 		// LOAD =========================================
 			// LDR
@@ -349,10 +407,13 @@ always_comb begin
 				MemRead = 1;
 				keepFlags = 4'b1100;
 				Reg1Loc = 2'b01;
+                Reg2Loc = 'X;
 				Reg3Loc = 2'b00;
  				selOpA = 1'b0;
  				selOpB = 3'd3;
 				ALUOp = 3'd0;
+                FPUOp = 'X;
+                ShiftDir = 'X;
 				brSel = 2'b11;
 				brEx = 0;
  				selWrData = 2'd3;
@@ -367,6 +428,16 @@ always_comb begin
 				keepFlags = 4'b0000;
 				brSel = FlagsReg[2] ? 2'b01 : 2'b11;
 				brEx = 0;
+                MemRead = 'X;
+                Reg1Loc = 'X;
+                Reg2Loc = 'X;
+                Reg3Loc = 'X;
+                selOpA = 'X;
+                selOpB = 'X;
+                ALUOp = 'X;
+                FPUOp = 'X;
+                ShiftDir = 'X;
+                selWrData = 'X;
 			end
 			// BNE
 			10'b1101_0001??: begin
@@ -377,6 +448,16 @@ always_comb begin
 				keepFlags = 4'b0000;
 				brSel = FlagsReg[2] ? 2'b11 : 2'b01;
 				brEx = 0;
+                MemRead = 'X;
+                Reg1Loc = 'X;
+                Reg2Loc = 'X;
+                Reg3Loc = 'X;
+                selOpA = 'X;
+                selOpB = 'X;
+                ALUOp = 'X;
+                FPUOp = 'X;
+                ShiftDir = 'X;
+                selWrData = 'X;
 			end
 			// BCS
 			10'b1101_0010??: begin
@@ -387,6 +468,16 @@ always_comb begin
 				keepFlags = 4'b0000;
 				brSel = FlagsReg[1] ? 2'b01 : 2'b11;
 				brEx = 0;
+                MemRead = 'X;
+                Reg1Loc = 'X;
+                Reg2Loc = 'X;
+                Reg3Loc = 'X;
+                selOpA = 'X;
+                selOpB = 'X;
+                ALUOp = 'X;
+                FPUOp = 'X;
+                ShiftDir = 'X;
+                selWrData = 'X;
 			end
 			// BCC
 			10'b1101_0011??: begin
@@ -397,6 +488,16 @@ always_comb begin
 				keepFlags = 4'b0000;
 				brSel = FlagsReg[1] ? 2'b11 : 2'b01;
 				brEx = 0;
+                MemRead = 'X;
+                Reg1Loc = 'X;
+                Reg2Loc = 'X;
+                Reg3Loc = 'X;
+                selOpA = 'X;
+                selOpB = 'X;
+                ALUOp = 'X;
+                FPUOp = 'X;
+                ShiftDir = 'X;
+                selWrData = 'X;
 			end
 			// BMI
 			10'b1101_0100??: begin
@@ -407,6 +508,16 @@ always_comb begin
 				keepFlags = 4'b0000;
 				brSel = FlagsReg[3] ? 2'b01 : 2'b11;
 				brEx = 0;
+                MemRead = 'X;
+                Reg1Loc = 'X;
+                Reg2Loc = 'X;
+                Reg3Loc = 'X;
+                selOpA = 'X;
+                selOpB = 'X;
+                ALUOp = 'X;
+                FPUOp = 'X;
+                ShiftDir = 'X;
+                selWrData = 'X;
 			end
 			// BPL
 			10'b1101_0101??: begin
@@ -417,6 +528,16 @@ always_comb begin
 				keepFlags = 4'b0000;
 				brSel = FlagsReg[3] ? 2'b11 : 2'b01;
 				brEx = 0;
+                MemRead = 'X;
+                Reg1Loc = 'X;
+                Reg2Loc = 'X;
+                Reg3Loc = 'X;
+                selOpA = 'X;
+                selOpB = 'X;
+                ALUOp = 'X;
+                FPUOp = 'X;
+                ShiftDir = 'X;
+                selWrData = 'X;
 			end
 			// BVS
 			10'b1101_0110??: begin
@@ -427,6 +548,16 @@ always_comb begin
 				keepFlags = 4'b0000;
 				brSel = FlagsReg[0] ? 2'b01 : 2'b11;
 				brEx = 0;
+                MemRead = 'X;
+                Reg1Loc = 'X;
+                Reg2Loc = 'X;
+                Reg3Loc = 'X;
+                selOpA = 'X;
+                selOpB = 'X;
+                ALUOp = 'X;
+                FPUOp = 'X;
+                ShiftDir = 'X;
+                selWrData = 'X;
 			end
 			// BVC
 			10'b1101_0111??: begin
@@ -437,6 +568,16 @@ always_comb begin
 				keepFlags = 4'b0000;
 				brSel = FlagsReg[0] ? 2'b11 : 2'b01;
 				brEx = 0;
+                MemRead = 'X;
+                Reg1Loc = 'X;
+                Reg2Loc = 'X;
+                Reg3Loc = 'X;
+                selOpA = 'X;
+                selOpB = 'X;
+                ALUOp = 'X;
+                FPUOp = 'X;
+                ShiftDir = 'X;
+                selWrData = 'X;
 			end
 			// BHI
 			10'b1101_1000??: begin
@@ -447,6 +588,16 @@ always_comb begin
 				keepFlags = 4'b0000;
 				brSel = (FlagsReg[1] & !FlagsReg[2]) ? 2'b01 : 2'b11;
 				brEx = 0;
+                MemRead = 'X;
+                Reg1Loc = 'X;
+                Reg2Loc = 'X;
+                Reg3Loc = 'X;
+                selOpA = 'X;
+                selOpB = 'X;
+                ALUOp = 'X;
+                FPUOp = 'X;
+                ShiftDir = 'X;
+                selWrData = 'X;
 			end
 			// BLS
 			10'b1101_1001??: begin
@@ -457,6 +608,16 @@ always_comb begin
 				keepFlags = 4'b0000;
 				brSel = (!FlagsReg[1] | FlagsReg[2]) ? 2'b01 : 2'b11;
 				brEx = 0;
+                MemRead = 'X;
+                Reg1Loc = 'X;
+                Reg2Loc = 'X;
+                Reg3Loc = 'X;
+                selOpA = 'X;
+                selOpB = 'X;
+                ALUOp = 'X;
+                FPUOp = 'X;
+                ShiftDir = 'X;
+                selWrData = 'X;
 			end
 			// BGE
 			10'b1101_1010??: begin
@@ -467,6 +628,16 @@ always_comb begin
 				keepFlags = 4'b0000;
 				brSel = (FlagsReg[3] == FlagsReg[0]) ? 2'b01 : 2'b11;
 				brEx = 0;
+                MemRead = 'X;
+                Reg1Loc = 'X;
+                Reg2Loc = 'X;
+                Reg3Loc = 'X;
+                selOpA = 'X;
+                selOpB = 'X;
+                ALUOp = 'X;
+                FPUOp = 'X;
+                ShiftDir = 'X;
+                selWrData = 'X;
 			end
 			// BLT
 			10'b1101_1011??: begin
@@ -477,6 +648,16 @@ always_comb begin
 				keepFlags = 4'b0000;
 				brSel = (!FlagsReg[3] == FlagsReg[0]) ? 2'b01 : 2'b11;
 				brEx = 0;
+                MemRead = 'X;
+                Reg1Loc = 'X;
+                Reg2Loc = 'X;
+                Reg3Loc = 'X;
+                selOpA = 'X;
+                selOpB = 'X;
+                ALUOp = 'X;
+                FPUOp = 'X;
+                ShiftDir = 'X;
+                selWrData = 'X;
 			end
 			// BGT
 			10'b1101_1100??: begin
@@ -487,6 +668,16 @@ always_comb begin
 				keepFlags = 4'b0000;
 				brSel = (!FlagsReg[2] & (FlagsReg[3] == FlagsReg[0])) ? 2'b01 : 2'b11;
 				brEx = 0;
+                MemRead = 'X;
+                Reg1Loc = 'X;
+                Reg2Loc = 'X;
+                Reg3Loc = 'X;
+                selOpA = 'X;
+                selOpB = 'X;
+                ALUOp = 'X;
+                FPUOp = 'X;
+                ShiftDir = 'X;
+                selWrData = 'X;
 			end
 			// BLE
 			10'b1101_1101??: begin
@@ -497,6 +688,16 @@ always_comb begin
 				keepFlags = 4'b0000;
 				brSel = (FlagsReg[2] | (!FlagsReg[3] == FlagsReg[0])) ? 2'b01 : 2'b11;
 				brEx = 0;
+                MemRead = 'X;
+                Reg1Loc = 'X;
+                Reg2Loc = 'X;
+                Reg3Loc = 'X;
+                selOpA = 'X;
+                selOpB = 'X;
+                ALUOp = 'X;
+                FPUOp = 'X;
+                ShiftDir = 'X;
+                selWrData = 'X;
 			end
 			// BAL
 			10'b1101_1110??: begin
@@ -507,6 +708,16 @@ always_comb begin
 				keepFlags = 4'b0000;
 				brSel = 2'b01;
 				brEx = 0;
+                MemRead = 'X;
+                Reg1Loc = 'X;
+                Reg2Loc = 'X;
+                Reg3Loc = 'X;
+                selOpA = 'X;
+                selOpB = 'X;
+                ALUOp = 'X;
+                FPUOp = 'X;
+                ShiftDir = 'X;
+                selWrData = 'X;
 			end
 
 			// Unconditional Branching
@@ -519,6 +730,16 @@ always_comb begin
 				keepFlags = 4'b0000;
 				brSel = 2'b10;
 				brEx = 0;
+                MemRead = 'X;
+                Reg1Loc = 'X;
+                Reg2Loc = 'X;
+                Reg3Loc = 'X;
+                selOpA = 'X;
+                selOpB = 'X;
+                ALUOp = 'X;
+                FPUOp = 'X;
+                ShiftDir = 'X;
+                selWrData = 'X;
 			end
 			// BL
 			10'b0100010100: begin
@@ -527,7 +748,15 @@ always_comb begin
 				RegWrite = 1;
 				MemWrite = 0;
 				keepFlags = 4'b0000;
+                Reg1Loc = 'X;
+                Reg2Loc = 'X;
 				Reg3Loc = 2'b11;
+                selOpA = 'X;
+                selOpB = 'X;
+                ALUOp = 'X;
+                FPUOp = 'X;
+                ShiftDir = 'X;
+                selWrData = 'X;
 				brSel = 2'b00;
 				brEx = 0;
 				selWrData = 2'b10;
@@ -538,9 +767,19 @@ always_comb begin
 				Branch = 1;
 				RegWrite = 0;
 				MemWrite = 0;
+                MemRead = 'X;
+                keepFlags = 'X;
+                Reg1Loc = 'X;
 				Reg2Loc = 2'b11;
-				keepFlags = 4'b0000;
+                Reg3Loc = 'X;
+                selOpA = 'X;
+                selOpB = 'X;
+                ALUOp = 'X;
+                FPUOp = 'X;
+                ShiftDir = 'X;
+				brSel = 2'bX;
 				brEx = 1;
+                selWrData = 'X;
 			end
 		// NONE =========================================
 			// NOOP
@@ -549,9 +788,19 @@ always_comb begin
 				Branch = 0;
 				RegWrite = 0;
 				MemWrite = 0;
+                MemRead = 'X;
 				keepFlags = 4'b0000;
 				brSel = 2'b11;
 				brEx = 0;
+				Reg1Loc = 'X;
+				Reg2Loc = 'X;
+				Reg3Loc = 'X;
+ 				selOpA = 'X;
+ 				selOpB = 'X;
+				FPUOp = 'X;
+                ALUOp = 'X;
+                ShiftDir = 'X;
+                selWrData = 'X;
 			end
 		// Floating Point ================================
 			// FADD
@@ -568,6 +817,8 @@ always_comb begin
  				selOpA = 1'b0;
  				selOpB = 3'b010;
 				FPUOp = 2'b00;
+                ALUOp = 'X;
+                ShiftDir = 'X;
 				brSel = 2'b11;
 				brEx = 0;
  				selWrData = 2'b01;
@@ -585,7 +836,9 @@ always_comb begin
 				Reg3Loc = 2'd0;
  				selOpA = 1'b0;
  				selOpB = 3'b010;
+                ALUOp = 'X;
 				FPUOp = 2'b01;
+                ShiftDir = 'X;
 				brSel = 2'b11;
 				brEx = 0;
  				selWrData = 2'b01;
@@ -604,6 +857,8 @@ always_comb begin
  				selOpA = 1'b0;
  				selOpB = 3'b010;
 				FPUOp = 2'b10;
+                ALUOp = 'X;
+                ShiftDir = 'X;
 				brSel = 2'b11;
 				brEx = 0;
  				selWrData = 2'b01;
@@ -622,6 +877,8 @@ always_comb begin
  				selOpA = 1'b0;
  				selOpB = 3'b010;
 				FPUOp = 2'b11;
+                ALUOp = 'X;
+                ShiftDir = 'X;
 				brSel = 2'b11;
 				brEx = 0;
  				selWrData = 2'b01;
@@ -636,13 +893,35 @@ always_comb begin
 				keepFlags = 4'b1111;
 				Reg1Loc = 2'd2;
 				Reg2Loc = 2'd1;
+                Reg3Loc = 'X;
  				selOpA = 1'b0;
  				selOpB = 3'b010;
 				FPUOp = 2'b01;
+                ALUOp = 'X;
+                ShiftDir = 'X;
 				brSel = 2'b11;
 				brEx = 0;
  				selWrData = 2'b01;
 			end
+            default: begin
+				ALUorFPU = 'X;
+				Branch = 'X;
+				RegWrite = 'X;
+				MemWrite = 'X;
+				MemRead = 'X;
+				keepFlags = 'X;
+				Reg1Loc = 'X;
+				Reg2Loc = 'X;
+                Reg3Loc = 'X;
+ 				selOpA = 'X;
+ 				selOpB = 'X;
+				FPUOp = 'X;
+                ALUOp = 'X;
+				brSel = 'X;
+				brEx = 'X;
+ 				selWrData = 'X;
+                ShiftDir = 'X;
+            end
 		endcase
 	end
 endmodule

@@ -56,6 +56,12 @@ module fpu(
 				underflow = qUnderflow;
 				inexact = qInexact;
 			end
+            default: begin
+				result = 'X;
+				overflow = 'X;
+				underflow = 'X;
+				inexact = 'X;
+            end
 		endcase
 	end
 

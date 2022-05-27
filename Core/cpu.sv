@@ -122,6 +122,7 @@ module cpu(
 	always_comb begin
 		if(!BranchE | !Branch) PCNext = PC + 4;
 		else if (Branch & BranchE) PCNext = PCNext_preStall;
+        else PCNext = 'X;
 	end
 
 	
@@ -167,6 +168,7 @@ module cpu(
 	assign opAE = Forward1 ? regWrData : opA_pre;
 	// Selects operand B for ALU
 	mux5x16_16 opBMux0(.i0(ReadData2E), .i1(imm3), .i2(imm7), .i3(imm5), .i4(16'd1), .sel(selOpBE), .out(opB_pre));
+	// mux5x16_16 opBMux0(.i0(ReadData2E), .i1(imm3), .i2(imm7), .i3(imm5), .i4(16'd1), .sel(selOpB), .out(opB_pre));
 	assign opBE = Forward2 ? regWrData : opB_pre;
 
 	// Instantiates the ALU

@@ -12,6 +12,7 @@ module mux3x4_4(
 			2'b00: out = i0;
 			2'b01: out = i1;
 			2'b10: out = i2;
+            default: out = 'X;
 		endcase
 	end
 endmodule

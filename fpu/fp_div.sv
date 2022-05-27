@@ -87,4 +87,3 @@ module fp_div(
     assign underflow = (eSub0 | eNormal0);
 
 endmodule
-

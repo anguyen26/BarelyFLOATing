@@ -14,6 +14,7 @@ module mux5x16_16(
 			3'b010: out = i2;
 			3'b011: out = i3;
 			3'b100: out = i4;
+            default: out = 'X;
 		endcase
 	end
 endmodule

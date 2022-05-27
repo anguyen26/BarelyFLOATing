@@ -19,13 +19,24 @@ module cpuStim();
 	initial begin
         $vcdpluson;
         $vcdplusmemon;
+        //i=0;
 		reset <= 1; @(posedge clk);
 		repeat(3) begin
 			@(posedge clk); // Reset Pipeline
 		end
 		reset <= 0;
-        
-		 while(testCpu.instr != 16'b11100_00000000000 & testCpu.instr != 16'b1110011111111111) begin
+/*
+        repeat(35) begin
+            i++;
+            $display("%b", testCpu.instr);
+            $display("%d", i);
+            @(posedge clk);
+        end
+        */
+		while(testCpu.instr != 16'b11100_00000000000 & testCpu.instr != 16'b1110011111111111) begin
+            //i++;
+            //$display("%b", testCpu.instr);
+            //$display("%d", i);
 			// f = $fopen("debug_sv.txt", "w");
 			// for (int i=0; i<15; i++) begin
 			// 	$fwrite(f, "%d = %d\n", i, testCpu.registers.MEM[i]);
@@ -41,12 +52,11 @@ module cpuStim();
 			// $fclose(f);
 		end
 
-        
 		for (i = 0; i < 10; i++) begin
 			@(posedge clk); // Clear Pipeline
 		end
-        
 		$display("%t Test Done", $time);
+
 		f = $fopen("sv_output.txt", "w");
 		f1 = $fopen("convertMe.txt", "w");
 		$fwrite(f, "Register content:\n");
@@ -64,10 +74,8 @@ module cpuStim();
 		    end
 		end
 		$fclose(f);
-	//		$stop;
-		
-        @(posedge clk);
         $finish;
+		$stop;
 	end
 	
 endmodule

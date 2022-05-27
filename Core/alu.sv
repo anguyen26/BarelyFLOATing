@@ -43,22 +43,31 @@ module ALU #(parameter SIZE = 16) (
 			end
 			//AND
 			3'b010:begin
+                temp_op = 'X;
 				Result = a & b;
 			end
 			//OR
 			3'b011:begin
+                temp_op = 'X;
 				Result = a | b;
 			end
 			//XOR
 			3'b100:begin
+                temp_op = 'X;
 				Result = a ^ b;
 			end
 			//NOT
 			3'b101:begin
+                temp_op = 'X;
 				Result = ~a;
 			end
             3'b110: begin
+                temp_op = 'X;
                 Result = b;
+            end
+            default: begin
+                temp_op = 'X;
+                Result = 'X;
             end
 		endcase
 	end
