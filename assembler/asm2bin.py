@@ -291,6 +291,130 @@ with open(input_filename) as input_file:
                 output_file.write('101100001' + numpy.binary_repr(int(instruction[3][1:]), width=7) + '    // ' + line + ' (line ' + str(line_number) + ', memory address ' + str(instruction_number-1) + ')\n')
 # end of sub
 
+# fadd
+            elif instruction[0] == 'fadd':
+                # Catching syntax errors, and exiting if there is one:
+                # Enough number of arguments
+                if len(instruction) != 4:
+                    output_file.close()
+                    raise SystemExit('ERROR: Wrong number of arguments for \'' + instruction[0] + '\' on line ' + str(line_number))
+
+                # There are two kinds of FADDS instruction, depending on the presence of an immediate
+                if instruction[3][0] == '#':
+                    # Operands have the correct formatting
+                    if (not instruction[1].isdigit()) or (not instruction[2].isdigit()) or (not instruction[3][1:].isdigit()):
+                        output_file.close()
+                        raise SystemExit('ERROR: Arguments for \'' + instruction[0] + '\' on line ' + str(line_number) + ' should be integers, except for the # in the immediate')
+                    if ( int(instruction[1]) > 7 ) or (int(instruction[2]) > 7 ) or (int(instruction[3][1:]) > 7 ):
+                        output_file.close()
+                        raise SystemExit('ERROR: \'' + instruction[0] + '\' on line ' + str(line_number) + ' only operates on registers 0 to 7, and the immediate should not be bigger than 7')
+                    # Writing to the output file
+                    output_file.write('0001110' + numpy.binary_repr(int(instruction[3][1:]), width=3) + numpy.binary_repr(int(instruction[2]), width=3) + numpy.binary_repr(int(instruction[1]), width=3) + '    // ' + line + ' (line ' + str(line_number) + ', memory address ' + str(instruction_number-1) + ')\n')
+                else:
+                    # Operands have the correct formatting
+                    if (not instruction[1].isdigit()) or (not instruction[2].isdigit()) or (not instruction[3].isdigit()):
+                        output_file.close()
+                        raise SystemExit('ERROR: Arguments for \'' + instruction[0] + '\' on line ' + str(line_number) + ' should be integers (the third one may be preceded by # if it is an immediate)')
+                    if ( int(instruction[1]) > 7 ) or (int(instruction[2]) > 7 ) or (int(instruction[3]) > 7 ):
+                        output_file.close()
+                        raise SystemExit('ERROR: \'' + instruction[0] + '\' on line ' + str(line_number) + ' only operates on registers 0 to 7')
+                    # Writing to the output file
+                    output_file.write('0111000' + numpy.binary_repr(int(instruction[3]), width=3) + numpy.binary_repr(int(instruction[2]), width=3) + numpy.binary_repr(int(instruction[1]), width=3) + '    // ' + line + ' (line ' + str(line_number) + ', memory address ' + str(instruction_number-1) + ')\n')
+# end of fadd
+
+# fsub
+            elif instruction[0] == 'fsub':
+                # Catching syntax errors, and exiting if there is one:
+                # Enough number of arguments
+                if len(instruction) != 4:
+                    output_file.close()
+                    raise SystemExit('ERROR: Wrong number of arguments for \'' + instruction[0] + '\' on line ' + str(line_number))
+
+                # There are two kinds of ADDS instruction, depending on the presence of an immediate
+                if instruction[3][0] == '#':
+                    # Operands have the correct formatting
+                    if (not instruction[1].isdigit()) or (not instruction[2].isdigit()) or (not instruction[3][1:].isdigit()):
+                        output_file.close()
+                        raise SystemExit('ERROR: Arguments for \'' + instruction[0] + '\' on line ' + str(line_number) + ' should be integers, except for the # in the immediate')
+                    if ( int(instruction[1]) > 7 ) or (int(instruction[2]) > 7 ) or (int(instruction[3][1:]) > 7 ):
+                        output_file.close()
+                        raise SystemExit('ERROR: \'' + instruction[0] + '\' on line ' + str(line_number) + ' only operates on registers 0 to 7, and the immediate should not be bigger than 7')
+                    # Writing to the output file
+                    output_file.write('0001110' + numpy.binary_repr(int(instruction[3][1:]), width=3) + numpy.binary_repr(int(instruction[2]), width=3) + numpy.binary_repr(int(instruction[1]), width=3) + '    // ' + line + ' (line ' + str(line_number) + ', memory address ' + str(instruction_number-1) + ')\n')
+                else:
+                    # Operands have the correct formatting
+                    if (not instruction[1].isdigit()) or (not instruction[2].isdigit()) or (not instruction[3].isdigit()):
+                        output_file.close()
+                        raise SystemExit('ERROR: Arguments for \'' + instruction[0] + '\' on line ' + str(line_number) + ' should be integers (the third one may be preceded by # if it is an immediate)')
+                    if ( int(instruction[1]) > 7 ) or (int(instruction[2]) > 7 ) or (int(instruction[3]) > 7 ):
+                        output_file.close()
+                        raise SystemExit('ERROR: \'' + instruction[0] + '\' on line ' + str(line_number) + ' only operates on registers 0 to 7')
+                    # Writing to the output file
+                    output_file.write('0111001' + numpy.binary_repr(int(instruction[3]), width=3) + numpy.binary_repr(int(instruction[2]), width=3) + numpy.binary_repr(int(instruction[1]), width=3) + '    // ' + line + ' (line ' + str(line_number) + ', memory address ' + str(instruction_number-1) + ')\n')
+# end of fsub
+
+# fmul
+            elif instruction[0] == 'fmul':
+                # Catching syntax errors, and exiting if there is one:
+                # Enough number of arguments
+                if len(instruction) != 4:
+                    output_file.close()
+                    raise SystemExit('ERROR: Wrong number of arguments for \'' + instruction[0] + '\' on line ' + str(line_number))
+
+                # There are two kinds of ADDS instruction, depending on the presence of an immediate
+                if instruction[3][0] == '#':
+                    # Operands have the correct formatting
+                    if (not instruction[1].isdigit()) or (not instruction[2].isdigit()) or (not instruction[3][1:].isdigit()):
+                        output_file.close()
+                        raise SystemExit('ERROR: Arguments for \'' + instruction[0] + '\' on line ' + str(line_number) + ' should be integers, except for the # in the immediate')
+                    if ( int(instruction[1]) > 7 ) or (int(instruction[2]) > 7 ) or (int(instruction[3][1:]) > 7 ):
+                        output_file.close()
+                        raise SystemExit('ERROR: \'' + instruction[0] + '\' on line ' + str(line_number) + ' only operates on registers 0 to 7, and the immediate should not be bigger than 7')
+                    # Writing to the output file
+                    output_file.write('0001110' + numpy.binary_repr(int(instruction[3][1:]), width=3) + numpy.binary_repr(int(instruction[2]), width=3) + numpy.binary_repr(int(instruction[1]), width=3) + '    // ' + line + ' (line ' + str(line_number) + ', memory address ' + str(instruction_number-1) + ')\n')
+                else:
+                    # Operands have the correct formatting
+                    if (not instruction[1].isdigit()) or (not instruction[2].isdigit()) or (not instruction[3].isdigit()):
+                        output_file.close()
+                        raise SystemExit('ERROR: Arguments for \'' + instruction[0] + '\' on line ' + str(line_number) + ' should be integers (the third one may be preceded by # if it is an immediate)')
+                    if ( int(instruction[1]) > 7 ) or (int(instruction[2]) > 7 ) or (int(instruction[3]) > 7 ):
+                        output_file.close()
+                        raise SystemExit('ERROR: \'' + instruction[0] + '\' on line ' + str(line_number) + ' only operates on registers 0 to 7')
+                    # Writing to the output file
+                    output_file.write('0111010' + numpy.binary_repr(int(instruction[3]), width=3) + numpy.binary_repr(int(instruction[2]), width=3) + numpy.binary_repr(int(instruction[1]), width=3) + '    // ' + line + ' (line ' + str(line_number) + ', memory address ' + str(instruction_number-1) + ')\n')
+# end of fmul
+
+# fdiv
+            elif instruction[0] == 'fdiv':
+                # Catching syntax errors, and exiting if there is one:
+                # Enough number of arguments
+                if len(instruction) != 4:
+                    output_file.close()
+                    raise SystemExit('ERROR: Wrong number of arguments for \'' + instruction[0] + '\' on line ' + str(line_number))
+
+                # There are two kinds of ADDS instruction, depending on the presence of an immediate
+                if instruction[3][0] == '#':
+                    # Operands have the correct formatting
+                    if (not instruction[1].isdigit()) or (not instruction[2].isdigit()) or (not instruction[3][1:].isdigit()):
+                        output_file.close()
+                        raise SystemExit('ERROR: Arguments for \'' + instruction[0] + '\' on line ' + str(line_number) + ' should be integers, except for the # in the immediate')
+                    if ( int(instruction[1]) > 7 ) or (int(instruction[2]) > 7 ) or (int(instruction[3][1:]) > 7 ):
+                        output_file.close()
+                        raise SystemExit('ERROR: \'' + instruction[0] + '\' on line ' + str(line_number) + ' only operates on registers 0 to 7, and the immediate should not be bigger than 7')
+                    # Writing to the output file
+                    output_file.write('0001110' + numpy.binary_repr(int(instruction[3][1:]), width=3) + numpy.binary_repr(int(instruction[2]), width=3) + numpy.binary_repr(int(instruction[1]), width=3) + '    // ' + line + ' (line ' + str(line_number) + ', memory address ' + str(instruction_number-1) + ')\n')
+                else:
+                    # Operands have the correct formatting
+                    if (not instruction[1].isdigit()) or (not instruction[2].isdigit()) or (not instruction[3].isdigit()):
+                        output_file.close()
+                        raise SystemExit('ERROR: Arguments for \'' + instruction[0] + '\' on line ' + str(line_number) + ' should be integers (the third one may be preceded by # if it is an immediate)')
+                    if ( int(instruction[1]) > 7 ) or (int(instruction[2]) > 7 ) or (int(instruction[3]) > 7 ):
+                        output_file.close()
+                        raise SystemExit('ERROR: \'' + instruction[0] + '\' on line ' + str(line_number) + ' only operates on registers 0 to 7')
+                    # Writing to the output file
+                    output_file.write('0111011' + numpy.binary_repr(int(instruction[3]), width=3) + numpy.binary_repr(int(instruction[2]), width=3) + numpy.binary_repr(int(instruction[1]), width=3) + '    // ' + line + ' (line ' + str(line_number) + ', memory address ' + str(instruction_number-1) + ')\n')
+# end of fdiv
+
 # cmp
             elif instruction[0] == 'cmp':
                 # Catching syntax errors, and exiting if there is one:
@@ -308,9 +432,28 @@ with open(input_filename) as input_file:
                     raise SystemExit('ERROR: \'' + instruction[0] + '\' on line ' + str(line_number) + ' operates exclusively on registers 0 to 7')
 
                 # Writing to the output file
+                output_file.write('0111100000' + numpy.binary_repr(int(instruction[2]), width=3) + numpy.binary_repr(int(instruction[1]), width=3) + '    // ' + line + ' (line ' + str(line_number) + ', memory address ' + str(instruction_number-1) + ')\n')
+# end of fcmp
+
+# fcmp
+            elif instruction[0] == 'fcmp':
+                # Catching syntax errors, and exiting if there is one:
+                # Enough number of arguments
+                if len(instruction) != 3:
+                    output_file.close()
+                    raise SystemExit('ERROR: Wrong number of arguments for \'' + instruction[0] + '\' on line ' + str(line_number))
+
+                # Operands have the correct formatting
+                if (not instruction[1].isdigit()) or (not instruction[2].isdigit()):
+                    output_file.close()
+                    raise SystemExit('ERROR: Arguments for \'' + instruction[0] + '\' on line ' + str(line_number) + ' should be integers')
+                if ( int(instruction[1]) > 7 ) or ( int(instruction[2]) > 7 ):
+                    output_file.close()
+                    raise SystemExit('ERROR: \'' + instruction[0] + '\' on line ' + str(line_number) + ' operates exclusively on registers 0 to 7')
+
+                # Writing to the output file
                 output_file.write('0100001010' + numpy.binary_repr(int(instruction[2]), width=3) + numpy.binary_repr(int(instruction[1]), width=3) + '    // ' + line + ' (line ' + str(line_number) + ', memory address ' + str(instruction_number-1) + ')\n')
 # end of cmp
-
 # ands
             elif instruction[0] == 'ands':
                 # Catching syntax errors, and exiting if there is one:
