@@ -6,7 +6,7 @@ Warning-[DEBUG_DEP] Option will be deprecated
 Command: vcs -f cpu.include +v2k -R -sverilog -full64 -debug_pp -timescale=1ns/10ps \
 -l cpu.log
                          Chronologic VCS (TM)
-       Version S-2021.09-SP1_Full64 -- Thu May 26 16:39:42 2022
+       Version S-2021.09-SP1_Full64 -- Thu May 26 22:10:12 2022
 
                     Copyright (c) 1991 - 2021 Synopsys, Inc.
    This software and the associated documentation are proprietary to Synopsys,
@@ -77,7 +77,7 @@ rm -f _cuarc0.so
 if [ -x ../simv ]; then chmod a-x ../simv; fi
 g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir \
 -Wl,-rpath=/home/lab.apps/vlsiapps_new//vcs/current/linux64/lib -L/home/lab.apps/vlsiapps_new//vcs/current/linux64/lib \
--Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _24274_archive_1.so _prev_archive_1.so \
+-Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _19525_archive_1.so _prev_archive_1.so \
 _cuarc0.so  SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o \
 rmar_llvm_0_0.o           -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile \
 -luclinative /home/lab.apps/vlsiapps_new//vcs/current/linux64/lib/vcs_tls.o   -Wl,-whole-archive \
@@ -89,14 +89,14 @@ make[2]: Leaving directory `/home/projects/ee478.2022spr/hoppii/BarelyFLOATing/C
 Command: /home/projects/ee478.2022spr/hoppii/BarelyFLOATing/Core/./simv +v2k -a cpu.log
 Chronologic VCS simulator copyright 1991-2021
 Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May 26 16:39 2022
+Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May 26 22:10 2022
 VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
-Running benchmark: ../tests/fpuTest.arm
- 225.00 ns Test Done
+Running benchmark: ../tests/sqrt.arm
+ 845.00 ns Test Done
 $finish called from file "cpuStim.sv", line 70.
-$finish at simulation time  235.00 ns
+$finish at simulation time  855.00 ns
            V C S   S i m u l a t i o n   R e p o r t 
-Time: 235000 ps
-CPU Time:      0.320 seconds;       Data structure size:   0.3Mb
-Thu May 26 16:39:48 2022
-CPU time: .570 seconds to compile + .289 seconds to elab + .397 seconds to link + .336 seconds in simulation
+Time: 855000 ps
+CPU Time:      0.250 seconds;       Data structure size:   0.3Mb
+Thu May 26 22:10:19 2022
+CPU time: .434 seconds to compile + .338 seconds to elab + .355 seconds to link + .284 seconds in simulation

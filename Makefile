@@ -1,4 +1,4 @@
-TEST=fpuTest
+TEST=sqrt
 NUM_TESTS=50
 TESTID=1
 PASSED=0

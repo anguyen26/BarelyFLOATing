@@ -1,6 +1,6 @@
 # Begin_DVE_Session_Save_Info
 # DVE full session
-# Saved on Thu May 26 16:37:07 2022
+# Saved on Thu May 26 19:15:42 2022
 # Designs open: 1
 #   V1: vcdplus.vpd
 # Toplevel windows open: 2
@@ -123,7 +123,7 @@ gui_sync_global -id ${TopLevel.2} -option true
 # MDI window settings
 set Wave.1 [gui_create_window -type {Wave}  -parent ${TopLevel.2}]
 gui_show_window -window ${Wave.1} -show_state maximized
-gui_update_layout -id ${Wave.1} {{show_state maximized} {dock_state undocked} {dock_on_new_line false} {child_wave_left 350} {child_wave_right 2204} {child_wave_colname 200} {child_wave_colvalue 146} {child_wave_col1 0} {child_wave_col2 1}}
+gui_update_layout -id ${Wave.1} {{show_state maximized} {dock_state undocked} {dock_on_new_line false} {child_wave_left 350} {child_wave_right 2204} {child_wave_colname 200} {child_wave_colvalue 147} {child_wave_col1 0} {child_wave_col2 1}}
 
 # End MDI window settings
 
@@ -136,7 +136,7 @@ if {![gui_exist_window -window TopLevel.3]} {
 } else { 
     set TopLevel.3 TopLevel.3
 }
-gui_show_window -window ${TopLevel.3} -show_state normal -rect {{568 191} {2271 872}}
+gui_show_window -window ${TopLevel.3} -show_state minimized -rect {{571 220} {2273 900}}
 
 # ToolBar settings
 gui_set_toolbar_attributes -toolbar {TimeOperations} -dock_state top
@@ -177,17 +177,17 @@ gui_hide_toolbar -toolbar {Testbench}
 # End ToolBar settings
 
 # Docked window settings
-set HSPane.1 [gui_create_window -type HSPane -parent ${TopLevel.3} -dock_state left -dock_on_new_line true -dock_extent 198]
+set HSPane.1 [gui_create_window -type HSPane -parent ${TopLevel.3} -dock_state left -dock_on_new_line true -dock_extent 197]
 catch { set Hier.1 [gui_share_window -id ${HSPane.1} -type Hier] }
-gui_set_window_pref_key -window ${HSPane.1} -key dock_width -value_type integer -value 198
+gui_set_window_pref_key -window ${HSPane.1} -key dock_width -value_type integer -value 197
 gui_set_window_pref_key -window ${HSPane.1} -key dock_height -value_type integer -value 250
 gui_set_window_pref_key -window ${HSPane.1} -key dock_offset -value_type integer -value 0
-gui_update_layout -id ${HSPane.1} {{left 0} {top 0} {width 197} {height 370} {dock_state left} {dock_on_new_line true} {child_hier_colhier 261} {child_hier_coltype 94} {child_hier_colpd 0} {child_hier_col1 0} {child_hier_col2 1} {child_hier_col3 -1}}
-set Console.1 [gui_create_window -type Console -parent ${TopLevel.3} -dock_state bottom -dock_on_new_line true -dock_extent 231]
+gui_update_layout -id ${HSPane.1} {{left 0} {top 0} {width 196} {height 370} {dock_state left} {dock_on_new_line true} {child_hier_colhier 261} {child_hier_coltype 94} {child_hier_colpd 0} {child_hier_col1 0} {child_hier_col2 1} {child_hier_col3 -1}}
+set Console.1 [gui_create_window -type Console -parent ${TopLevel.3} -dock_state bottom -dock_on_new_line true -dock_extent 230]
 gui_set_window_pref_key -window ${Console.1} -key dock_width -value_type integer -value 2500
-gui_set_window_pref_key -window ${Console.1} -key dock_height -value_type integer -value 231
+gui_set_window_pref_key -window ${Console.1} -key dock_height -value_type integer -value 230
 gui_set_window_pref_key -window ${Console.1} -key dock_offset -value_type integer -value 0
-gui_update_layout -id ${Console.1} {{left 0} {top 0} {width 1703} {height 230} {dock_state bottom} {dock_on_new_line true}}
+gui_update_layout -id ${Console.1} {{left 0} {top 0} {width 1702} {height 229} {dock_state bottom} {dock_on_new_line true}}
 #### Start - Readjusting docked view's offset / size
 set dockAreaList { top left right bottom }
 foreach dockArea $dockAreaList {
@@ -421,6 +421,8 @@ set FlagsLatch "$_session_group_13"
 gui_sg_addsignal -group "$_session_group_13" { cpuStim.testCpu.FlagsLatch.IN cpuStim.testCpu.FlagsLatch.EN cpuStim.testCpu.FlagsLatch.RST cpuStim.testCpu.FlagsLatch.OUT cpuStim.testCpu.FlagsLatch.i }
 gui_set_radix -radix {binary} -signals {V1:cpuStim.testCpu.FlagsLatch.EN}
 gui_set_radix -radix {unsigned} -signals {V1:cpuStim.testCpu.FlagsLatch.EN}
+gui_set_radix -radix {decimal} -signals {V1:cpuStim.testCpu.FlagsLatch.i}
+gui_set_radix -radix {twosComplement} -signals {V1:cpuStim.testCpu.FlagsLatch.i}
 
 # Global: Highlighting
 
@@ -430,7 +432,7 @@ gui_change_stack_mode -mode list
 # Post database loading setting...
 
 # Restore C1 time
-gui_set_time -C1_only 100280
+gui_set_time -C1_only 127778
 
 
 
@@ -458,7 +460,7 @@ gui_list_set_height -id Wave -height 25
 set origGroupCreationState [gui_list_create_group_when_add -wave]
 gui_list_create_group_when_add -wave -disable
 gui_marker_set_ref -id ${Wave.1}  C1
-gui_wv_zoom_timerange -id ${Wave.1} 64997 246524
+gui_wv_zoom_timerange -id ${Wave.1} 0 1107409
 gui_list_add_group -id ${Wave.1} -after {New Group} {{Top Level}}
 gui_list_add_group -id ${Wave.1} -after {New Group} {FPU}
 gui_list_add_group -id ${Wave.1} -after {New Group} {Regfile}
@@ -468,7 +470,7 @@ gui_list_add_group -id ${Wave.1} -after {New Group} {FlagsLatch}
 gui_list_collapse -id ${Wave.1} Control
 gui_list_collapse -id ${Wave.1} ALU
 gui_list_expand -id ${Wave.1} cpuStim.testCpu.registers.MEM
-gui_list_select -id ${Wave.1} {cpuStim.testCpu.ALUorFPUE }
+gui_list_select -id ${Wave.1} {{cpuStim.testCpu.registers.MEM[1]} }
 gui_set_radix -radix unsigned -signal {{cpuStim.testCpu.registers.MEM[14]}}
 gui_set_radix -radix decimal -signal {{cpuStim.testCpu.registers.MEM[14]}}
 gui_set_radix -radix unsigned -signal {{cpuStim.testCpu.registers.MEM[14]}}
@@ -531,8 +533,8 @@ gui_list_set_filter -id ${Wave.1} -list { {Buffer 1} {Input 1} {Others 1} {Linka
 gui_list_set_filter -id ${Wave.1} -text {*}
 gui_list_set_insertion_bar  -id ${Wave.1} -group FPU  -item {cpuStim.testCpu.FPU.FPUFlags[3:0]} -position below
 
-gui_marker_move -id ${Wave.1} {C1} 100280
-gui_view_scroll -id ${Wave.1} -vertical -set 0
+gui_marker_move -id ${Wave.1} {C1} 127778
+gui_view_scroll -id ${Wave.1} -vertical -set 750
 gui_show_grid -id ${Wave.1} -enable false
 
 # Hier 'Hier.1'
@@ -559,14 +561,14 @@ gui_view_scroll -id ${Hier.1} -vertical -set 451
 gui_view_scroll -id ${Hier.1} -horizontal -set 0
 # Restore toplevel window zorder
 # The toplevel window could be closed if it has no view/pane
-if {[gui_exist_window -window ${TopLevel.2}]} {
-	gui_set_active_window -window ${TopLevel.2}
-	gui_set_active_window -window ${Wave.1}
-}
 if {[gui_exist_window -window ${TopLevel.3}]} {
 	gui_set_active_window -window ${TopLevel.3}
 	gui_set_active_window -window ${DLPane.1}
 	gui_set_active_window -window ${Console.1}
+}
+if {[gui_exist_window -window ${TopLevel.2}]} {
+	gui_set_active_window -window ${TopLevel.2}
+	gui_set_active_window -window ${Wave.1}
 }
 #</Session>
 
