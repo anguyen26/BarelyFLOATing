@@ -121,8 +121,10 @@ module fp_add(
     // Handle special cases
     assign finalM = (sumE == 8'b11111111) ? 8'd0 : sumM;
     assign finalE = sumE;
-
-    assign sum = {finalS, finalE, finalM[6:0]};
+    always_comb begin
+        if(subtract & (opA[14:0]==opB[14:0]) & (opA[15] != opB[15])) sum = 16'b0000000000000000;
+        else sum = {finalS, finalE, finalM[6:0]};
+    end
     assign overflow = (sumE == 8'b11111111) ? 1'b1 : 1'b0;
     assign underflow = (finalE == 8'd0 & sticky) ? 1'b1 : 1'b0;
     assign inexact = sticky | sticky2;
