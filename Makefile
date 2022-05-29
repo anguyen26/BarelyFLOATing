@@ -1,4 +1,4 @@
-TEST=sqrt
+TEST=log2
 NUM_TESTS=50
 TESTID=1
 PASSED=0
@@ -32,7 +32,9 @@ rb_run1: rb_edit_tb vcs rb_compare
 custom: rb_edit_tb iarm vcs rb_compare
 
 # runs user set $TEST on only the RTL
-custom_RTL: rb_edit_tb vcs 
+custom_RTL: rb_edit_tb vcs
+
+log2: rb_edit_tb vcs print_log2_result compare_to_log
 
 cb_edit_tb:
 	@ sed -i 's;^with\(.*\);with open("tests/$(TEST).txt", "r") as f:;g' \
@@ -70,6 +72,15 @@ cb_compare:
 	@ echo "Comparing expected results to actual results..."
 	@ diff -cs iarm-master/iarm_output.txt Core/sv_output.txt > comp_output.txt
 	@ $(MAKE) cb_report_compare --no-print-directory
+
+print_log2_result:
+	@ echo "log2(x) =" \
+	$$(cat Core/log2_result.txt); \
+        echo $
+
+compare_to_log:
+	@ cd Core/ && python3 convert_log.py log2_error.txt
+	@ cd Core/ && python3 compare_log.py log_output_dec.txt expected_log.txt
 
 cb_report_compare:
 	@ if [ $(shell wc -l comp_output.txt | cut -f1 -d' ') = 1 ]; then \

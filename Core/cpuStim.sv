@@ -14,7 +14,7 @@ module cpuStim();
 		forever #(ClockDelay/2) clk <= ~clk;
 	end
 	
-	integer i, f, f1;
+	integer i, f, f1, f2, f3;
 	
 	initial begin
         $vcdpluson;
@@ -33,6 +33,8 @@ module cpuStim();
             @(posedge clk);
         end
         */
+		f3 = $fopen("log2_error.txt", "w");
+		$fwrite(f3, "0000000000000000\n");
 		while(testCpu.instr != 16'b11100_00000000000 & testCpu.instr != 16'b1110011111111111) begin
             //i++;
             //$display("%b", testCpu.instr);
@@ -48,6 +50,10 @@ module cpuStim();
 			// 	    $fwrite(f, "mem[%d] = %d\n", i, testCpu.dataMemory.mem[i]);
 			// 	end
 			// end
+		
+			if(testCpu.PC == 16'b0000000001111000) begin
+				$fwrite(f3, "%b\n", testCpu.registers.MEM[5]);
+			end
 		    @(posedge clk);
 			// $fclose(f);
 		end
@@ -59,6 +65,7 @@ module cpuStim();
 
 		f = $fopen("sv_output.txt", "w");
 		f1 = $fopen("convertMe.txt", "w");
+		f2 = $fopen("log2_result.txt", "w");
 		$fwrite(f, "Register content:\n");
 		for (int i=0; i<15; i++) begin
 		    // $fwrite(f, "%d = %d\n", i, testCpu.registers.MEM[i]);
@@ -73,6 +80,7 @@ module cpuStim();
 		        $fwrite(f1,"%b\n", testCpu.dataMemory.mem[i]);
 		    end
 		end
+		$fwrite(f2, "%b", testCpu.registers.MEM[1]);
 		$fclose(f);
         $finish;
 		$stop;

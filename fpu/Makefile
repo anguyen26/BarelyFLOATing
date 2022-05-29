@@ -27,7 +27,7 @@ compare:
 	@ python3 compare.py output.txt
 
 dve:
-	dve -full64 -vpd vcdplus.vpd &
+	dve -full64 -vpd vcdplus.vpd -session "session.vcdplus.vpd.tcl" &
 
 bcalculate:
 	python3 calculate.py benchmark_input.txt benchmark_output.txt

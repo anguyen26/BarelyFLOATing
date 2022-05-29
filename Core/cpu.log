@@ -6,7 +6,7 @@ Warning-[DEBUG_DEP] Option will be deprecated
 Command: vcs -f cpu.include +v2k -R -sverilog -full64 -debug_pp -timescale=1ns/10ps \
 -l cpu.log
                          Chronologic VCS (TM)
-       Version S-2021.09-SP1_Full64 -- Fri May 27 15:55:01 2022
+       Version S-2021.09-SP1_Full64 -- Sat May 28 21:07:23 2022
 
                     Copyright (c) 1991 - 2021 Synopsys, Inc.
    This software and the associated documentation are proprietary to Synopsys,
@@ -69,33 +69,35 @@ Starting vcs inline pass...
 18 modules and 0 UDP read.
 recompiling module cpuStim
 	However, due to incremental compilation, only 1 module needs to be compiled. 
-make[2]: Entering directory `/home/nguyea9/ee478/Core/csrc'
+make[2]: Entering directory `/home/projects/ee478.2022spr/hoppii/BarelyFLOATing/Core/csrc' \
+
 rm -f _cuarc*.so _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
 ld -shared  -Bsymbolic --no-relax  -o .//../simv.daidir//_cuarc0.so objs/amcQw_d.o \
 
 rm -f _cuarc0.so
 if [ -x ../simv ]; then chmod a-x ../simv; fi
 g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir \
--Wl,-rpath=/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib -L/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib \
--Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _1257_archive_1.so _prev_archive_1.so \
+-Wl,-rpath=/home/lab.apps/vlsiapps_new//vcs/current/linux64/lib -L/home/lab.apps/vlsiapps_new//vcs/current/linux64/lib \
+-Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _2047_archive_1.so _prev_archive_1.so \
 _cuarc0.so  SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o \
 rmar_llvm_0_0.o           -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile \
--luclinative /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_tls.o   -Wl,-whole-archive \
--lvcsucli    -Wl,-no-whole-archive          /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_save_restore_new.o \
+-luclinative /home/lab.apps/vlsiapps_new//vcs/current/linux64/lib/vcs_tls.o   -Wl,-whole-archive \
+-lvcsucli    -Wl,-no-whole-archive          /home/lab.apps/vlsiapps_new//vcs/current/linux64/lib/vcs_save_restore_new.o \
 -ldl  -lc -lm -lpthread -ldl 
 ../simv up to date
-make[2]: Leaving directory `/home/nguyea9/ee478/Core/csrc'
-Command: /home/nguyea9/ee478/Core/./simv +v2k -a cpu.log
+make[2]: Leaving directory `/home/projects/ee478.2022spr/hoppii/BarelyFLOATing/Core/csrc' \
+
+Command: /home/projects/ee478.2022spr/hoppii/BarelyFLOATing/Core/./simv +v2k -a cpu.log
 Chronologic VCS simulator copyright 1991-2021
 Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May 27 15:55 2022
+Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May 28 21:07 2022
 VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
-Running benchmark: ../tests/sqrt.arm
- 845.00 ns Test Done
-$finish called from file "cpuStim.sv", line 77.
-$finish at simulation time  845.00 ns
+Running benchmark: ../tests/log2.arm
+601075.00 ns Test Done
+$finish called from file "cpuStim.sv", line 85.
+$finish at simulation time 601075.00 ns
            V C S   S i m u l a t i o n   R e p o r t 
-Time: 845000 ps
-CPU Time:      0.320 seconds;       Data structure size:   0.3Mb
-Fri May 27 15:55:04 2022
-CPU time: .438 seconds to compile + .383 seconds to elab + .277 seconds to link + .344 seconds in simulation
+Time: 601075000 ps
+CPU Time:      1.250 seconds;       Data structure size:   0.3Mb
+Sat May 28 21:07:28 2022
+CPU time: .507 seconds to compile + .282 seconds to elab + .443 seconds to link + 1.292 seconds in simulation

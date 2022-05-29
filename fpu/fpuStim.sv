@@ -2,9 +2,8 @@ module fpuStim();
     logic clk, reset;
     logic [15:0] opA, opB;
     logic [1:0] op;
-    logic start;
     logic [15:0] result;
-    logic overflow, underflow, inexact, valid, busy;
+    logic overflow, underflow, inexact;
     logic [7:0] address;
     
 	parameter ClockDelay = 10e6;
@@ -13,8 +12,8 @@ module fpuStim();
 		forever #(ClockDelay/2) clk <= ~clk;
 	end
 
-    fpu dut(.clk, .reset, .opA, .opB, .op, .start, .result, 
-        .underflow, .overflow, .inexact, .valid, .busy);
+    fpu dut(.clk, .reset, .opA, .opB, .op, .result, 
+        .underflow, .overflow, .inexact);
 	
     opmem ops(.clk, .reset, .address, .opA, .opB, .op);
 
