@@ -432,8 +432,8 @@ with open(input_filename) as input_file:
                     raise SystemExit('ERROR: \'' + instruction[0] + '\' on line ' + str(line_number) + ' operates exclusively on registers 0 to 7')
 
                 # Writing to the output file
-                output_file.write('0111100000' + numpy.binary_repr(int(instruction[2]), width=3) + numpy.binary_repr(int(instruction[1]), width=3) + '    // ' + line + ' (line ' + str(line_number) + ', memory address ' + str(instruction_number-1) + ')\n')
-# end of fcmp
+                output_file.write('0100001010' + numpy.binary_repr(int(instruction[2]), width=3) + numpy.binary_repr(int(instruction[1]), width=3) + '    // ' + line + ' (line ' + str(line_number) + ', memory address ' + str(instruction_number-1) + ')\n')
+# end of cmp
 
 # fcmp
             elif instruction[0] == 'fcmp':
@@ -452,8 +452,8 @@ with open(input_filename) as input_file:
                     raise SystemExit('ERROR: \'' + instruction[0] + '\' on line ' + str(line_number) + ' operates exclusively on registers 0 to 7')
 
                 # Writing to the output file
-                output_file.write('0100001010' + numpy.binary_repr(int(instruction[2]), width=3) + numpy.binary_repr(int(instruction[1]), width=3) + '    // ' + line + ' (line ' + str(line_number) + ', memory address ' + str(instruction_number-1) + ')\n')
-# end of cmp
+                output_file.write('0111100000' + numpy.binary_repr(int(instruction[2]), width=3) + numpy.binary_repr(int(instruction[1]), width=3) + '    // ' + line + ' (line ' + str(line_number) + ', memory address ' + str(instruction_number-1) + ')\n')
+# end of fcmp
 # ands
             elif instruction[0] == 'ands':
                 # Catching syntax errors, and exiting if there is one:
