@@ -1,0 +1,408 @@
+
+Warning-[DEBUG_DEP] Option will be deprecated
+  The option '-debug_pp' will be deprecated in a future release.  Please use 
+  '-debug_acc+pp+dmptf -debug_region+cell+encrypt' instead.
+
+Command: vcs -f fp.include +v2k -R +lint=all -sverilog -full64 -debug_pp -timescale=1ns/10ps \
+-l fp.log
+                         Chronologic VCS (TM)
+       Version S-2021.09-SP1_Full64 -- Mon May 30 03:16:24 2022
+
+                    Copyright (c) 1991 - 2021 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+
+Parsing design file 'fp_add.sv'
+Parsing design file 'fp_mul.sv'
+Parsing design file 'fpu.sv'
+Parsing design file 'fp_div.sv'
+Parsing design file 'opmem.sv'
+Parsing design file 'fpuStim.sv'
+
+Lint-[NS] Null statement
+fpuStim.sv, 33
+  Null statement is used in following verilog source.
+  Source info:         repeat(2) @(posedge clk);
+
+
+Lint-[NS] Null statement
+fpuStim.sv, 37
+  Null statement is used in following verilog source.
+  Source info:             @(posedge clk);
+
+
+Lint-[NS] Null statement
+fpuStim.sv, 44
+  Null statement is used in following verilog source.
+  Source info:         reset <= 1; @(posedge clk);
+
+
+Lint-[NS] Null statement
+fpuStim.sv, 45
+  Null statement is used in following verilog source.
+  Source info:         reset <= 0; @(posedge clk);
+
+
+Lint-[NS] Null statement
+fpuStim.sv, 47
+  Null statement is used in following verilog source.
+  Source info:             @(posedge clk);
+
+Top Level Modules:
+       fpuStim
+TimeScale is 1 ns / 10 ps
+
+Lint-[TFIPC-L] Too few instance port connections
+fpuStim.sv, 15
+fpuStim, "fpu dut( .clk (clk),  .reset (reset),  .opA (opA),  .opB (opB),  .op (op),  .result (result),  .overflow (overflow),  .underflow (underflow),  .inexact (inexact));"
+  The above instance has fewer port connections than the module definition,
+  There are 10 port(s) in module "fpu" definition, but only 9 port connect(s) 
+  in the instance.
+  output port 'FPUFlags' is not connected.
+
+
+Lint-[UI] Unused input
+fp_add.sv, 2
+  Following is an unused input.
+  Source info: clk
+
+
+Lint-[UI] Unused input
+fp_add.sv, 2
+  Following is an unused input.
+  Source info: reset
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fp_add.sv, 99
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: subShiftAmount = 0;
+  Expression: subShiftAmount
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fp_add.sv, 100
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: subShiftAmount = 1;
+  Expression: subShiftAmount
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fp_add.sv, 101
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: subShiftAmount = 2;
+  Expression: subShiftAmount
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fp_add.sv, 102
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: subShiftAmount = 3;
+  Expression: subShiftAmount
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fp_add.sv, 103
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: subShiftAmount = 4;
+  Expression: subShiftAmount
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fp_add.sv, 104
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: subShiftAmount = 5;
+  Expression: subShiftAmount
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fp_add.sv, 105
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: subShiftAmount = 6;
+  Expression: subShiftAmount
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fp_add.sv, 106
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: subShiftAmount = 7;
+  Expression: subShiftAmount
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fp_add.sv, 107
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: subShiftAmount = 8;
+  Expression: subShiftAmount
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fp_add.sv, 108
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: subShiftAmount = 10;
+  Expression: subShiftAmount
+
+
+Lint-[CAWM-L] Width mismatch
+fp_add.sv, 35
+  Continuous assignment width mismatch
+  8 bits (lhs) versus 32 bits (rhs).
+  Source info: assign absDiffE = (diffE[7] ? ((~diffE) + 1) : diffE);  
+
+
+Lint-[CAWM-L] Width mismatch
+fp_add.sv, 68
+  Continuous assignment width mismatch
+  8 bits (lhs) versus 32 bits (rhs).
+  Source info: assign absDiffM = ((op2 < shiftOutput) ? ((~diffM) + 1) : 
+  diffM);  
+
+
+Lint-[UI] Unused input
+fp_mul.sv, 2
+  Following is an unused input.
+  Source info: clk
+
+
+Lint-[UI] Unused input
+fp_mul.sv, 2
+  Following is an unused input.
+  Source info: reset
+
+
+Lint-[CAWM-L] Width mismatch
+fp_mul.sv, 34
+  Continuous assignment width mismatch
+  9 bits (lhs) versus 32 bits (rhs).
+  Source info: assign {cout, biasedESum} = (eSum - 127);  
+
+
+Lint-[CAWM-L] Width mismatch
+fp_mul.sv, 42
+  Continuous assignment width mismatch
+  8 bits (lhs) versus 32 bits (rhs).
+  Source info: assign normalE = (mProduct[15] ? (biasedESum + 1) : 
+  biasedESum);  
+
+
+Lint-[UI] Unused input
+fp_div.sv, 2
+  Following is an unused input.
+  Source info: clk
+
+
+Lint-[UI] Unused input
+fp_div.sv, 2
+  Following is an unused input.
+  Source info: reset
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fp_div.sv, 58
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: shiftAmount = 0;
+  Expression: shiftAmount
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fp_div.sv, 59
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: shiftAmount = 1;
+  Expression: shiftAmount
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fp_div.sv, 60
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: shiftAmount = 2;
+  Expression: shiftAmount
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fp_div.sv, 61
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: shiftAmount = 3;
+  Expression: shiftAmount
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fp_div.sv, 62
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: shiftAmount = 4;
+  Expression: shiftAmount
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fp_div.sv, 63
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: shiftAmount = 5;
+  Expression: shiftAmount
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fp_div.sv, 64
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: shiftAmount = 6;
+  Expression: shiftAmount
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fp_div.sv, 65
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: shiftAmount = 7;
+  Expression: shiftAmount
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fp_div.sv, 66
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: shiftAmount = 8;
+  Expression: shiftAmount
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fp_div.sv, 67
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: shiftAmount = 10;
+  Expression: shiftAmount
+
+
+Lint-[CAWM-L] Width mismatch
+fp_div.sv, 39
+  Continuous assignment width mismatch
+  8 bits (lhs) versus 15 bits (rhs).
+  Source info: assign mQuotient = (op1 / op2);  
+
+
+Lint-[CAWM-L] Width mismatch
+fp_div.sv, 40
+  Continuous assignment width mismatch
+  8 bits (lhs) versus 15 bits (rhs).
+  Source info: assign r = (op1 % op2);  
+
+
+Lint-[CAWM-L] Width mismatch
+fp_div.sv, 47
+  Continuous assignment width mismatch
+  8 bits (lhs) versus 32 bits (rhs).
+  Source info: assign biasedEDiff = (eDiff + 127);  
+
+
+Lint-[CAWM-L] Width mismatch
+fp_div.sv, 71
+  Continuous assignment width mismatch
+  7 bits (lhs) versus 8 bits (rhs).
+  Source info: assign normalizedM = (mQuotient << shiftAmount);  
+
+
+Lint-[CAWM-L] Width mismatch
+fp_div.sv, 79
+  Continuous assignment width mismatch
+  7 bits (lhs) versus 8 bits (rhs).
+  Source info: assign finalM = ((finalE == 8'b11111111) ? 8'b0 : normalizedM);
+  
+
+
+Lint-[UI] Unused input
+opmem.sv, 2
+  Following is an unused input.
+  Source info: clk
+
+
+Lint-[UI] Unused input
+opmem.sv, 2
+  Following is an unused input.
+  Source info: reset
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fpuStim.sv, 11
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: clk <= 0;
+  Expression: clk
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fpuStim.sv, 26
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 8-bit LHS target:
+  Source info: address <= (address + 1);
+  Expression: address
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fpuStim.sv, 44
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: reset <= 1;
+  Expression: reset
+
+
+Lint-[WMIA-L] Width mismatch in assignment
+fpuStim.sv, 45
+  Width mismatch between LHS and RHS is found in assignment:
+  The following 32-bit wide expression is assigned to a 1-bit LHS target:
+  Source info: reset <= 0;
+  Expression: reset
+
+Starting vcs inline pass...
+
+1 module and 0 UDP read.
+recompiling module fpuStim
+make[1]: Entering directory `/home/nguyea9/ee478/new-fpu/sim/pre-syn/csrc'
+rm -f _cuarc*.so _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
+if [ -x ../simv ]; then chmod a-x ../simv; fi
+g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir \
+-Wl,-rpath=/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib -L/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib \
+-Wl,-rpath-link=./  /usr/lib64/libnuma.so.1   objs/amcQw_d.o   _24737_archive_1.so \
+SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o rmar_llvm_0_0.o \
+-lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile -luclinative /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_tls.o \
+-Wl,-whole-archive  -lvcsucli    -Wl,-no-whole-archive          /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_save_restore_new.o \
+-ldl  -lc -lm -lpthread -ldl 
+../simv up to date
+make[1]: Leaving directory `/home/nguyea9/ee478/new-fpu/sim/pre-syn/csrc'
+Command: /home/nguyea9/ee478/new-fpu/sim/pre-syn/./simv +v2k +lint=all -a fp.log
+Chronologic VCS simulator copyright 1991-2021
+Contains Synopsys proprietary information.
+Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May 30 03:16 2022
+VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
+$finish called from file "fpuStim.sv", line 50.
+$finish at simulation time          51500000000
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 515000000000 ps
+CPU Time:      0.270 seconds;       Data structure size:   0.0Mb
+Mon May 30 03:16:27 2022
+CPU time: .340 seconds to compile + .368 seconds to elab + .331 seconds to link + .294 seconds in simulation

@@ -1,6 +1,5 @@
 fp_add.sv
 fp_mul.sv
-div.sv
 fpu.sv
 fp_div.sv
 opmem.sv
