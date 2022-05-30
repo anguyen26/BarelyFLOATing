@@ -13,4 +13,4 @@ for i in range(NUM_OPS):
     yMant = format(random.randint(0,127), '07b')
     op = random.choice(ops)
     print(op+'_'+xSign+xExp+xMant+'_'+ySign+yExp+yMant)
-print(op+'_1111111111111111_'+ySign+yExp+yMant)
+print('10_1111111111111111_0011111101000000')

@@ -30,7 +30,7 @@ module fpuStim();
     integer f;    
     initial begin
         f = $fopen("fp_output.txt", "w");
-        repeat(3) @(posedge clk);
+        repeat(2) @(posedge clk);
         while(1) begin
             $fwrite(f, "%t %b\t %b %b %b\n", 
                 $time, dut.result, dut.underflow, dut.overflow, dut.inexact);

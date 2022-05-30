@@ -6,7 +6,7 @@ Warning-[DEBUG_DEP] Option will be deprecated
 Command: vcs -f fp.include +v2k -R +lint=all -sverilog -full64 -debug_pp -timescale=1ns/10ps \
 -l fp.log
                          Chronologic VCS (TM)
-       Version S-2021.09-SP1_Full64 -- Sat May 28 14:23:22 2022
+       Version S-2021.09-SP1_Full64 -- Mon May 30 00:16:08 2022
 
                     Copyright (c) 1991 - 2021 Synopsys, Inc.
    This software and the associated documentation are proprietary to Synopsys,
@@ -28,15 +28,15 @@ The design hasn't changed and need not be recompiled.
 If you really want to, delete file simv.daidir/.vcs.timestamp and
 run VCS again.
 
-Command: /home/projects/ee478.2022spr/hoppii/BarelyFLOATing/fpu/./simv +v2k +lint=all -a fp.log
+Command: /home/nguyea9/ee478/fpu/./simv +v2k +lint=all -a fp.log
 Chronologic VCS simulator copyright 1991-2021
 Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May 28 14:23 2022
+Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May 30 00:16 2022
 VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
 $finish called from file "fpuStim.sv", line 50.
-$finish at simulation time          35000000000
+$finish at simulation time         515000000000
            V C S   S i m u l a t i o n   R e p o r t 
-Time: 35000000000 ps
-CPU Time:      0.210 seconds;       Data structure size:   0.0Mb
-Sat May 28 14:23:26 2022
-CPU time: .240 seconds in simulation
+Time: 515000000000 ps
+CPU Time:      0.250 seconds;       Data structure size:   0.0Mb
+Mon May 30 00:16:08 2022
+CPU time: .302 seconds in simulation
