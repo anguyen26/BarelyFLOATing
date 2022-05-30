@@ -39,7 +39,7 @@ module fpuStim();
     end
     
     initial begin
-        // $sdf_annotate(./fpu.sdf, dut);
+        $sdf_annotate("./fpu.sdf", dut);
         $vcdpluson;
         $vcdplusmemon;
         reset <= 1; @(posedge clk);

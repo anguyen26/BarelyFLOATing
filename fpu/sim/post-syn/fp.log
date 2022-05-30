@@ -6,7 +6,7 @@ Warning-[DEBUG_DEP] Option will be deprecated
 Command: vcs -f fp.include +v2k -R +lint=all -sverilog -full64 -debug_pp -timescale=1ns/10ps \
 -l fp.log
                          Chronologic VCS (TM)
-       Version S-2021.09-SP1_Full64 -- Mon May 30 03:40:29 2022
+       Version S-2021.09-SP1_Full64 -- Mon May 30 04:08:46 2022
 
                     Copyright (c) 1991 - 2021 Synopsys, Inc.
    This software and the associated documentation are proprietary to Synopsys,
@@ -27256,6 +27256,7 @@ Top Level Modules:
        AN3D4
        AN3D8
        AN3XD1
+       AN4D0
        AN4D1
        AN4D2
        AN4D4
@@ -27265,6 +27266,7 @@ Top Level Modules:
        AO211D1
        AO211D2
        AO211D4
+       AO21D1
        AO21D2
        AO21D4
        AO221D1
@@ -27276,6 +27278,7 @@ Top Level Modules:
        AO22D1
        AO22D2
        AO22D4
+       AO31D1
        AO31D2
        AO31D4
        AO32D0
@@ -27286,30 +27289,31 @@ Top Level Modules:
        AO33D1
        AO33D2
        AO33D4
-       AOI211D0
        AOI211D1
        AOI211D2
        AOI211D4
-       AOI211XD0
        AOI211XD1
        AOI211XD2
        AOI211XD4
-       AOI21D0
-       AOI221D0
-       AOI221D1
+       AOI21D1
+       AOI21D2
+       AOI21D4
        AOI221D2
+       AOI221D4
        AOI221XD4
-       AOI222D0
        AOI222D1
        AOI222D2
+       AOI222D4
        AOI222XD4
-       AOI22D0
-       AOI31D0
+       AOI22D1
+       AOI22D2
+       AOI22D4
        AOI31D1
+       AOI31D2
        AOI31D4
-       AOI32D0
        AOI32D1
        AOI32D2
+       AOI32D4
        AOI32XD4
        AOI33D0
        AOI33D1
@@ -27326,8 +27330,10 @@ Top Level Modules:
        BUFFD0
        BUFFD12
        BUFFD16
+       BUFFD1
        BUFFD20
        BUFFD24
+       BUFFD2
        BUFFD3
        BUFFD4
        BUFFD6
@@ -27349,8 +27355,10 @@ Top Level Modules:
        CKAN2D8
        CKBD12
        CKBD16
+       CKBD1
        CKBD20
        CKBD24
+       CKBD2
        CKBD3
        CKBD4
        CKBD6
@@ -27382,15 +27390,20 @@ Top Level Modules:
        CKND0
        CKND12
        CKND16
+       CKND1
        CKND20
        CKND24
+       CKND2D1
+       CKND2D2
        CKND2D3
        CKND2D4
        CKND2D8
+       CKND2
        CKND3
        CKND4
        CKND6
        CKND8
+       CKXOR2D1
        CKXOR2D2
        CKXOR2D4
        CMPE42D2
@@ -27481,6 +27494,7 @@ Top Level Modules:
        EDFQD1
        EDFQD2
        EDFQD4
+       FA1D1
        FA1D2
        FA1D4
        FCICIND1
@@ -27566,12 +27580,13 @@ Top Level Modules:
        IAO21D2
        IAO21D4
        IAO22D0
+       IAO22D1
+       IAO22D2
        IAO22D4
        IIND4D0
        IIND4D1
        IIND4D2
        IIND4D4
-       IINR4D0
        IINR4D1
        IINR4D2
        IINR4D4
@@ -27582,15 +27597,16 @@ Top Level Modules:
        IND3D1
        IND3D2
        IND3D4
-       IND4D0
        IND4D1
        IND4D2
        IND4D4
        INR2D1
+       INR2D2
        INR2D4
+       INR2XD0
+       INR2XD1
        INR2XD2
        INR2XD4
-       INR3D0
        INR3D1
        INR3D2
        INR3D4
@@ -27600,15 +27616,19 @@ Top Level Modules:
        INR4D4
        INVD12
        INVD16
+       INVD1
        INVD20
        INVD24
+       INVD2
        INVD3
        INVD4
        INVD6
        INVD8
+       IOA21D1
        IOA21D2
        IOA21D4
        IOA22D0
+       IOA22D1
        IOA22D2
        IOA22D4
        LHCND1
@@ -27695,20 +27715,19 @@ Top Level Modules:
        LNSNQD1
        LNSNQD2
        LNSNQD4
-       MAOI222D0
        MAOI222D1
+       MAOI222D2
        MAOI222D4
-       MAOI22D0
+       MAOI22D1
        MAOI22D2
        MAOI22D4
-       MOAI22D0
        MOAI22D1
        MOAI22D2
        MOAI22D4
        MUX2D1
        MUX2D2
        MUX2D4
-       MUX2ND0
+       MUX2ND1
        MUX2ND2
        MUX2ND4
        MUX3D0
@@ -27727,34 +27746,48 @@ Top Level Modules:
        MUX4ND1
        MUX4ND2
        MUX4ND4
+       ND2D0
+       ND2D1
+       ND2D2
        ND2D3
        ND2D4
        ND2D8
+       ND3D1
+       ND3D2
        ND3D3
        ND3D4
        ND3D8
-       ND4D0
+       ND4D1
        ND4D2
        ND4D3
        ND4D4
+       ND4D8
+       NR2D1
+       NR2D2
+       NR2D3
        NR2D4
        NR2D8
+       NR2XD0
+       NR2XD1
        NR2XD2
        NR2XD3
        NR2XD4
        NR2XD8
-       NR3D0
+       NR3D1
        NR3D2
        NR3D3
        NR3D4
        NR3D8
-       NR4D0
+       NR4D1
        NR4D2
        NR4D3
        NR4D4
+       NR4D8
+       OA211D0
        OA211D1
        OA211D2
        OA211D4
+       OA21D1
        OA21D2
        OA21D4
        OA221D1
@@ -27767,6 +27800,7 @@ Top Level Modules:
        OA22D1
        OA22D2
        OA22D4
+       OA31D1
        OA31D2
        OA31D4
        OA32D0
@@ -27777,28 +27811,28 @@ Top Level Modules:
        OA33D1
        OA33D2
        OA33D4
-       OAI211D0
+       OAI211D1
        OAI211D2
-       OAI21D0
+       OAI211D4
+       OAI21D1
+       OAI21D2
        OAI21D4
-       OAI221D0
        OAI221D1
        OAI221D2
+       OAI221D4
        OAI221XD4
-       OAI222D0
        OAI222D1
        OAI222D2
+       OAI222D4
        OAI222XD4
-       OAI22D0
        OAI22D1
+       OAI22D2
        OAI22D4
-       OAI31D0
-       OAI31D1
        OAI31D2
        OAI31D4
-       OAI32D0
        OAI32D1
        OAI32D2
+       OAI32D4
        OAI32XD4
        OAI33D0
        OAI33D1
@@ -27809,9 +27843,11 @@ Top Level Modules:
        OD18DCAP32
        OD18DCAP64
        OR2D1
+       OR2D2
        OR2D4
        OR2D8
        OR2XD1
+       OR3D0
        OR3D1
        OR3D2
        OR3D4
@@ -27948,6 +27984,8 @@ Top Level Modules:
        SEDFXD4
        TIEH
        TIEL
+       XNR2D1
+       XNR2D2
        XNR2D4
        XNR3D1
        XNR3D2
@@ -27955,11 +27993,13 @@ Top Level Modules:
        XNR4D1
        XNR4D2
        XNR4D4
+       XOR2D0
        XOR2D1
        XOR2D2
        XOR2D4
        XOR3D1
        XOR3D2
+       XOR3D4
        XOR4D0
        XOR4D1
        XOR4D2
@@ -27996,8 +28036,8 @@ Top Level Modules:
 TimeScale is 1 ns / 10 ps
 
 Lint-[TFIPC-L] Too few instance port connections
-fpu.v, 1711
-fpu, "fp_mul multiply( .clk (1'b0),  .reset (1'b0),  .opA ({opA[15:6], n125, opA[4], n120, opA[2], n119, opA[0]}),  .opB ({opB[15], n88, opB[13:7], n103, opB[5:4], n128, opB[2:0]}),  .product (product),  .inexact (pInexact),  .overflow_BAR (pOverflow));"
+fpu.v, 1405
+fpu, "fp_mul multiply( .clk (1'b0),  .reset (1'b0),  .opA ({opA[15:8], n64, n61, opA[5], n65, n69, n63, n68, n67}),  .opB ({opB[15], n62, opB[13], n60, opB[11:7], n84, opB[5:4], n80, n116, n83, opB[0]}),  .product (product),  .overflow (pOverflow),  .inexact (pInexact));"
   The above instance has fewer port connections than the module definition,
   There are 8 port(s) in module "fp_mul" definition, but only 7 port 
   connect(s) in the instance.
@@ -28026,44 +28066,44 @@ fpu.v, 13
 
 
 Lint-[UI] Unused input
-fpu.v, 603
+fpu.v, 479
   Following is an unused input.
   Source info: clk
 
 
 Lint-[UI] Unused input
-fpu.v, 603
+fpu.v, 479
   Following is an unused input.
   Source info: reset
 
 
 Lint-[ONGS] Output never gets set
-fpu.v, 604
+fpu.v, 480
 "underflow"
   Output port 'underflow' has never been assigned to any value.
   
 
 
 Lint-[UI] Unused input
-fpu.v, 964
+fpu.v, 789
   Following is an unused input.
   Source info: clk
 
 
 Lint-[UI] Unused input
-fpu.v, 964
+fpu.v, 789
   Following is an unused input.
   Source info: reset
 
 
 Lint-[UI] Unused input
-fpu.v, 1686
+fpu.v, 1384
   Following is an unused input.
   Source info: clk
 
 
 Lint-[UI] Unused input
-fpu.v, 1686
+fpu.v, 1384
   Following is an unused input.
   Source info: reset
 
@@ -28111,10 +28151,47 @@ fpuStim.sv, 46
   Source info: reset <= 0;
   Expression: reset
 
+
+   ***   $sdf_annotate() version 1.2R
+   ***    SDF file: "./fpu.sdf"
+   ***    Annotation scope: fpuStim.dut
+   ***    No MTM selection argument specified
+   ***    No SCALE FACTORS argument specified
+   ***    No SCALE TYPE argument specified
+   ***    MTM selection defaulted to "TOOL_CONTROL":
+               (+typdelays compiled, TYPICAL delays selected)
+   ***    SCALE FACTORS defaulted to "1.0:1.0:1.0":
+   ***    SCALE TYPE defaulted to: "FROM_MTM"
+   ***    Turnoff delay: "FROM_FILE"
+   ***    Approximation (mipd) policy: "MAXIMUM"
+
+   ***    SDF annotation begin: Mon May 30 04:08:47 2022
+
+
+SDF Info: +pulse_r/100, +pulse_e/100 in effect
+
+Warning-[SDFCOM_IWSBA] INTERCONNECT will still be annotated
+./fpu.sdf, 135
+module: NR3D0, "instance: fpuStim.dut.add_sub.U349"
+  SDF Warning: INTERCONNECT from add_sub.U349.ZN to U102.B1 has Instance at 
+  fpu.v:1401, delay will still be annotated.
+
+
+Warning-[SDFCOM_IWSBA] INTERCONNECT will still be annotated
+./fpu.sdf, 141
+module: AOI32D0, "instance: fpuStim.dut.divide.U73"
+  SDF Warning: INTERCONNECT from divide.U73.ZN to U101.C1 has Instance at 
+  fpu.v:1409, delay will still be annotated.
+
+
+          Total errors: 0
+          Total warnings: 2
+   ***    SDF annotation completed: Mon May 30 04:08:47 2022
+
+
 Notice: Ports coerced to inout, use -notice for details
 Starting vcs inline pass...
-
-802 modules and 4 UDPs read.
+848 modules and 4 UDPs read.
 recompiling module AN2D0
 recompiling module AN2D1
 recompiling module AN2D2
@@ -28133,11 +28210,11 @@ recompiling module AN4D2
 recompiling module AN4D4
 recompiling module AN4D8
 recompiling module AN4XD1
-recompiling module ANTENNA
 recompiling module AO211D0
 recompiling module AO211D1
 recompiling module AO211D2
 recompiling module AO211D4
+recompiling module AO21D0
 recompiling module AO21D1
 recompiling module AO21D2
 recompiling module AO21D4
@@ -28153,6 +28230,7 @@ recompiling module AO22D0
 recompiling module AO22D1
 recompiling module AO22D2
 recompiling module AO22D4
+recompiling module AO31D0
 recompiling module AO31D1
 recompiling module AO31D2
 recompiling module AO31D4
@@ -28164,8 +28242,7 @@ recompiling module AO33D0
 recompiling module AO33D1
 recompiling module AO33D2
 recompiling module AO33D4
-recompiling module AOI211D0
-50 of 802 modules done
+50 of 848 modules done
 recompiling module AOI211D1
 recompiling module AOI211D2
 recompiling module AOI211D4
@@ -28174,8 +28251,9 @@ recompiling module AOI211XD1
 recompiling module AOI211XD2
 recompiling module AOI211XD4
 recompiling module AOI21D0
+recompiling module AOI21D1
+recompiling module AOI21D2
 recompiling module AOI21D4
-recompiling module AOI221D0
 recompiling module AOI221D1
 recompiling module AOI221D2
 recompiling module AOI221D4
@@ -28186,6 +28264,8 @@ recompiling module AOI222D2
 recompiling module AOI222D4
 recompiling module AOI222XD4
 recompiling module AOI22D0
+recompiling module AOI22D1
+recompiling module AOI22D2
 recompiling module AOI22D4
 recompiling module AOI31D0
 recompiling module AOI31D1
@@ -28211,12 +28291,14 @@ recompiling module BMLD4
 recompiling module BUFFD0
 recompiling module BUFFD12
 recompiling module BUFFD16
+recompiling module BUFFD1
 recompiling module BUFFD20
+100 of 848 modules done
 recompiling module BUFFD24
+recompiling module BUFFD2
 recompiling module BUFFD3
 recompiling module BUFFD4
 recompiling module BUFFD6
-100 of 802 modules done
 recompiling module BUFFD8
 recompiling module BUFTD0
 recompiling module BUFTD12
@@ -28234,8 +28316,10 @@ recompiling module CKAN2D1
 recompiling module CKAN2D2
 recompiling module CKAN2D4
 recompiling module CKAN2D8
+recompiling module CKBD0
 recompiling module CKBD12
 recompiling module CKBD16
+recompiling module CKBD1
 recompiling module CKBD20
 recompiling module CKBD24
 recompiling module CKBD2
@@ -28260,6 +28344,7 @@ recompiling module CKLNQD20
 recompiling module CKLNQD24
 recompiling module CKLNQD2
 recompiling module CKLNQD3
+150 of 848 modules done
 recompiling module CKLNQD4
 recompiling module CKLNQD6
 recompiling module CKLNQD8
@@ -28267,19 +28352,25 @@ recompiling module CKMUX2D0
 recompiling module CKMUX2D1
 recompiling module CKMUX2D2
 recompiling module CKMUX2D4
-150 of 802 modules done
 recompiling module CKND0
 recompiling module CKND12
 recompiling module CKND16
+recompiling module CKND1
 recompiling module CKND20
 recompiling module CKND24
+recompiling module CKND2D0
+recompiling module CKND2D1
+recompiling module CKND2D2
 recompiling module CKND2D3
 recompiling module CKND2D4
 recompiling module CKND2D8
+recompiling module CKND2
 recompiling module CKND3
 recompiling module CKND4
 recompiling module CKND6
 recompiling module CKND8
+recompiling module CKXOR2D0
+recompiling module CKXOR2D1
 recompiling module CKXOR2D2
 recompiling module CKXOR2D4
 recompiling module CMPE42D1
@@ -28304,6 +28395,7 @@ recompiling module DFCND2
 recompiling module DFCND4
 recompiling module DFCNQD1
 recompiling module DFCNQD2
+200 of 848 modules done
 recompiling module DFCNQD4
 recompiling module DFCSND1
 recompiling module DFCSND2
@@ -28318,7 +28410,6 @@ recompiling module DFKCND1
 recompiling module DFKCND2
 recompiling module DFKCND4
 recompiling module DFKCNQD1
-200 of 802 modules done
 recompiling module DFKCNQD2
 recompiling module DFKCNQD4
 recompiling module DFKCSND1
@@ -28355,6 +28446,7 @@ recompiling module DFXQD1
 recompiling module DFXQD2
 recompiling module DFXQD4
 recompiling module EDFCND1
+250 of 848 modules done
 recompiling module EDFCND2
 recompiling module EDFCND4
 recompiling module EDFCNQD1
@@ -28369,10 +28461,10 @@ recompiling module EDFKCND4
 recompiling module EDFKCNQD1
 recompiling module EDFKCNQD2
 recompiling module EDFKCNQD4
-250 of 802 modules done
 recompiling module EDFQD1
 recompiling module EDFQD2
 recompiling module EDFQD4
+recompiling module FA1D0
 recompiling module FA1D1
 recompiling module FA1D2
 recompiling module FA1D4
@@ -28405,6 +28497,7 @@ recompiling module GDCAP2
 recompiling module GDCAP3
 recompiling module GDCAP4
 recompiling module GDCAP
+300 of 848 modules done
 recompiling module GDFCNQD1
 recompiling module GDFQD1
 recompiling module GFILL10
@@ -28420,7 +28513,6 @@ recompiling module GINVD8
 recompiling module GMUX2D1
 recompiling module GMUX2D2
 recompiling module GMUX2ND1
-300 of 802 modules done
 recompiling module GMUX2ND2
 recompiling module GND2D1
 recompiling module GND2D2
@@ -28456,10 +28548,12 @@ recompiling module HICIND2
 recompiling module HICOND1
 recompiling module HICOND2
 recompiling module IAO21D0
+350 of 848 modules done
 recompiling module IAO21D1
 recompiling module IAO21D2
 recompiling module IAO21D4
 recompiling module IAO22D0
+recompiling module IAO22D1
 recompiling module IAO22D2
 recompiling module IAO22D4
 recompiling module IIND4D0
@@ -28471,7 +28565,6 @@ recompiling module IINR4D1
 recompiling module IINR4D2
 recompiling module IINR4D4
 recompiling module IND2D0
-350 of 802 modules done
 recompiling module IND2D1
 recompiling module IND2D2
 recompiling module IND2D4
@@ -28483,8 +28576,11 @@ recompiling module IND4D0
 recompiling module IND4D1
 recompiling module IND4D2
 recompiling module IND4D4
+recompiling module INR2D0
 recompiling module INR2D1
+recompiling module INR2D2
 recompiling module INR2D4
+recompiling module INR2XD0
 recompiling module INR2XD1
 recompiling module INR2XD2
 recompiling module INR2XD4
@@ -28496,19 +28592,24 @@ recompiling module INR4D0
 recompiling module INR4D1
 recompiling module INR4D2
 recompiling module INR4D4
+recompiling module INVD0
 recompiling module INVD12
 recompiling module INVD16
+recompiling module INVD1
 recompiling module INVD20
 recompiling module INVD24
 recompiling module INVD2
+400 of 848 modules done
 recompiling module INVD3
 recompiling module INVD4
 recompiling module INVD6
 recompiling module INVD8
+recompiling module IOA21D0
 recompiling module IOA21D1
 recompiling module IOA21D2
 recompiling module IOA21D4
 recompiling module IOA22D0
+recompiling module IOA22D1
 recompiling module IOA22D2
 recompiling module IOA22D4
 recompiling module LHCND1
@@ -28522,7 +28623,6 @@ recompiling module LHCNDQD2
 recompiling module LHCNDQD4
 recompiling module LHCNQD1
 recompiling module LHCNQD2
-400 of 802 modules done
 recompiling module LHCNQD4
 recompiling module LHCSND1
 recompiling module LHCSND2
@@ -28550,6 +28650,7 @@ recompiling module LHSNDD2
 recompiling module LHSNDD4
 recompiling module LHSNDQD1
 recompiling module LHSNDQD2
+450 of 848 modules done
 recompiling module LHSNDQD4
 recompiling module LHSNQD1
 recompiling module LHSNQD2
@@ -28573,7 +28674,6 @@ recompiling module LNCSNDD1
 recompiling module LNCSNDD2
 recompiling module LNCSNDD4
 recompiling module LNCSNDQD1
-450 of 802 modules done
 recompiling module LNCSNDQD2
 recompiling module LNCSNDQD4
 recompiling module LNCSNQD1
@@ -28601,7 +28701,9 @@ recompiling module MAOI222D0
 recompiling module MAOI222D1
 recompiling module MAOI222D2
 recompiling module MAOI222D4
+500 of 848 modules done
 recompiling module MAOI22D0
+recompiling module MAOI22D1
 recompiling module MAOI22D2
 recompiling module MAOI22D4
 recompiling module MOAI22D0
@@ -28624,7 +28726,6 @@ recompiling module MUX3ND0
 recompiling module MUX3ND1
 recompiling module MUX3ND2
 recompiling module MUX3ND4
-500 of 802 modules done
 recompiling module MUX4D0
 recompiling module MUX4D1
 recompiling module MUX4D2
@@ -28633,21 +28734,32 @@ recompiling module MUX4ND0
 recompiling module MUX4ND1
 recompiling module MUX4ND2
 recompiling module MUX4ND4
+recompiling module ND2D0
+recompiling module ND2D1
 recompiling module ND2D2
 recompiling module ND2D3
 recompiling module ND2D4
 recompiling module ND2D8
+recompiling module ND3D0
+recompiling module ND3D1
 recompiling module ND3D2
 recompiling module ND3D3
 recompiling module ND3D4
 recompiling module ND3D8
 recompiling module ND4D0
+recompiling module ND4D1
 recompiling module ND4D2
 recompiling module ND4D3
 recompiling module ND4D4
 recompiling module ND4D8
+550 of 848 modules done
+recompiling module NR2D0
+recompiling module NR2D1
+recompiling module NR2D2
+recompiling module NR2D3
 recompiling module NR2D4
 recompiling module NR2D8
+recompiling module NR2XD0
 recompiling module NR2XD1
 recompiling module NR2XD2
 recompiling module NR2XD3
@@ -28660,6 +28772,7 @@ recompiling module NR3D3
 recompiling module NR3D4
 recompiling module NR3D8
 recompiling module NR4D0
+recompiling module NR4D1
 recompiling module NR4D2
 recompiling module NR4D3
 recompiling module NR4D4
@@ -28668,6 +28781,7 @@ recompiling module OA211D0
 recompiling module OA211D1
 recompiling module OA211D2
 recompiling module OA211D4
+recompiling module OA21D0
 recompiling module OA21D1
 recompiling module OA21D2
 recompiling module OA21D4
@@ -28675,7 +28789,6 @@ recompiling module OA221D0
 recompiling module OA221D1
 recompiling module OA221D2
 recompiling module OA221D4
-550 of 802 modules done
 recompiling module OA222D0
 recompiling module OA222D1
 recompiling module OA222D2
@@ -28690,6 +28803,7 @@ recompiling module OA31D2
 recompiling module OA31D4
 recompiling module OA32D0
 recompiling module OA32D1
+600 of 848 modules done
 recompiling module OA32D2
 recompiling module OA32D4
 recompiling module OA33D0
@@ -28697,9 +28811,11 @@ recompiling module OA33D1
 recompiling module OA33D2
 recompiling module OA33D4
 recompiling module OAI211D0
+recompiling module OAI211D1
 recompiling module OAI211D2
 recompiling module OAI211D4
 recompiling module OAI21D0
+recompiling module OAI21D1
 recompiling module OAI21D2
 recompiling module OAI21D4
 recompiling module OAI221D0
@@ -28726,7 +28842,6 @@ recompiling module OAI32D2
 recompiling module OAI32D4
 recompiling module OAI32XD4
 recompiling module OAI33D0
-600 of 802 modules done
 recompiling module OAI33D1
 recompiling module OAI33D2
 recompiling module OAI33D4
@@ -28734,10 +28849,12 @@ recompiling module OAI33XD4
 recompiling module OD18DCAP16
 recompiling module OD18DCAP32
 recompiling module OD18DCAP64
+recompiling module OR2D0
 recompiling module OR2D1
 recompiling module OR2D2
 recompiling module OR2D4
 recompiling module OR2D8
+650 of 848 modules done
 recompiling module OR2XD1
 recompiling module OR3D0
 recompiling module OR3D1
@@ -28777,7 +28894,6 @@ recompiling module SDFKCND2
 recompiling module SDFKCND4
 recompiling module SDFKCNQD0
 recompiling module SDFKCNQD1
-650 of 802 modules done
 recompiling module SDFKCNQD2
 recompiling module SDFKCNQD4
 recompiling module SDFKCSND0
@@ -28789,6 +28905,7 @@ recompiling module SDFKCSNQD1
 recompiling module SDFKCSNQD2
 recompiling module SDFKCSNQD4
 recompiling module SDFKSND0
+700 of 848 modules done
 recompiling module SDFKSND1
 recompiling module SDFKSND2
 recompiling module SDFKSND4
@@ -28828,7 +28945,6 @@ recompiling module SDFSNQD0
 recompiling module SDFSNQD1
 recompiling module SDFSNQD2
 recompiling module SDFSNQD4
-700 of 802 modules done
 recompiling module SDFXD0
 recompiling module SDFXD1
 recompiling module SDFXD2
@@ -28840,6 +28956,7 @@ recompiling module SDFXQD4
 recompiling module SEDFCND0
 recompiling module SEDFCND1
 recompiling module SEDFCND2
+750 of 848 modules done
 recompiling module SEDFCND4
 recompiling module SEDFCNQD0
 recompiling module SEDFCNQD1
@@ -28879,20 +28996,24 @@ recompiling module SEDFXD2
 recompiling module SEDFXD4
 recompiling module TIEH
 recompiling module TIEL
-750 of 802 modules done
+recompiling module XNR2D0
+recompiling module XNR2D1
 recompiling module XNR2D2
 recompiling module XNR2D4
+recompiling module XNR3D0
 recompiling module XNR3D1
 recompiling module XNR3D2
 recompiling module XNR3D4
 recompiling module XNR4D0
 recompiling module XNR4D1
 recompiling module XNR4D2
+800 of 848 modules done
 recompiling module XNR4D4
 recompiling module XOR2D0
 recompiling module XOR2D1
 recompiling module XOR2D2
 recompiling module XOR2D4
+recompiling module XOR3D0
 recompiling module XOR3D1
 recompiling module XOR3D2
 recompiling module XOR3D4
@@ -28928,20 +29049,22 @@ recompiling module LVLLHFAD1
 recompiling module LVLLHFAD2
 recompiling module LVLLHFAD4
 recompiling module LVLLHFAD8
+recompiling module fp_add
 recompiling module fp_mul
 recompiling module fp_div
-800 of 802 modules done
+recompiling module fpu
 recompiling module opmem
 recompiling module fpuStim
-All of 802 modules done
+847 of 848 modules done
+	However, due to incremental compilation, only 847 modules need to be compiled. 
 make[1]: Entering directory `/home/nguyea9/ee478/fpu/sim/post-syn/csrc'
 rm -f _cuarc*.so _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
 if [ -x ../simv ]; then chmod a-x ../simv; fi
 g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir \
 -Wl,-rpath=/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib -L/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib \
--Wl,-rpath-link=./  /usr/lib64/libnuma.so.1   objs/a/amcQw_d.o   _2983_archive_1.so \
-objs/udps/JvR1L.o objs/udps/HWVx0.o objs/udps/m6zeg.o objs/udps/df3ii.o  SIM_l.o \
-rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o rmar_llvm_0_0.o        \
+-Wl,-rpath-link=./  /usr/lib64/libnuma.so.1   objs/a/amcQw_d.o   _15256_archive_1.so \
+_prev_archive_1.so objs/udps/JvR1L.o objs/udps/HWVx0.o objs/udps/m6zeg.o objs/udps/df3ii.o \
+SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o rmar_llvm_0_0.o \
 -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile -luclinative /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_tls.o \
 -Wl,-whole-archive  -lvcsucli    -Wl,-no-whole-archive          /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_save_restore_new.o \
 -ldl  -lc -lm -lpthread -ldl 
@@ -28950,12 +29073,13 @@ make[1]: Leaving directory `/home/nguyea9/ee478/fpu/sim/post-syn/csrc'
 Command: /home/nguyea9/ee478/fpu/sim/post-syn/./simv +v2k +lint=all -a fp.log
 Chronologic VCS simulator copyright 1991-2021
 Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May 30 03:40 2022
+Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May 30 04:08 2022
+Doing SDF annotation ...... Done
 VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
 $finish called from file "fpuStim.sv", line 51.
 $finish at simulation time          51500000000
            V C S   S i m u l a t i o n   R e p o r t 
 Time: 515000000000 ps
-CPU Time:      0.490 seconds;       Data structure size:   0.4Mb
-Mon May 30 03:41:01 2022
-CPU time: 3.999 seconds to compile + .453 seconds to elab + .548 seconds to link + .512 seconds in simulation
+CPU Time:      0.490 seconds;       Data structure size:   0.6Mb
+Mon May 30 04:08:54 2022
+CPU time: 4.316 seconds to compile + .225 seconds to elab + .666 seconds to link + .513 seconds in simulation
