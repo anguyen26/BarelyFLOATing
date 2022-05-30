@@ -1,5 +1,5 @@
-TEST=log2
-NUM_TESTS=50
+TEST=sqrt
+NUM_TESTS=32
 TESTID=1
 PASSED=0
 
@@ -22,6 +22,19 @@ create:
 	done
 	@ $(MAKE) report --no-print-directory
 
+# runs 32 random sqrt(x) calcs
+32sqrt:
+	@ cd Core/ && python3 clean_sqrt.py
+	@ i=1; while [[ $$i -le $(NUM_TESTS) ]] ; do \
+		echo 'Running test #' $$i '...' ; \
+		$(MAKE) sqrt TESTID=$$i -i --no-print-directory; \
+		((i = i + 1)) ; \
+		echo '--------------------------------------' ; \
+	done
+	@ cd Core/ && python3 sqrt.py
+	@ cd Core/ && python3 convert_sqrt_out.py
+	@ cd Core/ && python3 compare_sqrt.py
+
 # generates random instructions and tests them
 cb_run1: instr_gen cb_edit_tb iarm vcs cb_compare
 
@@ -35,6 +48,7 @@ custom: rb_edit_tb iarm vcs rb_compare
 custom_RTL: rb_edit_tb vcs
 
 log2: rb_edit_tb vcs print_log2_result compare_to_log
+sqrt: dec_to_fp sqrt_edit_tb vcs
 
 cb_edit_tb:
 	@ sed -i 's;^with\(.*\);with open("tests/$(TEST).txt", "r") as f:;g' \
@@ -43,6 +57,10 @@ cb_edit_tb:
 		Core/instructmem.sv
 rb_edit_tb:
 	@ sed -i 's;^`define\(.*\)";`define BENCHMARK "../tests/$(TEST).arm"; g' \
+		Core/instructmem.sv
+
+sqrt_edit_tb:
+	@ sed -i 's;^`define\(.*\)";`define BENCHMARK "../assembler/$(TEST).v"; g' \
 		Core/instructmem.sv
 
 instr_gen:
@@ -81,6 +99,9 @@ print_log2_result:
 compare_to_log:
 	@ cd Core/ && python3 convert_log.py log2_error.txt
 	@ cd Core/ && python3 compare_log.py log_output_dec.txt expected_log.txt
+
+dec_to_fp:
+	@ cd Core/ && python3 convert_x.py
 
 cb_report_compare:
 	@ if [ $(shell wc -l comp_output.txt | cut -f1 -d' ') = 1 ]; then \

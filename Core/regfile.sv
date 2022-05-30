@@ -15,19 +15,21 @@ module regfile (
 );
 
 	//main memory within the regfile
-	logic [14:0][15:0] MEM;
-    logic [15:0] r15;
-    assign r15 = PC[15:2];
+	logic [15:0] MEM [14:0];
+	logic [15:0] r15;
+	assign r15 = PC[15:2];
 
 	//write data on positive edge of clock when wr_en is high
     integer i;
     always_ff @(posedge clk) begin
         if (reset) begin
-            for (int i=0; i<13; i++) begin
+            for (int i=1; i<13; i++) begin
                 MEM[i] <= 16'd0;
             end
             MEM[13] <= 16'hFFFF;
             MEM[14] <= 16'd0;
+		//set x value for calculation
+		$readmemb("input_x_fp.txt", MEM, 0, 0);
         end
 		else if(wr_en) begin
 			MEM[wr_addr] <= wr_data;
