@@ -98,7 +98,7 @@ link
 
 #Define design constraints - why 6 in fanout?
 
-set_max_transition 0.1 [get_designs fpu]
+set_max_transition 0.4 [get_designs fpu]
 set_max_fanout 6 fpu
 create_clock -name "clk" -period 6 -waveform {0 1} [get_ports clk]
 set_clock_uncertainty -setup 0.05 [get_clocks]
