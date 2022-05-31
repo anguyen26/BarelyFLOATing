@@ -1,0 +1,134 @@
+{
+    "std": [
+        "std",
+        "reYIK",
+        "module",
+        1
+    ],
+    "mux3x16_16": [
+        "mux3x16_16",
+        "uuVMN",
+        "module",
+        17
+    ],
+    "mux5x16_16": [
+        "mux5x16_16",
+        "gi3ST",
+        "module",
+        16
+    ],
+    "full_adder": [
+        "full_adder",
+        "BEdzp",
+        "module",
+        15
+    ],
+    "shifter": [
+        "shifter",
+        "CFT7G",
+        "module",
+        14
+    ],
+    "adder_0000": [
+        "adder_0000",
+        "wtLLx",
+        "module",
+        13
+    ],
+    "fullAdder": [
+        "fullAdder",
+        "qG7YU",
+        "module",
+        12
+    ],
+    "ALU": [
+        "ALU",
+        "trjvP",
+        "module",
+        11
+    ],
+    "pipelineReg_0000": [
+        "pipelineReg_0000",
+        "Ty0f3",
+        "module",
+        21
+    ],
+    "pipelineReg_0002": [
+        "pipelineReg_0002",
+        "BHtaq",
+        "module",
+        10
+    ],
+    "pipelineReg_0003": [
+        "pipelineReg_0003",
+        "s6thj",
+        "module",
+        6
+    ],
+    "register_2": [
+        "register_2",
+        "DeKif",
+        "module",
+        8
+    ],
+    "register_3": [
+        "register_3",
+        "LgJbM",
+        "module",
+        7
+    ],
+    "register_4": [
+        "register_4",
+        "CI8fx",
+        "module",
+        3
+    ],
+    "register_5": [
+        "register_5",
+        "gEHU2",
+        "module",
+        5
+    ],
+    "datamem": [
+        "datamem",
+        "KmSWA",
+        "module",
+        4
+    ],
+    "D_FF": [
+        "D_FF",
+        "YyC6k",
+        "module",
+        9
+    ],
+    "a_phase4": [
+        "a_phase4",
+        "vaPef",
+        "module",
+        22
+    ],
+    "div": [
+        "div",
+        "rzVRz",
+        "module",
+        2
+    ],
+    "fpu": [
+        "fpu",
+        "BY2AV",
+        "module",
+        24
+    ],
+    "cpuStim": [
+        "cpuStim",
+        "xpdGa",
+        "module",
+        25
+    ],
+    "...MASTER...": [
+        "SIM",
+        "amcQw",
+        "module",
+        18
+    ]
+}

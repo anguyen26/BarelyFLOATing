@@ -1,0 +1,6 @@
+/home/nguyea9/ee478/fpu/sim/pre-syn/fp_add.sv
+/home/nguyea9/ee478/fpu/sim/pre-syn/fp_div.sv
+/home/nguyea9/ee478/fpu/sim/pre-syn/fp_mul.sv
+/home/nguyea9/ee478/fpu/sim/pre-syn/fpu.sv
+/home/nguyea9/ee478/fpu/sim/pre-syn/fpuStim.sv
+/home/nguyea9/ee478/fpu/sim/pre-syn/opmem.sv

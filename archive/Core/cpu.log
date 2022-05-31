@@ -1,0 +1,61 @@
+
+Warning-[DEBUG_DEP] Option will be deprecated
+  The option '-debug_pp' will be deprecated in a future release.  Please use 
+  '-debug_acc+pp+dmptf -debug_region+cell+encrypt' instead.
+
+Command: vcs -f cpu.include +v2k -R -sverilog -full64 -debug_pp -timescale=1ns/10ps \
+-l cpu.log
+                         Chronologic VCS (TM)
+       Version S-2021.09-SP1_Full64 -- Mon May 30 17:57:02 2022
+
+                    Copyright (c) 1991 - 2021 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+
+Parsing design file 'mux3x4_4.sv'
+Parsing design file 'mux3x16_16.sv'
+Parsing design file 'mux4x16_16.sv'
+Parsing design file 'mux4x4_4.sv'
+Parsing design file 'mux5x16_16.sv'
+Parsing design file 'full_adder.sv'
+Parsing design file 'shifter.sv'
+Parsing design file 'adder.sv'
+Parsing design file 'fullAdder.sv'
+Parsing design file 'alu.sv'
+Parsing design file 'cpuControl.sv'
+Parsing design file 'pipelineReg.sv'
+Parsing design file 'register.sv'
+Parsing design file 'register_2.sv'
+Parsing design file 'register_3.sv'
+Parsing design file 'register_4.sv'
+Parsing design file 'register_5.sv'
+Parsing design file 'regfile.sv'
+Parsing design file 'datamem.sv'
+Parsing design file 'instructmem.sv'
+Parsing design file 'rippleCarryAdder.sv'
+Parsing design file 'forwardingUnit.sv'
+Parsing design file 'D_FF.sv'
+Parsing design file 'a_phase4.sv'
+Parsing design file 'cpu.sv'
+
+Error-[SFCOR] Source file cannot be opened
+  Source file "../fpu/fp_add.sv" cannot be opened for reading due to 'No such 
+  file or directory'.
+  Please fix above issue and compile again.
+  
+  
+
+1 error
+CPU time: .166 seconds to compile
