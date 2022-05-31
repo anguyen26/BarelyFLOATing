@@ -14,7 +14,7 @@ module cpuStim();
 		forever #(ClockDelay/2) clk <= ~clk;
 	end
 	
-	integer i, f, f1, f2, f3;
+	integer i, f, f1, f2, f3, f4;
 	
 	initial begin
         $vcdpluson;
@@ -50,12 +50,11 @@ module cpuStim();
 			// 	    $fwrite(f, "mem[%d] = %d\n", i, testCpu.dataMemory.mem[i]);
 			// 	end
 			// end
-		
+			/*//for log2
 			if(testCpu.PC == 16'b0000000001111000) begin
 				$fwrite(f3, "%b\n", testCpu.registers.MEM[5]);
-			end
+			end */
 		    @(posedge clk);
-			// $fclose(f);
 		end
 
 		for (i = 0; i < 10; i++) begin
@@ -65,7 +64,7 @@ module cpuStim();
 
 		f = $fopen("sv_output.txt", "w");
 		f1 = $fopen("convertMe.txt", "w");
-		f2 = $fopen("log2_result.txt", "w");
+		
 		$fwrite(f, "Register content:\n");
 		for (int i=0; i<15; i++) begin
 		    // $fwrite(f, "%d = %d\n", i, testCpu.registers.MEM[i]);
@@ -80,7 +79,11 @@ module cpuStim();
 		        $fwrite(f1,"%b\n", testCpu.dataMemory.mem[i]);
 		    end
 		end
-		$fwrite(f2, "%b", testCpu.registers.MEM[1]);
+		//f2 = $fopen("log2_result.txt", "w");
+		//$fwrite(f2, "%b", testCpu.registers.MEM[1]); //log2 result
+		f4 = $fopen("sqrt_result.txt", "a");
+		$display("sqrt(x) = %b", testCpu.registers.MEM[1]);
+		$fwrite(f4, "%b\n", testCpu.registers.MEM[1]); //sqrt result
 		$fclose(f);
         $finish;
 		$stop;
