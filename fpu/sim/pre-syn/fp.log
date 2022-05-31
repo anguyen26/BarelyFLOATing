@@ -6,7 +6,7 @@ Warning-[DEBUG_DEP] Option will be deprecated
 Command: vcs -f fp.include +v2k -R +lint=all -sverilog -full64 -debug_pp -timescale=1ns/10ps \
 -l fp.log
                          Chronologic VCS (TM)
-       Version S-2021.09-SP1_Full64 -- Mon May 30 03:16:24 2022
+       Version S-2021.09-SP1_Full64 -- Mon May 30 16:42:31 2022
 
                     Copyright (c) 1991 - 2021 Synopsys, Inc.
    This software and the associated documentation are proprietary to Synopsys,
@@ -66,27 +66,15 @@ TimeScale is 1 ns / 10 ps
 
 Lint-[TFIPC-L] Too few instance port connections
 fpuStim.sv, 15
-fpuStim, "fpu dut( .clk (clk),  .reset (reset),  .opA (opA),  .opB (opB),  .op (op),  .result (result),  .overflow (overflow),  .underflow (underflow),  .inexact (inexact));"
+fpuStim, "fpu dut( .opA (opA),  .opB (opB),  .op (op),  .result (result),  .overflow (overflow),  .underflow (underflow),  .inexact (inexact));"
   The above instance has fewer port connections than the module definition,
-  There are 10 port(s) in module "fpu" definition, but only 9 port connect(s) 
+  There are 8 port(s) in module "fpu" definition, but only 7 port connect(s) 
   in the instance.
   output port 'FPUFlags' is not connected.
 
 
-Lint-[UI] Unused input
-fp_add.sv, 2
-  Following is an unused input.
-  Source info: clk
-
-
-Lint-[UI] Unused input
-fp_add.sv, 2
-  Following is an unused input.
-  Source info: reset
-
-
 Lint-[WMIA-L] Width mismatch in assignment
-fp_add.sv, 99
+fp_add.sv, 95
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 8-bit LHS target:
   Source info: subShiftAmount = 0;
@@ -94,7 +82,7 @@ fp_add.sv, 99
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-fp_add.sv, 100
+fp_add.sv, 96
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 8-bit LHS target:
   Source info: subShiftAmount = 1;
@@ -102,7 +90,7 @@ fp_add.sv, 100
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-fp_add.sv, 101
+fp_add.sv, 97
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 8-bit LHS target:
   Source info: subShiftAmount = 2;
@@ -110,7 +98,7 @@ fp_add.sv, 101
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-fp_add.sv, 102
+fp_add.sv, 98
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 8-bit LHS target:
   Source info: subShiftAmount = 3;
@@ -118,7 +106,7 @@ fp_add.sv, 102
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-fp_add.sv, 103
+fp_add.sv, 99
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 8-bit LHS target:
   Source info: subShiftAmount = 4;
@@ -126,7 +114,7 @@ fp_add.sv, 103
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-fp_add.sv, 104
+fp_add.sv, 100
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 8-bit LHS target:
   Source info: subShiftAmount = 5;
@@ -134,7 +122,7 @@ fp_add.sv, 104
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-fp_add.sv, 105
+fp_add.sv, 101
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 8-bit LHS target:
   Source info: subShiftAmount = 6;
@@ -142,7 +130,7 @@ fp_add.sv, 105
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-fp_add.sv, 106
+fp_add.sv, 102
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 8-bit LHS target:
   Source info: subShiftAmount = 7;
@@ -150,7 +138,7 @@ fp_add.sv, 106
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-fp_add.sv, 107
+fp_add.sv, 103
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 8-bit LHS target:
   Source info: subShiftAmount = 8;
@@ -158,7 +146,7 @@ fp_add.sv, 107
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-fp_add.sv, 108
+fp_add.sv, 104
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 8-bit LHS target:
   Source info: subShiftAmount = 10;
@@ -166,61 +154,37 @@ fp_add.sv, 108
 
 
 Lint-[CAWM-L] Width mismatch
-fp_add.sv, 35
+fp_add.sv, 34
   Continuous assignment width mismatch
   8 bits (lhs) versus 32 bits (rhs).
   Source info: assign absDiffE = (diffE[7] ? ((~diffE) + 1) : diffE);  
 
 
 Lint-[CAWM-L] Width mismatch
-fp_add.sv, 68
+fp_add.sv, 64
   Continuous assignment width mismatch
   8 bits (lhs) versus 32 bits (rhs).
   Source info: assign absDiffM = ((op2 < shiftOutput) ? ((~diffM) + 1) : 
   diffM);  
 
 
-Lint-[UI] Unused input
-fp_mul.sv, 2
-  Following is an unused input.
-  Source info: clk
-
-
-Lint-[UI] Unused input
-fp_mul.sv, 2
-  Following is an unused input.
-  Source info: reset
-
-
 Lint-[CAWM-L] Width mismatch
-fp_mul.sv, 34
+fp_mul.sv, 33
   Continuous assignment width mismatch
   9 bits (lhs) versus 32 bits (rhs).
   Source info: assign {cout, biasedESum} = (eSum - 127);  
 
 
 Lint-[CAWM-L] Width mismatch
-fp_mul.sv, 42
+fp_mul.sv, 41
   Continuous assignment width mismatch
   8 bits (lhs) versus 32 bits (rhs).
   Source info: assign normalE = (mProduct[15] ? (biasedESum + 1) : 
   biasedESum);  
 
 
-Lint-[UI] Unused input
-fp_div.sv, 2
-  Following is an unused input.
-  Source info: clk
-
-
-Lint-[UI] Unused input
-fp_div.sv, 2
-  Following is an unused input.
-  Source info: reset
-
-
 Lint-[WMIA-L] Width mismatch in assignment
-fp_div.sv, 58
+fp_div.sv, 57
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 8-bit LHS target:
   Source info: shiftAmount = 0;
@@ -228,7 +192,7 @@ fp_div.sv, 58
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-fp_div.sv, 59
+fp_div.sv, 58
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 8-bit LHS target:
   Source info: shiftAmount = 1;
@@ -236,7 +200,7 @@ fp_div.sv, 59
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-fp_div.sv, 60
+fp_div.sv, 59
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 8-bit LHS target:
   Source info: shiftAmount = 2;
@@ -244,7 +208,7 @@ fp_div.sv, 60
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-fp_div.sv, 61
+fp_div.sv, 60
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 8-bit LHS target:
   Source info: shiftAmount = 3;
@@ -252,7 +216,7 @@ fp_div.sv, 61
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-fp_div.sv, 62
+fp_div.sv, 61
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 8-bit LHS target:
   Source info: shiftAmount = 4;
@@ -260,7 +224,7 @@ fp_div.sv, 62
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-fp_div.sv, 63
+fp_div.sv, 62
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 8-bit LHS target:
   Source info: shiftAmount = 5;
@@ -268,7 +232,7 @@ fp_div.sv, 63
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-fp_div.sv, 64
+fp_div.sv, 63
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 8-bit LHS target:
   Source info: shiftAmount = 6;
@@ -276,7 +240,7 @@ fp_div.sv, 64
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-fp_div.sv, 65
+fp_div.sv, 64
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 8-bit LHS target:
   Source info: shiftAmount = 7;
@@ -284,7 +248,7 @@ fp_div.sv, 65
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-fp_div.sv, 66
+fp_div.sv, 65
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 8-bit LHS target:
   Source info: shiftAmount = 8;
@@ -292,7 +256,7 @@ fp_div.sv, 66
 
 
 Lint-[WMIA-L] Width mismatch in assignment
-fp_div.sv, 67
+fp_div.sv, 66
   Width mismatch between LHS and RHS is found in assignment:
   The following 32-bit wide expression is assigned to a 8-bit LHS target:
   Source info: shiftAmount = 10;
@@ -300,51 +264,39 @@ fp_div.sv, 67
 
 
 Lint-[CAWM-L] Width mismatch
-fp_div.sv, 39
+fp_div.sv, 38
   Continuous assignment width mismatch
   8 bits (lhs) versus 15 bits (rhs).
   Source info: assign mQuotient = (op1 / op2);  
 
 
 Lint-[CAWM-L] Width mismatch
-fp_div.sv, 40
+fp_div.sv, 39
   Continuous assignment width mismatch
   8 bits (lhs) versus 15 bits (rhs).
   Source info: assign r = (op1 % op2);  
 
 
 Lint-[CAWM-L] Width mismatch
-fp_div.sv, 47
+fp_div.sv, 46
   Continuous assignment width mismatch
   8 bits (lhs) versus 32 bits (rhs).
   Source info: assign biasedEDiff = (eDiff + 127);  
 
 
 Lint-[CAWM-L] Width mismatch
-fp_div.sv, 71
+fp_div.sv, 70
   Continuous assignment width mismatch
   7 bits (lhs) versus 8 bits (rhs).
   Source info: assign normalizedM = (mQuotient << shiftAmount);  
 
 
 Lint-[CAWM-L] Width mismatch
-fp_div.sv, 79
+fp_div.sv, 78
   Continuous assignment width mismatch
   7 bits (lhs) versus 8 bits (rhs).
   Source info: assign finalM = ((finalE == 8'b11111111) ? 8'b0 : normalizedM);
   
-
-
-Lint-[UI] Unused input
-opmem.sv, 2
-  Following is an unused input.
-  Source info: clk
-
-
-Lint-[UI] Unused input
-opmem.sv, 2
-  Following is an unused input.
-  Source info: reset
 
 
 Lint-[WMIA-L] Width mismatch in assignment
@@ -382,27 +334,31 @@ Starting vcs inline pass...
 
 1 module and 0 UDP read.
 recompiling module fpuStim
-make[1]: Entering directory `/home/nguyea9/ee478/new-fpu/sim/pre-syn/csrc'
+make[1]: Entering directory `/home/nguyea9/ee478/fpu/sim/pre-syn/csrc'
 rm -f _cuarc*.so _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
+ld -shared  -Bsymbolic --no-relax  -o .//../simv.daidir//_cuarc0.so objs/amcQw_d.o \
+
+rm -f _cuarc0.so
 if [ -x ../simv ]; then chmod a-x ../simv; fi
 g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir \
 -Wl,-rpath=/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib -L/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib \
--Wl,-rpath-link=./  /usr/lib64/libnuma.so.1   objs/amcQw_d.o   _24737_archive_1.so \
-SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o rmar_llvm_0_0.o \
--lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile -luclinative /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_tls.o \
--Wl,-whole-archive  -lvcsucli    -Wl,-no-whole-archive          /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_save_restore_new.o \
+-Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _32254_archive_1.so _prev_archive_1.so \
+_cuarc0.so  SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o \
+rmar_llvm_0_0.o           -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile \
+-luclinative /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_tls.o   -Wl,-whole-archive \
+-lvcsucli    -Wl,-no-whole-archive          /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_save_restore_new.o \
 -ldl  -lc -lm -lpthread -ldl 
 ../simv up to date
-make[1]: Leaving directory `/home/nguyea9/ee478/new-fpu/sim/pre-syn/csrc'
-Command: /home/nguyea9/ee478/new-fpu/sim/pre-syn/./simv +v2k +lint=all -a fp.log
+make[1]: Leaving directory `/home/nguyea9/ee478/fpu/sim/pre-syn/csrc'
+Command: /home/nguyea9/ee478/fpu/sim/pre-syn/./simv +v2k +lint=all -a fp.log
 Chronologic VCS simulator copyright 1991-2021
 Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May 30 03:16 2022
+Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May 30 16:42 2022
 VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
 $finish called from file "fpuStim.sv", line 50.
 $finish at simulation time          51500000000
            V C S   S i m u l a t i o n   R e p o r t 
 Time: 515000000000 ps
 CPU Time:      0.270 seconds;       Data structure size:   0.0Mb
-Mon May 30 03:16:27 2022
-CPU time: .340 seconds to compile + .368 seconds to elab + .331 seconds to link + .294 seconds in simulation
+Mon May 30 16:42:34 2022
+CPU time: .269 seconds to compile + .303 seconds to elab + .413 seconds to link + .308 seconds in simulation

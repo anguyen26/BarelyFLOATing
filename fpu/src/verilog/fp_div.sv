@@ -1,5 +1,4 @@
 module fp_div(
-    input logic clk, reset,
     input logic [15:0] opA, opB,
     output logic [15:0] quotient,
     output logic underflow, overflow, inexact

@@ -107,6 +107,15 @@ set_clock_transition 0.05 [get_clocks]
 set_input_delay 0.1 -clock clk [remove_from_collection [all_inputs] [get_ports clk]]
 set_fix_hold {clk}
 
+#multicycle paths
+# set in_ports [get_ports [list opA opB]]
+# set out_ports [get_ports [list result FPUFlags overflow underflow inexact]]
+# set div_ports [get_ports [list divide/opA divide/opB]]
+# set_multicycle_path -setup 2 -from $in_ports -through $div_ports -to $out_ports
+# set_multicycle_path -hold 1 -from $in_ports -through $div_ports -to $out_ports
+set_multicycle_path -setup 2 -through {divide}
+set_multicycle_path -hold 1 -through {divide}
+
 #Compile ultra will take care of ungrouping and flattening for improved performance.
 set_critical_range 0.1 $current_design
 compile_ultra -no_autoungroup
@@ -117,7 +126,7 @@ file mkdir reports
 report_power > reports/fpu.power
 report_constraint -verbose > reports/fpu.constraint
 report_constraint -all_violators > reports/fpu.violation
-report_timing -path full -delay max -max_paths 5   -nworst 2 > "reports/timing.max.fullpath.rpt"
+report_timing -path full -delay max -max_paths 20   -nworst 2 > "reports/timing.max.fullpath.rpt"
 report_timing -path full -delay min -max_paths 5   -nworst 2 > "reports/timing.min.fullpath.rpt"
 report_area -hierarchy > "reports/area.rpt"
 

@@ -1,5 +1,4 @@
 module fp_add(
-    input logic clk, reset,
     input logic [15:0] opA, opB,
     output logic [15:0] sum,
     output logic underflow, overflow, inexact, cout
@@ -61,9 +60,6 @@ module fp_add(
     /////////////////////////////////////////////////////////
     // Add mantissas
     // ------------------------------
-    // always_ff @(posedge clk) begin
-    //     {cout, mSum} <= subtract ? (op2 - shiftOutput) : (op2 + shiftOutput);
-    // end
     assign diffM = op2 - shiftOutput;
     assign absDiffM = (op2 < shiftOutput) ? ~diffM+1 : diffM; 
     assign {cout, mSum} = subtract ? (absDiffM) : 

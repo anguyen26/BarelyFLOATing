@@ -1,5 +1,4 @@
 module fpu(
-	input logic clk, reset,
 	input logic [15:0] opA, opB,
 	input logic [1:0] op,
 	output logic [15:0] result,
@@ -15,14 +14,14 @@ module fpu(
 	logic cout;
 
 	assign newOpB = (op == 2'd0) ? opB : {~opB[15], opB[14:0]};
-	fp_add add_sub(.clk, .reset, .opA, .opB(newOpB), .sum,
-		.underflow(aUnderflow), .overflow(aOverflow), .inexact(aInexact), .cout);
+	fp_add add_sub(.opA, .opB(newOpB), .sum, .underflow(aUnderflow), 
+        .overflow(aOverflow), .inexact(aInexact), .cout);
 
-	fp_mul multiply(.clk, .reset, .opA, .opB, .product, .underflow(pUnderflow),
-		.overflow(pOverflow), .inexact(pInexact));
+	fp_mul multiply(.opA, .opB, .product, .underflow(pUnderflow), .overflow(pOverflow), 
+        .inexact(pInexact));
 
-	fp_div divide(.clk, .reset, .opA, .opB, .quotient,
-		.underflow(qUnderflow), .overflow(qOverflow), .inexact(qInexact));
+	fp_div divide(.opA, .opB, .quotient, .underflow(qUnderflow), 
+        .overflow(qOverflow), .inexact(qInexact));
 
 	//assign flags bits
 	assign FPUFlags[3] = result[15]; //N-flag is the sign bit of the result

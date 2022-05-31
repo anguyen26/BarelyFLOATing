@@ -12,10 +12,10 @@ module fpuStim();
 		forever #(ClockDelay/2) clk <= ~clk;
 	end
 
-    fpu dut(.clk, .reset, .opA, .opB, .op, .result, 
+    fpu dut(.opA, .opB, .op, .result, 
         .underflow, .overflow, .inexact);
 	
-    opmem ops(.clk, .reset, .address, .opA, .opB, .op);
+    opmem ops(.address, .opA, .opB, .op);
 
 
 	// Handle the read from operation memory.

@@ -1,5 +1,4 @@
 module fp_mul(
-    input logic clk, reset,
     input logic [15:0] opA, opB,
     output logic [15:0] product,
     output logic underflow, overflow, inexact

@@ -1,5 +1,4 @@
 module opmem (
-    input logic clk, reset,
     input logic [7:0] address,
     output logic [15:0] opA, opB,
     output logic [1:0] op
