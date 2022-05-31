@@ -23,9 +23,8 @@ forwardingUnit.sv
 D_FF.sv
 a_phase4.sv
 cpu.sv
-../fpu/fp_add.sv
-../fpu/fp_mul.sv
-../fpu/div.sv
-../fpu/fpu.sv
-../fpu/fp_div.sv
+../fpu/src/verilog/fp_add.sv
+../fpu/src/verilog/fp_mul.sv
+../fpu/src/verilog/fpu.sv
+../fpu/src/verilog/fp_div.sv
 cpuStim.sv

@@ -13,6 +13,9 @@ module cpu(
 			shiftedSelectedAddr, branchAddr, noBranchAddr;
 	logic 		Branch, BranchE, Branch_pre;
 
+	// Stall logic
+	logic		div, divE;
+
 	// Instruction Logic	 
 	logic [15:0] 	instr, instrE;
 	
@@ -64,12 +67,16 @@ module cpu(
 	//********************************************************************************************\\
 	//************************************* Instruction Fetch ************************************\\
 	//********************************************************************************************\\
+	
+	// Determine if op in fetch is divide
+	always_comb 
+		div = (instr[15:9] == 7'b0111011);
 
 	// Outputs next PC every clock cycle
 	register PCRegister(.dataIn(PCNext), .dataOut(PC), .writeEnable(!stallF), .reset, .clk);
 	always_comb begin
-		if(BranchE & (instr == instrE)) stallF = 0; //branch determined
-		else if(Branch) stallF = 1; //branch upcoming
+		if((BranchE | divE) & (instr == instrE)) stallF = 0; //branch determined
+		else if(Branch | div) stallF = 1; //branch upcoming
 		else stallF = 0; //normal incrementing
 	end
 
@@ -150,6 +157,7 @@ module cpu(
 	pipelineReg #(.bitWidth(1)) decodeToExec15 (.D(Branch), .Q(BranchE), .en(1'b1), .clear(reset), .clk);
 	pipelineReg #(.bitWidth(2)) FPUOpReg (.D(FPUOp), .Q(FPUOpE), .en(1'b1), .clear(1'b0), .clk);
 	pipelineReg #(.bitWidth(1)) CompSelReg (.D(ALUorFPU), .Q(ALUorFPUE), .en(1'b1), .clear(1'b0), .clk);
+	pipelineReg #(.bitWidth(1)) divReg (.D(div), .Q(divE), .en(1'b1), .clear(1'b0), .clk);
 	pipelineReg #(.bitWidth(4)) keepFlagsReg (.D(keepFlags), .Q(keepFlagsE), .en(1'b1), .clear(1'b0), .clk);
 	
 
@@ -183,7 +191,6 @@ module cpu(
 	
 	// Instantiate FPU
 	fpu FPU (
-		.clk, .reset,
 		.opA(ReadData1E), .opB(ReadData2E),
 		.op(FPUOpE),
 		.result(FPUResult),

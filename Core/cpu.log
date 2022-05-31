@@ -6,7 +6,7 @@ Warning-[DEBUG_DEP] Option will be deprecated
 Command: vcs -f cpu.include +v2k -R -sverilog -full64 -debug_pp -timescale=1ns/10ps \
 -l cpu.log
                          Chronologic VCS (TM)
-       Version S-2021.09-SP1_Full64 -- Mon May 30 13:20:52 2022
+       Version S-2021.09-SP1_Full64 -- Tue May 31 15:55:09 2022
 
                     Copyright (c) 1991 - 2021 Synopsys, Inc.
    This software and the associated documentation are proprietary to Synopsys,
@@ -49,11 +49,10 @@ Parsing design file 'forwardingUnit.sv'
 Parsing design file 'D_FF.sv'
 Parsing design file 'a_phase4.sv'
 Parsing design file 'cpu.sv'
-Parsing design file '../fpu/fp_add.sv'
-Parsing design file '../fpu/fp_mul.sv'
-Parsing design file '../fpu/div.sv'
-Parsing design file '../fpu/fpu.sv'
-Parsing design file '../fpu/fp_div.sv'
+Parsing design file '../fpu/src/verilog/fp_add.sv'
+Parsing design file '../fpu/src/verilog/fp_mul.sv'
+Parsing design file '../fpu/src/verilog/fpu.sv'
+Parsing design file '../fpu/src/verilog/fp_div.sv'
 Parsing design file 'cpuStim.sv'
 Top Level Modules:
        mux3x16_16
@@ -61,13 +60,15 @@ Top Level Modules:
        register_3
        register_4
        register_5
-       div
        cpuStim
 TimeScale is 1 ps / 1 ps
 Starting vcs inline pass...
 
-18 modules and 0 UDP read.
-	However, due to incremental compilation, no re-compilation is necessary.
+17 modules and 0 UDP read.
+recompiling module cpuStim
+	However, due to incremental compilation, only 1 module needs to be compiled. 
+make[2]: Entering directory `/home/projects/ee478.2022spr/hoppii/BarelyFLOATing/Core/csrc' \
+
 rm -f _cuarc*.so _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
 ld -shared  -Bsymbolic --no-relax  -o .//../simv.daidir//_cuarc0.so objs/amcQw_d.o \
 
@@ -75,25 +76,27 @@ rm -f _cuarc0.so
 if [ -x ../simv ]; then chmod a-x ../simv; fi
 g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir \
 -Wl,-rpath=/home/lab.apps/vlsiapps_new//vcs/current/linux64/lib -L/home/lab.apps/vlsiapps_new//vcs/current/linux64/lib \
--Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _17431_archive_1.so _prev_archive_1.so \
+-Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _25565_archive_1.so _prev_archive_1.so \
 _cuarc0.so  SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o \
 rmar_llvm_0_0.o           -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile \
 -luclinative /home/lab.apps/vlsiapps_new//vcs/current/linux64/lib/vcs_tls.o   -Wl,-whole-archive \
 -lvcsucli    -Wl,-no-whole-archive          /home/lab.apps/vlsiapps_new//vcs/current/linux64/lib/vcs_save_restore_new.o \
 -ldl  -lc -lm -lpthread -ldl 
 ../simv up to date
+make[2]: Leaving directory `/home/projects/ee478.2022spr/hoppii/BarelyFLOATing/Core/csrc' \
+
 Command: /home/projects/ee478.2022spr/hoppii/BarelyFLOATing/Core/./simv +v2k -a cpu.log
 Chronologic VCS simulator copyright 1991-2021
 Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May 30 13:20 2022
+Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May 31 15:55 2022
 VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
-Running benchmark: ../assembler/sqrt.v
-1375.00 ns Test Done
-sqrt(x) = 0100000111010011
+Running benchmark: ../tests/sqrt.arm
+ 945.00 ns Test Done
+sqrt(x) = 0100000000110101
 $finish called from file "cpuStim.sv", line 88.
-$finish at simulation time 1375.00 ns
+$finish at simulation time  945.00 ns
            V C S   S i m u l a t i o n   R e p o r t 
-Time: 1375000 ps
-CPU Time:      0.260 seconds;       Data structure size:   0.3Mb
-Mon May 30 13:20:57 2022
-CPU time: .483 seconds to compile + .248 seconds to elab + .360 seconds to link + .315 seconds in simulation
+Time: 945000 ps
+CPU Time:      0.350 seconds;       Data structure size:   0.3Mb
+Tue May 31 15:55:13 2022
+CPU time: .437 seconds to compile + .536 seconds to elab + .355 seconds to link + .409 seconds in simulation
