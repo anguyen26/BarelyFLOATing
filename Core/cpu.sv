@@ -75,8 +75,8 @@ module cpu(
 	// Outputs next PC every clock cycle
 	register PCRegister(.dataIn(PCNext), .dataOut(PC), .writeEnable(!stallF), .reset, .clk);
 	always_comb begin
-		if((BranchE | divE) & (instr == instrE)) stallF = 0; //branch determined
-		else if(Branch | div) stallF = 1; //branch upcoming
+		if((BranchE | ALUorFPUE) & (instr == instrE)) stallF = 0; //branch determined
+		else if(Branch | ALUorFPU) stallF = 1; //branch upcoming
 		else stallF = 0; //normal incrementing
 	end
 
