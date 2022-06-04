@@ -1,23 +1,29 @@
-import sys
+import math
 
-f1 = open("sqrt_result_dec.txt", 'r')
-f2 = open("expected_sqrt.txt", 'r')
-f3 = open("input_x_dec.txt", 'r')
-
+finput = open("sqrt_input.txt", 'r')
+foutput = open("converted.txt", 'r')
 fdiff = open("sqrt_diff.txt", 'w')
 fraw = open("sqrt_diff_raw.txt", 'w')
+error = []
 
-for (line1, line2, line3) in zip(f1, f2, f3):
-    diff = float(line1)-float(line2)
+for (lineIn, lineOut) in zip(finput, foutput):
+    expected = math.sqrt(float(lineIn))
+    diff = expected - float(lineOut)
+    error.append(abs(diff))
     fraw.write(str(diff) + "\n")
     fdiff.write("===============================\n")
-    fdiff.write("----sqrt(" + str(line3.split("\n")[0]) + ")----\n")
-    fdiff.write("expected: " + str(line2))
-    fdiff.write("calculated: " + str(line1))
+    fdiff.write("----sqrt(" + str(lineIn.split("\n")[0]) + ")----\n")
+    fdiff.write("expected: " + str(expected) + "\n")
+    fdiff.write("calculated: " + str(lineOut))
     fdiff.write("ERROR = " + str(diff) + "\n")
-
-f1.close()
-f2.close()
-f3.close()
+    
+max_error = max(error)
+fdiff.write("===============================\n")
+fdiff.write("===============================\n")
+fdiff.write("MAX ERROR = " + str(max_error) + "\n")
+print("Square root computations completed within accuracy of +/-" + str(max_error)) 
+print("View sqrt_diff.txt for details") 
+finput.close()
+foutput.close()
 fdiff.close()
 fraw.close()

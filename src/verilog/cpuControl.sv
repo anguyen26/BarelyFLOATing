@@ -270,9 +270,9 @@ module cpuControl(
 				Reg3Loc = 2'b00;
  				selOpA = 1'b0;
  				selOpB = 3'd0;
-                FPUOp = 'X;
+                FPUOp = '0;
 				ALUOp = 3'd3;
-                ShiftDir = 'X;
+                ShiftDir = '0;
 				brSel = 2'b11;
 				brEx = 0;
  				selWrData = 2'b01;

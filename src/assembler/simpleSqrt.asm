@@ -1,6 +1,4 @@
- MOVS 0, #134
- MOVS 6, #7
- LSLS 0, 0, 6 // R0 = 128
+ LDR 0, [5, #0]        // R0 = 127.5
  MOVS 1, #127
  MOVS 6, #7
  LSLS 1, 1, 6
@@ -30,5 +28,5 @@
  FDIV 1, 6, 7
  B #-10
  MOVS 0, #0 // store result in dataMem[0]
- STR 1, [0, #0]
+ STR 1, [0, #1]
  B #0

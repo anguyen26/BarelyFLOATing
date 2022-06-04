@@ -38,12 +38,14 @@ module cpuStim();
 
 		f1 = $fopen("convertMe.txt", "w");
 		
+		$fwrite(f1,"%b\n", testCpu.dataMemory.mem[1]);
+        /*
 		for (int i=0; i<65536; i++) begin
 		    if (testCpu.dataMemory.mem[i] != 16'd0) begin;
 		        $fwrite(f1,"%b\n", testCpu.dataMemory.mem[i]);
 		    end
 		end
-
+*/
         $fclose(f1);
         
 		/*

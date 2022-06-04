@@ -21,3 +21,4 @@
 ../../src/verilog/fp_mul.sv
 ../../src/verilog/fpu.sv
 ../../src/verilog/fp_div.sv
+../../src/verilog/flagsreg.sv

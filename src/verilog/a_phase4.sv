@@ -11,6 +11,9 @@ module a_phase4 (
 				if(EN[i]) begin
 					OUT[i] = IN[i];
 				end
+                else begin
+                    OUT[i] = 'X;
+                end
 			end
 		end
 	end

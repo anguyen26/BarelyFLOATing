@@ -6,7 +6,7 @@ Warning-[DEBUG_DEP] Option will be deprecated
 Command: vcs -f cpu.include +v2k -R -sverilog -full64 -debug_pp -timescale=1ns/10ps \
 -l cpu.log
                          Chronologic VCS (TM)
-       Version S-2021.09-SP1_Full64 -- Sat Jun  4 17:03:19 2022
+       Version S-2021.09-SP1_Full64 -- Sat Jun  4 22:10:29 2022
 
                     Copyright (c) 1991 - 2021 Synopsys, Inc.
    This software and the associated documentation are proprietary to Synopsys,
@@ -47,16 +47,18 @@ Parsing design file '../../src/verilog/fp_add.sv'
 Parsing design file '../../src/verilog/fp_mul.sv'
 Parsing design file '../../src/verilog/fpu.sv'
 Parsing design file '../../src/verilog/fp_div.sv'
+Parsing design file '../../src/verilog/flagsreg.sv'
 Top Level Modules:
        cpuStim
        mux3x16_16
        register
+       flagsreg
 TimeScale is 1 ps / 1 ps
 Starting vcs inline pass...
 
-12 modules and 0 UDP read.
-	However, due to incremental compilation, no re-compilation is necessary.
-make[2]: Entering directory `/home/nguyea9/ee478/sim/pre-syn/csrc'
+13 modules and 0 UDP read.
+recompiling module datamem
+	However, due to incremental compilation, only 1 module needs to be compiled. 
 rm -f _cuarc*.so _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
 ld -shared  -Bsymbolic --no-relax  -o .//../simv.daidir//_cuarc0.so objs/amcQw_d.o \
 
@@ -64,25 +66,24 @@ rm -f _cuarc0.so
 if [ -x ../simv ]; then chmod a-x ../simv; fi
 g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir \
 -Wl,-rpath=/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib -L/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib \
--Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _10808_archive_1.so _prev_archive_1.so \
+-Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _16682_archive_1.so _prev_archive_1.so \
 _cuarc0.so  SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o \
 rmar_llvm_0_0.o           -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile \
 -luclinative /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_tls.o   -Wl,-whole-archive \
 -lvcsucli    -Wl,-no-whole-archive          /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_save_restore_new.o \
 -ldl  -lc -lm -lpthread -ldl 
 ../simv up to date
-make[2]: Leaving directory `/home/nguyea9/ee478/sim/pre-syn/csrc'
 Command: /home/nguyea9/ee478/sim/pre-syn/./simv +v2k -a cpu.log
 Chronologic VCS simulator copyright 1991-2021
 Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  Jun  4 17:03 2022
+Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  Jun  4 22:10 2022
 Running benchmark: ../../src/assembler/simpleSqrt.v
 VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
-2290.00 ns Test Done
-$finish called from file "../../src/verilog/cpuStim.sv", line 103.
-$finish at simulation time 2290.00 ns
+3530.00 ns Test Done
+$finish called from file "../../src/verilog/cpuStim.sv", line 105.
+$finish at simulation time 3530.00 ns
            V C S   S i m u l a t i o n   R e p o r t 
-Time: 2290000 ps
-CPU Time:      0.300 seconds;       Data structure size:   0.3Mb
-Sat Jun  4 17:03:21 2022
-CPU time: .397 seconds to compile + .327 seconds to elab + .341 seconds to link + .323 seconds in simulation
+Time: 3530000 ps
+CPU Time:      0.230 seconds;       Data structure size:   0.3Mb
+Sat Jun  4 22:10:31 2022
+CPU time: .433 seconds to compile + .323 seconds to elab + .248 seconds to link + .257 seconds in simulation

@@ -1,10 +1,10 @@
 module flagsreg(
-    input logic clk, reset,
+    input logic reset,
     input logic [3:0] in, en,
     output logic [3:0] out
 );
 
-    always_ff @(posedge clk) begin
+    always_comb begin
         if (reset) begin
             out = 4'd0;
         end

@@ -23,7 +23,7 @@ module regfile (
     integer i;
     always_ff @(negedge clk) begin
         if (reset) begin
-            for (int i=1; i<13; i++) begin
+            for (int i=0; i<13; i++) begin
                 MEM[i] <= 16'd0;
             end
             MEM[13] <= 16'hFFFF;

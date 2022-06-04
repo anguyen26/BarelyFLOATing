@@ -23,7 +23,7 @@ source ${SRC_DIR}/library.tcl -echo -verbose
 # READ DESIGN
 # ==========================================================================
 # Read in the verilog, uniquify and save the CEL view.
-import_designs ../syn/design_files/$design_name.syn.v -format verilog -top $design_name
+import_designs ../syn/results/$design_name.syn.v -format verilog -top $design_name
 link
 
 # TIMING CONSTRAINTS

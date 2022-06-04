@@ -4,27 +4,27 @@ TESTID=1
 PASSED=0
 
 # runs 32 random sqrt(x) calcs
-32sqrt:
-	@ python3 clean_sqrt.py
+sqrt:
+	@ rm -f sqrt_input.txt
+	@ rm -f converted.txt
 	@ i=1; while [[ $$i -le $(NUM_TESTS) ]] ; do \
 		echo 'Running test #' $$i '...' ; \
-		$(MAKE) sqrt TESTID=$$i -i --no-print-directory; \
+		$(MAKE) simpleSqrt TEST=simpleSqrt TESTID=$$i -i --no-print-directory; \
 		((i = i + 1)) ; \
 		echo '--------------------------------------' ; \
 	done
-	@ python3 sqrt.py
-	@ python3 convert_sqrt_out.py
+	@ echo "Comparing expected results to actual results..."
 	@ python3 compare_sqrt.py
 
 log2: edit_tb vcs print_log2_result compare_to_log
-sqrt: dec_to_fp edit_tb vcs
-simple: edit_tb 
-	@ python3 clean_sqrt.py
-	$(MAKE) vcs
-	python3 convert_sqrt_out.py
-	cat sqrt_result_dec.txt
-	$(MAKE) read_out
-	cat converted.txt
+
+# runs 1 random sqrt(x) calc
+simpleSqrt: edit_tb 
+	@ echo 'Generating random input...'
+	@ echo 'Input ='
+	@ python3 genSqrtTest.py
+	@ $(MAKE) vcs
+	@ $(MAKE) read_vcs_out
 
 edit_tb:
 	@ sed -i 's;^`define\(.*\)";`define BENCHMARK "../../src/assembler/$(TEST).v"; g' \
@@ -43,7 +43,7 @@ dec_to_fp:
 	@ python3 convert_x.py
 
 vcs:
-	@ echo "Running instructions on BarelyFLOATing CPU..."
+	@ echo "Running algorithm on BarelyFLOATing CPU..."
 	@ vcs -f cpu.include +v2k -R -sverilog -full64 -debug_pp \
 		-timescale=1ns/10ps -l cpu.log
 	@ sed -i 's,^[ \t]*,,' sv_output.txt
@@ -53,6 +53,7 @@ vcs:
 dve:
 	@ dve -full64 -vpd vcdplus.vpd -session session.vcdplus.vpd.tcl &
 
-read_out:
+read_vcs_out:
 	@ echo "Converting binary results to decimal..."
-	@ python3 convertFPUout.py convertMe.txt
+	@ echo "Result ="
+	@ python3 bfloatToDec.py convertMe.txt converted.txt

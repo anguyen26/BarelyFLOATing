@@ -48,7 +48,8 @@ def bfloat_to_dec(bits):
 # print("smallestnum="+str(test2))
 
 def dec_to_bfloat(num):
-    print("num = "+str(num))
+    print(num)
+    # print("num = "+str(num))
     if (num < 0):
         sign = 1
     else:
@@ -60,14 +61,14 @@ def dec_to_bfloat(num):
 
     # format exponent
     exponent = exponent + 127
-    print("exponent = "+str(exponent))
+    # print("exponent = "+str(exponent))
     exponent = format(exponent, '08b')
-    print("exponent = "+str(exponent))
+    # print("exponent = "+str(exponent))
 
     # format mantissa
     mantissa = mantissa * (2**7)
     mantissa = format(int(mantissa), '07b')
-    print("mantissa = "+str(mantissa))
+    # print("mantissa = "+str(mantissa))
 
     binary = str(sign) + exponent + mantissa
     return binary

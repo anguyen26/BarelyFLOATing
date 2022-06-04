@@ -39,7 +39,8 @@ module datamem (
 	// Handle the writes.
 	always_ff @(posedge clk) begin
         if (reset) begin
-            for (int i=0; i<`DATA_MEM_SIZE; i++) begin
+			mem[0] <= 16'b0100010000011111;
+            for (int i=1; i<`DATA_MEM_SIZE; i++) begin
                 mem[i] <= 16'd0;
             end
         end
