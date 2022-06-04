@@ -1,2 +1,0 @@
-    MOVS R0, #0
-    ADDS R0, R0, #4

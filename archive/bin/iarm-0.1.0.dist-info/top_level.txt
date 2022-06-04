@@ -1,2 +1,0 @@
-iarm
-iarm_kernel

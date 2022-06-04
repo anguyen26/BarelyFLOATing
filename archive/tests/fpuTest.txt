@@ -1,9 +1,0 @@
- NOOP
- MOVS R0, #90
- MOVS R1, #18
- FDIV R2, R0, R1
- FMUL R3, R2, R1
- FCMP R3, R2
- BNE 2
- B -7
- B 0
