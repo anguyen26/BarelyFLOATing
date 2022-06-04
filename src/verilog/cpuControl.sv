@@ -30,7 +30,7 @@ module cpuControl(
 	logic [9:0] opcode;
 	assign opcode =  instr[15:6];
 
-always_comb begin
+    always_comb begin
 		// MOVE =========================================
 		casez (opcode)
 			// MOVS
@@ -70,6 +70,7 @@ always_comb begin
                 FPUOp = 'X;
 				brSel = 2'b11;
 				brEx = 0;
+                ShiftDir = 'X;
  				selWrData = 2'b01;
 			end
 		// ADD =========================================
@@ -212,6 +213,7 @@ always_comb begin
 				ALUOp = 3'b001;
 				brSel = 2'b11;
 				brEx = 0;
+                ShiftDir = 'X;
                 selWrData = 'X;
 			end
 		// LOGICAL =========================================
@@ -747,6 +749,7 @@ always_comb begin
 				Branch = 1;
 				RegWrite = 1;
 				MemWrite = 0;
+                MemRead = 'X;
 				keepFlags = 4'b0000;
                 Reg1Loc = 'X;
                 Reg2Loc = 'X;
@@ -904,23 +907,23 @@ always_comb begin
  				selWrData = 2'b01;
 			end
             default: begin
-				ALUorFPU = 'X;
-				Branch = 'X;
-				RegWrite = 'X;
-				MemWrite = 'X;
-				MemRead = 'X;
-				keepFlags = 'X;
-				Reg1Loc = 'X;
-				Reg2Loc = 'X;
-                Reg3Loc = 'X;
- 				selOpA = 'X;
- 				selOpB = 'X;
-				FPUOp = 'X;
-                ALUOp = 'X;
-				brSel = 'X;
-				brEx = 'X;
- 				selWrData = 'X;
-                ShiftDir = 'X;
+				ALUorFPU = '0;
+				Branch = '0;
+				RegWrite = '0;
+				MemWrite = '0;
+				MemRead = '0;
+				keepFlags = '0;
+				Reg1Loc = '0;
+				Reg2Loc = '0;
+                Reg3Loc = '0;
+ 				selOpA = '0;
+ 				selOpB = '0;
+				FPUOp = '0;
+                ALUOp = '0;
+				brSel = '0;
+				brEx = '0;
+ 				selWrData = '0;
+                ShiftDir = '0;
             end
 		endcase
 	end

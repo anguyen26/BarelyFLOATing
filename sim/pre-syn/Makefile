@@ -1,5 +1,5 @@
-TEST=log2
-NUM_TESTS=32
+TEST=simpleSqrt
+NUM_TESTS=1
 TESTID=1
 PASSED=0
 
@@ -18,9 +18,16 @@ PASSED=0
 
 log2: edit_tb vcs print_log2_result compare_to_log
 sqrt: dec_to_fp edit_tb vcs
+simple: edit_tb 
+	@ python3 clean_sqrt.py
+	$(MAKE) vcs
+	python3 convert_sqrt_out.py
+	cat sqrt_result_dec.txt
+	$(MAKE) read_out
+	cat converted.txt
 
 edit_tb:
-	@ sed -i 's;^`define\(.*\)";`define BENCHMARK "../../assembler/$(TEST).v"; g' \
+	@ sed -i 's;^`define\(.*\)";`define BENCHMARK "../../src/assembler/$(TEST).v"; g' \
 		../../src/verilog/instructmem.sv
 
 print_log2_result:
@@ -44,5 +51,8 @@ vcs:
 	@ sed -i 's,\[[ \t]*,[,' sv_output.txt
 
 dve:
-	@ dve -full64 -vpd vcdplus.vpd -session "session.vcdplus.vpd.tcl" &
+	@ dve -full64 -vpd vcdplus.vpd &
 
+read_out:
+	@ echo "Converting binary results to decimal..."
+	@ python3 convertFPUout.py convertMe.txt

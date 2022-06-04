@@ -1,10 +1,17 @@
 `timescale 1ps/1ps
 module cpu(
-	input logic clk, reset
+	input logic clk, reset,
+    input logic [15:0] dataOut,
+    input logic [15:0] instr,
+    output logic [15:0] PC,
+    output logic [15:0] aluOutput,
+    output logic MemWriteE,
+    output logic MemReadE,
+    output logic [15:0] ReadData2E
 );
 	
 	// Program Counter logic
-	logic [15:0] 	PC, PCNext, PCE, PCNext_preStall;
+	logic [15:0] 	PCNext, PCE, PCNext_preStall;
 	logic [15:0] 	PCPlus1;
 	logic 		stallF;
 	
@@ -14,15 +21,15 @@ module cpu(
 	logic 		Branch, BranchE, Branch_pre;
 
 	// Instruction Logic	 
-	logic [15:0] 	instr, instrE;
+	logic [15:0] 	instrE;
 	
 	// ALU and RegFile Data logics
 	logic [15:0] 	ReadData1, ReadData2, selectedData2, imm3, imm5, imm7, imm8,
-			selectedExtended, aluOutput, shiftOutput,
-			computationResult, dataOut, opA, opB, whichMOV, 
+			selectedExtended, shiftOutput,
+			computationResult, opA, opB, whichMOV, 
 			regWrData, MOVorLR, opA_pre, opB_pre;
 
-	logic [15:0]	ReadData1E, ReadData2E, selectedData2E,
+	logic [15:0]	ReadData1E, selectedData2E,
 			selectedExtendedE, aluOutputE, shiftOutputE,
 			computationResultE, dataOutE, opAE, opBE, 
 			whichMOVE, MOVorLRE, prev_calc;
@@ -53,7 +60,7 @@ module cpu(
 	logic [3:0] 	keepFlags;
 	logic [2:0]	selOpB;
 
-	logic 		RegWriteE, MemWriteE, MemReadE, ALUSrcE, brExE, selOpAE;
+	logic 		RegWriteE, ALUSrcE, brExE, selOpAE;
 	logic [1:0] 	ShiftDirE, brSelE, Reg1LocE, Reg2LocE, Reg3LocE, selWrDataE;
 	logic [3:0] 	keepFlagsE;
 	logic [2:0]	selOpBE;
@@ -66,15 +73,16 @@ module cpu(
 	//********************************************************************************************\\
 
 	// Outputs next PC every clock cycle
-	register PCRegister(.dataIn(PCNext), .dataOut(PC), .writeEnable(!stallF), .reset, .clk);
-	always_comb begin
+	// register PCRegister(.dataIn(PCNext), .dataOut(PC), .writeEnable(!stallF), .reset, .clk);
+    pipelineReg PCRegister(.D(PCNext), .Q(PC), .en(!stallF), .clear(reset), .clk);
+    always_comb begin
 		if(BranchE & (instr == instrE)) stallF = 0; //branch determined
 		else if(Branch) stallF = 1; //branch upcoming
 		else stallF = 0; //normal incrementing
 	end
 
 	// Outputs the instruction that correlates with the current clock cycle's PC
-	instructmem instructionMemory(.address(PC), .instruction(instr), .clk);
+	// instructmem instructionMemory(.address(PC), .instruction(instr), .clk);
 
 	//********************************************************************************************\\
 	//************************************** Register Fetch **************************************\\
@@ -90,7 +98,7 @@ module cpu(
 	forwardingUnit forward(.RA1(reg1Addr), .RA2(reg2Addr), .WA3W(regWriteAddrE), .RegWriteW(RegWriteE), .Forward1, .Forward2);
 
 	// Instantiates the register files. Write address and RegWrite are controlled by the Write Back stage. 
-	regfile registers(.clk(!clk), .reset, .wr_en(RegWriteE), .wr_data(regWrData), .PC, .wr_addr(regWriteAddrE), .rd_data_0(ReadData1), .rd_data_1(ReadData2), 
+	regfile registers(.clk(clk), .reset, .wr_en(RegWriteE), .wr_data(regWrData), .PC, .wr_addr(regWriteAddrE), .rd_data_0(ReadData1), .rd_data_1(ReadData2), 
 						.rd_addr_0(reg1Addr), .rd_addr_1(reg2Addr));
 	
 	//*************** Control Unit *****************\\
@@ -115,7 +123,8 @@ module cpu(
 	mux4x16_16 branchAddrMux(.i0(linkBrAddr), .i1(condBrAddr), .i2(uncondBrAddr), .i3(16'd1), .sel(brSelE), .out(branchAddr));
 	assign shiftedBranchAddr = branchAddr << 2;
 	// add to PC
-	adder brancherAdder(.in1(PC), .in2(shiftedBranchAddr), .out(pcOffset), .cout());
+	// adder brancherAdder(.in1(PC), .in2(shiftedBranchAddr), .out(pcOffset), .cout());
+    assign pcOffset = PC + shiftedBranchAddr;
 
 	// Chooses between either the normal PC offset from standard branch or branch exchange
 	assign PCNext_preStall = brExE ? (brExcAddr << 2) : pcOffset;
@@ -200,7 +209,7 @@ module cpu(
 	
 
 	// Instantiates the Data Memory 65k x 16b
-	datamem dataMemory(.address(aluOutput), .write_enable(MemWriteE), .read_enable(MemReadE), .write_data(ReadData2E), .clk, .reset, .read_data(dataOut));
+	// datamem dataMemory(.address(aluOutput), .write_enable(MemWriteE), .read_enable(MemReadE), .write_data(ReadData2E), .clk, .reset, .read_data(dataOut));
 
 
 	//********************************************************************************************\\
@@ -211,7 +220,8 @@ module cpu(
 	assign imm8 = {{8{1'b0}}, {instrE[7:0]}};
 	// Select type of MOV
 	assign whichMOV = instrE[13] ? imm8 : ReadData2E;
-	adder LRAdder(.in1(PCE), .in2(16'd4), .out(PCPlus1), .cout());
+	// adder LRAdder(.in1(PCE), .in2(16'd4), .out(PCPlus1), .cout());
+    assign PCPlus1 = PCE + 16'd4;
 	assign MOVorLR = brSelE[0] ? whichMOV : (PCPlus1 >> 2);
 
 	// Based on the instruction choose between the ALU ouput/shifter output/MOV output

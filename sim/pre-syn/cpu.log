@@ -6,7 +6,7 @@ Warning-[DEBUG_DEP] Option will be deprecated
 Command: vcs -f cpu.include +v2k -R -sverilog -full64 -debug_pp -timescale=1ns/10ps \
 -l cpu.log
                          Chronologic VCS (TM)
-       Version S-2021.09-SP1_Full64 -- Mon May 30 22:18:01 2022
+       Version S-2021.09-SP1_Full64 -- Sat Jun  4 17:03:19 2022
 
                     Copyright (c) 1991 - 2021 Synopsys, Inc.
    This software and the associated documentation are proprietary to Synopsys,
@@ -24,50 +24,39 @@ Command: vcs -f cpu.include +v2k -R -sverilog -full64 -debug_pp -timescale=1ns/1
             Inclusivity and Diversity" (Refer to article 000036315 at
                         https://solvnetplus.synopsys.com)
 
+Parsing design file '../../src/verilog/cpuStim.sv'
+Parsing design file '../../src/verilog/datamem.sv'
+Parsing design file '../../src/verilog/instructmem.sv'
+Parsing design file '../../src/verilog/top.sv'
+Parsing design file '../../src/verilog/cpu.sv'
 Parsing design file '../../src/verilog/mux3x4_4.sv'
 Parsing design file '../../src/verilog/mux3x16_16.sv'
 Parsing design file '../../src/verilog/mux4x16_16.sv'
 Parsing design file '../../src/verilog/mux4x4_4.sv'
 Parsing design file '../../src/verilog/mux5x16_16.sv'
-Parsing design file '../../src/verilog/full_adder.sv'
 Parsing design file '../../src/verilog/shifter.sv'
-Parsing design file '../../src/verilog/adder.sv'
-Parsing design file '../../src/verilog/fullAdder.sv'
 Parsing design file '../../src/verilog/alu.sv'
 Parsing design file '../../src/verilog/cpuControl.sv'
 Parsing design file '../../src/verilog/pipelineReg.sv'
 Parsing design file '../../src/verilog/register.sv'
-Parsing design file '../../src/verilog/register_2.sv'
-Parsing design file '../../src/verilog/register_3.sv'
-Parsing design file '../../src/verilog/register_4.sv'
-Parsing design file '../../src/verilog/register_5.sv'
 Parsing design file '../../src/verilog/regfile.sv'
-Parsing design file '../../src/verilog/datamem.sv'
-Parsing design file '../../src/verilog/instructmem.sv'
-Parsing design file '../../src/verilog/rippleCarryAdder.sv'
 Parsing design file '../../src/verilog/forwardingUnit.sv'
 Parsing design file '../../src/verilog/D_FF.sv'
 Parsing design file '../../src/verilog/a_phase4.sv'
-Parsing design file '../../src/verilog/cpu.sv'
 Parsing design file '../../src/verilog/fp_add.sv'
 Parsing design file '../../src/verilog/fp_mul.sv'
 Parsing design file '../../src/verilog/fpu.sv'
 Parsing design file '../../src/verilog/fp_div.sv'
-Parsing design file '../../src/verilog/cpuStim.sv'
 Top Level Modules:
-       mux3x16_16
-       register_2
-       register_3
-       register_4
-       register_5
        cpuStim
+       mux3x16_16
+       register
 TimeScale is 1 ps / 1 ps
 Starting vcs inline pass...
 
-17 modules and 0 UDP read.
-recompiling module cpuStim
-	However, due to incremental compilation, only 1 module needs to be compiled. 
-make[1]: Entering directory `/home/nguyea9/ee478/sim/pre-syn/csrc'
+12 modules and 0 UDP read.
+	However, due to incremental compilation, no re-compilation is necessary.
+make[2]: Entering directory `/home/nguyea9/ee478/sim/pre-syn/csrc'
 rm -f _cuarc*.so _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
 ld -shared  -Bsymbolic --no-relax  -o .//../simv.daidir//_cuarc0.so objs/amcQw_d.o \
 
@@ -75,26 +64,25 @@ rm -f _cuarc0.so
 if [ -x ../simv ]; then chmod a-x ../simv; fi
 g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir \
 -Wl,-rpath=/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib -L/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib \
--Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _15216_archive_1.so _prev_archive_1.so \
+-Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _10808_archive_1.so _prev_archive_1.so \
 _cuarc0.so  SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o \
 rmar_llvm_0_0.o           -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile \
 -luclinative /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_tls.o   -Wl,-whole-archive \
 -lvcsucli    -Wl,-no-whole-archive          /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_save_restore_new.o \
 -ldl  -lc -lm -lpthread -ldl 
 ../simv up to date
-make[1]: Leaving directory `/home/nguyea9/ee478/sim/pre-syn/csrc'
+make[2]: Leaving directory `/home/nguyea9/ee478/sim/pre-syn/csrc'
 Command: /home/nguyea9/ee478/sim/pre-syn/./simv +v2k -a cpu.log
 Chronologic VCS simulator copyright 1991-2021
 Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  May 30 22:18 2022
+Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  Jun  4 17:03 2022
+Running benchmark: ../../src/assembler/simpleSqrt.v
 VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
-Running benchmark: ../../assembler/log2.v
-601075.00 ns Test Done
-sqrt(x) = 0100000001101111
-$finish called from file "../../src/verilog/cpuStim.sv", line 88.
-$finish at simulation time 601075.00 ns
+2290.00 ns Test Done
+$finish called from file "../../src/verilog/cpuStim.sv", line 103.
+$finish at simulation time 2290.00 ns
            V C S   S i m u l a t i o n   R e p o r t 
-Time: 601075000 ps
-CPU Time:      1.270 seconds;       Data structure size:   0.3Mb
-Mon May 30 22:18:05 2022
-CPU time: .477 seconds to compile + .348 seconds to elab + .363 seconds to link + 1.303 seconds in simulation
+Time: 2290000 ps
+CPU Time:      0.300 seconds;       Data structure size:   0.3Mb
+Sat Jun  4 17:03:21 2022
+CPU time: .397 seconds to compile + .327 seconds to elab + .341 seconds to link + .323 seconds in simulation

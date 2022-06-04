@@ -21,7 +21,7 @@ module regfile (
 
 	//write data on positive edge of clock when wr_en is high
     integer i;
-    always_ff @(posedge clk) begin
+    always_ff @(negedge clk) begin
         if (reset) begin
             for (int i=1; i<13; i++) begin
                 MEM[i] <= 16'd0;

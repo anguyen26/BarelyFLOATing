@@ -14,10 +14,11 @@
 //`define BENCHMARK "../benchmarks/test10_forwarding.arm"
 //`define BENCHMARK "../benchmarks/test11_Sort.arm"
 //`define BENCHMARK "../benchmarks/test12_Division.arm"
-`define BENCHMARK "../../assembler/log2.v"
+`define BENCHMARK "../../src/assembler/simpleSqrt.v"
 `timescale 1ns/10ps
 
 // How many bytes are in our memory?  Must be a power of two.
+// INSTRUCTION MEMORY FOR PRE-SYN SIMULATIONS
 `define INSTRUCT_MEM_SIZE           1024 
 	
 module instructmem (

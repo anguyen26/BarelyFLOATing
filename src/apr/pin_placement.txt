@@ -1,0 +1,15 @@
+type = offset
+defaultOffset = 100.0
+
+#W, 11.15
+reset,layer=M4, +0.8
+clk,layer=M4, +0.8
+dataOut[15:0],layer=M4, pitch=0.4 +0.8
+instr[15:0],layer=M4, pitch=0.4 +0.8
+
+#E, 181.1
+aluOutput[15:0],layer=M4, pitch=0.4 +0.8
+MemWriteE,layer=M4, +0.8
+MemReadE,layer=M4, +0.8
+ReadData2E[15:0],layer=M4, pitch=0.4 +0.8
+PC[15:0],layer=M4, pitch=0.4 +0.8

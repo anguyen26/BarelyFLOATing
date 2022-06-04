@@ -1,0 +1,2223 @@
+
+Warning-[DEBUG_DEP] Option will be deprecated
+  The option '-debug_pp' will be deprecated in a future release.  Please use 
+  '-debug_acc+pp+dmptf -debug_region+cell+encrypt' instead.
+
+Command: vcs -f cpu.include +v2k -R -sverilog -full64 -debug_pp -timescale=1ns/10ps \
+-l cpu.log
+                         Chronologic VCS (TM)
+       Version S-2021.09-SP1_Full64 -- Sat Jun  4 17:03:28 2022
+
+                    Copyright (c) 1991 - 2021 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+
+Parsing design file '/home/lab.apps/vlsiapps/kits/tsmc/N65RF/1.0c_cdb/digital/Front_End/verilog/tcbn65gplus_140b/tcbn65gplus.v'
+Parsing design file '../../src/verilog/cpuStim.sv'
+Parsing design file '../../src/verilog/datamem.sv'
+Parsing design file '../../src/verilog/instructmem.sv'
+Parsing design file '../../src/verilog/synTop.sv'
+Parsing design file '../../sapr/syn/results/cpu.syn.v'
+Top Level Modules:
+       AN2D4
+       AN2D8
+       AN2XD1
+       AN3D1
+       AN3D2
+       AN3D4
+       AN3D8
+       AN3XD1
+       AN4D1
+       AN4D2
+       AN4D4
+       AN4D8
+       AN4XD1
+       ANTENNA
+       AO211D1
+       AO211D2
+       AO211D4
+       AO21D1
+       AO21D2
+       AO21D4
+       AO221D0
+       AO221D1
+       AO221D2
+       AO221D4
+       AO222D0
+       AO222D1
+       AO222D2
+       AO222D4
+       AO22D1
+       AO22D2
+       AO22D4
+       AO31D0
+       AO31D1
+       AO31D2
+       AO31D4
+       AO32D0
+       AO32D1
+       AO32D2
+       AO32D4
+       AO33D0
+       AO33D1
+       AO33D2
+       AO33D4
+       AOI211D2
+       AOI211D4
+       AOI211XD1
+       AOI211XD2
+       AOI211XD4
+       AOI21D2
+       AOI221D1
+       AOI221D2
+       AOI221D4
+       AOI221XD4
+       AOI222D1
+       AOI222D2
+       AOI222D4
+       AOI222XD4
+       AOI22D1
+       AOI22D2
+       AOI22D4
+       AOI31D1
+       AOI31D2
+       AOI31D4
+       AOI32D0
+       AOI32D1
+       AOI32D2
+       AOI32D4
+       AOI32XD4
+       AOI33D0
+       AOI33D1
+       AOI33D2
+       AOI33D4
+       AOI33XD4
+       BENCD1
+       BENCD2
+       BENCD4
+       BHD
+       BMLD1
+       BMLD2
+       BMLD4
+       BUFFD0
+       BUFFD12
+       BUFFD16
+       BUFFD20
+       BUFFD24
+       BUFFD2
+       BUFFD3
+       BUFFD4
+       BUFFD6
+       BUFFD8
+       BUFTD0
+       BUFTD12
+       BUFTD16
+       BUFTD1
+       BUFTD20
+       BUFTD24
+       BUFTD2
+       BUFTD3
+       BUFTD4
+       BUFTD6
+       BUFTD8
+       CKAN2D0
+       CKAN2D1
+       CKAN2D2
+       CKAN2D4
+       CKAN2D8
+       CKBD0
+       CKBD12
+       CKBD16
+       CKBD20
+       CKBD24
+       CKBD2
+       CKBD3
+       CKBD4
+       CKBD6
+       CKBD8
+       CKLHQD12
+       CKLHQD16
+       CKLHQD1
+       CKLHQD20
+       CKLHQD24
+       CKLHQD2
+       CKLHQD3
+       CKLHQD4
+       CKLHQD6
+       CKLHQD8
+       CKLNQD12
+       CKLNQD16
+       CKLNQD1
+       CKLNQD20
+       CKLNQD24
+       CKLNQD2
+       CKLNQD3
+       CKLNQD4
+       CKLNQD6
+       CKLNQD8
+       CKMUX2D0
+       CKMUX2D1
+       CKMUX2D2
+       CKMUX2D4
+       CKND0
+       CKND12
+       CKND16
+       CKND1
+       CKND20
+       CKND24
+       CKND2D0
+       CKND2D1
+       CKND2D3
+       CKND2D4
+       CKND2D8
+       CKND4
+       CKND6
+       CKND8
+       CKXOR2D0
+       CKXOR2D1
+       CKXOR2D2
+       CKXOR2D4
+       CMPE42D2
+       DCAP16
+       DCAP32
+       DCAP4
+       DCAP64
+       DCAP8
+       DCAP
+       DEL005
+       DEL015
+       DEL01
+       DEL02
+       DEL0
+       DEL1
+       DEL2
+       DEL3
+       DEL4
+       DFCND1
+       DFCND2
+       DFCND4
+       DFCNQD1
+       DFCNQD2
+       DFCNQD4
+       DFCSND1
+       DFCSND2
+       DFCSND4
+       DFCSNQD1
+       DFCSNQD2
+       DFCSNQD4
+       DFD1
+       DFD2
+       DFD4
+       DFKCND1
+       DFKCND2
+       DFKCND4
+       DFKCNQD1
+       DFKCNQD2
+       DFKCNQD4
+       DFKCSND1
+       DFKCSND2
+       DFKCSND4
+       DFKSND1
+       DFKSND2
+       DFKSND4
+       DFNCND1
+       DFNCND2
+       DFNCND4
+       DFNCSND1
+       DFNCSND2
+       DFNCSND4
+       DFND2
+       DFND4
+       DFNSND1
+       DFNSND2
+       DFNSND4
+       DFQD4
+       DFSND1
+       DFSND2
+       DFSND4
+       DFSNQD1
+       DFSNQD2
+       DFSNQD4
+       DFXD1
+       DFXD2
+       DFXD4
+       DFXQD1
+       DFXQD2
+       DFXQD4
+       EDFCND1
+       EDFCND2
+       EDFCND4
+       EDFCNQD1
+       EDFCNQD2
+       EDFCNQD4
+       EDFD1
+       EDFD2
+       EDFD4
+       EDFKCND1
+       EDFKCND2
+       EDFKCND4
+       EDFKCNQD1
+       EDFKCNQD2
+       EDFKCNQD4
+       EDFQD2
+       EDFQD4
+       FA1D1
+       FA1D2
+       FCICIND1
+       FCICIND2
+       FCICOND1
+       FCICOND2
+       FCSICIND1
+       FCSICIND2
+       FCSICOND1
+       FCSICOND2
+       FICIND1
+       FICIND2
+       FICOND1
+       FICOND2
+       FIICOND1
+       FIICOND2
+       GAN2D1
+       GAN2D2
+       GAOI21D1
+       GAOI21D2
+       GAOI22D1
+       GBUFFD1
+       GBUFFD2
+       GBUFFD3
+       GBUFFD4
+       GBUFFD8
+       GDCAP10
+       GDCAP2
+       GDCAP3
+       GDCAP4
+       GDCAP
+       GDFCNQD1
+       GDFQD1
+       GFILL10
+       GFILL2
+       GFILL3
+       GFILL4
+       GFILL
+       GINVD1
+       GINVD2
+       GINVD3
+       GINVD4
+       GINVD8
+       GMUX2D1
+       GMUX2D2
+       GMUX2ND1
+       GMUX2ND2
+       GND2D1
+       GND2D2
+       GND2D3
+       GND2D4
+       GND3D1
+       GND3D2
+       GNR2D1
+       GNR2D2
+       GNR3D1
+       GNR3D2
+       GOAI21D1
+       GOAI21D2
+       GOR2D1
+       GOR2D2
+       GSDFCNQD1
+       GTIEH
+       GTIEL
+       GXNR2D1
+       GXNR2D2
+       GXOR2D1
+       GXOR2D2
+       HA1D1
+       HA1D2
+       HA1D4
+       HCOSCIND1
+       HCOSCIND2
+       HCOSCOND1
+       HCOSCOND2
+       HICIND1
+       HICIND2
+       HICOND1
+       HICOND2
+       IAO21D1
+       IAO21D2
+       IAO21D4
+       IAO22D0
+       IAO22D1
+       IAO22D2
+       IAO22D4
+       IIND4D0
+       IIND4D1
+       IIND4D2
+       IIND4D4
+       IINR4D0
+       IINR4D1
+       IINR4D2
+       IINR4D4
+       IND2D2
+       IND2D4
+       IND3D2
+       IND3D4
+       IND4D1
+       IND4D2
+       IND4D4
+       INR2D0
+       INR2D1
+       INR2D2
+       INR2D4
+       INR2XD1
+       INR2XD2
+       INR2XD4
+       INR3D1
+       INR3D2
+       INR3D4
+       INR4D1
+       INR4D2
+       INR4D4
+       INVD12
+       INVD16
+       INVD20
+       INVD24
+       INVD3
+       INVD4
+       INVD6
+       INVD8
+       IOA21D1
+       IOA21D2
+       IOA21D4
+       IOA22D0
+       IOA22D1
+       IOA22D2
+       IOA22D4
+       LHCND1
+       LHCND2
+       LHCND4
+       LHCNDD1
+       LHCNDD2
+       LHCNDD4
+       LHCNDQD1
+       LHCNDQD2
+       LHCNDQD4
+       LHCNQD1
+       LHCNQD2
+       LHCNQD4
+       LHCSND1
+       LHCSND2
+       LHCSND4
+       LHCSNDD1
+       LHCSNDD2
+       LHCSNDD4
+       LHCSNDQD1
+       LHCSNDQD2
+       LHCSNDQD4
+       LHCSNQD1
+       LHCSNQD2
+       LHCSNQD4
+       LHD1
+       LHD2
+       LHD4
+       LHQD2
+       LHQD4
+       LHSND1
+       LHSND2
+       LHSND4
+       LHSNDD1
+       LHSNDD2
+       LHSNDD4
+       LHSNDQD1
+       LHSNDQD2
+       LHSNDQD4
+       LHSNQD1
+       LHSNQD2
+       LHSNQD4
+       LNCND1
+       LNCND2
+       LNCND4
+       LNCNDD1
+       LNCNDD2
+       LNCNDD4
+       LNCNDQD1
+       LNCNDQD2
+       LNCNDQD4
+       LNCNQD1
+       LNCNQD2
+       LNCNQD4
+       LNCSND1
+       LNCSND2
+       LNCSND4
+       LNCSNDD1
+       LNCSNDD2
+       LNCSNDD4
+       LNCSNDQD1
+       LNCSNDQD2
+       LNCSNDQD4
+       LNCSNQD1
+       LNCSNQD2
+       LNCSNQD4
+       LND1
+       LND2
+       LND4
+       LNQD1
+       LNQD2
+       LNQD4
+       LNSND1
+       LNSND2
+       LNSND4
+       LNSNDD1
+       LNSNDD2
+       LNSNDD4
+       LNSNDQD1
+       LNSNDQD2
+       LNSNDQD4
+       LNSNQD1
+       LNSNQD2
+       LNSNQD4
+       MAOI222D1
+       MAOI222D2
+       MAOI222D4
+       MAOI22D1
+       MAOI22D2
+       MAOI22D4
+       MOAI22D1
+       MOAI22D2
+       MOAI22D4
+       MUX2D1
+       MUX2D2
+       MUX2D4
+       MUX2ND1
+       MUX2ND2
+       MUX2ND4
+       MUX3D0
+       MUX3D1
+       MUX3D2
+       MUX3D4
+       MUX3ND0
+       MUX3ND1
+       MUX3ND2
+       MUX3ND4
+       MUX4D0
+       MUX4D1
+       MUX4D2
+       MUX4D4
+       MUX4ND0
+       MUX4ND1
+       MUX4ND2
+       MUX4ND4
+       ND2D3
+       ND2D4
+       ND2D8
+       ND3D2
+       ND3D3
+       ND3D4
+       ND3D8
+       ND4D2
+       ND4D3
+       ND4D4
+       ND4D8
+       NR2D0
+       NR2D3
+       NR2D4
+       NR2D8
+       NR2XD2
+       NR2XD3
+       NR2XD4
+       NR2XD8
+       NR3D1
+       NR3D2
+       NR3D3
+       NR3D4
+       NR3D8
+       NR4D1
+       NR4D2
+       NR4D3
+       NR4D4
+       OA211D1
+       OA211D2
+       OA211D4
+       OA21D1
+       OA21D2
+       OA21D4
+       OA221D1
+       OA221D2
+       OA221D4
+       OA222D0
+       OA222D1
+       OA222D2
+       OA222D4
+       OA22D1
+       OA22D2
+       OA22D4
+       OA31D1
+       OA31D2
+       OA31D4
+       OA32D0
+       OA32D1
+       OA32D2
+       OA32D4
+       OA33D0
+       OA33D1
+       OA33D2
+       OA33D4
+       OAI211D2
+       OAI211D4
+       OAI21D2
+       OAI21D4
+       OAI221D1
+       OAI221D2
+       OAI221D4
+       OAI221XD4
+       OAI222D1
+       OAI222D2
+       OAI222D4
+       OAI222XD4
+       OAI22D1
+       OAI22D2
+       OAI22D4
+       OAI31D1
+       OAI31D2
+       OAI31D4
+       OAI32D1
+       OAI32D2
+       OAI32D4
+       OAI32XD4
+       OAI33D0
+       OAI33D1
+       OAI33D2
+       OAI33D4
+       OAI33XD4
+       OD18DCAP16
+       OD18DCAP32
+       OD18DCAP64
+       OR2D1
+       OR2D2
+       OR2D4
+       OR2D8
+       OR3D0
+       OR3D1
+       OR3D2
+       OR3D4
+       OR3D8
+       OR3XD1
+       OR4D1
+       OR4D2
+       OR4D4
+       OR4D8
+       OR4XD1
+       SDFCND0
+       SDFCND1
+       SDFCND2
+       SDFCND4
+       SDFCNQD0
+       SDFCNQD1
+       SDFCNQD2
+       SDFCNQD4
+       SDFCSND0
+       SDFCSND1
+       SDFCSND2
+       SDFCSND4
+       SDFCSNQD0
+       SDFCSNQD1
+       SDFCSNQD2
+       SDFCSNQD4
+       SDFD0
+       SDFD1
+       SDFD2
+       SDFD4
+       SDFKCND0
+       SDFKCND1
+       SDFKCND2
+       SDFKCND4
+       SDFKCNQD0
+       SDFKCNQD1
+       SDFKCNQD2
+       SDFKCNQD4
+       SDFKCSND0
+       SDFKCSND1
+       SDFKCSND2
+       SDFKCSND4
+       SDFKCSNQD0
+       SDFKCSNQD1
+       SDFKCSNQD2
+       SDFKCSNQD4
+       SDFKSND0
+       SDFKSND1
+       SDFKSND2
+       SDFKSND4
+       SDFKSNQD0
+       SDFKSNQD1
+       SDFKSNQD2
+       SDFKSNQD4
+       SDFNCND0
+       SDFNCND1
+       SDFNCND2
+       SDFNCND4
+       SDFNCSND0
+       SDFNCSND1
+       SDFNCSND2
+       SDFNCSND4
+       SDFND0
+       SDFND1
+       SDFND2
+       SDFND4
+       SDFNSND0
+       SDFNSND1
+       SDFNSND2
+       SDFNSND4
+       SDFQD0
+       SDFQD1
+       SDFQD2
+       SDFQD4
+       SDFQND0
+       SDFQND1
+       SDFQND2
+       SDFQND4
+       SDFSND0
+       SDFSND1
+       SDFSND2
+       SDFSND4
+       SDFSNQD0
+       SDFSNQD1
+       SDFSNQD2
+       SDFSNQD4
+       SDFXD0
+       SDFXD1
+       SDFXD2
+       SDFXD4
+       SDFXQD0
+       SDFXQD1
+       SDFXQD2
+       SDFXQD4
+       SEDFCND0
+       SEDFCND1
+       SEDFCND2
+       SEDFCND4
+       SEDFCNQD0
+       SEDFCNQD1
+       SEDFCNQD2
+       SEDFCNQD4
+       SEDFD0
+       SEDFD1
+       SEDFD2
+       SEDFD4
+       SEDFKCND0
+       SEDFKCND1
+       SEDFKCND2
+       SEDFKCND4
+       SEDFKCNQD0
+       SEDFKCNQD1
+       SEDFKCNQD2
+       SEDFKCNQD4
+       SEDFQD0
+       SEDFQD1
+       SEDFQD2
+       SEDFQD4
+       SEDFQND0
+       SEDFQND1
+       SEDFQND2
+       SEDFQND4
+       SEDFQNXD0
+       SEDFQNXD1
+       SEDFQNXD2
+       SEDFQNXD4
+       SEDFQXD0
+       SEDFQXD1
+       SEDFQXD2
+       SEDFQXD4
+       SEDFXD0
+       SEDFXD1
+       SEDFXD2
+       SEDFXD4
+       TIEH
+       TIEL
+       XNR2D2
+       XNR2D4
+       XNR3D1
+       XNR3D2
+       XNR3D4
+       XNR4D0
+       XNR4D1
+       XNR4D2
+       XNR4D4
+       XOR2D1
+       XOR2D2
+       XOR2D4
+       XOR3D0
+       XOR3D2
+       XOR3D4
+       XOR4D0
+       XOR4D1
+       XOR4D2
+       XOR4D4
+       ISOHID1
+       ISOHID2
+       ISOHID4
+       ISOHID8
+       ISOLOD1
+       ISOLOD2
+       ISOLOD4
+       ISOLOD8
+       LVLHLD1
+       LVLHLD2
+       LVLHLD4
+       LVLHLD8
+       LVLLHCD1
+       LVLLHCD2
+       LVLLHCD4
+       LVLLHCD8
+       LVLLHD1
+       LVLLHD2
+       LVLLHD4
+       LVLLHD8
+       LVLLHFACD1
+       LVLLHFACD2
+       LVLLHFACD4
+       LVLLHFACD8
+       LVLLHFAD1
+       LVLLHFAD2
+       LVLLHFAD4
+       LVLLHFAD8
+       cpuStim
+TimeScale is 1 ps / 1 ps
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 413
+cpu, "DFND1 registers_MEM_reg_0__0_( .D (n268),  .CPN (clk),  .Q (registers_MEM[0]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 414
+cpu, "DFND1 registers_MEM_reg_1__0_( .D (n267),  .CPN (clk),  .Q (registers_MEM[16]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 416
+cpu, "DFND1 registers_MEM_reg_14__0_( .D (n266),  .CPN (clk),  .Q (registers_MEM[144]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 418
+cpu, "DFND1 registers_MEM_reg_7__0_( .D (n260),  .CPN (clk),  .Q (registers_MEM[112]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 420
+cpu, "DFND1 registers_MEM_reg_6__0_( .D (n259),  .CPN (clk),  .Q (registers_MEM[96]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 422
+cpu, "DFND1 registers_MEM_reg_5__0_( .D (n258),  .CPN (clk),  .Q (registers_MEM[80]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 424
+cpu, "DFND1 registers_MEM_reg_4__0_( .D (n257),  .CPN (clk),  .Q (registers_MEM[64]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 426
+cpu, "DFND1 registers_MEM_reg_3__0_( .D (n256),  .CPN (clk),  .Q (registers_MEM[48]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 428
+cpu, "DFND1 registers_MEM_reg_2__0_( .D (n255),  .CPN (clk),  .Q (registers_MEM[32]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 430
+cpu, "DFND1 registers_MEM_reg_13__0_( .D (n254),  .CPN (clk),  .Q (registers_MEM[128]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 434
+cpu, "DFND1 registers_MEM_reg_0__6_( .D (n253),  .CPN (clk),  .Q (registers_MEM[6]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 435
+cpu, "DFND1 registers_MEM_reg_1__6_( .D (n252),  .CPN (clk),  .Q (registers_MEM[22]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 437
+cpu, "DFND1 registers_MEM_reg_14__6_( .D (n251),  .CPN (clk),  .Q (registers_MEM[150]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 439
+cpu, "DFND1 registers_MEM_reg_7__6_( .D (n245),  .CPN (clk),  .Q (registers_MEM[118]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 441
+cpu, "DFND1 registers_MEM_reg_6__6_( .D (n244),  .CPN (clk),  .Q (registers_MEM[102]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 443
+cpu, "DFND1 registers_MEM_reg_5__6_( .D (n243),  .CPN (clk),  .Q (registers_MEM[86]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 445
+cpu, "DFND1 registers_MEM_reg_4__6_( .D (n242),  .CPN (clk),  .Q (registers_MEM[70]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 447
+cpu, "DFND1 registers_MEM_reg_3__6_( .D (n241),  .CPN (clk),  .Q (registers_MEM[54]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 449
+cpu, "DFND1 registers_MEM_reg_2__6_( .D (n240),  .CPN (clk),  .Q (registers_MEM[38]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 451
+cpu, "DFND1 registers_MEM_reg_13__6_( .D (n239),  .CPN (clk),  .Q (registers_MEM[134]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 460
+cpu, "DFND1 registers_MEM_reg_0__15_( .D (n238),  .CPN (clk),  .Q (registers_MEM[15]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 462
+cpu, "DFND1 registers_MEM_reg_1__15_( .D (n237),  .CPN (clk),  .Q (registers_MEM[31]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 464
+cpu, "DFND1 registers_MEM_reg_14__15_( .D (n236),  .CPN (clk),  .Q (registers_MEM[159]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 465
+cpu, "DFND1 registers_MEM_reg_7__15_( .D (n230),  .CPN (clk),  .Q (registers_MEM[127]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 467
+cpu, "DFND1 registers_MEM_reg_6__15_( .D (n229),  .CPN (clk),  .Q (registers_MEM[111]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 469
+cpu, "DFND1 registers_MEM_reg_5__15_( .D (n228),  .CPN (clk),  .Q (registers_MEM[95]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 471
+cpu, "DFND1 registers_MEM_reg_4__15_( .D (n227),  .CPN (clk),  .Q (registers_MEM[79]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 473
+cpu, "DFND1 registers_MEM_reg_3__15_( .D (n226),  .CPN (clk),  .Q (registers_MEM[63]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 475
+cpu, "DFND1 registers_MEM_reg_2__15_( .D (n225),  .CPN (clk),  .Q (registers_MEM[47]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 477
+cpu, "DFND1 registers_MEM_reg_13__15_( .D (n224),  .CPN (clk),  .Q (registers_MEM[143]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 484
+cpu, "DFND1 registers_MEM_reg_0__2_( .D (n223),  .CPN (clk),  .Q (registers_MEM[2]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 485
+cpu, "DFND1 registers_MEM_reg_1__2_( .D (n222),  .CPN (clk),  .Q (registers_MEM[18]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 487
+cpu, "DFND1 registers_MEM_reg_14__2_( .D (n221),  .CPN (clk),  .Q (registers_MEM[146]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 489
+cpu, "DFND1 registers_MEM_reg_7__2_( .D (n215),  .CPN (clk),  .Q (registers_MEM[114]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 491
+cpu, "DFND1 registers_MEM_reg_6__2_( .D (n214),  .CPN (clk),  .Q (registers_MEM[98]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 493
+cpu, "DFND1 registers_MEM_reg_5__2_( .D (n213),  .CPN (clk),  .Q (registers_MEM[82]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 495
+cpu, "DFND1 registers_MEM_reg_4__2_( .D (n212),  .CPN (clk),  .Q (registers_MEM[66]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 497
+cpu, "DFND1 registers_MEM_reg_3__2_( .D (n211),  .CPN (clk),  .Q (registers_MEM[50]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 499
+cpu, "DFND1 registers_MEM_reg_2__2_( .D (n210),  .CPN (clk),  .Q (registers_MEM[34]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 501
+cpu, "DFND1 registers_MEM_reg_13__2_( .D (n209),  .CPN (clk),  .Q (registers_MEM[130]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 510
+cpu, "DFND1 registers_MEM_reg_0__1_( .D (n208),  .CPN (clk),  .Q (registers_MEM[1]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 511
+cpu, "DFND1 registers_MEM_reg_1__1_( .D (n207),  .CPN (clk),  .Q (registers_MEM[17]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 513
+cpu, "DFND1 registers_MEM_reg_14__1_( .D (n206),  .CPN (clk),  .Q (registers_MEM[145]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 515
+cpu, "DFND1 registers_MEM_reg_7__1_( .D (n200),  .CPN (clk),  .Q (registers_MEM[113]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 517
+cpu, "DFND1 registers_MEM_reg_6__1_( .D (n199),  .CPN (clk),  .Q (registers_MEM[97]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 519
+cpu, "DFND1 registers_MEM_reg_5__1_( .D (n198),  .CPN (clk),  .Q (registers_MEM[81]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 521
+cpu, "DFND1 registers_MEM_reg_4__1_( .D (n197),  .CPN (clk),  .Q (registers_MEM[65]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 523
+cpu, "DFND1 registers_MEM_reg_3__1_( .D (n196),  .CPN (clk),  .Q (registers_MEM[49]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 525
+cpu, "DFND1 registers_MEM_reg_2__1_( .D (n195),  .CPN (clk),  .Q (registers_MEM[33]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 527
+cpu, "DFND1 registers_MEM_reg_13__1_( .D (n194),  .CPN (clk),  .Q (registers_MEM[129]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 536
+cpu, "DFND1 registers_MEM_reg_0__3_( .D (n193),  .CPN (clk),  .Q (registers_MEM[3]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 537
+cpu, "DFND1 registers_MEM_reg_1__3_( .D (n192),  .CPN (clk),  .Q (registers_MEM[19]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 539
+cpu, "DFND1 registers_MEM_reg_14__3_( .D (n191),  .CPN (clk),  .Q (registers_MEM[147]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 541
+cpu, "DFND1 registers_MEM_reg_7__3_( .D (n185),  .CPN (clk),  .Q (registers_MEM[115]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 543
+cpu, "DFND1 registers_MEM_reg_6__3_( .D (n184),  .CPN (clk),  .Q (registers_MEM[99]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 545
+cpu, "DFND1 registers_MEM_reg_5__3_( .D (n183),  .CPN (clk),  .Q (registers_MEM[83]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 547
+cpu, "DFND1 registers_MEM_reg_4__3_( .D (n182),  .CPN (clk),  .Q (registers_MEM[67]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 549
+cpu, "DFND1 registers_MEM_reg_3__3_( .D (n181),  .CPN (clk),  .Q (registers_MEM[51]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 551
+cpu, "DFND1 registers_MEM_reg_2__3_( .D (n180),  .CPN (clk),  .Q (registers_MEM[35]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 553
+cpu, "DFND1 registers_MEM_reg_13__3_( .D (n179),  .CPN (clk),  .Q (registers_MEM[131]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 559
+cpu, "DFND1 registers_MEM_reg_0__11_( .D (n178),  .CPN (clk),  .Q (registers_MEM[11]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 561
+cpu, "DFND1 registers_MEM_reg_1__11_( .D (n177),  .CPN (clk),  .Q (registers_MEM[27]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 563
+cpu, "DFND1 registers_MEM_reg_14__11_( .D (n176),  .CPN (clk),  .Q (registers_MEM[155]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 564
+cpu, "DFND1 registers_MEM_reg_7__11_( .D (n170),  .CPN (clk),  .Q (registers_MEM[123]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 566
+cpu, "DFND1 registers_MEM_reg_6__11_( .D (n169),  .CPN (clk),  .Q (registers_MEM[107]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 568
+cpu, "DFND1 registers_MEM_reg_5__11_( .D (n168),  .CPN (clk),  .Q (registers_MEM[91]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 570
+cpu, "DFND1 registers_MEM_reg_4__11_( .D (n167),  .CPN (clk),  .Q (registers_MEM[75]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 572
+cpu, "DFND1 registers_MEM_reg_3__11_( .D (n166),  .CPN (clk),  .Q (registers_MEM[59]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 574
+cpu, "DFND1 registers_MEM_reg_2__11_( .D (n165),  .CPN (clk),  .Q (registers_MEM[43]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 576
+cpu, "DFND1 registers_MEM_reg_13__11_( .D (n164),  .CPN (clk),  .Q (registers_MEM[139]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 583
+cpu, "DFND1 registers_MEM_reg_0__9_( .D (n163),  .CPN (clk),  .Q (registers_MEM[9]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 584
+cpu, "DFND1 registers_MEM_reg_1__9_( .D (n162),  .CPN (clk),  .Q (registers_MEM[25]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 586
+cpu, "DFND1 registers_MEM_reg_14__9_( .D (n161),  .CPN (clk),  .Q (registers_MEM[153]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 588
+cpu, "DFND1 registers_MEM_reg_7__9_( .D (n155),  .CPN (clk),  .Q (registers_MEM[121]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 590
+cpu, "DFND1 registers_MEM_reg_6__9_( .D (n154),  .CPN (clk),  .Q (registers_MEM[105]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 592
+cpu, "DFND1 registers_MEM_reg_5__9_( .D (n153),  .CPN (clk),  .Q (registers_MEM[89]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 594
+cpu, "DFND1 registers_MEM_reg_4__9_( .D (n152),  .CPN (clk),  .Q (registers_MEM[73]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 596
+cpu, "DFND1 registers_MEM_reg_3__9_( .D (n151),  .CPN (clk),  .Q (registers_MEM[57]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 598
+cpu, "DFND1 registers_MEM_reg_2__9_( .D (n150),  .CPN (clk),  .Q (registers_MEM[41]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 600
+cpu, "DFND1 registers_MEM_reg_13__9_( .D (n149),  .CPN (clk),  .Q (registers_MEM[137]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 608
+cpu, "DFND1 registers_MEM_reg_0__7_( .D (n148),  .CPN (clk),  .Q (registers_MEM[7]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 609
+cpu, "DFND1 registers_MEM_reg_1__7_( .D (n147),  .CPN (clk),  .Q (registers_MEM[23]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 611
+cpu, "DFND1 registers_MEM_reg_14__7_( .D (n146),  .CPN (clk),  .Q (registers_MEM[151]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 613
+cpu, "DFND1 registers_MEM_reg_7__7_( .D (n140),  .CPN (clk),  .Q (registers_MEM[119]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 615
+cpu, "DFND1 registers_MEM_reg_6__7_( .D (n139),  .CPN (clk),  .Q (registers_MEM[103]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 617
+cpu, "DFND1 registers_MEM_reg_5__7_( .D (n138),  .CPN (clk),  .Q (registers_MEM[87]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 619
+cpu, "DFND1 registers_MEM_reg_4__7_( .D (n137),  .CPN (clk),  .Q (registers_MEM[71]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 621
+cpu, "DFND1 registers_MEM_reg_3__7_( .D (n136),  .CPN (clk),  .Q (registers_MEM[55]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 623
+cpu, "DFND1 registers_MEM_reg_2__7_( .D (n135),  .CPN (clk),  .Q (registers_MEM[39]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 625
+cpu, "DFND1 registers_MEM_reg_13__7_( .D (n134),  .CPN (clk),  .Q (registers_MEM[135]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 634
+cpu, "DFND1 registers_MEM_reg_0__5_( .D (n133),  .CPN (clk),  .Q (registers_MEM[5]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 635
+cpu, "DFND1 registers_MEM_reg_1__5_( .D (n132),  .CPN (clk),  .Q (registers_MEM[21]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 637
+cpu, "DFND1 registers_MEM_reg_14__5_( .D (n131),  .CPN (clk),  .Q (registers_MEM[149]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 639
+cpu, "DFND1 registers_MEM_reg_7__5_( .D (n125),  .CPN (clk),  .Q (registers_MEM[117]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 641
+cpu, "DFND1 registers_MEM_reg_6__5_( .D (n124),  .CPN (clk),  .Q (registers_MEM[101]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 643
+cpu, "DFND1 registers_MEM_reg_5__5_( .D (n123),  .CPN (clk),  .Q (registers_MEM[85]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 645
+cpu, "DFND1 registers_MEM_reg_4__5_( .D (n122),  .CPN (clk),  .Q (registers_MEM[69]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 647
+cpu, "DFND1 registers_MEM_reg_3__5_( .D (n121),  .CPN (clk),  .Q (registers_MEM[53]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 649
+cpu, "DFND1 registers_MEM_reg_2__5_( .D (n120),  .CPN (clk),  .Q (registers_MEM[37]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 651
+cpu, "DFND1 registers_MEM_reg_13__5_( .D (n119),  .CPN (clk),  .Q (registers_MEM[133]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 660
+cpu, "DFND1 registers_MEM_reg_0__8_( .D (n118),  .CPN (clk),  .Q (registers_MEM[8]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 661
+cpu, "DFND1 registers_MEM_reg_1__8_( .D (n117),  .CPN (clk),  .Q (registers_MEM[24]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 663
+cpu, "DFND1 registers_MEM_reg_14__8_( .D (n116),  .CPN (clk),  .Q (registers_MEM[152]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 665
+cpu, "DFND1 registers_MEM_reg_7__8_( .D (n110),  .CPN (clk),  .Q (registers_MEM[120]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 667
+cpu, "DFND1 registers_MEM_reg_6__8_( .D (n109),  .CPN (clk),  .Q (registers_MEM[104]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 669
+cpu, "DFND1 registers_MEM_reg_5__8_( .D (n108),  .CPN (clk),  .Q (registers_MEM[88]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 671
+cpu, "DFND1 registers_MEM_reg_4__8_( .D (n107),  .CPN (clk),  .Q (registers_MEM[72]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 673
+cpu, "DFND1 registers_MEM_reg_3__8_( .D (n106),  .CPN (clk),  .Q (registers_MEM[56]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 675
+cpu, "DFND1 registers_MEM_reg_2__8_( .D (n105),  .CPN (clk),  .Q (registers_MEM[40]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 677
+cpu, "DFND1 registers_MEM_reg_13__8_( .D (n104),  .CPN (clk),  .Q (registers_MEM[136]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 685
+cpu, "DFND1 registers_MEM_reg_0__10_( .D (n103),  .CPN (clk),  .Q (registers_MEM[10]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 687
+cpu, "DFND1 registers_MEM_reg_1__10_( .D (n102),  .CPN (clk),  .Q (registers_MEM[26]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 689
+cpu, "DFND1 registers_MEM_reg_14__10_( .D (n101),  .CPN (clk),  .Q (registers_MEM[154]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 690
+cpu, "DFND1 registers_MEM_reg_7__10_( .D (n95),  .CPN (clk),  .Q (registers_MEM[122]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 692
+cpu, "DFND1 registers_MEM_reg_6__10_( .D (n94),  .CPN (clk),  .Q (registers_MEM[106]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 694
+cpu, "DFND1 registers_MEM_reg_5__10_( .D (n93),  .CPN (clk),  .Q (registers_MEM[90]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 696
+cpu, "DFND1 registers_MEM_reg_4__10_( .D (n92),  .CPN (clk),  .Q (registers_MEM[74]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 698
+cpu, "DFND1 registers_MEM_reg_3__10_( .D (n91),  .CPN (clk),  .Q (registers_MEM[58]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 700
+cpu, "DFND1 registers_MEM_reg_2__10_( .D (n90),  .CPN (clk),  .Q (registers_MEM[42]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 702
+cpu, "DFND1 registers_MEM_reg_13__10_( .D (n89),  .CPN (clk),  .Q (registers_MEM[138]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 708
+cpu, "DFND1 registers_MEM_reg_0__4_( .D (n88),  .CPN (clk),  .Q (registers_MEM[4]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 709
+cpu, "DFND1 registers_MEM_reg_1__4_( .D (n87),  .CPN (clk),  .Q (registers_MEM[20]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 710
+cpu, "DFND1 registers_MEM_reg_14__4_( .D (n86),  .CPN (clk),  .Q (registers_MEM[148]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 712
+cpu, "DFND1 registers_MEM_reg_7__4_( .D (n80),  .CPN (clk),  .Q (registers_MEM[116]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 714
+cpu, "DFND1 registers_MEM_reg_6__4_( .D (n79),  .CPN (clk),  .Q (registers_MEM[100]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 716
+cpu, "DFND1 registers_MEM_reg_5__4_( .D (n78),  .CPN (clk),  .Q (registers_MEM[84]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 717
+cpu, "DFND1 registers_MEM_reg_4__4_( .D (n77),  .CPN (clk),  .Q (registers_MEM[68]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 718
+cpu, "DFND1 registers_MEM_reg_3__4_( .D (n76),  .CPN (clk),  .Q (registers_MEM[52]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 719
+cpu, "DFND1 registers_MEM_reg_2__4_( .D (n75),  .CPN (clk),  .Q (registers_MEM[36]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 720
+cpu, "DFND1 registers_MEM_reg_13__4_( .D (n74),  .CPN (clk),  .Q (registers_MEM[132]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 726
+cpu, "DFND1 registers_MEM_reg_0__12_( .D (n73),  .CPN (clk),  .Q (registers_MEM[12]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 728
+cpu, "DFND1 registers_MEM_reg_1__12_( .D (n72),  .CPN (clk),  .Q (registers_MEM[28]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 730
+cpu, "DFND1 registers_MEM_reg_14__12_( .D (n71),  .CPN (clk),  .Q (registers_MEM[156]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 732
+cpu, "DFND1 registers_MEM_reg_7__12_( .D (n65),  .CPN (clk),  .Q (registers_MEM[124]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 734
+cpu, "DFND1 registers_MEM_reg_6__12_( .D (n64),  .CPN (clk),  .Q (registers_MEM[108]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 736
+cpu, "DFND1 registers_MEM_reg_5__12_( .D (n63),  .CPN (clk),  .Q (registers_MEM[92]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 738
+cpu, "DFND1 registers_MEM_reg_4__12_( .D (n62),  .CPN (clk),  .Q (registers_MEM[76]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 740
+cpu, "DFND1 registers_MEM_reg_3__12_( .D (n61),  .CPN (clk),  .Q (registers_MEM[60]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 742
+cpu, "DFND1 registers_MEM_reg_2__12_( .D (n60),  .CPN (clk),  .Q (registers_MEM[44]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 744
+cpu, "DFND1 registers_MEM_reg_13__12_( .D (n59),  .CPN (clk),  .Q (registers_MEM[140]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 752
+cpu, "DFND1 registers_MEM_reg_0__13_( .D (n58),  .CPN (clk),  .Q (registers_MEM[13]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 754
+cpu, "DFND1 registers_MEM_reg_1__13_( .D (n57),  .CPN (clk),  .Q (registers_MEM[29]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 756
+cpu, "DFND1 registers_MEM_reg_14__13_( .D (n56),  .CPN (clk),  .Q (registers_MEM[157]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 758
+cpu, "DFND1 registers_MEM_reg_7__13_( .D (n50),  .CPN (clk),  .Q (registers_MEM[125]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 760
+cpu, "DFND1 registers_MEM_reg_6__13_( .D (n49),  .CPN (clk),  .Q (registers_MEM[109]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 762
+cpu, "DFND1 registers_MEM_reg_5__13_( .D (n48),  .CPN (clk),  .Q (registers_MEM[93]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 764
+cpu, "DFND1 registers_MEM_reg_4__13_( .D (n47),  .CPN (clk),  .Q (registers_MEM[77]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 766
+cpu, "DFND1 registers_MEM_reg_3__13_( .D (n46),  .CPN (clk),  .Q (registers_MEM[61]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 768
+cpu, "DFND1 registers_MEM_reg_2__13_( .D (n45),  .CPN (clk),  .Q (registers_MEM[45]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 770
+cpu, "DFND1 registers_MEM_reg_13__13_( .D (n44),  .CPN (clk),  .Q (registers_MEM[141]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 776
+cpu, "DFND1 registers_MEM_reg_0__14_( .D (n43),  .CPN (clk),  .Q (registers_MEM[14]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 778
+cpu, "DFND1 registers_MEM_reg_1__14_( .D (n42),  .CPN (clk),  .Q (registers_MEM[30]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 780
+cpu, "DFND1 registers_MEM_reg_14__14_( .D (n41),  .CPN (clk),  .Q (registers_MEM[158]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 782
+cpu, "DFND1 registers_MEM_reg_7__14_( .D (n35),  .CPN (clk),  .Q (registers_MEM[126]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 784
+cpu, "DFND1 registers_MEM_reg_6__14_( .D (n34),  .CPN (clk),  .Q (registers_MEM[110]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 786
+cpu, "DFND1 registers_MEM_reg_5__14_( .D (n33),  .CPN (clk),  .Q (registers_MEM[94]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 788
+cpu, "DFND1 registers_MEM_reg_4__14_( .D (n32),  .CPN (clk),  .Q (registers_MEM[78]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 790
+cpu, "DFND1 registers_MEM_reg_3__14_( .D (n31),  .CPN (clk),  .Q (registers_MEM[62]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 792
+cpu, "DFND1 registers_MEM_reg_2__14_( .D (n30),  .CPN (clk),  .Q (registers_MEM[46]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 794
+cpu, "DFND1 registers_MEM_reg_13__14_( .D (n29),  .CPN (clk),  .Q (registers_MEM[142]));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 1006
+cpu, "FA1D4 U2601( .A (n4197),  .B (ReadData1E[14]),  .CI (n2283),  .S (n2371));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[TFIPC] Too few instance port connections
+../../sapr/syn/results/cpu.syn.v, 1026
+cpu, "HA1D0 U2750( .A (n2435),  .B (n2409),  .CO (n2511));"
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+   ***   $sdf_annotate() version 1.2R
+   ***    SDF file: "../../sapr/syn/results/cpu.syn.sdf"
+   ***    Annotation scope: cpuStim.testCpu.core
+   ***    No MTM selection argument specified
+   ***    No SCALE FACTORS argument specified
+   ***    No SCALE TYPE argument specified
+   ***    MTM selection defaulted to "TOOL_CONTROL":
+               (+typdelays compiled, TYPICAL delays selected)
+   ***    SCALE FACTORS defaulted to "1.0:1.0:1.0":
+   ***    SCALE TYPE defaulted to: "FROM_MTM"
+   ***    Turnoff delay: "FROM_FILE"
+   ***    Approximation (mipd) policy: "MAXIMUM"
+
+   ***    SDF annotation begin: Sat Jun  4 17:03:29 2022
+
+
+SDF Info: +pulse_r/100, +pulse_e/100 in effect
+
+Warning-[SDFCOM_NNTC] Need timing check option +neg_tchk
+../../sapr/syn/results/cpu.syn.sdf, 49930
+module: EDFQD1, "instance: cpuStim.testCpu.core.PCRegister_Q_reg_1_"
+  SDF Error: Negative HOLD value replaced by 0.          
+  Add +neg_tchk to consider Negative delay value.
+
+
+Warning-[SDFCOM_NNTC] Need timing check option +neg_tchk
+../../sapr/syn/results/cpu.syn.sdf, 49931
+module: EDFQD1, "instance: cpuStim.testCpu.core.PCRegister_Q_reg_1_"
+  SDF Error: Negative HOLD value replaced by 0.          
+  Add +neg_tchk to consider Negative delay value.
+
+
+Warning-[SDFCOM_NNTC] Need timing check option +neg_tchk
+../../sapr/syn/results/cpu.syn.sdf, 49934
+module: EDFQD1, "instance: cpuStim.testCpu.core.PCRegister_Q_reg_1_"
+  SDF Error: Negative HOLD value replaced by 0.          
+  Add +neg_tchk to consider Negative delay value.
+
+
+Warning-[SDFCOM_NNTC] Need timing check option +neg_tchk
+../../sapr/syn/results/cpu.syn.sdf, 49935
+module: EDFQD1, "instance: cpuStim.testCpu.core.PCRegister_Q_reg_1_"
+  SDF Error: Negative HOLD value replaced by 0.          
+  Add +neg_tchk to consider Negative delay value.
+
+
+Warning-[SDFCOM_NNTC] Need timing check option +neg_tchk
+../../sapr/syn/results/cpu.syn.sdf, 49948
+module: DFQD1, "instance: cpuStim.testCpu.core.decodeToExec4_Q_reg_1_"
+  SDF Error: Negative SETUP value replaced by 0.          
+  Add +neg_tchk to consider Negative delay value.
+
+
+Warning-[SDFCOM_NNTC] Need timing check option +neg_tchk
+../../sapr/syn/results/cpu.syn.sdf, 49965
+module: LHQD1, "instance: cpuStim.testCpu.core.FlagsLatch_OUT_reg_2_"
+  SDF Error: Negative HOLD value replaced by 0.          
+  Add +neg_tchk to consider Negative delay value.
+
+
+Warning-[SDFCOM_NNTC] Need timing check option +neg_tchk
+../../sapr/syn/results/cpu.syn.sdf, 49966
+module: LHQD1, "instance: cpuStim.testCpu.core.FlagsLatch_OUT_reg_2_"
+  SDF Error: Negative HOLD value replaced by 0.          
+  Add +neg_tchk to consider Negative delay value.
+
+
+Warning-[SDFCOM_NNTC] Need timing check option +neg_tchk
+../../sapr/syn/results/cpu.syn.sdf, 49979
+module: LHQD1, "instance: cpuStim.testCpu.core.FlagsLatch_OUT_reg_3_"
+  SDF Error: Negative SETUP value replaced by 0.          
+  Add +neg_tchk to consider Negative delay value.
+
+
+Warning-[SDFCOM_NNTC] Need timing check option +neg_tchk
+../../sapr/syn/results/cpu.syn.sdf, 49982
+module: LHQD1, "instance: cpuStim.testCpu.core.FlagsLatch_OUT_reg_3_"
+  SDF Error: Negative HOLD value replaced by 0.          
+  Add +neg_tchk to consider Negative delay value.
+
+
+Warning-[SDFCOM_NNTC] Need timing check option +neg_tchk
+../../sapr/syn/results/cpu.syn.sdf, 49998
+module: LHQD1, "instance: cpuStim.testCpu.core.FlagsLatch_OUT_reg_0_"
+  SDF Error: Negative HOLD value replaced by 0.          
+  Add +neg_tchk to consider Negative delay value.
+
+All future errors not reported; use +sdfverbose to report them.
+
+          Total errors: 292
+          Total warnings: 0
+   ***    SDF annotation completed: Sat Jun  4 17:03:29 2022
+
+
+
+Warning-[DRTZ] Detect delay value roundoff to 0
+  Delay from design or SDF file roundoff to 0 based on timescale
+  Please use switch -diag timescale to dump detailed information.
+
+Starting vcs inline pass...
+821 modules and 4 UDPs read.
+	However, due to incremental compilation, no re-compilation is necessary.
+make[2]: Entering directory `/home/nguyea9/ee478/sim/post-syn/csrc'
+rm -f _cuarc*.so _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
+ld -shared  -Bsymbolic --no-relax  -o .//../simv.daidir//_cuarc0.so objs/a/amcQw_d.o \
+
+rm -f _cuarc0.so
+if [ -x ../simv ]; then chmod a-x ../simv; fi
+g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir \
+-Wl,-rpath=/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib -L/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib \
+-Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _11622_archive_1.so _prev_archive_1.so \
+_cuarc0.so objs/udps/JvR1L.o objs/udps/HWVx0.o objs/udps/m6zeg.o objs/udps/df3ii.o \
+SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o rmar_llvm_0_0.o \
+-lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile -luclinative /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_tls.o \
+-Wl,-whole-archive  -lvcsucli    -Wl,-no-whole-archive          /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_save_restore_new.o \
+-ldl  -lc -lm -lpthread -ldl 
+../simv up to date
+make[2]: Leaving directory `/home/nguyea9/ee478/sim/post-syn/csrc'
+Command: /home/nguyea9/ee478/sim/post-syn/./simv +v2k -a cpu.log
+Chronologic VCS simulator copyright 1991-2021
+Contains Synopsys proprietary information.
+Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  Jun  4 17:03 2022
+Doing SDF annotation ...... Done
+Running benchmark: ../../src/assembler/simpleSqrt.v
+VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
+2290.00 ns Test Done
+$finish called from file "../../src/verilog/cpuStim.sv", line 103.
+$finish at simulation time 2290.00 ns
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 2290000 ps
+CPU Time:      0.530 seconds;       Data structure size:   1.3Mb
+Sat Jun  4 17:03:34 2022
+CPU time: 2.859 seconds to compile + .365 seconds to elab + .454 seconds to link + .560 seconds in simulation

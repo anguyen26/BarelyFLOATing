@@ -5,3 +5,5 @@ sim/*/DVEfiles/
 sim/*/work/
 sim/*/csrc/
 sim/*/__pycache__/
+sim/*/*.log
+archive/

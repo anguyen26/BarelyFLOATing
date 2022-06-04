@@ -1,0 +1,38 @@
+# /home/lab.apps/vlsiapps/kits/tsmc/N65RF/1.0c_cdb/digital/Front_End/verilog/tcbn65gplus_140b/tcbn65gplus.v
+# /home/lab.apps/vlsiapps/kits/tsmc/N65RF/1.0c/digital/Front_End/verilog/tcbn65gplus_140b/tcbn65gplus.v
+../../src/verilog/tcbn65gplus_pwr.v
+../../src/verilog/cpuStim.sv
+../../src/verilog/datamem.sv
+../../src/verilog/instructmem.sv
+../../src/verilog/aprTop.sv 
+# FOR APR NETLIST
+../../sapr/apr/results/cpu.apr.v
+# FOR RTL
+# ../../src/verilog/synCpu.sv
+# ../../src/verilog/flagsreg.sv
+# ../../src/verilog/mux3x4_4.sv
+# ../../src/verilog/mux3x16_16.sv
+# ../../src/verilog/mux4x16_16.sv
+# ../../src/verilog/mux4x4_4.sv
+# ../../src/verilog/mux5x16_16.sv
+# ../../src/verilog/full_adder.sv
+# ../../src/verilog/shifter.sv
+# ../../src/verilog/adder.sv
+# ../../src/verilog/fullAdder.sv
+# ../../src/verilog/alu.sv
+# ../../src/verilog/cpuControl.sv
+# ../../src/verilog/pipelineReg.sv
+# ../../src/verilog/register.sv
+# ../../src/verilog/register_2.sv
+# ../../src/verilog/register_3.sv
+# ../../src/verilog/register_4.sv
+# ../../src/verilog/register_5.sv
+# ../../src/verilog/regfile.sv
+# ../../src/verilog/rippleCarryAdder.sv
+# ../../src/verilog/forwardingUnit.sv
+# ../../src/verilog/D_FF.sv
+# ../../src/verilog/a_phase4.sv
+# ../../src/verilog/fp_add.sv
+# ../../src/verilog/fp_mul.sv
+# ../../src/verilog/fpu.sv
+# ../../src/verilog/fp_div.sv
