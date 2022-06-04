@@ -5,7 +5,7 @@
 set TOOL_NAME "ICC"
 
 # directory where tcl src is located 
-set SRC_DIR "."
+set SRC_DIR "../../src/apr"
 
 # start timing
 set start_time [clock seconds]; echo [clock format $start_time -gmt false]
@@ -23,7 +23,7 @@ source ${SRC_DIR}/library.tcl -echo -verbose
 # READ DESIGN
 # ==========================================================================
 # Read in the verilog, uniquify and save the CEL view.
-import_designs $design_name.syn.v -format verilog -top $design_name
+import_designs ../syn/design_files/$design_name.syn.v -format verilog -top $design_name
 link
 
 # TIMING CONSTRAINTS

@@ -22,7 +22,7 @@ suppress_message "PSYN-485"
 set TOPLEVEL "cpu"
 set DESIGN_MW_LIB_NAME "${TOPLEVEL}_lib"
 
-source -echo -verbose ./tech_node_config.tcl
+source -echo -verbose ${SRC_DIR}/tech_node_config.tcl
 
 set TECH2ITF_MAP_FILE "star.map_9M"
 set MW_TECHFILE "tsmcn65_9lmT2.tf"

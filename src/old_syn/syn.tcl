@@ -49,7 +49,7 @@ link
 #Define design constraints
 set_max_transition 0.8 [get_designs cpu]
 set_max_fanout 20 cpu
-create_clock -name "clk" -period 10 -waveform {0 1} [get_ports clk]
+create_clock -name "clk" -period 2 -waveform {0 1} [get_ports clk]
 set_clock_uncertainty -setup 0.05 [get_clocks]
 set_clock_uncertainty -hold 0.01 [get_clocks]
 set_clock_transition 0.05 [get_clocks]

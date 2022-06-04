@@ -51,7 +51,7 @@ vcs:
 	@ sed -i 's,\[[ \t]*,[,' sv_output.txt
 
 dve:
-	@ dve -full64 -vpd vcdplus.vpd &
+	@ dve -full64 -vpd vcdplus.vpd -session session.vcdplus.vpd.tcl &
 
 read_out:
 	@ echo "Converting binary results to decimal..."

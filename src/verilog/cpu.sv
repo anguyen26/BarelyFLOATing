@@ -14,6 +14,7 @@ module cpu(
 	logic [15:0] 	PCNext, PCE, PCNext_preStall;
 	logic [15:0] 	PCPlus1;
 	logic 		stallF;
+	logic		regWrEn;
 	
 	// Branch logic
 	logic [15:0] 	condBrAddr, uncondBrAddr, selectedBranch,
@@ -76,8 +77,8 @@ module cpu(
 	// register PCRegister(.dataIn(PCNext), .dataOut(PC), .writeEnable(!stallF), .reset, .clk);
     pipelineReg PCRegister(.D(PCNext), .Q(PC), .en(!stallF), .clear(reset), .clk);
     always_comb begin
-		if(BranchE & (instr == instrE)) stallF = 0; //branch determined
-		else if(Branch) stallF = 1; //branch upcoming
+		if((BranchE | ALUorFPUE) & (instr == instrE)) stallF = 0; //branch determined
+		else if(Branch | ALUorFPU) stallF = 1; //branch upcoming
 		else stallF = 0; //normal incrementing
 	end
 
@@ -97,8 +98,10 @@ module cpu(
 	//Takes in readAddresses and determines where to forward data from 
 	forwardingUnit forward(.RA1(reg1Addr), .RA2(reg2Addr), .WA3W(regWriteAddrE), .RegWriteW(RegWriteE), .Forward1, .Forward2);
 
-	// Instantiates the register files. Write address and RegWrite are controlled by the Write Back stage. 
-	regfile registers(.clk(clk), .reset, .wr_en(RegWriteE), .wr_data(regWrData), .PC, .wr_addr(regWriteAddrE), .rd_data_0(ReadData1), .rd_data_1(ReadData2), 
+	// Instantiates the register files. Write address and RegWrite are controlled by the Write Back stage.
+	//assign regClk = ALUorFPU ? (clk & stallF) : clk;
+	assign regWrEn = ALUorFPU ? RegWriteE & stallF : RegWriteE;
+	regfile registers(.clk(clk), .reset, .wr_en(regWrEn), .wr_data(regWrData), .PC, .wr_addr(regWriteAddrE), .rd_data_0(ReadData1), .rd_data_1(ReadData2), 
 						.rd_addr_0(reg1Addr), .rd_addr_1(reg2Addr));
 	
 	//*************** Control Unit *****************\\
