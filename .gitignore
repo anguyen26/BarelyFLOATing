@@ -7,3 +7,4 @@ sim/*/csrc/
 sim/*/__pycache__/
 sim/*/*.log
 archive/
+*/*/.nsf*
