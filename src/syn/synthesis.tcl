@@ -20,20 +20,23 @@ if {$TOOL_NAME != "PTPX"} {
 # Configuration                                                               #
 #=============================================================================#
 
+# directory where tcl src is located 
+set SRC_DIR "../../src/syn"
+
 # Get configuration settings
-source -echo -verbose ./config.tcl
+source -echo -verbose ${SRC_DIR}/config.tcl
 
 # Read technology library                                                     #
 #=============================================================================#
-source -echo -verbose ./library.tcl
+source -echo -verbose ${SRC_DIR}/library.tcl
 
 ## Read design RTL                                                             #
 ##=============================================================================#
-source -echo -verbose ./verilog.tcl
+source -echo -verbose ${SRC_DIR}/verilog.tcl
 #
 ## Set design constraints                                                      #
 ##=============================================================================#
-source -echo -verbose ./constraints.tcl
+source -echo -verbose ${SRC_DIR}/constraints.tcl
 
 # source -echo -verbose ./dont_use.tcl
 # Synthesize                                                                  #
@@ -83,11 +86,11 @@ remove_unused_ports
 
 # Reports generation                                                          #
 #=============================================================================#
-source -echo -verbose ./reports.tcl
+source -echo -verbose ${SRC_DIR}/reports.tcl
 
 # Generate design data                                                        #
 #=============================================================================#
-source -echo -verbose ./generate.tcl
+source -echo -verbose ${SRC_DIR}/generate.tcl
 
 # Report runtime and quit
 #=============================================================================#

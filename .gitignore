@@ -1,5 +1,4 @@
 .cshrc
-sapr/
 *simv.daidir/
 *DVEfiles/
 *work/
@@ -10,3 +9,5 @@ archive/
 *.nfs*
 *simv
 *.vpd
+sapr/*/*
+!sapr/*/Makefile

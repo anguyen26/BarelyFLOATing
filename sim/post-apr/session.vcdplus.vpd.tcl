@@ -1,15 +1,15 @@
 # Begin_DVE_Session_Save_Info
 # DVE full session
-# Saved on Fri Jun 3 18:01:49 2022
+# Saved on Sat Jun 4 15:23:52 2022
 # Designs open: 1
 #   V1: vcdplus.vpd
 # Toplevel windows open: 2
 # 	TopLevel.1
 # 	TopLevel.2
-#   Wave.1: 9 signals
+#   Wave.1: 15 signals
 #   Group count = 2
 #   Group Top signal count = 5
-#   Group Regfile signal count = 4
+#   Group Regfile signal count = 10
 # End_DVE_Session_Save_Info
 
 # DVE version: S-2021.09-SP1_Full64
@@ -68,7 +68,7 @@ if {![gui_exist_window -window TopLevel.1]} {
 } else { 
     set TopLevel.1 TopLevel.1
 }
-gui_show_window -window ${TopLevel.1} -show_state normal -rect {{1286 63} {2556 974}}
+gui_show_window -window ${TopLevel.1} -show_state maximized -rect {{1283 60} {2556 974}}
 
 # ToolBar settings
 gui_set_toolbar_attributes -toolbar {TimeOperations} -dock_state top
@@ -109,17 +109,17 @@ gui_hide_toolbar -toolbar {Testbench}
 # End ToolBar settings
 
 # Docked window settings
-set HSPane.1 [gui_create_window -type HSPane -parent ${TopLevel.1} -dock_state left -dock_on_new_line true -dock_extent 447]
+set HSPane.1 [gui_create_window -type HSPane -parent ${TopLevel.1} -dock_state left -dock_on_new_line true -dock_extent 445]
 catch { set Hier.1 [gui_share_window -id ${HSPane.1} -type Hier] }
-gui_set_window_pref_key -window ${HSPane.1} -key dock_width -value_type integer -value 447
+gui_set_window_pref_key -window ${HSPane.1} -key dock_width -value_type integer -value 445
 gui_set_window_pref_key -window ${HSPane.1} -key dock_height -value_type integer -value 580
 gui_set_window_pref_key -window ${HSPane.1} -key dock_offset -value_type integer -value 0
-gui_update_layout -id ${HSPane.1} {{left 0} {top 0} {width 446} {height 580} {dock_state left} {dock_on_new_line true} {child_hier_colhier 303} {child_hier_coltype 136} {child_hier_colpd 0} {child_hier_col1 0} {child_hier_col2 1} {child_hier_col3 -1}}
-set Console.1 [gui_create_window -type Console -parent ${TopLevel.1} -dock_state bottom -dock_on_new_line true -dock_extent 225]
+gui_update_layout -id ${HSPane.1} {{left 0} {top 0} {width 444} {height 585} {dock_state left} {dock_on_new_line true} {child_hier_colhier 303} {child_hier_coltype 136} {child_hier_colpd 0} {child_hier_col1 0} {child_hier_col2 1} {child_hier_col3 -1}}
+set Console.1 [gui_create_window -type Console -parent ${TopLevel.1} -dock_state bottom -dock_on_new_line true -dock_extent 223]
 gui_set_window_pref_key -window ${Console.1} -key dock_width -value_type integer -value 1273
-gui_set_window_pref_key -window ${Console.1} -key dock_height -value_type integer -value 225
+gui_set_window_pref_key -window ${Console.1} -key dock_height -value_type integer -value 223
 gui_set_window_pref_key -window ${Console.1} -key dock_offset -value_type integer -value 0
-gui_update_layout -id ${Console.1} {{left 0} {top 0} {width 1270} {height 224} {dock_state bottom} {dock_on_new_line true}}
+gui_update_layout -id ${Console.1} {{left 0} {top 0} {width 1273} {height 222} {dock_state bottom} {dock_on_new_line true}}
 #### Start - Readjusting docked view's offset / size
 set dockAreaList { top left right bottom }
 foreach dockArea $dockAreaList {
@@ -208,7 +208,7 @@ gui_sync_global -id ${TopLevel.2} -option true
 # MDI window settings
 set Wave.1 [gui_create_window -type {Wave}  -parent ${TopLevel.2}]
 gui_show_window -window ${Wave.1} -show_state maximized
-gui_update_layout -id ${Wave.1} {{show_state maximized} {dock_state undocked} {dock_on_new_line false} {child_wave_left 369} {child_wave_right 899} {child_wave_colname 181} {child_wave_colvalue 184} {child_wave_col1 0} {child_wave_col2 1}}
+gui_update_layout -id ${Wave.1} {{show_state maximized} {dock_state undocked} {dock_on_new_line false} {child_wave_left 276} {child_wave_right 992} {child_wave_colname 137} {child_wave_colvalue 135} {child_wave_col1 0} {child_wave_col2 1}}
 
 # End MDI window settings
 
@@ -232,17 +232,23 @@ if { ![gui_is_db_opened -db {vcdplus.vpd}] } {
 	gui_open_db -design V1 -file vcdplus.vpd -nosource
 }
 gui_set_precision 1ps
-gui_set_time_units 1ps
+gui_set_time_units 1ns
 #</Database>
 
 # DVE Global setting session: 
 
 
 # Global: Bus
-gui_bus_create -name EXP:R0 {{aprCpuStim.testTop.core.registers.\MEM_reg[0][15] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[0][14] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[0][13] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[0][12] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[0][11] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[0][10] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[0][9] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[0][8] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[0][7] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[0][6] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[0][5] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[0][4] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[0][3] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[0][2] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[0][1] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[0][0] .Q}}
-gui_bus_create -name EXP:R1 {{aprCpuStim.testTop.core.registers.\MEM_reg[1][15] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[1][14] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[1][13] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[1][12] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[1][11] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[1][10] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[1][9] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[1][8] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[1][7] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[1][6] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[1][5] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[1][4] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[1][3] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[1][2] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[1][1] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[1][0] .Q}}
-gui_bus_create -name EXP:R2 {{aprCpuStim.testTop.core.registers.\MEM_reg[2][15] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[2][14] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[2][13] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[2][12] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[2][11] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[2][10] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[2][9] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[2][8] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[2][7] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[2][6] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[2][5] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[2][4] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[2][3] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[2][2] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[2][1] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[2][0] .Q}}
-gui_bus_create -name EXP:R3 {{aprCpuStim.testTop.core.registers.\MEM_reg[3][15] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[3][14] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[3][13] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[3][12] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[3][11] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[3][10] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[3][9] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[3][8] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[3][7] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[3][6] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[3][5] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[3][4] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[3][3] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[3][2] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[3][1] .Q} {aprCpuStim.testTop.core.registers.\MEM_reg[3][0] .Q}}
+gui_bus_create -name EXP:R13 {aprCpuStim.testTop.core.registers_MEM_reg_13__15_.Q aprCpuStim.testTop.core.registers_MEM_reg_13__14_.Q aprCpuStim.testTop.core.registers_MEM_reg_13__13_.Q aprCpuStim.testTop.core.registers_MEM_reg_13__12_.Q aprCpuStim.testTop.core.registers_MEM_reg_13__11_.Q aprCpuStim.testTop.core.registers_MEM_reg_13__10_.Q aprCpuStim.testTop.core.registers_MEM_reg_13__9_.Q aprCpuStim.testTop.core.registers_MEM_reg_13__8_.Q aprCpuStim.testTop.core.registers_MEM_reg_13__7_.Q aprCpuStim.testTop.core.registers_MEM_reg_13__6_.Q aprCpuStim.testTop.core.registers_MEM_reg_13__5_.Q aprCpuStim.testTop.core.registers_MEM_reg_13__4_.Q aprCpuStim.testTop.core.registers_MEM_reg_13__3_.Q aprCpuStim.testTop.core.registers_MEM_reg_13__2_.Q aprCpuStim.testTop.core.registers_MEM_reg_13__1_.Q aprCpuStim.testTop.core.registers_MEM_reg_13__0_.Q}
+gui_bus_create -name EXP:R14 {aprCpuStim.testTop.core.registers_MEM_reg_14__15_.Q aprCpuStim.testTop.core.registers_MEM_reg_14__14_.Q aprCpuStim.testTop.core.registers_MEM_reg_14__13_.Q aprCpuStim.testTop.core.registers_MEM_reg_14__12_.Q aprCpuStim.testTop.core.registers_MEM_reg_14__11_.Q aprCpuStim.testTop.core.registers_MEM_reg_14__10_.Q aprCpuStim.testTop.core.registers_MEM_reg_14__9_.Q aprCpuStim.testTop.core.registers_MEM_reg_14__8_.Q aprCpuStim.testTop.core.registers_MEM_reg_14__7_.Q aprCpuStim.testTop.core.registers_MEM_reg_14__6_.Q aprCpuStim.testTop.core.registers_MEM_reg_14__5_.Q aprCpuStim.testTop.core.registers_MEM_reg_14__4_.Q aprCpuStim.testTop.core.registers_MEM_reg_14__3_.Q aprCpuStim.testTop.core.registers_MEM_reg_14__2_.Q aprCpuStim.testTop.core.registers_MEM_reg_14__1_.Q aprCpuStim.testTop.core.registers_MEM_reg_14__0_.Q}
+gui_bus_create -name EXP:R0 {aprCpuStim.testTop.core.registers_MEM_reg_0__15_.Q aprCpuStim.testTop.core.registers_MEM_reg_0__14_.Q aprCpuStim.testTop.core.registers_MEM_reg_0__13_.Q aprCpuStim.testTop.core.registers_MEM_reg_0__12_.Q aprCpuStim.testTop.core.registers_MEM_reg_0__11_.Q aprCpuStim.testTop.core.registers_MEM_reg_0__10_.Q aprCpuStim.testTop.core.registers_MEM_reg_0__9_.Q aprCpuStim.testTop.core.registers_MEM_reg_0__8_.Q aprCpuStim.testTop.core.registers_MEM_reg_0__7_.Q aprCpuStim.testTop.core.registers_MEM_reg_0__6_.Q aprCpuStim.testTop.core.registers_MEM_reg_0__5_.Q aprCpuStim.testTop.core.registers_MEM_reg_0__4_.Q aprCpuStim.testTop.core.registers_MEM_reg_0__3_.Q aprCpuStim.testTop.core.registers_MEM_reg_0__2_.Q aprCpuStim.testTop.core.registers_MEM_reg_0__1_.Q aprCpuStim.testTop.core.registers_MEM_reg_0__0_.Q}
+gui_bus_create -name EXP:R1 {aprCpuStim.testTop.core.registers_MEM_reg_1__15_.Q aprCpuStim.testTop.core.registers_MEM_reg_1__14_.Q aprCpuStim.testTop.core.registers_MEM_reg_1__13_.Q aprCpuStim.testTop.core.registers_MEM_reg_1__12_.Q aprCpuStim.testTop.core.registers_MEM_reg_1__11_.Q aprCpuStim.testTop.core.registers_MEM_reg_1__10_.Q aprCpuStim.testTop.core.registers_MEM_reg_1__9_.Q aprCpuStim.testTop.core.registers_MEM_reg_1__8_.Q aprCpuStim.testTop.core.registers_MEM_reg_1__7_.Q aprCpuStim.testTop.core.registers_MEM_reg_1__6_.Q aprCpuStim.testTop.core.registers_MEM_reg_1__5_.Q aprCpuStim.testTop.core.registers_MEM_reg_1__4_.Q aprCpuStim.testTop.core.registers_MEM_reg_1__3_.Q aprCpuStim.testTop.core.registers_MEM_reg_1__2_.Q aprCpuStim.testTop.core.registers_MEM_reg_1__1_.Q aprCpuStim.testTop.core.registers_MEM_reg_1__0_.Q}
+gui_bus_create -name EXP:R2 {aprCpuStim.testTop.core.registers_MEM_reg_2__15_.Q aprCpuStim.testTop.core.registers_MEM_reg_2__14_.Q aprCpuStim.testTop.core.registers_MEM_reg_2__13_.Q aprCpuStim.testTop.core.registers_MEM_reg_2__12_.Q aprCpuStim.testTop.core.registers_MEM_reg_2__11_.Q aprCpuStim.testTop.core.registers_MEM_reg_2__10_.Q aprCpuStim.testTop.core.registers_MEM_reg_2__9_.Q aprCpuStim.testTop.core.registers_MEM_reg_2__8_.Q aprCpuStim.testTop.core.registers_MEM_reg_2__7_.Q aprCpuStim.testTop.core.registers_MEM_reg_2__6_.Q aprCpuStim.testTop.core.registers_MEM_reg_2__5_.Q aprCpuStim.testTop.core.registers_MEM_reg_2__4_.Q aprCpuStim.testTop.core.registers_MEM_reg_2__3_.Q aprCpuStim.testTop.core.registers_MEM_reg_2__2_.Q aprCpuStim.testTop.core.registers_MEM_reg_2__1_.Q aprCpuStim.testTop.core.registers_MEM_reg_2__0_.Q}
+gui_bus_create -name EXP:R3 {aprCpuStim.testTop.core.registers_MEM_reg_3__15_.Q aprCpuStim.testTop.core.registers_MEM_reg_3__14_.Q aprCpuStim.testTop.core.registers_MEM_reg_3__13_.Q aprCpuStim.testTop.core.registers_MEM_reg_3__12_.Q aprCpuStim.testTop.core.registers_MEM_reg_3__11_.Q aprCpuStim.testTop.core.registers_MEM_reg_3__10_.Q aprCpuStim.testTop.core.registers_MEM_reg_3__9_.Q aprCpuStim.testTop.core.registers_MEM_reg_3__8_.Q aprCpuStim.testTop.core.registers_MEM_reg_3__7_.Q aprCpuStim.testTop.core.registers_MEM_reg_3__6_.Q aprCpuStim.testTop.core.registers_MEM_reg_3__5_.Q aprCpuStim.testTop.core.registers_MEM_reg_3__4_.Q aprCpuStim.testTop.core.registers_MEM_reg_3__3_.Q aprCpuStim.testTop.core.registers_MEM_reg_3__2_.Q aprCpuStim.testTop.core.registers_MEM_reg_3__1_.Q aprCpuStim.testTop.core.registers_MEM_reg_3__0_.Q}
+gui_bus_create -name EXP:R4 {aprCpuStim.testTop.core.registers_MEM_reg_4__15_.Q aprCpuStim.testTop.core.registers_MEM_reg_4__14_.Q aprCpuStim.testTop.core.registers_MEM_reg_4__13_.Q aprCpuStim.testTop.core.registers_MEM_reg_4__12_.Q aprCpuStim.testTop.core.registers_MEM_reg_4__11_.Q aprCpuStim.testTop.core.registers_MEM_reg_4__10_.Q aprCpuStim.testTop.core.registers_MEM_reg_4__9_.Q aprCpuStim.testTop.core.registers_MEM_reg_4__8_.Q aprCpuStim.testTop.core.registers_MEM_reg_4__7_.Q aprCpuStim.testTop.core.registers_MEM_reg_4__6_.Q aprCpuStim.testTop.core.registers_MEM_reg_4__5_.Q aprCpuStim.testTop.core.registers_MEM_reg_4__4_.Q aprCpuStim.testTop.core.registers_MEM_reg_4__3_.Q aprCpuStim.testTop.core.registers_MEM_reg_4__2_.Q aprCpuStim.testTop.core.registers_MEM_reg_4__1_.Q aprCpuStim.testTop.core.registers_MEM_reg_4__0_.Q}
+gui_bus_create -name EXP:R5 {aprCpuStim.testTop.core.registers_MEM_reg_5__15_.Q aprCpuStim.testTop.core.registers_MEM_reg_5__14_.Q aprCpuStim.testTop.core.registers_MEM_reg_5__13_.Q aprCpuStim.testTop.core.registers_MEM_reg_5__12_.Q aprCpuStim.testTop.core.registers_MEM_reg_5__11_.Q aprCpuStim.testTop.core.registers_MEM_reg_5__10_.Q aprCpuStim.testTop.core.registers_MEM_reg_5__9_.Q aprCpuStim.testTop.core.registers_MEM_reg_5__8_.Q aprCpuStim.testTop.core.registers_MEM_reg_5__7_.Q aprCpuStim.testTop.core.registers_MEM_reg_5__6_.Q aprCpuStim.testTop.core.registers_MEM_reg_5__5_.Q aprCpuStim.testTop.core.registers_MEM_reg_5__4_.Q aprCpuStim.testTop.core.registers_MEM_reg_5__3_.Q aprCpuStim.testTop.core.registers_MEM_reg_5__2_.Q aprCpuStim.testTop.core.registers_MEM_reg_5__1_.Q aprCpuStim.testTop.core.registers_MEM_reg_5__0_.Q}
+gui_bus_create -name EXP:R6 {aprCpuStim.testTop.core.registers_MEM_reg_6__15_.Q aprCpuStim.testTop.core.registers_MEM_reg_6__14_.Q aprCpuStim.testTop.core.registers_MEM_reg_6__13_.Q aprCpuStim.testTop.core.registers_MEM_reg_6__12_.Q aprCpuStim.testTop.core.registers_MEM_reg_6__11_.Q aprCpuStim.testTop.core.registers_MEM_reg_6__10_.Q aprCpuStim.testTop.core.registers_MEM_reg_6__9_.Q aprCpuStim.testTop.core.registers_MEM_reg_6__8_.Q aprCpuStim.testTop.core.registers_MEM_reg_6__7_.Q aprCpuStim.testTop.core.registers_MEM_reg_6__6_.Q aprCpuStim.testTop.core.registers_MEM_reg_6__5_.Q aprCpuStim.testTop.core.registers_MEM_reg_6__4_.Q aprCpuStim.testTop.core.registers_MEM_reg_6__3_.Q aprCpuStim.testTop.core.registers_MEM_reg_6__2_.Q aprCpuStim.testTop.core.registers_MEM_reg_6__1_.Q aprCpuStim.testTop.core.registers_MEM_reg_6__0_.Q}
+gui_bus_create -name EXP:R7 {aprCpuStim.testTop.core.registers_MEM_reg_7__15_.Q aprCpuStim.testTop.core.registers_MEM_reg_7__14_.Q aprCpuStim.testTop.core.registers_MEM_reg_7__13_.Q aprCpuStim.testTop.core.registers_MEM_reg_7__12_.Q aprCpuStim.testTop.core.registers_MEM_reg_7__11_.Q aprCpuStim.testTop.core.registers_MEM_reg_7__10_.Q aprCpuStim.testTop.core.registers_MEM_reg_7__9_.Q aprCpuStim.testTop.core.registers_MEM_reg_7__8_.Q aprCpuStim.testTop.core.registers_MEM_reg_7__7_.Q aprCpuStim.testTop.core.registers_MEM_reg_7__6_.Q aprCpuStim.testTop.core.registers_MEM_reg_7__5_.Q aprCpuStim.testTop.core.registers_MEM_reg_7__4_.Q aprCpuStim.testTop.core.registers_MEM_reg_7__3_.Q aprCpuStim.testTop.core.registers_MEM_reg_7__2_.Q aprCpuStim.testTop.core.registers_MEM_reg_7__1_.Q aprCpuStim.testTop.core.registers_MEM_reg_7__0_.Q}
 
 # Global: Expressions
 gui_expr_create {(PC[15:0]/4)+1}  -name EXP:LineNum -type Verilog -scope aprCpuStim.testTop
@@ -271,7 +277,19 @@ set _session_group_2 Regfile
 gui_sg_create "$_session_group_2"
 set Regfile "$_session_group_2"
 
-gui_sg_addsignal -group "$_session_group_2" { EXP:R3 EXP:R2 EXP:R1 EXP:R0 }
+gui_sg_addsignal -group "$_session_group_2" { EXP:R14 EXP:R13 EXP:R7 EXP:R6 EXP:R5 EXP:R4 EXP:R3 EXP:R2 EXP:R1 EXP:R0 }
+gui_set_radix -radix {decimal} -signals {EXP:R14}
+gui_set_radix -radix {unsigned} -signals {EXP:R14}
+gui_set_radix -radix {decimal} -signals {EXP:R13}
+gui_set_radix -radix {unsigned} -signals {EXP:R13}
+gui_set_radix -radix {decimal} -signals {EXP:R7}
+gui_set_radix -radix {unsigned} -signals {EXP:R7}
+gui_set_radix -radix {decimal} -signals {EXP:R6}
+gui_set_radix -radix {unsigned} -signals {EXP:R6}
+gui_set_radix -radix {decimal} -signals {EXP:R5}
+gui_set_radix -radix {unsigned} -signals {EXP:R5}
+gui_set_radix -radix {decimal} -signals {EXP:R4}
+gui_set_radix -radix {unsigned} -signals {EXP:R4}
 gui_set_radix -radix {decimal} -signals {EXP:R3}
 gui_set_radix -radix {unsigned} -signals {EXP:R3}
 gui_set_radix -radix {decimal} -signals {EXP:R2}
@@ -289,7 +307,7 @@ gui_change_stack_mode -mode list
 # Post database loading setting...
 
 # Restore C1 time
-gui_set_time -C1_only 528149
+gui_set_time -C1_only 1033.925
 
 
 
@@ -315,17 +333,18 @@ gui_list_set_filter -id ${Hier.1} -text {*}
 gui_hier_list_init -id ${Hier.1}
 gui_change_design -id ${Hier.1} -design V1
 catch {gui_list_expand -id ${Hier.1} aprCpuStim}
-catch {gui_list_select -id ${Hier.1} {aprCpuStim.testTop}}
-gui_view_scroll -id ${Hier.1} -vertical -set 0
+catch {gui_list_expand -id ${Hier.1} aprCpuStim.testTop}
+catch {gui_list_select -id ${Hier.1} {aprCpuStim.testTop.core}}
+gui_view_scroll -id ${Hier.1} -vertical -set 340020
 gui_view_scroll -id ${Hier.1} -horizontal -set 0
 
 # Data 'Data.1'
 gui_list_set_filter -id ${Data.1} -list { {Buffer 1} {Input 1} {Others 1} {Linkage 1} {Output 1} {LowPower 1} {Parameter 1} {All 1} {Aggregate 1} {LibBaseMember 1} {Event 1} {Assertion 1} {Constant 1} {Interface 1} {BaseMembers 1} {Signal 1} {$unit 1} {Inout 1} {Variable 1} }
 gui_list_set_filter -id ${Data.1} -text {*}
-gui_list_show_data -id ${Data.1} {aprCpuStim.testTop}
-gui_view_scroll -id ${Data.1} -vertical -set 0
+gui_list_show_data -id ${Data.1} {aprCpuStim.testTop.core}
+gui_view_scroll -id ${Data.1} -vertical -set 240
 gui_view_scroll -id ${Data.1} -horizontal -set 0
-gui_view_scroll -id ${Hier.1} -vertical -set 0
+gui_view_scroll -id ${Hier.1} -vertical -set 340020
 gui_view_scroll -id ${Hier.1} -horizontal -set 0
 
 # View 'Wave.1'
@@ -337,9 +356,10 @@ gui_list_set_height -id Wave -height 25
 set origGroupCreationState [gui_list_create_group_when_add -wave]
 gui_list_create_group_when_add -wave -disable
 gui_marker_set_ref -id ${Wave.1}  C1
-gui_wv_zoom_timerange -id ${Wave.1} 0 1210000
+gui_wv_zoom_timerange -id ${Wave.1} 0 2970
 gui_list_add_group -id ${Wave.1} -after {New Group} {Top}
 gui_list_add_group -id ${Wave.1} -after {New Group} {Regfile}
+gui_list_select -id ${Wave.1} {EXP:R5 }
 gui_seek_criteria -id ${Wave.1} {Any Edge}
 
 
@@ -357,7 +377,7 @@ gui_list_set_filter -id ${Wave.1} -list { {Buffer 1} {Input 1} {Others 1} {Linka
 gui_list_set_filter -id ${Wave.1} -text {*}
 gui_list_set_insertion_bar  -id ${Wave.1} -group Regfile  -item EXP:R3 -position below
 
-gui_marker_move -id ${Wave.1} {C1} 528149
+gui_marker_move -id ${Wave.1} {C1} 1033.925
 gui_view_scroll -id ${Wave.1} -vertical -set 0
 gui_show_grid -id ${Wave.1} -enable false
 # Restore toplevel window zorder

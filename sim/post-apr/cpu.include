@@ -1,7 +1,7 @@
 # /home/lab.apps/vlsiapps/kits/tsmc/N65RF/1.0c_cdb/digital/Front_End/verilog/tcbn65gplus_140b/tcbn65gplus.v
 # /home/lab.apps/vlsiapps/kits/tsmc/N65RF/1.0c/digital/Front_End/verilog/tcbn65gplus_140b/tcbn65gplus.v
 ../../src/verilog/tcbn65gplus_pwr.v
-../../src/verilog/cpuStim.sv
+../../src/verilog/aprCpuStim.sv
 ../../src/verilog/datamem.sv
 ../../src/verilog/instructmem.sv
 ../../src/verilog/aprTop.sv 

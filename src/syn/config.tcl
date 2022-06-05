@@ -11,7 +11,7 @@ set CORNER "LOW"
 set TECH2ITF_MAP_FILE "star.map_9M"
 set MW_TECHFILE "tsmcn65_9lmT2.tf"
 
-source -echo -verbose ./tech_node_config.tcl
+source -echo -verbose ${SRC_DIR}/tech_node_config.tcl
 # Source files 
 # ==========================================================================
 set RTL_TOP \
@@ -66,7 +66,7 @@ set clk_setup_uncertainty 0.030
 set clk_hold_uncertainty 0.030
 ## Transition
 set clk_trans 0.1
-set CLK_PERIOD 10
+set CLK_PERIOD 4
 
 set max_fanout 32
 set max_trans 0.5

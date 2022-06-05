@@ -1,7 +1,8 @@
 
 # Reports generation                                                          #
 #=============================================================================#
-
+file mkdir ./$reports
+file mkdir ./$results
 # Path timing 
 report_timing -path end  -delay max -max_paths 200 -cap -nets -nosplit > "./$reports/timing.max.rpt"
 report_timing -path end  -delay min -max_paths 200 -cap -nets -nosplit > "./$reports/timing.min.rpt"
