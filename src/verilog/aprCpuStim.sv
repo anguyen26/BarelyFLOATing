@@ -36,20 +36,20 @@ module aprCpuStim();
 		end
 		reset <= 0;
         
-        	//repeat(100) @(posedge clk);
-		///*
 		while(testTop.core.instr != 16'b11100_00000000000 & testTop.core.instr != 16'b1110011111111111) begin
 			@(posedge clk);
 		end 
-		//*/
-	/*	
+		
         for (i = 0; i < 10; i++) begin
 			@(posedge clk); // Clear Pipeline
 		end
 		$display("%t Test Done", $time);
 
 		f1 = $fopen("convertMe.txt", "w");
-		
+		f1 = $fopen("convertMe.txt", "w");
+		$fwrite(f1,"%b\n", testTop.dataMemory.mem[1]);
+        $fclose(f1);
+	/*	
 		for (int i=0; i<65536; i++) begin
 		    if (testCpu.dataMemory.mem[i] != 16'd0) begin;
 		        $fwrite(f1,"%b\n", testCpu.dataMemory.mem[i]);

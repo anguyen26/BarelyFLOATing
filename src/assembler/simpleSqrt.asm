@@ -27,6 +27,6 @@
  FADD 6, 1, 6
  FDIV 1, 6, 7
  B #-10
- MOVS 0, #0 // store result in dataMem[0]
+ MOVS 0, #0 // store result in dataMem[1]
  STR 1, [0, #1]
  B #0

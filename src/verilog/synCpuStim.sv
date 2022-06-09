@@ -15,7 +15,7 @@ module synCpuStim();
 	*/
 
 	//cpu testCpu(.*);
-	top testTop(.*);
+	top testCpu(.*);
 	
 	initial $timeformat(-9, 2, " ns", 10);
 
@@ -37,28 +37,23 @@ module synCpuStim();
 		reset <= 0;
         
         	//repeat(100) @(posedge clk);
-		///*
-		while(testTop.core.instr != 16'b11100_00000000000 & testTop.core.instr != 16'b1110011111111111) begin
+		while(testCpu.core.instr != 16'b11100_00000000000 & testCpu.core.instr != 16'b1110011111111111) begin
 			@(posedge clk);
 		end 
-		//*/
-	/*	
+        // @(posedge clk);
+        /*
         for (i = 0; i < 10; i++) begin
 			@(posedge clk); // Clear Pipeline
 		end
-		$display("%t Test Done", $time);
-
-		f1 = $fopen("convertMe.txt", "w");
-		
-		for (int i=0; i<65536; i++) begin
-		    if (testCpu.dataMemory.mem[i] != 16'd0) begin;
-		        $fwrite(f1,"%b\n", testCpu.dataMemory.mem[i]);
-		    end
-		end
-	
-        $fclose(f1);
         */
-		/*
+		$display("%t Test Done", $time);
+		
+		f1 = $fopen("convertMe.txt", "w");
+		$fwrite(f1,"%b\n", testCpu.dataMemory.mem[1]);
+        $fclose(f1);
+
+		
+        /*
         f3 = $fopen("log2_error.txt", "w");
 		$fwrite(f3, "0000000000000000\n");
 		while(testCpu.core.instr != 16'b11100_00000000000 & testCpu.core.instr != 16'b1110011111111111) begin
