@@ -33,26 +33,25 @@ for line1 in f1:
                     if (abs(float(roundedExpected)) < 10):
                         if (abs(roundedActual) - abs(roundedExpected) > 10):
                             matched = False
-                            print("Line #"+str(i)+":")
-                            print("Expected: "+str(roundedExpected))
-                            print("Actual: "+str(roundedActual))
+                        # print("Line #"+str(i)+'\t'+)
+                        # print("Expected: "+str(roundedExpected))
+                        # print("Actual: "+str(roundedActual))
                     else: 
                         if (roundedActual - roundedExpected > 0.5):
                             matched = False
-                            print("Line #"+str(i)+":")
-                            print("Expected: "+str(roundedExpected))
-                            print("Actual: "+str(roundedActual))
+                        # print("Line #"+str(i)+":")
+                        # print("Expected: "+str(roundedExpected))
+                        # print("Actual: "+str(roundedActual))
                 # if results are exact..
                 else:
                     if (line1 != line2):
                         matched = False
-                        print("Line #"+str(i)+":")
-                        print("Expected: "+line1[:len(line1)-1])
-                        print("Actual: "+line2[:len(line2)-1])
+                print("Line #"+str(i)+"\tExpected: "+line1[:len(line1)-1] \
+                    +"\t"+"Actual: "+line2[:len(line2)-1])
         break
 # Note: f1 has 1 more line than f2 because the last line is
 # the result of the stop op
 if matched:
-    print("Outputs match!")
+    print("Outputs match! Note: underflow, overflow, and out-of-range results are ignored")
 f1.close()
 f2.close()

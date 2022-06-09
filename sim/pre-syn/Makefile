@@ -1,5 +1,5 @@
 TEST=log2
-NUM_TESTS=1
+NUM_TESTS=5
 TESTID=1
 PASSED=0
 
@@ -15,6 +15,7 @@ sqrt:
 	done
 	@ echo "Comparing expected results to actual results..."
 	@ python3 compare_sqrt.py
+	@ cat sqrt_diff.txt
 
 log2: edit_tb vcs print_log2_result compare_to_log
 

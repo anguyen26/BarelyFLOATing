@@ -20,7 +20,6 @@ vcs:
 read_out:
 	@ echo "Converting binary results to decimal..."
 	@ python3 convertFPUout.py fp_output.txt
-#	cat fp_output_dec.txt
 
 compare:
 	@ echo "Comparing actual results to expected results..."

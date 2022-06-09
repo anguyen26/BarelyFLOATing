@@ -6,7 +6,7 @@ Warning-[DEBUG_DEP] Option will be deprecated
 Command: vcs -f cpu.include +v2k -R -sverilog -full64 -debug_pp -timescale=1ns/10ps \
 -l cpu.log
                          Chronologic VCS (TM)
-       Version S-2021.09-SP1_Full64 -- Sun Jun  5 00:26:26 2022
+       Version S-2021.09-SP1_Full64 -- Thu Jun  9 18:07:53 2022
 
                     Copyright (c) 1991 - 2021 Synopsys, Inc.
    This software and the associated documentation are proprietary to Synopsys,
@@ -58,9 +58,7 @@ Starting vcs inline pass...
 
 13 modules and 0 UDP read.
 recompiling module datamem
-recompiling module instructmem
-Both modules done.
-	However, due to incremental compilation, only 2 modules need to be compiled. 
+	However, due to incremental compilation, only 1 module needs to be compiled. 
 rm -f _cuarc*.so _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
 ld -shared  -Bsymbolic --no-relax  -o .//../simv.daidir//_cuarc0.so objs/amcQw_d.o \
 
@@ -68,7 +66,7 @@ rm -f _cuarc0.so
 if [ -x ../simv ]; then chmod a-x ../simv; fi
 g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir \
 -Wl,-rpath=/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib -L/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib \
--Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _11871_archive_1.so _prev_archive_1.so \
+-Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _31956_archive_1.so _prev_archive_1.so \
 _cuarc0.so  SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o \
 rmar_llvm_0_0.o           -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile \
 -luclinative /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_tls.o   -Wl,-whole-archive \
@@ -78,179 +76,14 @@ rmar_llvm_0_0.o           -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -ls
 Command: /home/nguyea9/ee478/sim/pre-syn/./simv +v2k -a cpu.log
 Chronologic VCS simulator copyright 1991-2021
 Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  Jun  5 00:26 2022
+Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  Jun  9 18:07 2022
 Running benchmark: ../../src/assembler/simpleSqrt.v
 VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
-3530.00 ns Test Done
+3130.00 ns Test Done
 $finish called from file "../../src/verilog/cpuStim.sv", line 101.
-$finish at simulation time 3530.00 ns
+$finish at simulation time 3130.00 ns
            V C S   S i m u l a t i o n   R e p o r t 
-Time: 3530000 ps
-CPU Time:      0.300 seconds;       Data structure size:   0.3Mb
-Sun Jun  5 00:26:30 2022
-CPU time: .407 seconds to compile + .457 seconds to elab + .376 seconds to link + .333 seconds in simulation
-Command: /home/nguyea9/ee478/sim/pre-syn/./simv +v2k -a cpu.log
-Chronologic VCS simulator copyright 1991-2021
-Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  Jun  4 18:51 2022
-Running benchmark: ../../src/assembler/simpleSqrt.v
-VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
-Received SIGHUP (signal 1), exiting.
-Command: /home/nguyea9/ee478/sim/pre-syn/./simv +v2k -a cpu.log
-Chronologic VCS simulator copyright 1991-2021
-Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  Jun  4 18:54 2022
-Running benchmark: ../../src/assembler/simpleSqrt.v
-VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
-Received SIGHUP (signal 1), exiting.
-Command: /home/nguyea9/ee478/sim/pre-syn/./simv +v2k -a cpu.log
-Chronologic VCS simulator copyright 1991-2021
-Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  Jun  4 19:06 2022
-Running benchmark: ../../src/assembler/simpleSqrt.v
-VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
-Received SIGHUP (signal 1), exiting.
-Command: /home/nguyea9/ee478/sim/pre-syn/./simv +v2k -a cpu.log
-Chronologic VCS simulator copyright 1991-2021
-Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  Jun  4 19:02 2022
-Running benchmark: ../../src/assembler/simpleSqrt.v
-VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
-Received SIGHUP (signal 1), exiting.
-Command: /home/nguyea9/ee478/sim/pre-syn/./simv +v2k -a cpu.log
-Chronologic VCS simulator copyright 1991-2021
-Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  Jun  4 19:02 2022
-Running benchmark: ../../src/assembler/simpleSqrt.v
-VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
-Received SIGHUP (signal 1), exiting.
-Command: /home/nguyea9/ee478/sim/pre-syn/./simv +v2k -a cpu.log
-Chronologic VCS simulator copyright 1991-2021
-Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  Jun  4 19:09 2022
-Running benchmark: ../../src/assembler/simpleSqrt.v
-VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
-Received SIGHUP (signal 1), exiting.
-Command: /home/nguyea9/ee478/sim/pre-syn/./simv +v2k -a cpu.log
-Chronologic VCS simulator copyright 1991-2021
-Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  Jun  4 18:53 2022
-Running benchmark: ../../src/assembler/simpleSqrt.v
-VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
-Received SIGHUP (signal 1), exiting.
-Command: /home/nguyea9/ee478/sim/pre-syn/./simv +v2k -a cpu.log
-Chronologic VCS simulator copyright 1991-2021
-Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  Jun  4 19:20 2022
-Running benchmark: ../../src/assembler/simpleSqrt.v
-VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
-Received SIGHUP (signal 1), exiting.
-Command: /home/nguyea9/ee478/sim/pre-syn/./simv +v2k -a cpu.log
-Chronologic VCS simulator copyright 1991-2021
-Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  Jun  4 19:36 2022
-Running benchmark: ../../src/assembler/simpleSqrt.v
-VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
-Received SIGHUP (signal 1), exiting.
-Command: /home/nguyea9/ee478/sim/pre-syn/./simv +v2k -a cpu.log
-Chronologic VCS simulator copyright 1991-2021
-Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  Jun  4 19:02 2022
-Running benchmark: ../../src/assembler/simpleSqrt.v
-VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
-Received SIGHUP (signal 1), exiting.
-Command: /home/nguyea9/ee478/sim/pre-syn/./simv +v2k -a cpu.log
-Chronologic VCS simulator copyright 1991-2021
-Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  Jun  4 19:33 2022
-Running benchmark: ../../src/assembler/simpleSqrt.v
-VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
-Received SIGHUP (signal 1), exiting.
-Command: /home/nguyea9/ee478/sim/pre-syn/./simv +v2k -a cpu.log
-Chronologic VCS simulator copyright 1991-2021
-Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  Jun  4 18:53 2022
-Running benchmark: ../../src/assembler/simpleSqrt.v
-VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
-Received SIGHUP (signal 1), exiting.
-Command: /home/nguyea9/ee478/sim/pre-syn/./simv +v2k -a cpu.log
-Chronologic VCS simulator copyright 1991-2021
-Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  Jun  4 19:08 2022
-Running benchmark: ../../src/assembler/simpleSqrt.v
-VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
-Received SIGHUP (signal 1), exiting.
-Command: /home/nguyea9/ee478/sim/pre-syn/./simv +v2k -a cpu.log
-Chronologic VCS simulator copyright 1991-2021
-Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  Jun  4 19:29 2022
-Running benchmark: ../../src/assembler/simpleSqrt.v
-VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
-Received SIGHUP (signal 1), exiting.
-Command: /home/nguyea9/ee478/sim/pre-syn/./simv +v2k -a cpu.log
-Chronologic VCS simulator copyright 1991-2021
-Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  Jun  4 19:23 2022
-Running benchmark: ../../src/assembler/simpleSqrt.v
-VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
-Received SIGHUP (signal 1), exiting.
-           V C S   S i m u l a t i o n   R e p o r t 
-Time: 170000 ps
-CPU Time:      4.670 seconds;       Data structure size:   0.3Mb
-Sun Jun  5 00:30:07 2022
-           V C S   S i m u l a t i o n   R e p o r t 
-Time: 170000 ps
-CPU Time:      2.760 seconds;       Data structure size:   0.3Mb
-Sun Jun  5 00:30:08 2022
-           V C S   S i m u l a t i o n   R e p o r t 
-Time: 170000 ps
-CPU Time:      5.460 seconds;       Data structure size:   0.3Mb
-Sun Jun  5 00:30:08 2022
-           V C S   S i m u l a t i o n   R e p o r t 
-Time: 170000 ps
-CPU Time:      6.590 seconds;       Data structure size:   0.3Mb
-Sun Jun  5 00:30:08 2022
-           V C S   S i m u l a t i o n   R e p o r t 
-Time: 170000 ps
-CPU Time:     11.770 seconds;       Data structure size:   0.3Mb
-Sun Jun  5 00:30:08 2022
-           V C S   S i m u l a t i o n   R e p o r t 
-Time: 190000 ps
-CPU Time:      6.440 seconds;       Data structure size:   0.3Mb
-Sun Jun  5 00:30:08 2022
-           V C S   S i m u l a t i o n   R e p o r t 
-Time: 190000 ps
-CPU Time:      3.090 seconds;       Data structure size:   0.3Mb
-Sun Jun  5 00:30:08 2022
-           V C S   S i m u l a t i o n   R e p o r t 
-Time: 170000 ps
-CPU Time:      2.650 seconds;       Data structure size:   0.3Mb
-Sun Jun  5 00:30:08 2022
-           V C S   S i m u l a t i o n   R e p o r t 
-Time: 170000 ps
-CPU Time:      6.670 seconds;       Data structure size:   0.3Mb
-Sun Jun  5 00:30:08 2022
-           V C S   S i m u l a t i o n   R e p o r t 
-Time: 170000 ps
-CPU Time:      3.910 seconds;       Data structure size:   0.3Mb
-Sun Jun  5 00:30:08 2022
-           V C S   S i m u l a t i o n   R e p o r t 
-Time: 170000 ps
-CPU Time:      0.800 seconds;       Data structure size:   0.3Mb
-Sun Jun  5 00:30:08 2022
-           V C S   S i m u l a t i o n   R e p o r t 
-Time: 170000 ps
-CPU Time:      3.850 seconds;       Data structure size:   0.3Mb
-Sun Jun  5 00:30:08 2022
-           V C S   S i m u l a t i o n   R e p o r t 
-Time: 170000 ps
-CPU Time:      0.460 seconds;       Data structure size:   0.3Mb
-Sun Jun  5 00:30:08 2022
-           V C S   S i m u l a t i o n   R e p o r t 
-Time: 170000 ps
-CPU Time:      6.410 seconds;       Data structure size:   0.3Mb
-Sun Jun  5 00:30:08 2022
-           V C S   S i m u l a t i o n   R e p o r t 
-Time: 170000 ps
-CPU Time:      3.700 seconds;       Data structure size:   0.3Mb
-Sun Jun  5 00:30:08 2022
+Time: 3130000 ps
+CPU Time:      0.320 seconds;       Data structure size:   0.3Mb
+Thu Jun  9 18:07:57 2022
+CPU time: .573 seconds to compile + .378 seconds to elab + .280 seconds to link + .353 seconds in simulation
