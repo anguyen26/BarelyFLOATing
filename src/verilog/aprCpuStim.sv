@@ -1,7 +1,7 @@
 `timescale 1ns/1ns
 module aprCpuStim();
 
-	parameter ClockDelay = 4;
+	parameter ClockDelay = 10;
 	
 	logic clk, reset;
 	/*
