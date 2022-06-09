@@ -1,0 +1,80 @@
+    B main
+ackermann
+    SUB SP, SP, #12
+    MOV R0, R13
+    STR R1, [R0, #3]
+    STR R2, [R0, #2]
+    STR R3, [R0, #1]
+    MOV R0, R13
+    LDR R1, [R0, #5]
+    LDR R2, [R0, #6]
+    MOVS R3, #0
+    CMP R3, R1
+    BNE ackermann_m_ne_0
+        ADDS R2, R2, #1
+        STR R2, [R0, #4]
+        LDR R1, [R0, #3]
+        LDR R2, [R0, #2]
+        LDR R3, [R0, #1]
+        ADD SP, SP, #12
+        BX R14
+ackermann_m_ne_0
+    CMP R3, R2
+    BNE ackermann_n_ne_0
+        SUB SP, SP, #16
+        MOV R0, R13
+        MOV R3, R14
+        STR R3, [R0, #4]
+        SUBS R1, R1, #1
+        STR R1, [R0, #2]
+        MOVS R1, #1
+        STR R1, [R0, #3]
+        BL ackermann
+        MOV R0, R13
+        LDR R3, [R0, #1]
+        STR R3, [R0, #8]
+        LDR R1, [R0, #7]
+        LDR R2, [R0, #6]
+        LDR R3, [R0, #5]
+        LDR R0, [R0, #4]
+        ADD SP, SP, #28
+        BX R0
+ackermann_n_ne_0
+        SUB SP, SP, #16
+        MOV R0, R13
+        MOV R3, R14
+        STR R3, [R0, #4]
+        SUBS R2, R2, #1
+        STR R2, [R0, #3]
+        STR R1, [R0, #2]
+        BL ackermann_aux_call
+        SUB SP, SP, #8
+        MOV R0, R13
+        SUBS R1, R1, #1
+        STR R1, [R0, #2]
+        BL ackermann_aux_call
+        MOV R0, R13
+        LDR R3, [R0, #1]
+        STR R3, [R0, #10]
+        LDR R1, [R0, #9]
+        LDR R2, [R0, #8]
+        LDR R3, [R0, #7]
+        LDR R0, [R0, #6]
+        ADD SP, SP, #36
+        BX R0
+ackermann_aux_call
+        B ackermann
+main
+    SUB SP, SP, #12
+    MOV R0, R13
+    MOVS R1, #3
+    STR R1, [R0, #2]
+    MOVS R1, #2
+    STR R1, [R0, #3]
+    BL ackermann_aux_call
+    MOV R0, R13
+    LDR R3, [R0, #1]
+    ADD SP, SP, #12
+end
+        NOOP
+        B end

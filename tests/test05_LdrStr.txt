@@ -1,5 +1,0 @@
-    MOVS R7, #254
-    MOVS R0, #0
-    STR R7, [R0, #24]
-    LDR R0, [R0, #24]
-

@@ -1,36 +1,26 @@
-TEST=random
+# synthesizes the core RTL with the local tcl scrips
+syn: 
+	make -C sapr/syn syn
+apr:
+	make -C sapr/apr apr
 
-# generates random instructions and tests them
-all: instr_gen edit_tb iarm vcs compare
+vcs_apr:
+	@ echo "Running instructions on APR Design..."
+	make -C sim/post-apr vcs
 
-# user sets $TEST and runs test
-# run 'make custom' to rerun the last random test that was generated
-custom: edit_tb iarm vcs compare
-
-edit_tb:
-	sed -i 's;^with\(.*\);with open("tests/$(TEST).txt", "r") as f:;g' \
-		iarm-master/run_iarm.py
-	sed -i 's;^`define\(.*\).arm";`define BENCHMARK "../tests/$(TEST).arm"; g' \
-		Core/instructmem.sv
-
-instr_gen:
-	@ echo "Generating random instructions..."
-	python3 tests/instr_gen.py
-	@ echo "Converting assembly instructions to binary..."
-	python3 tests/assem_to_bin.py random > tests/notes_assem_to_bin.txt
-
-iarm:
-	@ echo "Running instructions on iarm..."
-	@ python3 iarm-master/run_iarm.py | python3 iarm-master/format_iarm.py
-	mv debug_iarm.txt iarm-master/.
+vcs_syn:
+	@ echo "Running instructions on SYN Design..."
+	make -C sim/post-syn vcs
 
 vcs:
-	@ echo "Running instructions on BarelyFLOATing CPU..."
-	make -C Core vcs
+	@ echo "Running instructions on Verilog Design..."
+	make -C sim/pre-syn vcs
+
+dve_apr:
+	make -C sim/post-apr dve
+
+dve_syn:
+	make -C sim/post-syn dve
 
 dve:
-	make -C Core dve
-
-compare: 
-	@ echo "Comparing expected results to actual results..."
-	@ diff -cs iarm-master/iarm_output.txt Core/sv_output.txt
+	make -C sim/pre-syn dve
