@@ -41,11 +41,9 @@ module synCpuStim();
 			@(posedge clk);
 		end 
         // @(posedge clk);
-        /*
         for (i = 0; i < 10; i++) begin
 			@(posedge clk); // Clear Pipeline
 		end
-        */
 		$display("%t Test Done", $time);
 		
 		f1 = $fopen("convertMe.txt", "w");
