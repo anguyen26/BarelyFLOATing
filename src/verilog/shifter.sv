@@ -1,10 +1,13 @@
+// This module handles the shift operations on 16-bit values
+
 module shifter(
-	input logic	signed	[15:0]	value,
-	input logic	[1:0]				mode, // 0: LSL, 1: LSR, 2: ASR, 3: ROR
-	input	logic signed		[15:0]		distance,
-	output logic signed [15:0]	result
+	input	logic	signed	[15:0]	value,
+	input	logic			[1:0]	mode, // 0: LSL, 1: LSR, 2: ASR, 3: ROR
+	input	logic signed	[15:0]	distance,
+	output	logic signed 	[15:0]	result
 	);
 	
+	// utilizes basic system verilog shift operators and is combinational
 	always_comb begin
         case(mode)
             0: result = value << distance;
@@ -15,6 +18,7 @@ module shifter(
         endcase
 	end
 endmodule
+
 /*
 module shifter_testbench();
 	logic	[15:0]	value;

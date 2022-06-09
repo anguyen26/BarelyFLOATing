@@ -1,3 +1,5 @@
+// FPU test for only mul op
+
 module tb_fp_mul();
     logic clk, reset;
     logic [15:0] opA, opB, product;

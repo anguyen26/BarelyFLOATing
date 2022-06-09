@@ -1,3 +1,5 @@
+// Take in write and read adresses and determines where to forward data from
+
 module forwardingUnit(
 	input logic [3:0] 	RA1, RA2, WA3W,
 	input logic 		RegWriteW,

@@ -1,3 +1,6 @@
+// Top level of the FPU design
+// Impliments all four FPU operations and flags with sub modules
+
 module fpu(
 	input logic [15:0] opA, opB,
 	input logic [1:0] op,
@@ -13,13 +16,18 @@ module fpu(
 			qUnderflow, qOverflow, qInexact;
 	logic cout;
 
+	//flip sign bit if subtraction op
 	assign newOpB = (op == 2'd0) ? opB : {~opB[15], opB[14:0]};
+
+	//pass operands to adder unit
 	fp_add add_sub(.opA, .opB(newOpB), .sum, .underflow(aUnderflow), 
         .overflow(aOverflow), .inexact(aInexact), .cout);
 
+	//pass operands to multiply unit
 	fp_mul multiply(.opA, .opB, .product, .underflow(pUnderflow), .overflow(pOverflow), 
         .inexact(pInexact));
 
+	//pass operands to divide unit
 	fp_div divide(.opA, .opB, .quotient, .underflow(qUnderflow), 
         .overflow(qOverflow), .inexact(qInexact));
 
@@ -29,6 +37,7 @@ module fpu(
 	assign FPUFlags[1] = cout; //C-flag
 	assign FPUFlags[0] = overflow; //O-flag
 
+	//combinationally assign flags
 	always_comb begin
 		case(op)
 			2'b00: begin

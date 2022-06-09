@@ -1,4 +1,4 @@
-// mux3x16_16 takes 3 data input 16b and 2 select bit, 
+// mux5x16_16 takes 5 data input 16b and 3 select bit, 
 // then copies one of the input bits to the output based on the selection bit
 `timescale 1ps/1ps
 module mux5x16_16(

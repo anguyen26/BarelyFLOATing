@@ -1,3 +1,5 @@
+// Adder unit for the FPU
+
 module fp_add(
     input logic [15:0] opA, opB,
     output logic [15:0] sum,

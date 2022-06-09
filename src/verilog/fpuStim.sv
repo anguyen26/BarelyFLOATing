@@ -1,3 +1,6 @@
+// Testbench for FPU, takes in operands and computs the specified operation
+// Also sets output flags
+
 module fpuStim();
     logic clk, reset;
     logic [15:0] opA, opB;
@@ -27,6 +30,7 @@ module fpuStim();
         end
     end
 
+    // Write output files
     integer f;    
     initial begin
         f = $fopen("fp_output.txt", "w");
@@ -46,7 +50,6 @@ module fpuStim();
         while (opA != 16'b1111111111111111) begin
             @(posedge clk);
         end
-//        @(posedge clk);
         $finish;
         $fclose(f);
     end

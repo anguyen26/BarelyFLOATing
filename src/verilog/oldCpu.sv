@@ -1,3 +1,5 @@
+// Old Core before core was converted to a top level design
+
 `timescale 1ps/1ps
 module cpu(
 	input logic clk, reset

@@ -1,3 +1,5 @@
+// This module is simmilar to top.sv but it annotates with apr timing
+
 module top(
     input logic clk, reset
 );

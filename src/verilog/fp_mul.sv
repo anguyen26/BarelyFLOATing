@@ -1,3 +1,5 @@
+// Multiplier unit for the FPU
+
 module fp_mul(
     input logic [15:0] opA, opB,
     output logic [15:0] product,

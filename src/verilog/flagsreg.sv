@@ -1,3 +1,5 @@
+// 4 input and 4 enable register for every flag
+
 module flagsreg(
     input logic reset,
     input logic [3:0] in, en,
@@ -8,6 +10,7 @@ module flagsreg(
         if (reset) begin
             out = 4'd0;
         end
+        //combinationally assign each flag depending on enable signals
         else begin
             if (en[0]) out[0] = 1'b1;
             else out[0] = 1'b0;

@@ -1,3 +1,6 @@
+// Runs the CPU for a fixed number of cycles
+// Only used for debugging infinite loops
+
 `timescale 1ps/1ps
 module cpuStim_fixed();
 

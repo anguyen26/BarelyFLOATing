@@ -1,3 +1,5 @@
+// FPU test for only div op
+
 module tb_fp_div();
     logic clk, reset, start;
     logic [15:0] opA, opB, quotient;

@@ -1,3 +1,5 @@
+// Divider unit for the FPU
+
 module fp_div(
     input logic [15:0] opA, opB,
     output logic [15:0] quotient,

@@ -3,17 +3,6 @@
 // two words of the address must be 0).
 //
 // To change the file that is loaded, edit the filename here:
-//`define BENCHMARK "../benchmarks/custom.arm"
-//`define BENCHMARK "../benchmarks/test01_MovAddSub.arm"
-//`define BENCHMARK "../benchmarks/test02_AddsSubs.arm"
-//`define BENCHMARK "../benchmarks/each_binary_instr.txt"
-//`define BENCHMARK "../benchmarks/test03_CbzB.arm"
-//`define BENCHMARK "../benchmarks/test04_LdurStur.arm"
-//`define BENCHMARK "../benchmarks/test05_Blt.arm"
-//`define BENCHMARK "../benchmarks/test06_MulLslLsr.arm"
-//`define BENCHMARK "../benchmarks/test10_forwarding.arm"
-//`define BENCHMARK "../benchmarks/test11_Sort.arm"
-//`define BENCHMARK "../benchmarks/test12_Division.arm"
 `define BENCHMARK "../../src/assembler/simpleSqrt.v"
 `timescale 1ns/10ps
 

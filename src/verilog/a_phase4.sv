@@ -1,3 +1,5 @@
+// 4-bit wide A-phase latch, used for flags in CPU
+
 module a_phase4 (
 	input logic [3:0] IN, EN,
 	input logic RST,

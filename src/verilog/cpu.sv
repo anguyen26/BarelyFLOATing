@@ -1,3 +1,7 @@
+// This is the core datapath for the ARM Core
+// Handles the instantiation of the Regfile, PC incrementing, and dataflow
+// Has a 2 stage deep pipeline, stalls 1 cycle on every FPU operation
+
 `timescale 1ps/1ps
 module cpu(
 	input logic clk, reset,
@@ -76,6 +80,8 @@ module cpu(
 	// Outputs next PC every clock cycle
 	// register PCRegister(.dataIn(PCNext), .dataOut(PC), .writeEnable(!stallF), .reset, .clk);
     pipelineReg PCRegister(.D(PCNext), .Q(PC), .en(!stallF), .clear(reset), .clk);
+
+    //determines when to assert a stall operation
     always_comb begin
 		if((BranchE | ALUorFPUE) & (instr == instrE)) stallF = 0; //branch determined
 		else if(Branch | ALUorFPU) stallF = 1; //branch upcoming
@@ -143,7 +149,7 @@ module cpu(
 	//********************************************************************************************\\
 
 
-	// Pipeline signals from Fetch/Decode
+	// Pipeline signals from Decode to Execute
 	pipelineReg #(.bitWidth(16)) decodeToExec0 (.D(instr), .Q(instrE), .en(1'b1), .clear(1'b0), .clk);
 	pipelineReg #(.bitWidth(16)) decodeToExec1 (.D(ReadData1), .Q(ReadData1E), .en(1'b1), .clear(1'b0), .clk);
 	pipelineReg #(.bitWidth(16)) decodeToExec2 (.D(ReadData2), .Q(ReadData2E), .en(1'b1), .clear(1'b0), .clk);
@@ -204,22 +210,6 @@ module cpu(
 
 	// Mux between ALU Output & FPU Output
 	assign CompOutput = (ALUorFPUE) ? FPUResult : aluOutput;
-
-
-	//********************************************************************************************\\
-	//*************************************** Data Memory ****************************************\\
-	//********************************************************************************************\\
-	
-
-	// Instantiates the Data Memory 65k x 16b
-	// datamem dataMemory(.address(aluOutput), .write_enable(MemWriteE), .read_enable(MemReadE), .write_data(ReadData2E), .clk, .reset, .read_data(dataOut));
-
-
-	//********************************************************************************************\\
-	//*************************************** Write Back ****************************************\\
-	//********************************************************************************************\\
-	
-
 	assign imm8 = {{8{1'b0}}, {instrE[7:0]}};
 	// Select type of MOV
 	assign whichMOV = instrE[13] ? imm8 : ReadData2E;

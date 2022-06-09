@@ -1,3 +1,5 @@
+// FPU test for only add op
+
 module tb_fp_add();
     logic clk, reset;
     logic [15:0] opA, opB, sum;

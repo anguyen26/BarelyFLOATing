@@ -1,8 +1,5 @@
+// Inteded to be used to write output file for the data mem if needed for verification, otherwise identical to dmem
 // Data memory.  Supports reads and writes.  Data initialized to "X".  Note that this memory is little-endian:
-// The value of the first double-word is Mem[0]+Mem[1]*256+Mem[2]*256*256+ ... + Mem[7]*256^7
-//
-// Size is the number of bytes to transfer, and memory supports any power of 2 access size up to double-word.
-// However, all accesses must be aligned.  So, the address of any access of size S must be a multiple of S.
 
 `timescale 1ns/10ps
 

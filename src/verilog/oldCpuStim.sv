@@ -1,3 +1,5 @@
+// Old cpu testbench for previous test flow
+
 `timescale 1ps/1ps
 module cpuStim();
 
@@ -25,32 +27,10 @@ module cpuStim();
 			@(posedge clk); // Reset Pipeline
 		end
 		reset <= 0;
-/*
-        repeat(35) begin
-            i++;
-            $display("%b", testCpu.instr);
-            $display("%d", i);
-            @(posedge clk);
-        end
-        */
+		// runs until end instruction is reached and writes needed outputs to files
 		f3 = $fopen("log2_error.txt", "w");
 		$fwrite(f3, "0000000000000000\n");
 		while(testCpu.instr != 16'b11100_00000000000 & testCpu.instr != 16'b1110011111111111) begin
-            //i++;
-            //$display("%b", testCpu.instr);
-            //$display("%d", i);
-			// f = $fopen("debug_sv.txt", "w");
-			// for (int i=0; i<15; i++) begin
-			// 	$fwrite(f, "%d = %d\n", i, testCpu.registers.MEM[i]);
-			// end
-			// $fwrite(f, "15 = %d\n", testCpu.registers.r15);
-			// $fwrite(f, "Memory content:\n");
-			// for (int i=0; i<65536; i++) begin
-			// 	if (testCpu.dataMemory.mem[i] != 16'd0) begin;
-			// 	    $fwrite(f, "mem[%d] = %d\n", i, testCpu.dataMemory.mem[i]);
-			// 	end
-			// end
-			//for log2
 			if(testCpu.PC == 16'b0000000001111000) begin
 				$fwrite(f3, "%b\n", testCpu.registers.MEM[5]);
 			end

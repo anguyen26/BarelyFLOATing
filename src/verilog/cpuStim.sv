@@ -1,3 +1,5 @@
+// Top level CPU testbench that writes the state of the CPU at the end of sim to files
+
 `timescale 1ps/1ps
 module cpuStim();
 
@@ -5,6 +7,7 @@ module cpuStim();
 	
 	logic clk, reset;
 	
+	//instantiate top level design
 	top testCpu(.*);
 	
 	initial $timeformat(-9, 2, " ns", 10);
@@ -26,7 +29,7 @@ module cpuStim();
 		end
 		reset <= 0;
         
-        // repeat(5) begin
+    // run until end instruction is reached
 		while(testCpu.core.instr != 16'b11100_00000000000 & testCpu.core.instr != 16'b1110011111111111) begin
             @(posedge clk);
         end
@@ -34,8 +37,10 @@ module cpuStim();
         for (i = 0; i < 10; i++) begin
 			@(posedge clk); // Clear Pipeline
 		end
+
 		$display("%t Test Done", $time);
 
+		// write result files
 		f1 = $fopen("convertMe.txt", "w");
 		$fwrite(f1,"%b\n", testCpu.dataMemory.mem[1]);
         $fclose(f1);
@@ -44,60 +49,6 @@ module cpuStim();
 		$fwrite(f2, "%b", testCpu.core.registers.MEM[1]); //log2 result
         $fclose(f2);
 
-		/*
-        f3 = $fopen("log2_error.txt", "w");
-		$fwrite(f3, "0000000000000000\n");
-		while(testCpu.core.instr != 16'b11100_00000000000 & testCpu.core.instr != 16'b1110011111111111) begin
-            //i++;
-            //$display("%b", testCpu.instr);
-            //$display("%d", i);
-			// f = $fopen("debug_sv.txt", "w");
-			// for (int i=0; i<15; i++) begin
-			// 	$fwrite(f, "%d = %d\n", i, testCpu.registers.MEM[i]);
-			// end
-			// $fwrite(f, "15 = %d\n", testCpu.registers.r15);
-			// $fwrite(f, "Memory content:\n");
-			// for (int i=0; i<65536; i++) begin
-			// 	if (testCpu.dataMemory.mem[i] != 16'd0) begin;
-			// 	    $fwrite(f, "mem[%d] = %d\n", i, testCpu.dataMemory.mem[i]);
-			// 	end
-			// end
-			//for log2
-			if(testCpu.PC == 16'b0000000001111000) begin
-				$fwrite(f3, "%b\n", testCpu.registers.MEM[5]);
-			end 
-		    @(posedge clk);
-		end
-
-		for (i = 0; i < 10; i++) begin
-			@(posedge clk); // Clear Pipeline
-		end
-		$display("%t Test Done", $time);
-
-		f = $fopen("sv_output.txt", "w");
-		f1 = $fopen("convertMe.txt", "w");
-		
-		$fwrite(f, "Register content:\n");
-		for (int i=0; i<15; i++) begin
-		    // $fwrite(f, "%d = %d\n", i, testCpu.registers.MEM[i]);
-		    $fwrite(f, "%d = %b\n", i, testCpu.cpu.registers.MEM[i]);
-		end
-		$fwrite(f, "15 = %d\n", testCpu.cpu.registers.r15);
-		$fwrite(f, "Memory content:\n");
-		for (int i=0; i<65536; i++) begin
-		    if (testCpu.dataMemory.mem[i] != 16'd0) begin;
-		        // $fwrite(f, "mem[%d] = %d\n", i, testCpu.dataMemory.mem[i]);
-                $fwrite(f, "mem[%d] = %b\n", i, testCpu.dataMemory.mem[i]);
-		        $fwrite(f1,"%b\n", testCpu.dataMemory.mem[i]);
-		    end
-		end
-		f2 = $fopen("log2_result.txt", "w");
-		$fwrite(f2, "%b", testCpu.registers.MEM[1]); //log2 result
-		f4 = $fopen("sqrt_result.txt", "a");
-		$display("sqrt(x) = %b", testCpu.cpu.registers.MEM[1]);
-		$fwrite(f4, "%b\n", testCpu.cpu.registers.MEM[1]); //sqrt result
-		$fclose(f);
-  */
         $finish;
 		$stop;
 	end

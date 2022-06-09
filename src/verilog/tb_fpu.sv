@@ -1,3 +1,6 @@
+// This testbench tests hand written cases for the FPU (all four operations)
+// Also it writes the output results to a txt file
+
 module tb_fpu();
     logic clk, reset;
     logic [15:0] opA, opB;
