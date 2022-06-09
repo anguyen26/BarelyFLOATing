@@ -37,17 +37,13 @@ module cpuStim();
 		$display("%t Test Done", $time);
 
 		f1 = $fopen("convertMe.txt", "w");
-		
 		$fwrite(f1,"%b\n", testCpu.dataMemory.mem[1]);
-        /*
-		for (int i=0; i<65536; i++) begin
-		    if (testCpu.dataMemory.mem[i] != 16'd0) begin;
-		        $fwrite(f1,"%b\n", testCpu.dataMemory.mem[i]);
-		    end
-		end
-*/
         $fclose(f1);
-        
+
+		f2 = $fopen("log2_result.txt", "w");
+		$fwrite(f2, "%b", testCpu.core.registers.MEM[1]); //log2 result
+        $fclose(f2);
+
 		/*
         f3 = $fopen("log2_error.txt", "w");
 		$fwrite(f3, "0000000000000000\n");
@@ -95,8 +91,8 @@ module cpuStim();
 		        $fwrite(f1,"%b\n", testCpu.dataMemory.mem[i]);
 		    end
 		end
-		//f2 = $fopen("log2_result.txt", "w");
-		//$fwrite(f2, "%b", testCpu.registers.MEM[1]); //log2 result
+		f2 = $fopen("log2_result.txt", "w");
+		$fwrite(f2, "%b", testCpu.registers.MEM[1]); //log2 result
 		f4 = $fopen("sqrt_result.txt", "a");
 		$display("sqrt(x) = %b", testCpu.cpu.registers.MEM[1]);
 		$fwrite(f4, "%b\n", testCpu.cpu.registers.MEM[1]); //sqrt result

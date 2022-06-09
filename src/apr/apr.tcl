@@ -18,6 +18,9 @@ source ${SRC_DIR}/phys_vars.tcl -echo -verbose
 file mkdir $results
 file mkdir $reports
 
+# remove unused ports?
+source -echo ./remove_unused_ports.tcl
+
 source ${SRC_DIR}/library.tcl -echo -verbose
 
 # READ DESIGN
@@ -25,6 +28,8 @@ source ${SRC_DIR}/library.tcl -echo -verbose
 # Read in the verilog, uniquify and save the CEL view.
 import_designs ../syn/results/$design_name.syn.v -format verilog -top $design_name
 link
+
+remove_unused_ports
 
 # TIMING CONSTRAINTS
 # ==========================================================================

@@ -66,7 +66,7 @@ set clk_setup_uncertainty 0.030
 set clk_hold_uncertainty 0.030
 ## Transition
 set clk_trans 0.1
-set CLK_PERIOD 4
+set CLK_PERIOD 10
 
 set max_fanout 32
 set max_trans 0.5
@@ -78,6 +78,11 @@ set blanket_input_delay [expr {0.2 * $CLK_PERIOD}]
 
 set blanket_output_drive "${LIB_WC_NAME}/INVD1/ZN"
 set blanket_input_load "${LIB_WC_NAME}/INVD16/I"
+
+#multicycle paths
+set_multicycle_path -setup 2 -through {FPU}
+set_multicycle_path -hold 1 -through {FPU}
+
 # DC compile options
 # ==========================================================================
 

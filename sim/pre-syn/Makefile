@@ -1,4 +1,4 @@
-TEST=simpleSqrt
+TEST=log2
 NUM_TESTS=1
 TESTID=1
 PASSED=0

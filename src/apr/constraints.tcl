@@ -18,7 +18,7 @@ set_timing_derate -late  1.0
 #report_timing_requirements
 #report_disable_timing
 #report_case_analysis
-set CLK_PORT [list clk_cpu]
+set CLK_PORT [list clk]
 group_path -name "Inputs"       -from [remove_from_collection [all_inputs] [get_ports $CLK_PORT]]
 group_path -name "Outputs"      -to [all_outputs]
 group_path -name "Feedthroughs" -from [remove_from_collection [all_inputs] [get_ports $CLK_PORT]] \

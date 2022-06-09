@@ -6,9 +6,9 @@
 *pycache__/
 *.log
 archive/Core
-arhive/iarm-master
+archive/iarm-master
 archive/fpu/sapr
-archive/fpu/sim/*.v
+archive/fpu/sim/*/*.v
 *.nfs*
 *simv
 *.vpd
