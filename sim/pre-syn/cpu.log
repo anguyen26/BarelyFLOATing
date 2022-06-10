@@ -6,7 +6,7 @@ Warning-[DEBUG_DEP] Option will be deprecated
 Command: vcs -f cpu.include +v2k -R -sverilog -full64 -debug_pp -timescale=1ns/10ps \
 -l cpu.log
                          Chronologic VCS (TM)
-       Version S-2021.09-SP1_Full64 -- Thu Jun  9 19:08:08 2022
+       Version S-2021.09-SP1_Full64 -- Fri Jun 10 00:58:13 2022
 
                     Copyright (c) 1991 - 2021 Synopsys, Inc.
    This software and the associated documentation are proprietary to Synopsys,
@@ -66,24 +66,24 @@ rm -f _cuarc0.so
 if [ -x ../simv ]; then chmod a-x ../simv; fi
 g++  -o ../simv      -rdynamic  -Wl,-rpath='$ORIGIN'/simv.daidir -Wl,-rpath=./simv.daidir \
 -Wl,-rpath=/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib -L/home/lab.apps/vlsiapps_new/vcs/current/linux64/lib \
--Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _23990_archive_1.so _prev_archive_1.so \
+-Wl,-rpath-link=./  /usr/lib64/libnuma.so.1     _2097_archive_1.so _prev_archive_1.so \
 _cuarc0.so  SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o \
 rmar_llvm_0_0.o           -lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile \
 -luclinative /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_tls.o   -Wl,-whole-archive \
 -lvcsucli    -Wl,-no-whole-archive          /home/lab.apps/vlsiapps_new/vcs/current/linux64/lib/vcs_save_restore_new.o \
 -ldl  -lc -lm -lpthread -ldl 
 ../simv up to date
-Command: /home/nguyea9/ee478/sim/pre-syn/./simv +v2k -a cpu.log
+Command: /home/projects/ee478.2022spr/nguyea9/BarelyFLOATing/sim/pre-syn/./simv +v2k -a cpu.log
 Chronologic VCS simulator copyright 1991-2021
 Contains Synopsys proprietary information.
-Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  Jun  9 19:08 2022
+Compiler version S-2021.09-SP1_Full64; Runtime version S-2021.09-SP1_Full64;  Jun 10 00:58 2022
 Running benchmark: ../../src/assembler/simpleSqrt.v
 VCD+ Writer S-2021.09-SP1_Full64 Copyright (c) 1991-2021 by Synopsys Inc.
-3970.00 ns Test Done
-$finish called from file "../../src/verilog/cpuStim.sv", line 101.
-$finish at simulation time 3970.00 ns
+3130.00 ns Test Done
+$finish called from file "../../src/verilog/cpuStim.sv", line 52.
+$finish at simulation time 3130.00 ns
            V C S   S i m u l a t i o n   R e p o r t 
-Time: 3970000 ps
-CPU Time:      0.270 seconds;       Data structure size:   0.3Mb
-Thu Jun  9 19:08:12 2022
-CPU time: .623 seconds to compile + .319 seconds to elab + .367 seconds to link + .306 seconds in simulation
+Time: 3130000 ps
+CPU Time:      0.400 seconds;       Data structure size:   0.3Mb
+Fri Jun 10 00:58:16 2022
+CPU time: .539 seconds to compile + .398 seconds to elab + .299 seconds to link + .424 seconds in simulation

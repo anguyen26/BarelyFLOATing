@@ -39,7 +39,6 @@ module aprCpuStim();
 		$display("%t Test Done", $time);
 
 		f1 = $fopen("convertMe.txt", "w");
-		f1 = $fopen("convertMe.txt", "w");
 		$fwrite(f1,"%b\n", testTop.dataMemory.mem[1]);
         $fclose(f1);
         $finish;
