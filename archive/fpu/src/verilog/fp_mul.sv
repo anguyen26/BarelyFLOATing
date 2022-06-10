@@ -1,3 +1,5 @@
+// fp_add takes 2 16-bit operands and outputs a 16-bit product as well as 
+// underflow, overflow, inexact, and cout flags. 
 module fp_mul(
     input logic [15:0] opA, opB,
     output logic [15:0] product,

@@ -1,3 +1,5 @@
+// opmem holds the randomly generated operation and operands to validate
+// the fpu
 module opmem (
     input logic [7:0] address,
     output logic [15:0] opA, opB,

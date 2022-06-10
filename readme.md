@@ -23,6 +23,8 @@ and verify against the expected results.
 
 #### Running Tests
 - RTL
+    - Run 'make' in the pre-syn folder to run the sqrt(x) algorithm test 5 times with random x inputs. 
+        - To change the number of tests, use NUM_TESTS=x
     - The currently implimented tests are as follows:
         - sqrt
         - log2
@@ -32,6 +34,8 @@ and verify against the expected results.
     
         `make vcs`
 - Synthesized
+    - Run 'make' in the post-syn folder to run the sqrt(x) algorithm test 5 times with random x inputs. 
+        - To change the number of tests, use NUM_TESTS=x
     - The currently implimented tests are as follows:
         - sqrt
         - log2
@@ -40,6 +44,8 @@ and verify against the expected results.
     
         `make vcs_syn` 
 - Layout
+    - Run 'make' in the post-apr folder to run the sqrt(x) algorithm test 5 times with random x inputs. 
+        - To change the number of tests, use NUM_TESTS=x
     - The currently implimented tests are as follows:
         - sqrt
         - log2

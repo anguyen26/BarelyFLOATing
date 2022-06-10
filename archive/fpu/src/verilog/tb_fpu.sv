@@ -1,3 +1,6 @@
+
+// tb_fp_add tests that the fpu can accurately add, subtract, multiply, and
+// divide 2 operands
 module tb_fpu();
     logic clk, reset;
     logic [15:0] opA, opB;

@@ -1,3 +1,4 @@
+// tb_fp_add tests that the fpu can accurately compute the sum of 2 operands
 module tb_fp_div();
     logic clk, reset, start;
     logic [15:0] opA, opB, quotient;

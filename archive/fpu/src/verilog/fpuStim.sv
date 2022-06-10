@@ -1,3 +1,4 @@
+// fpuStim tests that the fpu can pass randomized tests. 
 module fpuStim();
     logic clk, reset;
     logic [15:0] opA, opB;

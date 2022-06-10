@@ -1,3 +1,7 @@
+// fp_add takes 2 16-bit operands and performs addition, subtraction,
+// multiplication, or division based on the op input. It outputs a 16-bit
+// result. Flags include overflow, underflow, inexact, and flags used for
+// the compare instruction in the cpu.
 module fpu(
 	input logic [15:0] opA, opB,
 	input logic [1:0] op,

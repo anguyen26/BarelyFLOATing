@@ -1,3 +1,5 @@
+// fp_add takes 2 16-bit operands and outputs a 16-bit quotient as well as 
+// underflow, overflow, inexact, and cout flags. 
 module fp_div(
     input logic [15:0] opA, opB,
     output logic [15:0] quotient,
